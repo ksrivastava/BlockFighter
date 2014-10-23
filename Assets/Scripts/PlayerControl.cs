@@ -14,14 +14,17 @@ public class PlayerControl : MonoBehaviour
 	public float jumpForce = 700f;			// Amount of force added when the player jumps.
 	
 	private Transform groundCheck;			// A position marking where to check if the player is grounded.
-	private bool grounded = false;			// Whether or not the player is grounded.
+	public bool grounded = false;			// Whether or not the player is grounded.
 	
 	public bool isSecondPlayer = false;
 	
 	void Awake()
 	{
 		// Setting up references.
-		groundCheck = transform.Find("groundCheck");
+		groundCheck = GameObject.Find(transform.parent.name + "/Body/groundCheck").transform;
+		if (!isSecondPlayer) {
+			facingRight = !facingRight;
+		}
 	}
 	
 	
