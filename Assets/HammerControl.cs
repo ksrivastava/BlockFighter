@@ -4,58 +4,55 @@ using System.Collections;
 public class HammerControl : MonoBehaviour {
 
 	bool isHitting = false;
+	bool isJabbing = false;
 	float speed = 400f;
 
 	PlayerControl controller;
+	Transform player;
 
 	// Use this for initialization
 	void Start () {
 		controller = GameObject.Find (transform.parent.name + "/Body").GetComponent<PlayerControl> ();
+		player = GameObject.Find (transform.parent.name + "/Body").transform;
 	}
 
 	float duration = 0.2f;
 	float deltaTime = 0f;
 	[HideInInspector]
-	public bool isGoingUp = false;
+	public bool attackComplete = false;
 	int direction = 1;
 	
 	// Update is called once per frame
 	void Update () {
 
-		Transform obj = GameObject.Find (transform.parent.name + "/Body").transform;
-		var pos = obj.position;
+		var pos = player.position;
 		direction = (controller.facingRight) ? 1 : -1;
-//		pos.y += obj.renderer.bounds.size.y/2;
-		pos.x += (obj.renderer.bounds.size.x/2 + 0.2f) * direction;
+		pos.x += (player.renderer.bounds.size.x/2 + 0.2f) * direction;
 		transform.position = pos;
 
 		string fireInput = controller.isSecondPlayer ? "Fire2" : "Fire1";
+		float v = controller.isSecondPlayer? Input.GetAxis("Vertical2") : Input.GetAxis("Vertical");
 
 		if (Input.GetAxis(fireInput) > 0 && !isHitting) {
 			isHitting = true;
 			controller.enabled = false;
+
+			if (v < 0) {
+				isJabbing = true;
+			}
 		}
 		
 		if (isHitting) {
 
-			if (isGoingUp) {
+			if (attackComplete) {
 				if (deltaTime >= duration) {
-					transform.Rotate(0, 0, speed * Time.deltaTime * direction);
-					float z = transform.rotation.eulerAngles.z;
-					if (
-						((direction == 1) && z >= 0 && z < 270) ||
-						((direction == -1) && z <= 360 && z > 90)
-						) {
-
-							var rot = transform.rotation;
-							rot.z = 0;
-							transform.rotation = rot;
-
-							isHitting = false;
-							isGoingUp = false;
-							controller.enabled = true;
-
-							deltaTime = 0f;
+					if ((isJabbing && StopJab()) ||
+					    (!isJabbing && SwingUp())) {
+						isHitting = false;
+						isJabbing = false;
+						attackComplete = false;
+						controller.enabled = true;
+						deltaTime = 0f;
 					}
 				}
 				else {
@@ -64,15 +61,52 @@ public class HammerControl : MonoBehaviour {
 
 			}
 			else {
-				transform.Rotate(0, 0, - speed * Time.deltaTime * direction);
-				float z = transform.rotation.eulerAngles.z;
-				if (
-					((direction == 1) && z <= 270 - 20) ||
-					((direction == -1) && z >= 90 + 20)
-				) {
-					isGoingUp = true;
+				if (isJabbing) {
+					attackComplete = StartJab();
+				}
+				else {
+					attackComplete = SwingDown();
 				}
 			}
 		}
+	}
+
+	bool StopJab() {
+		return SwingUp ();
+	}
+
+	bool StartJab() {
+		return SwingDown ();
+	}
+
+	bool SwingDown() {
+		transform.Rotate(0, 0, - speed * Time.deltaTime * direction);
+		float z = transform.rotation.eulerAngles.z;
+		if (
+			((direction == 1) && z <= 270 - 20) ||
+			((direction == -1) && z >= 90 + 20)
+			) {
+			return true;
+		}
+
+		return false;
+	}
+
+	bool SwingUp() {
+		transform.Rotate(0, 0, speed * Time.deltaTime * direction);
+		float z = transform.rotation.eulerAngles.z;
+		if (
+			((direction == 1) && z >= 0 && z < 270) ||
+			((direction == -1) && z <= 360 && z > 90)
+			) {
+			
+			var rot = transform.rotation;
+			rot.z = 0;
+			transform.rotation = rot;
+
+			return true;
+		}
+
+		return false;
 	}
 }
