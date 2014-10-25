@@ -7,7 +7,7 @@ public class HammerCollision : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		controller = this.transform.parent.gameObject.GetComponent<HammerControl> ();
 	}
 	
 	// Update is called once per frame
@@ -15,8 +15,13 @@ public class HammerCollision : MonoBehaviour {
 	
 	}
 
-	void OnTriggerEnter2D(Collider2D col) {
+	void OnCollisionEnter2D(Collision2D col) {
 		print (col.gameObject.name);
+		if (col.gameObject.tag.Contains("Player")) {
+			if (controller.isHitting && !controller.attackComplete) {
+				col.gameObject.GetComponent<PlayerBehavior>().ReduceHealth(10);
+			}
+		}
 	}
 	
 }
