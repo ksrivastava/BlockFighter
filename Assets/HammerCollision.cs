@@ -12,7 +12,6 @@ public class HammerCollision : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
 	}
 
 	void OnCollisionEnter2D(Collision2D col) {
@@ -23,7 +22,12 @@ public class HammerCollision : MonoBehaviour {
 			} else if (col.gameObject.tag == "Enemy") {
 				col.gameObject.GetComponent<EnemyBehavior>().ReduceHealth(10);
 			}
+			collider2D.enabled = false;
 		}
 	}
-	
+
+	public void Enable() {
+		collider2D.enabled = true;
+	}
+
 }
