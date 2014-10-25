@@ -3,10 +3,11 @@ using System.Collections;
 
 public class PlayerBehavior : MonoBehaviour {
 
+	public float MaxHealth = 100;
 	private float health = 100;
 	public float Health {
 		get {
-			print (transform.parent.name + ": " + health.ToString());
+//			print (transform.parent.name + ": " + health.ToString());
 			return health;
 		}
 
@@ -14,7 +15,7 @@ public class PlayerBehavior : MonoBehaviour {
 			health = value;
 
 			if (health == 0) {
-				Destroy(gameObject);
+				Destroy(this.transform.parent.gameObject);
 			}
 		}
 	}
@@ -28,10 +29,15 @@ public class PlayerBehavior : MonoBehaviour {
 	void Update () {
 	
 	}
+
+	public void ReduceHealth(int n) {
+		Health -= n;
+		print (transform.parent.name + ": " + health.ToString());
+	}
 	
-	void OnCollisionEnter2D(Collision2D col) {
-		if (col.gameObject.tag == "Hammer") {
-			Health -= 10;
-		}
+	void OnTriggerEnter2D(Collider2D col) {
+//		if (col.gameObject.tag == "Hammer") {
+//			Health -= 10;
+//		}
 	}
 }

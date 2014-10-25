@@ -19,8 +19,9 @@ public class CameraControl : MonoBehaviour {
 
 	void FixedUpdate(){
 
-
-		bool bothInCamera = (checkObjectInCamera (playerOne.transform.position) && checkObjectInCamera (playerTwo.transform.position));
+		bool playerOneInCamera = (playerOne) ? checkObjectInCamera(playerOne.transform.position) : false;
+		bool playerTwoInCamera = (playerTwo) ? checkObjectInCamera(playerTwo.transform.position) : false;
+		bool bothInCamera = playerOneInCamera && playerTwoInCamera;
 
 		var dist = Vector3.Distance (playerOne.transform.position, playerTwo.transform.position);
 
