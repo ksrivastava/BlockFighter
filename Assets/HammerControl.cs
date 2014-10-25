@@ -24,7 +24,14 @@ public class HammerControl : MonoBehaviour {
 	[HideInInspector]
 	public bool attackComplete = false;
 	int direction = 1;
-	
+
+	public void Hit(){
+		if (!isHitting) {
+			isHitting = true;
+			controller.enabled = false;
+		}
+	}
+
 	// Update is called once per frame
 	void Update () {
 
@@ -37,14 +44,7 @@ public class HammerControl : MonoBehaviour {
 		string fireInput = controller.isSecondPlayer ? "Fire2" : "Fire1";
 		float v = controller.isSecondPlayer? Input.GetAxis("Vertical2") : Input.GetAxis("Vertical");
 
-		if (Input.GetAxis(fireInput) > 0 && !isHitting) {
-			isHitting = true;
-			controller.enabled = false;
-
-			if (v < 0) {
-				isJabbing = true;
-			}
-		}
+	
 		
 		if (isHitting) {
 
