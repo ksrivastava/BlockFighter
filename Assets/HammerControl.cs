@@ -10,11 +10,13 @@ public class HammerControl : MonoBehaviour {
 
 	PlayerControl controller;
 	Transform player;
+	HammerCollision collision;
 
 	// Use this for initialization
 	void Start () {
 		controller = GameObject.Find (transform.parent.name + "/Body").GetComponent<PlayerControl> ();
 		player = GameObject.Find (transform.parent.name + "/Body").transform;
+		collision = GameObject.Find (transform.parent.name + "/Hammer/Body").GetComponent<HammerCollision> ();
 	}
 
 	float duration = 0.2f;
@@ -29,6 +31,7 @@ public class HammerControl : MonoBehaviour {
 		var pos = player.position;
 		direction = (controller.facingRight) ? 1 : -1;
 		pos.x += (player.renderer.bounds.size.x/2 + 0.2f) * direction;
+		pos.z = -1;
 		transform.position = pos;
 
 		string fireInput = controller.isSecondPlayer ? "Fire2" : "Fire1";
@@ -52,6 +55,7 @@ public class HammerControl : MonoBehaviour {
 						isHitting = false;
 						isJabbing = false;
 						attackComplete = false;
+						collision.Enable();
 						controller.enabled = true;
 						deltaTime = 0f;
 					}

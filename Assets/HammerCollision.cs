@@ -12,7 +12,6 @@ public class HammerCollision : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
 	}
 
 	void OnCollisionEnter2D(Collision2D col) {
@@ -20,8 +19,13 @@ public class HammerCollision : MonoBehaviour {
 		if (col.gameObject.tag.Contains("Player")) {
 			if (controller.isHitting && !controller.attackComplete) {
 				col.gameObject.GetComponent<PlayerBehavior>().ReduceHealth(10);
+				collider2D.enabled = false;
 			}
 		}
 	}
-	
+
+	public void Enable() {
+		collider2D.enabled = true;
+	}
+
 }
