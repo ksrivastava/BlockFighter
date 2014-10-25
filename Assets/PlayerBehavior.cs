@@ -3,6 +3,7 @@ using System.Collections;
 
 public class PlayerBehavior : MonoBehaviour {
 
+	public float MaxHealth = 100;
 	private float health = 100;
 	public float Health {
 		get {

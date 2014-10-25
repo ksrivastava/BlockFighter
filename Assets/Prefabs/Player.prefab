@@ -8,6 +8,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400000}
+  - 114: {fileID: 11400014}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -342,7 +343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdff821646abf4b568636a429a00c611, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isGoingUp: 0
+  attackComplete: 0
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -419,6 +420,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32779591d4f6a412593e4f9b5e39edf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxHealth: 100
+--- !u!114 &11400014
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5188b7e5f861040cb995e2ced539352d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  barDisplay: 0
+  emptyTex: {fileID: 0}
+  fullTex: {fileID: 0}
+  isSecondPlayer: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
