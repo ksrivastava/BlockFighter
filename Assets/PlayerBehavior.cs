@@ -7,7 +7,7 @@ public class PlayerBehavior : MonoBehaviour {
 	private float health = 100;
 	public float Health {
 		get {
-			print (transform.parent.name + ": " + health.ToString());
+//			print (transform.parent.name + ": " + health.ToString());
 			return health;
 		}
 
@@ -32,6 +32,7 @@ public class PlayerBehavior : MonoBehaviour {
 
 	public void ReduceHealth(int n) {
 		Health -= n;
+		print (transform.parent.name + ": " + health.ToString());
 	}
 	
 	void OnTriggerEnter2D(Collider2D col) {
