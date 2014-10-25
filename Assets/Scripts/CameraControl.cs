@@ -18,20 +18,21 @@ public class CameraControl : MonoBehaviour {
 
 
 	void FixedUpdate(){
+		if(playerOne != null && playerTwo != null) {
+			bool playerOneInCamera = (playerOne) ? checkObjectInCamera(playerOne.transform.position) : false;
+			bool playerTwoInCamera = (playerTwo) ? checkObjectInCamera(playerTwo.transform.position) : false;
+			bool bothInCamera = playerOneInCamera && playerTwoInCamera;
 
-		bool playerOneInCamera = (playerOne) ? checkObjectInCamera(playerOne.transform.position) : false;
-		bool playerTwoInCamera = (playerTwo) ? checkObjectInCamera(playerTwo.transform.position) : false;
-		bool bothInCamera = playerOneInCamera && playerTwoInCamera;
+			var dist = Vector3.Distance (playerOne.transform.position, playerTwo.transform.position);
 
-		var dist = Vector3.Distance (playerOne.transform.position, playerTwo.transform.position);
-
-		if (!bothInCamera && !cameraLock){
-			StartCoroutine (changeCameraSize (Camera.main.orthographicSize, maxOrthographicSize, lerpDuration, Time.time,
-			                                  Camera.main.transform.position, levelBounds.transform.position));
-		}else if (bothInCamera && dist <= thresholdDist && Camera.main.orthographicSize != minOrthographicSize && !cameraLock) {
-			StartCoroutine (changeCameraSize (Camera.main.orthographicSize, minOrthographicSize, lerpDuration, Time.time, 
-			                Camera.main.transform.position, 
-			                CenterCamera(playerOne.transform.position,playerTwo.transform.position)));	
+			if (!bothInCamera && !cameraLock){
+				StartCoroutine (changeCameraSize (Camera.main.orthographicSize, maxOrthographicSize, lerpDuration, Time.time,
+				                                  Camera.main.transform.position, levelBounds.transform.position));
+			}else if (bothInCamera && dist <= thresholdDist && Camera.main.orthographicSize != minOrthographicSize && !cameraLock) {
+				StartCoroutine (changeCameraSize (Camera.main.orthographicSize, minOrthographicSize, lerpDuration, Time.time, 
+				                Camera.main.transform.position, 
+				                CenterCamera(playerOne.transform.position,playerTwo.transform.position)));	
+			}
 		}
 	}
 
