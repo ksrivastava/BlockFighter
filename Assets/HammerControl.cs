@@ -3,7 +3,8 @@ using System.Collections;
 
 public class HammerControl : MonoBehaviour {
 
-	bool isHitting = false;
+	[HideInInspector]
+	public bool isHitting = false;
 	bool isJabbing = false;
 	float speed = 400f;
 
