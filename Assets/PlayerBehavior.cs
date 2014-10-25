@@ -14,7 +14,7 @@ public class PlayerBehavior : MonoBehaviour {
 		set {
 			health = value;
 
-			if (health == 0) {
+			if (health <= 0) {
 				Destroy(this.transform.parent.gameObject);
 			}
 		}
