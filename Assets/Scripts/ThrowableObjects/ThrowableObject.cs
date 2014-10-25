@@ -59,9 +59,11 @@ public class ThrowableObject : MonoBehaviour {
 				behaviour.weapon = this.gameObject;
 				controller.pickedUpObject = true;
 				this.collider2D.enabled = false;
-
+				//this.rigidbody2D.isKinematic = true;
 			} else if (this.state == State.thrown) {
 				Damage(col);
+				this.rigidbody2D.velocity = Vector2.zero;
+				this.state = State.idle;
 			}
 		}
 	}
@@ -84,6 +86,8 @@ public class ThrowableObject : MonoBehaviour {
 		controller.pickedUpObject = false;
 		this.state = State.thrown;
 		this.collider2D.enabled = true;
+		this.rigidbody2D.velocity = Vector2.zero;
+		//this.rigidbody2D.isKinematic = false;
 		this.groundCollisions = 0;
 	}
 }
