@@ -40,7 +40,7 @@ public class ThrowableObject : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		print (this.state);
+//		print (this.state);
 		if ( this.state == State.pickedUp) {
 
 			this.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, this.transform.position.z);
