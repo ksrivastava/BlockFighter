@@ -4,7 +4,7 @@ using System.Collections;
 public class Progress : MonoBehaviour {
 	public float barDisplay;
 	Vector2 posRatio = new Vector2(0.06f, 0.03f);
-	Vector2 sizeRatio = new Vector2(0.15f, 0.05f);
+	Vector2 sizeRatio = new Vector2(0.2f, 0.02f);
 	public Texture2D emptyTex;
 	public Texture2D fullTex;
 

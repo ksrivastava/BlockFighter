@@ -10,10 +10,12 @@ public class ThrowableObject : MonoBehaviour {
 
 	GameObject player = null;
 	PlayerControl controller;
+
 	protected float throwForce = 1000f;
 	protected float xMult= 500f;
 
 	private int groundCollisionsBeforeIdle = 10;
+	private Vector2 velocityBeforeIdle = new Vector2(3f,3f);
 	private int groundCollisions = 0;
 	private Collider2D triggerCollider = null;
 
@@ -21,7 +23,7 @@ public class ThrowableObject : MonoBehaviour {
 	public virtual void Damage(Collider2D col){}
 
 	// Use this for initialization
-	void Start () {
+	protected void Start () {
 		this.state = State.idle;
 		
 		// turn off the unity physics collider
@@ -32,6 +34,7 @@ public class ThrowableObject : MonoBehaviour {
 				break;
 			}
 		}
+
 	}
 	
 	// Update is called once per frame
@@ -59,6 +62,7 @@ public class ThrowableObject : MonoBehaviour {
 
 			} else if (this.state == State.thrown) {
 				Damage(col);
+				this.state = State.idle;
 			}
 		} else if(col.gameObject.layer == LayerMask.NameToLayer("Ground") && this.rigidbody2D.velocity == Vector2.zero){
 			this.state = State.idle;
@@ -74,7 +78,9 @@ public class ThrowableObject : MonoBehaviour {
 	}
 
 	void OnCollisionStay2D(Collision2D coll){
-		if (coll.gameObject.layer == LayerMask.NameToLayer ("Ground")) {
+		if (coll.gameObject.layer == LayerMask.NameToLayer ("Ground") 
+		    && Mathf.Abs(this.rigidbody2D.velocity.x) <= velocityBeforeIdle.x
+		    && Mathf.Abs(this.rigidbody2D.velocity.y) <= velocityBeforeIdle.y) {
 			if(this.groundCollisions == this.groundCollisionsBeforeIdle){
 				this.state = State.idle;
 			}
