@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b86ebc1018b8c49c5ac7800042c53340, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 1, g: 0, b: 0, a: 0}
+  color: {r: .944827557, g: 1, b: 0, a: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
