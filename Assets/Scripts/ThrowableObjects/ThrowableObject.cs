@@ -3,10 +3,10 @@ using System.Collections;
 
 public class ThrowableObject : MonoBehaviour {
 
-	private enum State {idle, pickedUp, thrown};
+	public enum State {idle, pickedUp, thrown};
 
 
-	State state;
+	protected State state;
 
 	GameObject player = null;
 	PlayerControl controller;

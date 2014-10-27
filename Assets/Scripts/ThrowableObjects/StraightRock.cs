@@ -3,11 +3,12 @@ using System.Collections;
 
 public class StraightRock : ThrowableObject {
 
+	public State startingState = State.idle;
 
 	void Start(){
 		this.throwForce = 0;
 		this.xMult = 1000f;
-		base.Start ();
+		this.state = startingState;
 	}
 	
 	// little rocks cause 5 damage?

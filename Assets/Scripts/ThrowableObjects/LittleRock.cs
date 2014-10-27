@@ -3,6 +3,12 @@ using System.Collections;
 
 public class LittleRock : ThrowableObject {
 
+	public State startingState = State.idle;
+
+	void Start(){
+		this.state = startingState;
+	}
+
 	// little rocks cause 5 damage?
 	public override void Damage (Collider2D col)
 	{
