@@ -9,7 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 400000}
   - 114: {fileID: 11400014}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ GameObject:
   - 23: {fileID: 2300000}
   - 114: {fileID: 11400004}
   - 64: {fileID: 6400000}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 400004}
   - 114: {fileID: 11400000}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Hammer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65,7 +65,7 @@ GameObject:
   - 114: {fileID: 11400010}
   - 61: {fileID: 6100002}
   - 50: {fileID: 5000002}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Body
   m_TagString: Hammer
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   - 114: {fileID: 11400008}
   - 114: {fileID: 11400002}
   - 114: {fileID: 11400012}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Body
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400010}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: groundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.96029043, y: 2.14611673, z: .038254261}
+  m_LocalPosition: {x: 10.2809105, y: -4.44473267, z: .038254261}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400008}
@@ -142,7 +142,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100004}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.887815475, y: -.0550704002, z: 0}
+  m_LocalPosition: {x: -.887815475, y: -.0550704002, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400006}
@@ -358,8 +358,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   facingRight: 1
   jump: 0
-  moveForce: 100
-  maxSpeed: 5
+  pickedUpObject: 0
+  moveForce: 200
+  maxSpeed: 6
   jumpForce: 700
   grounded: 0
   isSecondPlayer: 0
@@ -422,6 +423,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 100
+  weapon: {fileID: 0}
 --- !u!114 &11400014
 MonoBehaviour:
   m_ObjectHideFlags: 1
