@@ -133,6 +133,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8584d0e1965174bb48c8f9de00d02b4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  canPickUp: 0
   startingState: 2
 --- !u!1001 &100100000
 Prefab:

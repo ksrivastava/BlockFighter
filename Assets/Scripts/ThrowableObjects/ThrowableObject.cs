@@ -14,6 +14,7 @@ public class ThrowableObject : MonoBehaviour {
 
 	protected float throwForce = 1000f;
 	protected float xMult= 500f;
+	public bool canPickUp = true;
 
 	private int groundCollisionsBeforeIdle = 10;
 	private Vector2 velocityBeforeIdle = new Vector2(3f,3f);
@@ -33,7 +34,7 @@ public class ThrowableObject : MonoBehaviour {
 	void Update () {
 //		print (this.state);
 		if ( this.state == State.pickedUp) {
-
+			this.rigidbody2D.velocity = Vector2.zero;
 			this.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, this.transform.position.z);
 			var pos = this.transform.position;
 			pos.x  = (controller.facingRight) ? pos.x + displacement.x : pos.x - displacement.x;
@@ -43,7 +44,7 @@ public class ThrowableObject : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D col) {
-		if (col.gameObject.tag == "Player") {
+		if (col.gameObject.tag == "Player" && this.canPickUp) {
 
 			if (this.state == State.idle) {
 
@@ -56,6 +57,7 @@ public class ThrowableObject : MonoBehaviour {
 
 
 				this.state = State.pickedUp;
+
 				behaviour.weapon = this.gameObject;
 				controller.pickedUpObject = true;
 				this.collider2D.enabled = false;

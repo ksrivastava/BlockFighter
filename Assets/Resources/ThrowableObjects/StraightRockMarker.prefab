@@ -121,6 +121,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7e791351a2e04e96866f222764950f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  canPickUp: 0
   startingState: 2
 --- !u!114 &11400004
 MonoBehaviour:
