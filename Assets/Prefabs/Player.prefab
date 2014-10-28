@@ -361,7 +361,7 @@ MonoBehaviour:
   pickedUpObject: 0
   moveForce: 200
   maxSpeed: 6
-  jumpForce: 700
+  jumpForce: 800
   grounded: 0
   isSecondPlayer: 0
 --- !u!114 &11400004

@@ -401,6 +401,10 @@ Prefab:
       propertyPath: m_Name
       value: PlayerOne
       objectReference: {fileID: 0}
+    - target: {fileID: 5000000, guid: d0e5bb02fc05c4ea0b83c1d0cefdb7c1, type: 2}
+      propertyPath: m_GravityScale
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d0e5bb02fc05c4ea0b83c1d0cefdb7c1, type: 2}
   m_RootGameObject: {fileID: 592287382}
@@ -660,7 +664,7 @@ MonoBehaviour:
   pickedUpObject: 0
   moveForce: 200
   maxSpeed: 6
-  jumpForce: 700
+  jumpForce: 800
   grounded: 0
   isSecondPlayer: 0
 --- !u!114 &517256026
@@ -3055,7 +3059,7 @@ MonoBehaviour:
   pickedUpObject: 0
   moveForce: 200
   maxSpeed: 6
-  jumpForce: 700
+  jumpForce: 800
   grounded: 0
   isSecondPlayer: 1
 --- !u!114 &1996437772
