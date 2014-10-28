@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BombControl : MonoBehaviour, IEvent {
+public class Bomb : MonoBehaviour, IEvent {
 
 	public float bombTimer;
 
