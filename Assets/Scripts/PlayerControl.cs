@@ -32,8 +32,12 @@ public class PlayerControl : MonoBehaviour
 	void Update()
 	{
 		// The player is grounded if a linecast to the groundcheck position hits anything on the ground layer.
-		grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));  
-		
+		bool onGround = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
+		string otherPlayerLayer = (isSecondPlayer) ? "PlayerOne" : "PlayerTwo";
+		bool onPlayer = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer(otherPlayerLayer));
+
+		grounded = onGround || onPlayer;
+
 		// If the jump button is pressed and the player is grounded then the player should 	.
 		string jumpInput = isSecondPlayer ? "Jump2" : "Jump";
 		if(Input.GetButtonDown(jumpInput) && grounded)
