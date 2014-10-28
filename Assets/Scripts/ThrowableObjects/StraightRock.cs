@@ -15,7 +15,7 @@ public class StraightRock : ThrowableObject {
 	public override void Damage (Collider2D col)
 	{
 		try{
-			col.gameObject.GetComponent<PlayerBehavior>().Health -= 5;
+			col.gameObject.GetComponent<PlayerBehavior>().Health -= 10;
 		} catch(UnityException ex){
 			print ("Player doesn't exist");
 		}

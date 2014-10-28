@@ -8,13 +8,19 @@ public class Blimp : MonoBehaviour, IEvent {
 	// Use this for initialization
 	void Start () {
 		m = new Movement (this.gameObject);
-		Vector3 startPos = this.transform.position;
-		m.AddSine (startPos, startPos + new Vector3 (-60, 0, 0), 5, 2, 1);
+		var startPos = Camera.main.ViewportToWorldPoint (new Vector3 (1, 0.9f,0f));
+		startPos.z = 0f;
+		var endPos = Camera.main.ViewportToWorldPoint (new Vector3 (0, 0.9f, 0f));
+		endPos.z = 0f;
+		m.AddSine ( startPos, endPos, 5, 2, 1);
 		m.ChainSine (startPos, 5, 2, 1);
 		m.SetRepeat ();
 		m.setMarker (marker);
-		m.ToggleTrail ();
 		m.Start ();
+	}
+
+	void FixedUpdate(){
+		m.ToggleTrail ();
 	}
 	
 	// Update is called once per frame

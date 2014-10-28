@@ -5,8 +5,8 @@ public class EventRunner : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		EventController.QueueEvent (EventType.Blimp);
-		StartCoroutine(EventController.NextEvent(1));
+		EventController.QueueEvent (EventType.LittleRockShower);
+		StartCoroutine(EventController.NextEvent());
 	}
 	
 	// Update is called once per frame

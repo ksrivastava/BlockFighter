@@ -5,7 +5,9 @@ using System.Collections;
 public enum EventType{
 	Bomb,
 	Idle,
-	Blimp
+	Blimp,
+	StraightRockShower,
+	LittleRockShower
 };
 
 

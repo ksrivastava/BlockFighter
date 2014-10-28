@@ -32,7 +32,7 @@ public class BombControl : MonoBehaviour, IEvent {
 			Destroy(playerOne);
 			Destroy(playerTwo);
 			//EXPLODE
-			End ();
+			Destroy(this.gameObject);
 		}
 	}
 
@@ -52,7 +52,7 @@ public class BombControl : MonoBehaviour, IEvent {
 
 	//TODO: Implement end logic. How do you decide what event to call next??
 	public void End(){
-		EventController.EventEnd (EventType.Bomb, EventType.Blimp, 1);
+		EventController.EventEnd (EventType.Bomb, EventType.Idle, 1);
 	}
 
 	public void OnDestroy(){

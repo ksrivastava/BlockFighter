@@ -6,7 +6,7 @@ public class MarkerDie : MonoBehaviour {
 	int health; 
 
 	void Start(){
-		health = Random.Range(0,100);
+		health = Random.Range(100,200);
 	}
 	// Update is called once per frame
 	void Update () {

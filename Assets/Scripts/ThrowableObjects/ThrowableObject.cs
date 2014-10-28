@@ -65,7 +65,7 @@ public class ThrowableObject : MonoBehaviour {
 				this.rigidbody2D.velocity = Vector2.zero;
 				this.state = State.idle;
 			}
-		}
+		} 
 	}
 
 	void OnCollisionStay2D(Collision2D coll){

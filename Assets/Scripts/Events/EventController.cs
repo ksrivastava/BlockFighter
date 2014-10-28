@@ -6,18 +6,14 @@ public static class EventController {
 
 	static EventType currentEvent;
 
-	public static List<EventType> eventQueue = new List<EventType>();
+	public static List<EventHelper> eventQueue = new List<EventHelper>();
 	public static EventType previousState = EventType.Idle;
 
 	private static bool eventLock = false;
 
-	public static IEnumerator  NextEvent( float delay=0){
+	public static IEnumerator  NextEvent(){
 
 		eventLock = true;
-		if (delay != 0) {
-			Debug.Log("Waiting " + delay);
-			yield return new WaitForSeconds (delay);
-		}
 		if (eventQueue.Count == 0) {
 			Debug.Log("No more events to run!");
 			yield return null; 
@@ -26,13 +22,19 @@ public static class EventController {
 	
 	   	// pull event off Queue
 		// instantiate gameobject
-		var nextEventType = eventQueue [0];
+		var next = eventQueue [0];
 		eventQueue.RemoveAt (0);
-		
-		Debug.Log("Running " + nextEventType);
 
-		if (nextEventType != EventType.Idle) {
-			GameObject obj = Object.Instantiate (Resources.Load (nextEventType.ToString ())) as GameObject;
+		
+		if (next.delay != 0) {
+			Debug.Log("Waiting " + next.delay);
+			yield return new WaitForSeconds (next.delay);
+		}
+
+		Debug.Log("Running " + next);
+
+		if (next.type != EventType.Idle) {
+			GameObject obj = Object.Instantiate (Resources.Load ("Events/"+next.type.ToString ())) as GameObject;
 			IEvent evt = (IEvent) obj.GetComponent(typeof(IEvent));
 			evt.Begin();
 		}
@@ -40,17 +42,28 @@ public static class EventController {
 		yield return null;
 	}
 	
-	public static void QueueEvent(EventType e){
-		eventQueue.Add (e);
+	public static void QueueEvent(EventType e,float delay=0){
+		eventQueue.Add (new EventHelper(e,delay));
 	}
 
+	//TODO: use delay between events	
 	public static void EventEnd(EventType running, EventType nextState, float delay = 0){
-		QueueEvent (nextState);
+		QueueEvent (nextState,delay);
 		eventLock = false;
 	}
 
 	public static bool CanRunNextEvent(){
 		return !eventLock;
+	}
+
+	public class EventHelper{
+		public EventType type;
+		public float delay;
+
+		public EventHelper(EventType t,float d){
+			type=t;
+			delay=d;
+		}
 	}
 
 }
