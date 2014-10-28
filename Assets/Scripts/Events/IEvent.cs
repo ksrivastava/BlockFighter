@@ -7,7 +7,8 @@ public enum EventType{
 	Idle,
 	Blimp,
 	StraightRockShower,
-	LittleRockShower
+	LittleRockShower,
+	MapSpin
 };
 
 
