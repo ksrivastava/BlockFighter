@@ -8,7 +8,7 @@ public class ThrowableObject : MonoBehaviour {
 
 	protected State state;
 
-	GameObject player = null;
+	public GameObject player = null;
 	PlayerControl controller;
 	PlayerBehavior behaviour;
 

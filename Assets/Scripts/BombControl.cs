@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BombControl : MonoBehaviour {
+public class BombControl : MonoBehaviour, IEvent {
 
 	public float bombTimer;
 
@@ -9,8 +9,6 @@ public class BombControl : MonoBehaviour {
 	private GUIText timerText;
 
 	void Start () {
-		bomb = transform.GetChild (0).gameObject;
-		timerText = transform.GetChild (1).guiText;
 	}
 
 	void Update () {
@@ -34,6 +32,7 @@ public class BombControl : MonoBehaviour {
 			Destroy(playerOne);
 			Destroy(playerTwo);
 			//EXPLODE
+			End ();
 		}
 	}
 
@@ -43,5 +42,20 @@ public class BombControl : MonoBehaviour {
 		Vector2 bombPos = bomb.transform.position;
 		timerText.transform.position = Camera.main.WorldToViewportPoint(bombPos);
 		timerText.text = bombTimer.ToString("0.00");
+	}
+
+	
+	public void Begin(){
+		bomb = transform.GetChild (0).gameObject;
+		timerText = transform.GetChild (1).guiText;
+	}
+
+	//TODO: Implement end logic. How do you decide what event to call next??
+	public void End(){
+		EventController.EventEnd (EventType.Bomb, EventType.Blimp, 1);
+	}
+
+	public void OnDestroy(){
+		End ();
 	}
 }

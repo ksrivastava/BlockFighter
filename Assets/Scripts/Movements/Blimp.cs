@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CapsuleSine : MonoBehaviour {
+public class Blimp : MonoBehaviour, IEvent {
 
 	Movement m;
 	public GameObject marker;
@@ -20,5 +20,26 @@ public class CapsuleSine : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		m.Update ();
+	}
+
+	void OnTriggerEnter2D(Collider2D other){
+		if (other.tag == "ThrowableObject") {
+			ThrowableObject obj = other.gameObject.GetComponent<ThrowableObject>();
+			if(obj.player != null){
+				Destroy(this.gameObject);
+			}
+		}
+	}
+
+	public void Begin(){
+
+	}
+
+	public void End(){
+		EventController.EventEnd (EventType.Blimp,  EventType.Bomb, 1);
+	}
+
+	public void OnDestroy(){
+		End ();
 	}
 }

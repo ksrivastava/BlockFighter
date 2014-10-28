@@ -22,13 +22,12 @@ public class BombCollisionControl : MonoBehaviour {
 
 	void Update(){
 		if (health <= 0) {
-			Destroy(this.gameObject);
+			Destroy(this.transform.parent.gameObject);
 		}
 	}
 
 	void OnTriggerEnter2D(Collider2D col) {
 		if (col.gameObject.layer == LayerMask.NameToLayer ("Ground")) {
-			print ("Collided with ground");
 			falling = false;
 			Vector2 bombPos = transform.position;
 			bombPos.y = col.transform.position.y + col.renderer.bounds.size.y/2 + renderer.bounds.size.y/2;
@@ -56,5 +55,5 @@ public class BombCollisionControl : MonoBehaviour {
 
 	void setVulnerable(){
 		vulnerable = true;
-	}
+	}	
 }
