@@ -7,8 +7,6 @@ public class StraightRockShower : MonoBehaviour, IEvent {
 	public string path = "ThrowableObjects/StraightRock";
 	// Use this for initialization
 	public IEnumerator Start () {
-		var pos = new Vector3 (-0.33f, 14.17f, 0.019f);
-		this.transform.position = pos;
 		for(int i=0; i< numRocks; i++){
 			yield return new WaitForSeconds(0.5f);
 			CreateRock();

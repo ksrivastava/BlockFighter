@@ -44,9 +44,10 @@ public class ThrowableObject : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D col) {
-		if (col.gameObject.tag == "Player" && this.canPickUp) {
 
-			if (this.state == State.idle) {
+		if (col.gameObject.tag == "Player") {
+
+			if (this.state == State.idle && this.canPickUp) {
 
 				player = col.gameObject;
 				controller = GameObject.Find (col.transform.parent.name + "/Body").GetComponent<PlayerControl> ();

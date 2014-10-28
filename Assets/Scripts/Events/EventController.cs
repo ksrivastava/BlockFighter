@@ -31,7 +31,7 @@ public static class EventController {
 			yield return new WaitForSeconds (next.delay);
 		}
 
-		Debug.Log("Running " + next);
+		Debug.Log("Running " + next.type);
 
 		if (next.type != EventType.Idle) {
 			GameObject obj = Object.Instantiate (Resources.Load ("Events/"+next.type.ToString ())) as GameObject;
