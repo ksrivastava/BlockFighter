@@ -10,6 +10,6 @@ public class LittleRockShower : StraightRockShower {
 
 	public override void End(){
 		//EventController.EventEnd (EventType.LittleRockShower, EventType.StraightRockShower, 3);
-		EventController.EventEnd (EventType.LittleRockShower, EventType.MapSpin, 3);
+//		EventController.EventEnd (EventType.LittleRockShower, EventType.MapSpin, 3);
 	}
 }
