@@ -10,7 +10,11 @@ public class BombCollisionControl : MonoBehaviour {
 
 	private bool vulnerable = true;
 	private float vulnTime = 1f;
+	HealthBar healthBar;
 
+	void Start() {
+		healthBar = GetComponent<HealthBar> ();
+	}
 
 	void FixedUpdate() {
 		if(falling) {
@@ -20,8 +24,9 @@ public class BombCollisionControl : MonoBehaviour {
 		}
 	}
 
-	void Update(){
-		if (health <= 0) {
+	public void ReduceHealth(int n) {
+		healthBar.Health -= n;
+		if (healthBar.Health <= 0) {
 			Destroy(this.transform.parent.gameObject);
 		}
 	}
@@ -42,7 +47,7 @@ public class BombCollisionControl : MonoBehaviour {
 				Vector2 bombPos = transform.position;
 				bombPos.x += direction * bombPushStrength * Time.deltaTime;
 				transform.position = bombPos;
-				this.health--;
+				ReduceHealth(10);
 				vulnerable = false;
 				Invoke("setVulnerable",vulnTime);
 			}

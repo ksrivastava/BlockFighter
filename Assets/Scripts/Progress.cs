@@ -36,6 +36,6 @@ public class Progress : MonoBehaviour {
 	}
 	
 	void Update() {
-		barDisplay = (behaviour.Health) / behaviour.MaxHealth;
+//		barDisplay = (behaviour.Health) / behaviour.MaxHealth;
 	}
 }
