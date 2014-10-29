@@ -2,29 +2,15 @@
 using System.Collections;
 
 public class PlayerBehavior : MonoBehaviour {
-
-	public float MaxHealth = 100;
-	private float health = 100;
+	
 	public GameObject weapon = null;
 	PlayerControl controller = null;
-	public float Health {
-		get {
-//			print (transform.parent.name + ": " + health.ToString());
-			return health;
-		}
-
-		set {
-			health = value;
-
-			if (health <= 0) {
-				Destroy(this.transform.parent.gameObject);
-			}
-		}
-	}
+	HealthBar healthBar;
 
 	// Use this for initialization
 	void Start () {
 		controller = GetComponent<PlayerControl> ();
+		healthBar = GetComponent<HealthBar> ();
 		weapon = GameObject.Find (transform.parent.name+"/Hammer");
 	}
 	
@@ -45,13 +31,9 @@ public class PlayerBehavior : MonoBehaviour {
 	}
 
 	public void ReduceHealth(int n) {
-		Health -= n;
-		print (transform.parent.name + ": " + health.ToString());
-	}
-	
-	void OnTriggerEnter2D(Collider2D col) {
-//		if (col.gameObject.tag == "Hammer") {
-//			Health -= 10;
-//		}
+		healthBar.Health -= n;
+		if (healthBar.Health <= 0) {
+			Destroy(this.transform.parent.gameObject);
+		}
 	}
 }
