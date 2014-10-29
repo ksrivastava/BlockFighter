@@ -38,7 +38,7 @@ public class Bomb : MonoBehaviour, IEvent {
 
 	void UpdateTime() {
 		if (bomb == null)
-						return;
+			return;
 		Vector2 bombPos = bomb.transform.position;
 		timerText.transform.position = Camera.main.WorldToViewportPoint(bombPos);
 		timerText.text = bombTimer.ToString("0.00");
