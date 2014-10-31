@@ -5,6 +5,7 @@ public class LittleRockShower : StraightRockShower {
 
 	IEnumerator Start(){
 		this.path = "ThrowableObjects/LittleRock";
+		EventController.DisplayMessage ("LittleRocks!!!",2, new Vector2(0.5f,0.9f));
 		return base.Start ();
 	}
 

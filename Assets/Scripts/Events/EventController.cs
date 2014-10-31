@@ -46,6 +46,16 @@ public static class EventController {
 		eventQueue.Add (new EventHelper(e,delay));
 	}
 
+	// pos is in viewport coordinates ( bottom-left is 0,0 and top-Right is 1,1)
+	public static void DisplayMessage(string message,float seconds,Vector2 pos){
+		GameObject obj = Object.Instantiate (Resources.Load ("Message")) as GameObject;
+		GUIText guiText = obj.GetComponent<GUIText> ();
+		guiText.text = message;
+		guiText.transform.position = pos;
+		MessageLife m = obj.GetComponent<MessageLife> ();
+		m.Kill (seconds);
+	}
+
 	//TODO: use delay between events	
 	public static void EventEnd(EventType running, EventType nextState, float delay = 0){
 		QueueEvent (nextState,delay);
