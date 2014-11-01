@@ -17,6 +17,7 @@ public class PointLights : MonoBehaviour ,IEvent{
 
 	public void Begin(){
 		//print ("PointLights begin " + Time.time);
+		EventController.DisplayMessage("Get ready for the darkness!",2,new Vector2(0.5f,0.5f));
 		dirLight = GameObject.Find ("Directional light") as GameObject;
 		FadeOut ();
 		var players = GameObject.FindGameObjectsWithTag ("Player");
