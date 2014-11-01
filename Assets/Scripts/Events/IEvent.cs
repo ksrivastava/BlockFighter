@@ -8,7 +8,8 @@ public enum EventType{
 	Blimp,
 	StraightRockShower,
 	LittleRockShower,
-	MapSpin
+	MapSpin,
+	PointLights
 };
 
 

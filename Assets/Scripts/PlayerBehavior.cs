@@ -4,7 +4,6 @@ using System.Collections;
 public class PlayerBehavior : MonoBehaviour {
 	
 	public GameObject weapon = null;
-	GameObject pointLight = null;
 	PlayerControl controller = null;
 	HealthBar healthBar;
 
@@ -13,7 +12,6 @@ public class PlayerBehavior : MonoBehaviour {
 		controller = GetComponent<PlayerControl> ();
 		healthBar = GetComponent<HealthBar> ();
 		weapon = GameObject.Find (transform.parent.name+"/Hammer");
-		pointLight = Instantiate (Resources.Load ("PointLight")) as GameObject;
 	}
 	
 	// Update is called once per frame
@@ -30,16 +28,6 @@ public class PlayerBehavior : MonoBehaviour {
 				h.Hit();
 			}
 		}
-
-		// Move the point light with player
-		Vector3 pos = pointLight.transform.position;
-		pos.x = transform.position.x;
-		pos.y = transform.position.y;
-		pointLight.transform.position = pos;
-	}
-
-	public void ToggleLight(bool on) {
-		pointLight.SetActive (on);
 	}
 
 	public void ReduceHealth(int n) {
