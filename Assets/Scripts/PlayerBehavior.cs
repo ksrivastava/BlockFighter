@@ -32,7 +32,6 @@ public class PlayerBehavior : MonoBehaviour {
 
 	public void ReduceHealth(int n) {
 		healthBar.Health -= n;
-		print (healthBar.Health);
 		if (healthBar.Health <= 0) {
 			Destroy(this.transform.parent.gameObject);
 		}

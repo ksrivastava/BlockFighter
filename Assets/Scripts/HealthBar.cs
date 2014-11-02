@@ -4,9 +4,15 @@ using System.Collections;
 public class HealthBar : MonoBehaviour {
 
 	public float barDisplay;
+	public GUIStyle health_full;
+	public GUIStyle none_style;
 
 	public float MaxHealth = 100;
 	private float health = 100;
+
+	public Texture2D fullHealth;
+	public Texture2D halfHealth;
+	public Texture2D lowHealth;
 
 	public float Health {
 		get {
@@ -17,17 +23,26 @@ public class HealthBar : MonoBehaviour {
 			health = value;
 			barDisplay = (health) / MaxHealth;
 
+			if (health <= MaxHealth * 0.7 && health > MaxHealth * 0.3) {
+				health_full.normal.background = halfHealth;
+			}
+			else if (health <= MaxHealth * 0.3) {
+				health_full.normal.background = lowHealth;
+			}
+			else {
+				health_full.normal.background = fullHealth;
+			}
+
 			// The responsibility of 'dying' is up to the controller of the script
 		}
 	}
 	
 	Vector2 posRatio = new Vector2(0.06f, 0.03f);
-	Vector2 sizeRatio = new Vector2(0.2f, 0.02f);
-	public Texture2D emptyTex;
-	public Texture2D fullTex;
+	Vector2 sizeRatio = new Vector2(0.05f, 0.02f);
+	string barText = "";
 
 	void Start() {
-
+		Health = MaxHealth;
 	}
 	
 	void OnGUI() {
@@ -44,13 +59,8 @@ public class HealthBar : MonoBehaviour {
 
 		//draw the background:
 		GUI.BeginGroup(new Rect(pos.x, Screen.height - pos.y, size.x, size.y));
-		GUI.Box(new Rect(0,0, size.x, size.y), emptyTex);
-		
-		//draw the filled-in part:
-		GUI.BeginGroup(new Rect(0,0, size.x * barDisplay, size.y));
-		GUI.Box(new Rect(0,0, size.x, size.y), fullTex);
-		GUI.EndGroup();
-		
+		GUI.Box(new Rect(0,0, size.x * barDisplay, size.y), barText, health_full);
+
 		GUI.EndGroup();
 	}
 	
