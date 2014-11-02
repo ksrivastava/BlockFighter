@@ -74,8 +74,10 @@ public class PlayerControl : MonoBehaviour
 		// If the player should jump...
 		if(jump)
 		{
+			var j = (Physics2D.gravity.y > 0)? -jumpForce : jumpForce;
+
 			// Add a vertical force to the player.
-			rigidbody2D.AddForce(new Vector2(0f, jumpForce));
+			rigidbody2D.AddForce(new Vector2(0f, j));
 			
 			// Make sure the player can't jump again until the jump conditions from Update are satisfied.
 			jump = false;
@@ -92,11 +94,5 @@ public class PlayerControl : MonoBehaviour
 		Vector3 theScale = transform.localScale;
 		theScale.x *= -1;
 		transform.localScale = theScale;
-	}
-
-	void OnCollisionStay2D(Collision2D col) {
-		if (onPlayer) {
-			print (col.gameObject.tag);
-		}
 	}
 }

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class Blimp : MonoBehaviour, IEvent {
@@ -31,7 +31,7 @@ public class Blimp : MonoBehaviour, IEvent {
 	void OnTriggerEnter2D(Collider2D other){
 		if (other.tag == "ThrowableObject") {
 			ThrowableObject obj = other.gameObject.GetComponent<ThrowableObject>();
-			if(obj.player != null){
+			if(obj.hammer != null){
 				Destroy(this.gameObject);
 			}
 		}

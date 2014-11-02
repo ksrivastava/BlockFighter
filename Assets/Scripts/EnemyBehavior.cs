@@ -34,6 +34,16 @@ public class EnemyBehavior : MonoBehaviour {
 	
 	}
 
+	void OnCollisionEnter2D(Collision2D col) {
+		if (col.gameObject.tag == "Hammer") {
+			var hammerController = col.gameObject.transform.parent.GetComponent<HammerControl>();
+			if (hammerController.isHitting && !hammerController.attackComplete) {
+				ReduceHealth(10);
+				col.gameObject.collider2D.enabled = false;
+			}
+		}
+	}
+
 	IEnumerator Shoot () {
 		while (true) {
 			GameObject obj = Instantiate (Resources.Load ("EnemyAttack")) as GameObject;

@@ -8,7 +8,7 @@ public class ThrowableObject : MonoBehaviour {
 
 	protected State state;
 
-	public GameObject player = null;
+	public GameObject hammer = null;
 	PlayerControl controller;
 	PlayerBehavior behaviour;
 
@@ -19,7 +19,7 @@ public class ThrowableObject : MonoBehaviour {
 	private int groundCollisionsBeforeIdle = 10;
 	private Vector2 velocityBeforeIdle = new Vector2(3f,3f);
 	private int groundCollisions = 0;
-	private Vector2 displacement = new Vector2(2,2);
+	private Vector2 displacement = new Vector2(1.1f,0);
 
 
 	// this is what you override to implement damage and things.
@@ -33,12 +33,11 @@ public class ThrowableObject : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 //		print (this.state);
-		if ( this.state == State.pickedUp) {
+		if (this.state == State.pickedUp) {
 			this.rigidbody2D.velocity = Vector2.zero;
-			this.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, this.transform.position.z);
-			var pos = this.transform.position;
+			var pos = new Vector3(hammer.transform.position.x, hammer.transform.position.y, this.transform.position.z);
 			pos.x  = (controller.facingRight) ? pos.x + displacement.x : pos.x - displacement.x;
-			pos.y += displacement.y;
+//			pos.z = pos.z + 1;
 			this.transform.position = pos;
 		}
 	}
@@ -49,13 +48,16 @@ public class ThrowableObject : MonoBehaviour {
 
 			if (this.state == State.idle && this.canPickUp) {
 
-				player = col.gameObject;
+//				player = col.gameObject;
+				hammer = GameObject.Find (col.transform.parent.name + "/Hammer/Body");
+
 				controller = GameObject.Find (col.transform.parent.name + "/Body").GetComponent<PlayerControl> ();
 				behaviour = GameObject.Find (col.transform.parent.name + "/Body").GetComponent<PlayerBehavior> ();
 				if(controller != null && controller.pickedUpObject){
 					return;
 				}
 
+				this.transform.parent = hammer.transform;
 
 				this.state = State.pickedUp;
 
@@ -83,8 +85,12 @@ public class ThrowableObject : MonoBehaviour {
 	}
 
 	public void Throw(){
+		this.transform.parent = null;
 		Vector2 rightOrLeft = (controller.facingRight) ? Vector2.right*xMult : Vector2.right*-1*xMult;
-		this.rigidbody2D.AddForce(Vector2.up * throwForce + rightOrLeft);
+
+		var t = (Physics2D.gravity.y > 0)? -throwForce : throwForce;
+
+		this.rigidbody2D.AddForce(Vector2.up * t + rightOrLeft);
 
 		controller.pickedUpObject = false;
 		this.state = State.thrown;

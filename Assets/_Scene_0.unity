@@ -120,6 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f318810dda4854848864325669abd9ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isFlipping: 0
 --- !u!50 &12661241
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -239,7 +240,7 @@ GameObject:
   - 4: {fileID: 34346137}
   - 33: {fileID: 34346136}
   - 61: {fileID: 34346134}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BouncyWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -642,6 +643,10 @@ Prefab:
       propertyPath: pointLight
       value: 
       objectReference: {fileID: 1476954499}
+    - target: {fileID: 11400002, guid: d0e5bb02fc05c4ea0b83c1d0cefdb7c1, type: 2}
+      propertyPath: grounded
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d0e5bb02fc05c4ea0b83c1d0cefdb7c1, type: 2}
   m_RootGameObject: {fileID: 592287382}
@@ -872,6 +877,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7e7231ea5fe284a0eb1eb8d472d8a856, type: 2}
       propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 7e7231ea5fe284a0eb1eb8d472d8a856, type: 2}
+      propertyPath: isFlipping
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1257,6 +1266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f318810dda4854848864325669abd9ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isFlipping: 1
 --- !u!50 &607875227
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -1878,6 +1888,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4988330acd0034df3ac97a76db6802e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controller: {fileID: 0}
 --- !u!114 &930638310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3101,6 +3112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4988330acd0034df3ac97a76db6802e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controller: {fileID: 0}
 --- !u!114 &1788341788
 MonoBehaviour:
   m_ObjectHideFlags: 0

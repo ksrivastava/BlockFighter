@@ -10,20 +10,20 @@ public class HammerControl : MonoBehaviour {
 
 	PlayerControl controller;
 	Transform player;
-	HammerCollision collision;
+	Collider2D collider;
 
 	// Use this for initialization
 	void Start () {
 		controller = GameObject.Find (transform.parent.name + "/Body").GetComponent<PlayerControl> ();
 		player = GameObject.Find (transform.parent.name + "/Body").transform;
-		collision = GameObject.Find (transform.parent.name + "/Hammer/Body").GetComponent<HammerCollision> ();
+		collider = GameObject.Find (transform.parent.name + "/Hammer/Body").collider2D;
 	}
 
 	float duration = 0.2f;
 	float deltaTime = 0f;
 	[HideInInspector]
 	public bool attackComplete = false;
-	int direction = 1;
+	int direction;
 
 	public void Hit(){
 		if (!isHitting) {
@@ -40,11 +40,6 @@ public class HammerControl : MonoBehaviour {
 		pos.x += (player.renderer.bounds.size.x/2 + 0.2f) * direction;
 		pos.z = -1;
 		transform.position = pos;
-
-		string fireInput = controller.isSecondPlayer ? "Fire2" : "Fire1";
-		float v = controller.isSecondPlayer? Input.GetAxis("Vertical2") : Input.GetAxis("Vertical");
-
-	
 		
 		if (isHitting) {
 
@@ -55,7 +50,7 @@ public class HammerControl : MonoBehaviour {
 						isHitting = false;
 						isJabbing = false;
 						attackComplete = false;
-						collision.Enable();
+						collider.enabled = true;
 						controller.enabled = true;
 						deltaTime = 0f;
 					}
@@ -84,34 +79,63 @@ public class HammerControl : MonoBehaviour {
 		return SwingDown ();
 	}
 
+	
+	Vector2 angleOne = new Vector2 (0, 250); // 270 - 20
+	Vector2 angleTwo = new Vector2 (360, 110); // 90 + 20
+
 	bool SwingDown() {
-		transform.Rotate(0, 0, - speed * Time.deltaTime * direction);
+
+		int dir = (Physics2D.gravity.y > 0) ? -direction : direction;
+
+		if (Physics2D.gravity.y > 0) {
+			angleOne.Set(180, 70);
+			angleTwo.Set(180, 290);
+		}
+		else {
+			angleOne.Set(0, 250);
+			angleTwo.Set(360, 110);
+		}
+
+		transform.Rotate(0, 0, -speed * Time.deltaTime * dir);
 		float z = transform.rotation.eulerAngles.z;
 		if (
-			((direction == 1) && z <= 270 - 20) ||
-			((direction == -1) && z >= 90 + 20)
+			((dir == 1) && z <= angleOne.y) || // facing right, and is at <= (290)
+			((dir == -1) && z >= angleTwo.y) // facing left, and is at >= 110
 			) {
 			return true;
 		}
-
+		
 		return false;
 	}
 
 	bool SwingUp() {
-		transform.Rotate(0, 0, speed * Time.deltaTime * direction);
+
+		int dir = (Physics2D.gravity.y > 0) ? -direction : direction;
+
+		if (Physics2D.gravity.y > 0) {
+			angleOne.Set(180, 290);
+			angleTwo.Set(180, 70);
+		}
+		else {
+			angleOne.Set(0, 250);
+			angleTwo.Set(360, 110);
+		}
+
+		transform.Rotate(0, 0, speed * Time.deltaTime * dir);
 		float z = transform.rotation.eulerAngles.z;
+
 		if (
-			((direction == 1) && z >= 0 && z < 270) ||
-			((direction == -1) && z <= 360 && z > 90)
+			((dir == 1) && z >= angleOne.x && z <= angleOne.y) ||
+			((dir == -1) && z <= angleTwo.x && z >= angleTwo.y)
 			) {
 			
 			var rot = transform.rotation;
-			rot.z = 0;
+			rot.z = angleOne.x;
 			transform.rotation = rot;
-
+			
 			return true;
 		}
-
+		
 		return false;
 	}
 }
