@@ -35,7 +35,7 @@ public class PlayerBehavior : MonoBehaviour {
 		if (healthBar.Health <= 0) {
 			
 			//TELL THE PLAYER EVENT CHECKER THAT YOU HAVE JUST DIED
-			PlayerEvents.RecordDeath(this.transform.parent.gameObject);
+			PlayerEvents.RecordDeath(this.gameObject);
 
 			Destroy(this.transform.parent.gameObject);
 
