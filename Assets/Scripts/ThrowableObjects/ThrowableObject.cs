@@ -58,8 +58,6 @@ public class ThrowableObject : MonoBehaviour {
 					return;
 				}
 
-				this.transform.parent = hammer.transform;
-
 				this.state = State.pickedUp;
 
 				behaviour.weapon = this.gameObject;
