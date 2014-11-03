@@ -13,7 +13,7 @@ public class PlayerEvents : MonoBehaviour {
 
 	void Start(){
 		heatmap = GetComponent<HeatMap> ();
-		deathTag = new HeatTag ("FighterGame-PlayerDeath", url, HeatTag.HeatType.POINT);
+		deathTag = new HeatTag ("FighterGame-PlayerDeath", url, HeatTag.HeatType.MAP);
 
 		if (showDeathmap) {
 			heatmap.PlotData(deathTag);		
