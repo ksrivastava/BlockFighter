@@ -5,7 +5,7 @@ public class EventRunner : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		EventController.QueueEvent (EventType.PointLights);
+		EventController.QueueEvent (EventType.LittleRockShower);
 		StartCoroutine(EventController.NextEvent());
 	}
 	
