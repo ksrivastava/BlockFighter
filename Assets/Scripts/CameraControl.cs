@@ -7,6 +7,7 @@ public class CameraControl : MonoBehaviour {
 	public GameObject playerTwo;
 	public GameObject levelBounds;
 	public GameObject littleBox;
+	public GameObject pointsBar;
 
 	public float minOrthographicSize = 10;
 	public float maxOrthographicSize = 20;

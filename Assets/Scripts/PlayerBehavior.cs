@@ -46,11 +46,11 @@ public class PlayerBehavior : MonoBehaviour {
 		if (col.gameObject.tag == "Hammer") {
 			var hammerController = col.gameObject.transform.parent.GetComponent<HammerControl>();
 			if (hammerController.isHitting && !hammerController.attackComplete) {
-				ReduceHealth(10);
-				col.gameObject.collider2D.enabled = false;
-
 				// TELL THE PLAYER EVENT CHECKER THAT YOU HAVE BEEN HIT
 				PlayerEvents.RecordAttack(transform.parent.gameObject,col.transform.parent.transform.parent.gameObject,10);
+			
+				col.gameObject.collider2D.enabled = false;
+				ReduceHealth(10);
 			}
 		}
 	}
