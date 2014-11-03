@@ -61,7 +61,6 @@ public static class EventController {
 	public static void EventEnd(EventType running, EventType nextState, float delay = 0){
 	
 		//check with PlayerEvents whether anything player related has happened.
-	
 		QueueEvent (nextState,delay);
 		eventLock = false;
 	}
