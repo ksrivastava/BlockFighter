@@ -30,16 +30,20 @@ public class ThrowableObject : MonoBehaviour {
 	// Use this for initialization
 	protected void Start () {
 		this.state = State.idle;
+		this.collider2D.enabled = true;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 //		print (this.state);
+		if (hammer == null || controller == null) {
+			this.state = State.idle;
+		}
+
 		if (this.state == State.pickedUp) {
 			this.rigidbody2D.velocity = Vector2.zero;
 			var pos = new Vector3(hammer.transform.position.x, hammer.transform.position.y, this.transform.position.z);
 			pos.x  = (controller.facingRight) ? pos.x + displacement.x : pos.x - displacement.x;
-//			pos.z = pos.z + 1;
 			this.transform.position = pos;
 		}
 	}
@@ -57,8 +61,6 @@ public class ThrowableObject : MonoBehaviour {
 				if(controller != null && controller.pickedUpObject){
 					return;
 				}
-
-				this.transform.parent = hammer.transform;
 
 				this.state = State.pickedUp;
 

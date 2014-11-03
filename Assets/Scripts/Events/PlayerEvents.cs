@@ -5,8 +5,20 @@ using System.Collections.Generic;
 public class PlayerEvents : MonoBehaviour {
 
 	static List<PlayerStats> stats;
-	
+	static HeatMap heatmap;
+	static HeatTag deathTag;
+	static string url = "http://iamkos.com/heatmap.php";
+	public bool showDeathmap = false;
+
+
 	void Start(){
+		heatmap = GetComponent<HeatMap> ();
+		deathTag = new HeatTag ("FighterGame-PlayerDeath", url, HeatTag.HeatType.MAP);
+
+		if (showDeathmap) {
+			heatmap.PlotData(deathTag);		
+		}
+
 		stats = new List<PlayerStats> ();
 		foreach (var p in GetAllPlayers()) {
 			stats.Add(new PlayerStats(p.transform.parent.name));
@@ -40,6 +52,7 @@ public class PlayerEvents : MonoBehaviour {
 
 	public static void RecordDeath(GameObject dead){
 		ModifyStat (dead.name, AddDeath, Time.time);
+		heatmap.Post (dead.transform.position, deathTag);
 	}
 
 	public static void ProdPlayerWithHighestHealth(){
@@ -75,8 +88,7 @@ public class PlayerEvents : MonoBehaviour {
 		return playerList;
 	}
 
-	public class PlayerStats{
-
+	public class PlayerStats {
 
 		public int deaths;
 		public List<float> deathTimes;

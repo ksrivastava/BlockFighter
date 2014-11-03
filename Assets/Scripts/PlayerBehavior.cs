@@ -6,19 +6,19 @@ public class PlayerBehavior : MonoBehaviour {
 	public GameObject weapon = null;
 	PlayerControl controller = null;
 	public HealthBar healthBar;
+	private int playerNum;
 
 	// Use this for initialization
 	void Start () {
 		controller = GetComponent<PlayerControl> ();
 		healthBar = GetComponent<HealthBar> ();
 		weapon = GameObject.Find (transform.parent.name+"/Hammer");
+		playerNum = controller.GetPlayerNum ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
-		string fireInput = controller.isSecondPlayer ? "Fire2" : "Fire1";
-		if(Input.GetAxis(fireInput) > 0){
+		if(Input.GetAxis("Fire" + playerNum) > 0){
 			if(controller.pickedUpObject){
 				ThrowableObject t = weapon.GetComponent<ThrowableObject>();
 				t.Throw();
@@ -35,7 +35,7 @@ public class PlayerBehavior : MonoBehaviour {
 		if (healthBar.Health <= 0) {
 			
 			//TELL THE PLAYER EVENT CHECKER THAT YOU HAVE JUST DIED
-			PlayerEvents.RecordDeath(this.transform.parent.gameObject);
+			PlayerEvents.RecordDeath(this.gameObject);
 
 			Destroy(this.transform.parent.gameObject);
 
