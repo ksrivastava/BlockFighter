@@ -1851,6 +1851,54 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isHitting: 0
   attackComplete: 0
+--- !u!1 &751668277
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 751668279}
+  - 114: {fileID: 751668278}
+  m_Layer: 0
+  m_Name: PointsBar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &751668278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 751668277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed40d547c4e9740a0ba1ea3ed416087e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  x: 180
+  y: 10
+  length: 400
+  height: 20
+  styles: []
+  p1Texture: {fileID: 2800000, guid: 17bdde9257683499e8e6264a8738ccf4, type: 3}
+  p2Texture: {fileID: 2800000, guid: 1d051c70905cd4cc3b5135f828d7ae29, type: 3}
+  p3Texture: {fileID: 2800000, guid: 885935c2b569e4a8485d3997a8cf5c63, type: 3}
+  p4Texture: {fileID: 2800000, guid: b46f04f2ab5f7423a876385c9fe1ffa6, type: 3}
+--- !u!4 &751668279
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 751668277}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.57351983, y: -11.9665785, z: .0354605541}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
 --- !u!1 &764285017
 GameObject:
   m_ObjectHideFlags: 0
@@ -4684,6 +4732,7 @@ MonoBehaviour:
   playerTwo: {fileID: 1996437768}
   levelBounds: {fileID: 1625591949}
   littleBox: {fileID: 619546066}
+  pointsBar: {fileID: 0}
   minOrthographicSize: 10
   maxOrthographicSize: 20
   thresholdDist: 10
