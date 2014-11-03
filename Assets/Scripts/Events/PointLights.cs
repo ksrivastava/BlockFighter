@@ -8,7 +8,6 @@ public class PointLights : MonoBehaviour ,IEvent{
 
 
 	private float zDisplacement = -10f;
-	private float yDisplacement = -1f;
 	private float intensityDelta = 0.05f;
 	private float intensityTimeDelta = 0.05f;
 	private float finalIntensity = 0.8f;
@@ -28,7 +27,6 @@ public class PointLights : MonoBehaviour ,IEvent{
 			pointLight.SetActive(true);
 			var pos = player.transform.position;
 			pos.z = zDisplacement;
-			pos.y = yDisplacement;
 			pointLight.transform.position = pos;
 			lights.Add(pointLight);
 		}

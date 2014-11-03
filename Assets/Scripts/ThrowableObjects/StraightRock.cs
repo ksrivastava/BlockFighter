@@ -7,7 +7,7 @@ public class StraightRock : ThrowableObject {
 
 	void Start(){
 		this.throwForce = 0;
-		this.xMult = 1000f;
+		this.xMult = 2000f;
 		this.state = startingState;
 		this.damageVal = 10;
 	}
