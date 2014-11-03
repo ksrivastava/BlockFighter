@@ -80,7 +80,7 @@ public class PlayerEvents : MonoBehaviour {
 			h.damage = damage;
 			hits.Add (h);
 
-			print (attacker + " caused " + damage + " damage to " + attackee);
+			//print (attacker + " caused " + damage + " damage to " + attackee);
 		}
 
 		public class hit{
@@ -104,7 +104,7 @@ public class PlayerEvents : MonoBehaviour {
 	private static void AddDeath(params object[] values){
 		PlayerStats p = values [0] as PlayerStats;
 		p.deaths++;
-		print (p.playerName + " has died!");
+		//print (p.playerName + " has died!");
 	}
 
 	private static void AddHit(params object[] values){
