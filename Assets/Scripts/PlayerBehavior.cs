@@ -5,7 +5,7 @@ public class PlayerBehavior : MonoBehaviour {
 	
 	public GameObject weapon = null;
 	PlayerControl controller = null;
-	HealthBar healthBar;
+	public HealthBar healthBar;
 
 	// Use this for initialization
 	void Start () {
@@ -33,7 +33,12 @@ public class PlayerBehavior : MonoBehaviour {
 	public void ReduceHealth(int n) {
 		healthBar.Health -= n;
 		if (healthBar.Health <= 0) {
+			
+			//TELL THE PLAYER EVENT CHECKER THAT YOU HAVE JUST DIED
+			PlayerEvents.RecordDeath(this.transform.parent.gameObject);
+
 			Destroy(this.transform.parent.gameObject);
+
 		}
 	}
 
@@ -43,6 +48,9 @@ public class PlayerBehavior : MonoBehaviour {
 			if (hammerController.isHitting && !hammerController.attackComplete) {
 				ReduceHealth(10);
 				col.gameObject.collider2D.enabled = false;
+
+				// TELL THE PLAYER EVENT CHECKER THAT YOU HAVE BEEN HIT
+				PlayerEvents.RecordAttack(transform.parent.gameObject,col.transform.parent.transform.parent.gameObject,10);
 			}
 		}
 	}

@@ -189,7 +189,7 @@ Transform:
   m_LocalScale: {x: 3.32500005, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
 --- !u!1 &25377477
 GameObject:
   m_ObjectHideFlags: 0
@@ -825,6 +825,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 0}
+  healthBar: {fileID: 0}
 --- !u!114 &517256025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1390,7 +1391,7 @@ Transform:
   m_LocalScale: {x: 3.32500005, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!1 &619546066
 GameObject:
   m_ObjectHideFlags: 0
@@ -1450,7 +1451,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
 --- !u!1001 &684492452
 Prefab:
   m_ObjectHideFlags: 0
@@ -2798,6 +2799,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1604954769}
   - 114: {fileID: 1604954768}
+  - 114: {fileID: 1604954770}
   m_Layer: 0
   m_Name: EventRunner
   m_TagString: Untagged
@@ -2827,7 +2829,18 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 9
+--- !u!114 &1604954770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1604954767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 276ad1e2f785c4c03a1516c1e07e3521, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1625591949
 GameObject:
   m_ObjectHideFlags: 0
@@ -3287,14 +3300,14 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!114 &1978182295
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1978182289}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9bdaf66f2938049219a6807964e4fcee, type: 3}
   m_Name: 
@@ -3415,6 +3428,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 0}
+  healthBar: {fileID: 0}
 --- !u!114 &1996437771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3955,7 +3969,7 @@ Transform:
   - {fileID: 792597298}
   - {fileID: 1322806573}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 6
 --- !u!1001 &2100061030
 Prefab:
   m_ObjectHideFlags: 0

@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
+//TODO: do we actually need this? I could do this in EventController.
 public class EventRunner : MonoBehaviour {
 
 	// Use this for initialization

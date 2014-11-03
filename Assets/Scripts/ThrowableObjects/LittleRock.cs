@@ -7,13 +7,14 @@ public class LittleRock : ThrowableObject {
 
 	void Start(){
 		this.state = startingState;
+		this.damageVal = 5;
 	}
 
 	// little rocks cause 5 damage?
 	public override void Damage (Collider2D col)
 	{
 		try{
-			col.gameObject.GetComponent<PlayerBehavior>().ReduceHealth(5);
+			col.gameObject.GetComponent<PlayerBehavior>().ReduceHealth(damageVal);
 		} catch(UnityException ex){
 			print ("Player doesn't exist");
 		}

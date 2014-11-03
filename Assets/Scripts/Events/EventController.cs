@@ -7,14 +7,13 @@ public static class EventController {
 	static EventType currentEvent;
 
 	public static List<EventHelper> eventQueue = new List<EventHelper>();
-	public static EventType previousState = EventType.Idle;
 
 	private static bool eventLock = false;
 
 	public static IEnumerator  NextEvent(){
 
 		eventLock = true;
-		if (eventQueue.Count == 0) {
+		while (eventQueue.Count == 0) {
 			Debug.Log("No more events to run!");
 			yield return null; 
 		}
@@ -32,6 +31,7 @@ public static class EventController {
 		}
 
 		Debug.Log("Running " + next.type);
+		currentEvent = next.type;
 
 		if (next.type != EventType.Idle) {
 			GameObject obj = Object.Instantiate (Resources.Load ("Events/"+next.type.ToString ())) as GameObject;
@@ -56,8 +56,12 @@ public static class EventController {
 		m.Kill (seconds);
 	}
 
-	//TODO: use delay between events	
+	// The controller has been notified here that an event has ended. It has also suggested a
+	// next event to run and a delay time before running it.
 	public static void EventEnd(EventType running, EventType nextState, float delay = 0){
+	
+		//check with PlayerEvents whether anything player related has happened.
+	
 		QueueEvent (nextState,delay);
 		eventLock = false;
 	}

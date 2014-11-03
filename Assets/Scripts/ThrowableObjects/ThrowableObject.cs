@@ -14,6 +14,8 @@ public class ThrowableObject : MonoBehaviour {
 
 	protected float throwForce = 1000f;
 	protected float xMult= 500f;
+	protected int damageVal = 0;
+
 	public bool canPickUp = true;
 
 	private int groundCollisionsBeforeIdle = 10;
@@ -48,7 +50,6 @@ public class ThrowableObject : MonoBehaviour {
 
 			if (this.state == State.idle && this.canPickUp) {
 
-//				player = col.gameObject;
 				hammer = GameObject.Find (col.transform.parent.name + "/Hammer/Body");
 
 				controller = GameObject.Find (col.transform.parent.name + "/Body").GetComponent<PlayerControl> ();
@@ -64,11 +65,15 @@ public class ThrowableObject : MonoBehaviour {
 				behaviour.weapon = this.gameObject;
 				controller.pickedUpObject = true;
 				this.collider2D.enabled = false;
-				//this.rigidbody2D.isKinematic = true;
+
 			} else if (this.state == State.thrown) {
 				Damage(col);
 				this.rigidbody2D.velocity = Vector2.zero;
 				this.state = State.idle;
+
+				
+				// RECORD EVENT WITH PLAYER TRACKER
+				PlayerEvents.RecordAttack(col.transform.parent.gameObject,controller.transform.parent.gameObject,damageVal);
 			}
 		} 
 	}

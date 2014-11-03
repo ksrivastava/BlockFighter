@@ -9,13 +9,14 @@ public class StraightRock : ThrowableObject {
 		this.throwForce = 0;
 		this.xMult = 1000f;
 		this.state = startingState;
+		this.damageVal = 10;
 	}
 	
 	// little rocks cause 5 damage?
 	public override void Damage (Collider2D col)
 	{
 		try{
-			col.gameObject.GetComponent<PlayerBehavior>().ReduceHealth(10);
+			col.gameObject.GetComponent<PlayerBehavior>().ReduceHealth(damageVal);
 		} catch(UnityException ex){
 			print ("Player doesn't exist");
 		}
