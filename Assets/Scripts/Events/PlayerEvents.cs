@@ -31,18 +31,23 @@ public class PlayerEvents : MonoBehaviour {
 	
 	}
 
-	// ASSUMPTION: This function is only called when the player is dead!
+	// ASSUMPTION: This function is only called when the player has died at least once!
 	public static bool CheckPlayerGangedUpOn(PlayerStats playerStats){
 
-		float lookBackDuration = 5f;
+		float lookBackDuration = 30f;
 
 		// look back lookBackDuration seconds, see if the player has been hit by >1 other players.
 
 		var lastHits = playerStats.GetLastNSecondsHits (lookBackDuration);
+
+		var attackers = new List<string>();
 		foreach (var hit in lastHits) {
-			print (hit.attacker + " " +hit.time);
+			var s = attackers.Find( x => x.Contains(hit.attacker));
+			if(s == null){
+				attackers.Add(hit.attacker);
+			}
 		}
-		return true;
+		return attackers.Count > 1;
 	}
 
 	// attacks are hits on players by other players
@@ -52,7 +57,7 @@ public class PlayerEvents : MonoBehaviour {
 
 	public static void RecordDeath(GameObject dead){
 		ModifyStat (dead.name, AddDeath, Time.time);
-		heatmap.Post (dead.transform.position, deathTag);
+		//heatmap.Post (dead.transform.position, deathTag);
 	}
 
 	public static void ProdPlayerWithHighestHealth(){
@@ -107,11 +112,13 @@ public class PlayerEvents : MonoBehaviour {
 			h.damage = damage;
 			h.time = time;
 			hits.Add (h);
-			print (attacker + " caused " + damage + " damage to " + this.playerName +" at time " +time);
+			//print (attacker + " caused " + damage + " damage to " + this.playerName +" at time " +time);
 		}
 
 		public List<hit> GetLastNSecondsHits(float n){
-			float lastDeathTime = deathTimes[deathTimes.Count -1];
+			if (deathTimes.Count == 0)
+								return null;
+			float lastDeathTime = deathTimes[deathTimes.Count - 1];
 			List<hit> h = new List<hit> ();
 			for (int i= hits.Count -1; i>=0; --i) {
 				if(hits[i].time > lastDeathTime-n){
@@ -157,7 +164,7 @@ public class PlayerEvents : MonoBehaviour {
 		float time = (float)(values [1] as object[])[0];
 		p.deaths++;
 		p.deathTimes.Add (time);
-		print (p.playerName + " has died at time " + time);
+		//print (p.playerName + " has died at time " + time);
 	}
 
 	private static void AddHit(params object[] values){

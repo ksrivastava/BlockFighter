@@ -7,7 +7,8 @@ public class EventRunner : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		EventController.QueueEvent (EventType.LittleRockShower);
+		Invoke ("TestStuff", 30);
+		EventController.QueueEvent (EventType.Idle);
 		StartCoroutine(EventController.NextEvent());
 	}
 	
@@ -16,5 +17,9 @@ public class EventRunner : MonoBehaviour {
 		if (EventController.CanRunNextEvent ()) {
 			StartCoroutine(EventController.NextEvent());
 		}
+	}
+
+	void TestStuff(){
+		PlayerEvents.CheckPlayerGangedUpOn (PlayerEvents.GetPlayerStats ("PlayerOne"));
 	}
 }

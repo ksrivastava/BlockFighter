@@ -10,10 +10,6 @@ public class StraightRock : ThrowableObject {
 		this.xMult = 2000f;
 		this.state = startingState;
 		this.damageVal = 10;
-
-
-		//TODO: DELETE THIS
-		PlayerEvents.CheckPlayerGangedUpOn (PlayerEvents.GetPlayerStats("PlayerOne"));
 	}
 	
 	// little rocks cause 5 damage?
