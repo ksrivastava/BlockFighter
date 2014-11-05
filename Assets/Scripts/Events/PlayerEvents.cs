@@ -10,8 +10,16 @@ public class PlayerEvents : MonoBehaviour {
 	static string url = "http://iamkos.com/heatmap.php";
 	public bool showDeathmap = false;
 
+	
+	public static List<string> playerNames = new List<string> ();
 
 	void Start(){
+
+		playerNames.Add ("PlayerOne");
+		playerNames.Add ("PlayerTwo");
+		playerNames.Add ("PlayerThree");
+		playerNames.Add ("PlayerFour");
+
 		heatmap = GetComponent<HeatMap> ();
 		deathTag = new HeatTag ("FighterGame-PlayerDeath", url, HeatTag.HeatType.MAP);
 
@@ -28,17 +36,55 @@ public class PlayerEvents : MonoBehaviour {
 	//keep track of player stats OTHER THAN HITS AND DEATHS.
 	//TODO: make decisions after collecting the data somewhere. In this class?? TBD.
 	void Update(){
+	}
 	
+	public static void CheckPlayerEvents(){
+		var gangUpStats = PlayerEvents.GetPlayerGangUpStatistics ();
+		foreach (var g in gangUpStats) {
+			print(g.First+ " was ganged up on!");
+		}
+
+		if (gangUpStats.Count == 2) {
+			//TODO:Respawn players once they die
+			//TeamUpPlayers(gangUpStats);
+		}
+	}
+	
+	//returns a list of tuples<playerName,timeOfDeath> if playerName has been ganged up on.
+	public static List<Tuple<string,float>> GetPlayerGangUpStatistics(){
+		List<Tuple<string,float>> t = new List<Tuple<string,float>>();
+		foreach (var playerName in playerNames) {
+			if(CheckPlayerGangedUpOn(playerName)){
+				t.Add(new Tuple<string,float>(playerName,GetPlayerStats(playerName).GetLastDeath()));
+			}
+		}
+		return t;
 	}
 
-	// ASSUMPTION: This function is only called when the player has died at least once!
-	public static bool CheckPlayerGangedUpOn(PlayerStats playerStats){
+	public static void TeamUpPlayers(List<Tuple<string,float>> playerDeathInfos){
+		var randomColor = new Color(Random.Range(0.0f,1.0f),Random.Range(0.0f,1.0f),Random.Range(0.0f,1.0f)); 
+		foreach (var p in playerDeathInfos) {
+			var name = p.First;
+			var c = GameObject.FindGameObjectWithTag(name).GetComponent<ColorSetter>();
+			c.SetColor(randomColor);
+		}
 
+	}
+
+	private static bool CheckPlayerGangedUpOn(string playerName){
+		var playerStats = GetPlayerStats (playerName);
+
+		if (playerStats.deaths == 0) {
+			return false;
+		}
 		float lookBackDuration = 30f;
 
 		// look back lookBackDuration seconds, see if the player has been hit by >1 other players.
 
 		var lastHits = playerStats.GetLastNSecondsHits (lookBackDuration);
+
+		if (lastHits.Count == 0)
+						return false;
 
 		var attackers = new List<string>();
 		foreach (var hit in lastHits) {
@@ -57,7 +103,7 @@ public class PlayerEvents : MonoBehaviour {
 
 	public static void RecordDeath(GameObject dead){
 		ModifyStat (dead.name, AddDeath, Time.time);
-		//heatmap.Post (dead.transform.position, deathTag);
+		heatmap.Post (dead.transform.position, deathTag);
 	}
 
 	public static void ProdPlayerWithHighestHealth(){
@@ -76,7 +122,6 @@ public class PlayerEvents : MonoBehaviour {
 				player = p;
 			} 
 		}
-
 		return player;
 	}
 
@@ -128,6 +173,12 @@ public class PlayerEvents : MonoBehaviour {
 			return h;
 		}
 
+		public float GetLastDeath(){
+			if (deathTimes.Count == 0)
+				return float.NaN;
+			return deathTimes [deathTimes.Count - 1];
+		}
+
 		public class hit{
 			public string attacker;
 			public float damage;
@@ -137,7 +188,7 @@ public class PlayerEvents : MonoBehaviour {
 
 	// helper stuff for tracking stats
 
-	public static PlayerStats GetPlayerStats(string playerName){
+	private static PlayerStats GetPlayerStats(string playerName){
 		foreach (var p in stats) {
 			if(p.playerName == playerName){
 				return p;
@@ -174,5 +225,25 @@ public class PlayerEvents : MonoBehaviour {
 		var attacker = valuesTwo[1] as GameObject;
 		var damage = (float)valuesTwo[2];
 		p.Hit (attacker.name, damage, time);
+	}
+}
+
+public class Tuple<T1, T2>
+{
+	public T1 First { get; private set; }
+	public T2 Second { get; private set; }
+	internal Tuple(T1 first, T2 second)
+	{
+		First = first;
+		Second = second;
+	}
+}
+
+public static class Tuple
+{
+	public static Tuple<T1, T2> New<T1, T2>(T1 first, T2 second)
+	{
+		var tuple = new Tuple<T1, T2>(first, second);
+		return tuple;
 	}
 }

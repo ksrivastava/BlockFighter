@@ -2,8 +2,24 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public static class EventController {		
+public class EventController : MonoBehaviour {		
 
+
+	// Use this for initialization
+	void Start () {
+
+		QueueEvent (EventType.StraightRockShower);
+		StartCoroutine(NextEvent());
+	}
+	
+	// Update is called once per frame
+	void Update () {
+		if (CanRunNextEvent ()) {
+			StartCoroutine(NextEvent());
+		}
+	}
+
+	
 	static EventType currentEvent;
 
 	public static List<EventHelper> eventQueue = new List<EventHelper>();
@@ -48,6 +64,7 @@ public static class EventController {
 
 	// pos is in viewport coordinates ( bottom-left is 0,0 and top-Right is 1,1)
 	public static void DisplayMessage(string message,float seconds,Vector2 pos){
+
 		GameObject obj = Object.Instantiate (Resources.Load ("Message")) as GameObject;
 		GUIText guiText = obj.GetComponent<GUIText> ();
 		guiText.text = message;
@@ -59,10 +76,15 @@ public static class EventController {
 	// The controller has been notified here that an event has ended. It has also suggested a
 	// next event to run and a delay time before running it.
 	public static void EventEnd(EventType running, EventType nextState, float delay = 0){
-	
-		//check with PlayerEvents whether anything player related has happened.
-		QueueEvent (nextState,delay);
+		ExecuteEventTransition (nextState, delay);
 		eventLock = false;
+	}
+
+	public static void ExecuteEventTransition(EventType nextState, float delay){
+		PlayerEvents.CheckPlayerEvents ();
+		//TODO: encode state machine
+		// if(currentEvent == blablabla)
+		QueueEvent (nextState, delay);
 	}
 
 	public static bool CanRunNextEvent(){
@@ -78,5 +100,5 @@ public static class EventController {
 			delay=d;
 		}
 	}
-
+	
 }

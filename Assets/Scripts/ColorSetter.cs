@@ -7,6 +7,11 @@ public class ColorSetter : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
+		SetColor (color);
+	}
+
+	public void SetColor(Color c){
+		this.color = c;
 		renderer.material.color = color;
 	}
 	
