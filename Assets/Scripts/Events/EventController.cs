@@ -4,12 +4,22 @@ using System.Collections.Generic;
 
 public class EventController : MonoBehaviour {		
 
+	private static GameObject eventRunner;
 
 	// Use this for initialization
 	void Start () {
 
 		QueueEvent (EventType.StraightRockShower);
 		StartCoroutine(NextEvent());
+		eventRunner = GameObject.Find ("EventRunner");
+
+		//TODO: DELETE THIS LINE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		InvokeRepeating ("TestCheckEvents",0, 1);
+	}
+
+	//TODO: DELETE THIS Function
+	void TestCheckEvents(){
+		PlayerEvents.CheckPlayerEvents ();
 	}
 	
 	// Update is called once per frame
@@ -18,6 +28,7 @@ public class EventController : MonoBehaviour {
 			StartCoroutine(NextEvent());
 		}
 	}
+
 
 	
 	static EventType currentEvent;
@@ -42,11 +53,11 @@ public class EventController : MonoBehaviour {
 
 		
 		if (next.delay != 0) {
-			Debug.Log("Waiting " + next.delay);
+			//Debug.Log("Waiting " + next.delay);
 			yield return new WaitForSeconds (next.delay);
 		}
 
-		Debug.Log("Running " + next.type);
+		//Debug.Log("Running " + next.type);
 		currentEvent = next.type;
 
 		if (next.type != EventType.Idle) {
@@ -63,14 +74,8 @@ public class EventController : MonoBehaviour {
 	}
 
 	// pos is in viewport coordinates ( bottom-left is 0,0 and top-Right is 1,1)
-	public static void DisplayMessage(string message,float seconds,Vector2 pos){
-
-		GameObject obj = Object.Instantiate (Resources.Load ("Message")) as GameObject;
-		GUIText guiText = obj.GetComponent<GUIText> ();
-		guiText.text = message;
-		guiText.transform.position = pos;
-		MessageLife m = obj.GetComponent<MessageLife> ();
-		m.Kill (seconds);
+	public static void DisplayMessage(string message,float seconds,Vector2 pos, float startTime=0){
+		eventRunner.GetComponent<Message> ().DisplayMessage (message, seconds, pos, startTime);
 	}
 
 	// The controller has been notified here that an event has ended. It has also suggested a
@@ -81,7 +86,7 @@ public class EventController : MonoBehaviour {
 	}
 
 	public static void ExecuteEventTransition(EventType nextState, float delay){
-		PlayerEvents.CheckPlayerEvents ();
+
 		//TODO: encode state machine
 		// if(currentEvent == blablabla)
 		QueueEvent (nextState, delay);
