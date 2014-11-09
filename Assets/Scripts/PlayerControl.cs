@@ -11,9 +11,9 @@ public class PlayerControl : MonoBehaviour
 	public int playerNum;
 	public bool pickedUpObject = false;
 	
-	private float moveForce = 200f;			// Amount of force added to move the player left and right.
+	private float moveForce = 400f;			// Amount of force added to move the player left and right.
 	private float maxSpeed = 6f;				// The fastest the player can travel in the x axis.
-	private float jumpForce = 800f;			// Amount of force added when the player jumps.
+	private float jumpForce = 1000f;			// Amount of force added when the player jumps.
 	
 	private Transform groundCheck;			// A position marking where to check if the player is grounded.
 	private bool grounded = false;			// Whether or not the player is grounded.

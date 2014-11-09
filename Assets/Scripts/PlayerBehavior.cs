@@ -58,11 +58,10 @@ public class PlayerBehavior : MonoBehaviour {
 	
 		PlayerEvents.RecordDeath(this.transform.parent.gameObject);
 		var respawnPoint = GameObject.Find ("RespawnPoint");
-		transform.parent.position = respawnPoint.transform.position;
+		transform.position = respawnPoint.transform.position;
 		this.gameObject.GetComponent<ColorSetter> ().ResetColor ();
 		healthBar.Health = healthBar.MaxHealth;
 
-		//TODO: fix the case where you die holding a rock :w
 		if (this.controller.pickedUpObject) {
 			weapon.GetComponent<ThrowableObject>().Throw ();
 			weapon = GameObject.Find (transform.parent.name+"/Hammer");
