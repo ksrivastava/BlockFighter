@@ -6,11 +6,6 @@ public class PointsBar : MonoBehaviour {
 	
 	public float xScale, yScale;
 	public GUIStyle[] styles;
-	
-	public Texture2D p1Texture;
-	public Texture2D p2Texture;
-	public Texture2D p3Texture;
-	public Texture2D p4Texture;
 
 	private float x, y;
 	private float length, height;
@@ -24,19 +19,19 @@ public class PointsBar : MonoBehaviour {
 		styles = new GUIStyle[4];
 		points = new float[4];
 
+		GameObject[] pl = GameObject.FindGameObjectsWithTag("Player");
+
 		for (int i = 0; i < 4; ++i) {
 			points[i] = 4;
-		}
-
-		for (int i = 0; i < styles.Length; ++i) {
 			styles[i] = new GUIStyle();
 			styles[i].alignment = TextAnchor.MiddleCenter;
 		}
 
-		styles[0].normal.background = p1Texture;
-		styles[1].normal.background = p2Texture;
-		styles[2].normal.background = p3Texture;
-		styles[3].normal.background = p4Texture;
+		for (int i = 0; i < 4; ++i) {
+			PlayerControl c = pl[i].GetComponent<PlayerControl>();
+			Texture2D tex = MakeTexture (100,100,pl[i].GetComponent<ColorSetter>().color);
+			styles[c.GetPlayerNum() - 1].normal.background = tex;
+		}
 	}
 
 	void OnGUI() {
@@ -65,4 +60,17 @@ public class PointsBar : MonoBehaviour {
 		}
 	}
 
+	private Texture2D MakeTexture(int width, int height, Color col) {
+		col.a = 1;
+		Color[] pix = new Color[width * height];
+		for( int i = 0; i < pix.Length; ++i )
+		{
+			pix[i] = col;
+		}
+		Texture2D result = new Texture2D( width, height );
+		result.SetPixels( pix );
+		result.Apply();
+		return result;
+	}
+	
 }
