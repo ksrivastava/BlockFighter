@@ -186,6 +186,8 @@ public class PlayerEvents : MonoBehaviour {
 
 	public static void RecordDeath(GameObject dead){
 		ModifyStat (dead.name, AddDeath, Time.time);
+		var lastHit = GetPlayerStats (dead.name).GetLastHit ();
+		PointsBar.AddPoints (lastHit.attacker, 1);
 		heatmap.Post (dead.transform.position, deathTag);
 	}
 
