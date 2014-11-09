@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class PlayerControl : MonoBehaviour
@@ -16,7 +16,6 @@ public class PlayerControl : MonoBehaviour
 	private float jumpForce = 1000f;			// Amount of force added when the player jumps.
 	
 	private Transform groundCheck;			// A position marking where to check if the player is grounded.
-	private GUIText label;
 	private bool grounded = false;			// Whether or not the player is grounded.
 	private bool onPlayer = false;
 
@@ -24,15 +23,11 @@ public class PlayerControl : MonoBehaviour
 	{
 		// Setting up references.
 		groundCheck = GameObject.Find(transform.parent.name + "/Body/groundCheck").transform;
-		//label = gameObject.AddComponent<GUIText> ();
-		//label.text = playerNum.ToString();
 	}
 	
 	
 	void Update()
 	{
-		//Vector2 pos = transform.position;
-		//label.transform.position = Camera.main.WorldToViewportPoint(pos);
 		// The player is grounded if a linecast to the groundcheck position hits anything on the ground layer.
 		Vector3 groundPos = groundCheck.position;
 		groundPos.x = groundCheck.collider2D.bounds.min.x;

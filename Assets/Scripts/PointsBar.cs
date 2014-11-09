@@ -15,29 +15,23 @@ public class PointsBar : MonoBehaviour {
 	private float x, y;
 	private float length, height;
 
-	private static Dictionary<string, float> points;
+	private static float[] points;
 	private static float total = 16.0f;
 
 	private Rect barRect;
 
 	void Start() {
 		styles = new GUIStyle[4];
-		points = new Dictionary<string, float> ();
-		var pl = GameObject.FindGameObjectsWithTag("Player");
-		foreach (var p in pl) {
-			print (p.transform.parent.name);
-			points.Add(p.transform.parent.name, 4);
+		points = new float[4];
+
+		for (int i = 0; i < 4; ++i) {
+			points[i] = 4;
 		}
 
 		for (int i = 0; i < styles.Length; ++i) {
 			styles[i] = new GUIStyle();
+			styles[i].alignment = TextAnchor.MiddleCenter;
 		}
-
-		length = yScale * Screen.width;
-		height = xScale * 10;
-
-		x = (Screen.width - length) / 2;
-		y = 10;
 
 		styles[0].normal.background = p1Texture;
 		styles[1].normal.background = p2Texture;
@@ -46,20 +40,29 @@ public class PointsBar : MonoBehaviour {
 	}
 
 	void OnGUI() {
+		length = yScale * Screen.width;
+		height = xScale * 10;
+		
+		x = (Screen.width - length) / 2;
+		y = 10;
+
 		barRect = new Rect (x, y, length, height);
 		GUI.Box (barRect, "");
 
-		int i = 0;
 		float last = 0;
-		foreach (int value in points.Values) {
-			GUI.Box (new Rect(barRect.xMin + last * length, y, length * (value / total), height), "", styles[i++]);
-			last += (value / total);
+		for (int i = 0; i < 4; ++i) {
+			GUI.Box (new Rect(barRect.xMin + last * length, y, length * (points[i] / total), height),
+			         (i + 1).ToString(), styles[i]);
+			last += (points[i] / total);
 		}
 	}
 
-	public static void AddPoints(string objName, float p) {
-		points[objName] += p;
-		total += p;
+	public static void AddPoints(GameObject obj, float p) {
+		PlayerControl c;
+		if (c = obj.GetComponentInChildren<PlayerControl>()) {
+			points[c.GetPlayerNum() - 1] += p;
+			total += p;
+		}
 	}
 
 }

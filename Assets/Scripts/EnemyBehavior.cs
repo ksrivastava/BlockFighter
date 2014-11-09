@@ -54,14 +54,10 @@ public class EnemyBehavior : MonoBehaviour {
 			int target = Random.Range (0, targets.Length);
 
 			Vector3 dir = targets[target].transform.position - gameObject.transform.position;
-			float dist = dir.magnitude;
-			dir /= dist;
-			Debug.Log (dir.x + " " + dir.y);
+			dir /= dir.magnitude;
+			dir.y += 0.25f;
 
-			dist *= forceMultiplier;
-			dir.y += 0.2f;
-
-			atk.Launch(new Vector2(dist * dir.x, dist * dir.y));
+			atk.Launch(new Vector2(forceMultiplier * dir.x, forceMultiplier * dir.y));
 
 			yield return new WaitForSeconds(attackDelay);
 		}
