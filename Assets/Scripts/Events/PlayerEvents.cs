@@ -134,7 +134,7 @@ public class PlayerEvents : MonoBehaviour {
 						var s = GetPlayerStats(name);
 						if(s.team.Count != 0) return;
 						s.AddTeammate(t.First);
-						s.DumpHits();
+						s.DumpStats();
 					}
 				}
 			}
@@ -178,7 +178,7 @@ public class PlayerEvents : MonoBehaviour {
 
 		var lastHits = playerStats.GetLastNSecondsHits (lookBackDuration);
 
-		if (lastHits.Count == 0)
+		if (lastHits == null || lastHits.Count == 0)
 						return new List<string>();
 
 		var attackers = new List<string>();
