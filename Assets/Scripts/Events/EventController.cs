@@ -10,8 +10,8 @@ public class EventController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		QueueEvent (EventType.StraightRockShower);
-		StartCoroutine(NextEvent());
+		//QueueEvent (EventType.StraightRockShower);
+		//StartCoroutine(NextEvent());
 		eventRunner = GameObject.Find ("EventRunner");
 
 		//TODO: DELETE THIS LINE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -25,6 +25,24 @@ public class EventController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (Input.GetKeyDown(KeyCode.Alpha1)) {
+			eventLock = false;
+			QueueEvent (EventType.StraightRockShower);
+		}
+		else if (Input.GetKeyDown(KeyCode.Alpha2)) {
+			eventLock = false;
+			QueueEvent (EventType.EnemyEvent);
+		}
+		else if (Input.GetKeyDown(KeyCode.Alpha3)) {
+			eventLock = false;
+			QueueEvent (EventType.LittleRockShower);
+			QueueEvent (EventType.Blimp);
+		}
+		else if (Input.GetKeyDown(KeyCode.Alpha4)) {
+			eventLock = false;
+			QueueEvent (EventType.PointLights);
+		}
+
 		if (CanRunNextEvent ()) {
 			StartCoroutine(NextEvent());
 		}
