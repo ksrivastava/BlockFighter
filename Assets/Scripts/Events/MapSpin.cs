@@ -29,7 +29,7 @@ public class MapSpin : MonoBehaviour, IEvent {
 	}
 	
 	public void End(){
-		EventController.EventEnd (EventType.MapSpin, EventType.StraightRockShower, 3);
+		EventController.EventEnd (EventType.MapSpin, EventType.Idle, 3);
 	}
 	
 	public void OnDestroy(){

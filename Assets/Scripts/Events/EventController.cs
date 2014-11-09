@@ -7,10 +7,17 @@ public class EventController : MonoBehaviour {
 	private static GameObject eventRunner;
 	private static float timeScale = 1.25f;
 
+	public static Queue<EventHelper> verticalSliceEventQueue = new Queue<EventHelper>();
+
 	// Use this for initialization
 	void Start () {
 
-		QueueEvent (EventType.StraightRockShower);
+		verticalSliceEventQueue.Enqueue (new EventHelper(EventType.LittleRockShower, 1));
+		verticalSliceEventQueue.Enqueue (new EventHelper(EventType.EnemyEvent, 1));
+		verticalSliceEventQueue.Enqueue (new EventHelper(EventType.PointLights, 1));
+		verticalSliceEventQueue.Enqueue (new EventHelper(EventType.Blimp, 1));
+
+		eventQueue.Add (verticalSliceEventQueue.Dequeue());
 		StartCoroutine(NextEvent());
 		eventRunner = GameObject.Find ("EventRunner");
 
@@ -80,7 +87,10 @@ public class EventController : MonoBehaviour {
 	// The controller has been notified here that an event has ended. It has also suggested a
 	// next event to run and a delay time before running it.
 	public static void EventEnd(EventType running, EventType nextState, float delay = 0){
-		ExecuteEventTransition (nextState, delay);
+
+		var nextEvent = verticalSliceEventQueue.Dequeue ();
+		eventQueue.Add (nextEvent);
+//		ExecuteEventTransition (nextState, delay);
 		eventLock = false;
 	}
 
