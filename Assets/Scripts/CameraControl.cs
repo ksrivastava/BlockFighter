@@ -110,4 +110,8 @@ public class CameraControl : MonoBehaviour {
 
 	}
 
+	public GameObject GetLevelBounds() {
+		return levelBounds;
+	}
+
 }
