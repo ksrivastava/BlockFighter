@@ -56,6 +56,7 @@ public class PlayerBehavior : MonoBehaviour {
 		var respawnPoint = GameObject.Find ("RespawnPoint");
 		transform.position = respawnPoint.transform.position;
 		this.gameObject.GetComponent<ColorSetter>().ResetColor ();
+		PlayerEvents.RemovePlayerFromTeam (this.transform.parent.name);
 		healthBar.Health = healthBar.MaxHealth;
 
 		if (this.controller.pickedUpObject) {

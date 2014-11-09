@@ -110,5 +110,6 @@ public class ThrowableObject : MonoBehaviour {
 	public void Drop() {
 		this.state = State.idle;
 		this.collider2D.enabled = true;
+		controller.pickedUpObject = false;
 	}
 }

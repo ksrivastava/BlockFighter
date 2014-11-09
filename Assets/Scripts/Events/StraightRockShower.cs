@@ -26,7 +26,7 @@ public class StraightRockShower : MonoBehaviour, IEvent {
 	}
 
 	public virtual void End(){
-		EventController.EventEnd (EventType.StraightRockShower, EventType.EnemyEvent, 3);
+		EventController.EventEnd (EventType.StraightRockShower, EventType.PointLights, 3);
 	}
 
 	public void OnDestroy(){

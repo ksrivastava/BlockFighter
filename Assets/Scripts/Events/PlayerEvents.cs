@@ -4,6 +4,11 @@ using System.Collections.Generic;
 
 public class PlayerEvents : MonoBehaviour {
 
+	public static Color teamTwoColorOne = new Color(0,111,255);
+	public static Color teamTwoColorTwo = new Color(239,0,255);
+	public static Color teamThreeColor = new Color(0,255,247);
+	private static Color teamTwoColor;
+
 	static List<PlayerStats> stats;
 	static HeatMap heatmap;
 	static HeatTag deathTag;
@@ -12,10 +17,11 @@ public class PlayerEvents : MonoBehaviour {
 	static GameObject eventRunner;
 
 	public static List<string> playerNames = new List<string> ();
-	public static List<Color> teamColors = new List<Color>();
+	
 
 	void Start(){
 
+		teamTwoColor = teamTwoColorOne;
 		playerNames.Add ("PlayerOne");
 		playerNames.Add ("PlayerTwo");
 		playerNames.Add ("PlayerThree");
@@ -33,9 +39,7 @@ public class PlayerEvents : MonoBehaviour {
 			stats.Add(new PlayerStats(p.transform.parent.name));
 		}
 
-		for (int i=0; i<3; i++) {
-			teamColors.Add(new Color(Random.Range(0.0f,1.0f),Random.Range(0.0f,1.0f),Random.Range(0.0f,1.0f)));
-		}
+
 
 		eventRunner = GameObject.Find ("EventRunner");
 	}
@@ -114,7 +118,7 @@ public class PlayerEvents : MonoBehaviour {
 
 		if(colorSetters.Count != playerDeathInfos.Count) return;
 
-		float teamFormTimeTheshold = 60; //only forms teams of people killed in the last 60 seconds
+		float teamFormTimeTheshold = 10; //only forms teams of people killed in the last 60 seconds
 
 		// check that the players aren't already in a team
 
@@ -136,13 +140,28 @@ public class PlayerEvents : MonoBehaviour {
 			}
 		}
 
-		var color = teamColors[playerDeathInfos.Count-1];
+		Color color = teamThreeColor;// = teamColors[playerDeathInfos.Count-1];
+
+		if (playerDeathInfos.Count == 2) {
+			color = teamTwoColor;
+
+			if(teamTwoColor == teamTwoColorOne){
+				teamTwoColor = teamTwoColorTwo;
+			} else {
+				teamTwoColor = teamTwoColorOne;
+			}
+
+		} else if (playerDeathInfos.Count == 3) {
+			color = teamThreeColor;
+		}
 
 		foreach (var x in colorSetters){
 			x.SetColor(color);
 		}
 
-		EventController.DisplayMessage ("A team has been formed!\n" + nameString, 2, new Vector2 (0.5f, 0.5f),0,13);
+		if (nameString == "")
+						return;
+		EventController.DisplayMessage ("A team has been formed!\n" + nameString, 5, new Vector2 (0.5f, 0.5f),0);
 
 	}
 
@@ -190,6 +209,13 @@ public class PlayerEvents : MonoBehaviour {
 		if (lastHit != null) {
 			PointsBar.AddPoints (GameObject.Find (lastHit.attacker), 1);
 		}
+
+		/*var playerStats = GetPlayerStats (dead.name);
+		RemovePlayerFromTeam (dead.name);
+		if (playerStats.team.Count > 0) {
+			playerStats.DumpHits();
+
+		}*/
 		ModifyStat (dead.name, AddDeath, Time.time);
 		heatmap.Post (dead.transform.position, deathTag);
 	}
