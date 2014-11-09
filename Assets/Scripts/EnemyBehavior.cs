@@ -6,7 +6,7 @@ public class EnemyBehavior : MonoBehaviour {
 	public float forceMultiplier = 30.0f;
 	public float attackDelay = 3.0f;
 
-	private float health = 50;
+	private float health = 20;
 	public float Health {
 		get {
 			print (transform.name + ": " + health.ToString());
@@ -38,7 +38,7 @@ public class EnemyBehavior : MonoBehaviour {
 		if (col.gameObject.tag == "Hammer") {
 			var hammerController = col.gameObject.transform.parent.GetComponent<HammerControl>();
 			if (hammerController.isHitting && !hammerController.attackComplete) {
-				ReduceHealth(10);
+				ReduceHealth(5);
 				col.gameObject.collider2D.enabled = false;
 			}
 		}

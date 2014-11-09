@@ -42,7 +42,7 @@ public class Blimp : MonoBehaviour, IEvent {
 	}
 
 	public void End(){
-		EventController.EventEnd (EventType.Blimp,  EventType.Bomb, 1);
+		EventController.EventEnd (EventType.Blimp,  EventType.Idle, 1);
 	}
 
 	public void OnDestroy(){

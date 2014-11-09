@@ -50,9 +50,9 @@ public class ThrowableObject : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D col) {
 
-		if (col.gameObject.tag == "Player") {
+		if (col.gameObject.tag == "Player" || col.gameObject.tag == "Enemy") {
 
-			if (this.state == State.idle && this.canPickUp) {
+			if (this.state == State.idle && this.canPickUp && col.gameObject.tag == "Player") {
 
 				hammer = GameObject.Find (col.transform.parent.name + "/Hammer/Body");
 
@@ -68,16 +68,22 @@ public class ThrowableObject : MonoBehaviour {
 				controller.pickedUpObject = true;
 				this.collider2D.enabled = false;
 
+			
 			} else if (this.state == State.thrown) {
 				Damage(col);
 				this.rigidbody2D.velocity = Vector2.zero;
 				this.state = State.idle;
-
+				
 				
 				// RECORD EVENT WITH PLAYER TRACKER
-				PlayerEvents.RecordAttack(col.transform.parent.gameObject,controller.transform.parent.gameObject,damageVal);
+				if (col.gameObject.tag == "Player") {
+					PlayerEvents.RecordAttack(col.transform.parent.gameObject,controller.transform.parent.gameObject,damageVal);
+				}
 			}
-		} 
+		}
+
+
+		
 	}
 
 	void OnCollisionStay2D(Collision2D coll){

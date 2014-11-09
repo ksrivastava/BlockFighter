@@ -32,7 +32,7 @@ public class EnemyEvent : MonoBehaviour, IEvent {
 	}
 
 	public void End() {
-		EventController.EventEnd (EventType.EnemyEvent, EventType.PointLights, 3);
+		EventController.EventEnd (EventType.EnemyEvent, EventType.Idle, 3);
 	}
 
 	public void OnDestroy() {
