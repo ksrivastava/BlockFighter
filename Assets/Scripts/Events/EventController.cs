@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class EventController : MonoBehaviour {		
 
 	private static GameObject eventRunner;
+	private static float timeScale = 1.25f;
 
 	// Use this for initialization
 	void Start () {
@@ -45,7 +46,6 @@ public class EventController : MonoBehaviour {
 			yield return null; 
 		}
 
-	
 	   	// pull event off Queue
 		// instantiate gameobject
 		var next = eventQueue [0];
@@ -74,9 +74,10 @@ public class EventController : MonoBehaviour {
 	}
 
 	// pos is in viewport coordinates ( bottom-left is 0,0 and top-Right is 1,1)
-	public static void DisplayMessage(string message,float seconds,Vector2 pos, float startTime=0){
-		eventRunner.GetComponent<Message> ().DisplayMessage (message, seconds, pos, startTime);
+	public static void DisplayMessage(string message,float seconds,Vector2 pos, float startTime=0, int fontsize=15){
+		eventRunner.GetComponent<Message> ().DisplayMessage (message, seconds, pos, startTime*timeScale,fontsize);
 	}
+	
 
 	// The controller has been notified here that an event has ended. It has also suggested a
 	// next event to run and a delay time before running it.
