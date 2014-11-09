@@ -2121,7 +2121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   xScale: 1
-  yScale: .5
+  yScale: .75
   styles: []
   p1Texture: {fileID: 2800000, guid: 17bdde9257683499e8e6264a8738ccf4, type: 3}
   p2Texture: {fileID: 2800000, guid: 1d051c70905cd4cc3b5135f828d7ae29, type: 3}

@@ -84,6 +84,7 @@ public class PlayerEvents : MonoBehaviour {
 					RemovePlayerFromTeam(attacker);
 
 					//what is the penalty for betraying your teammate?
+					PointsBar.AddPoints(attacker,-1);
 
 				}
 			}
