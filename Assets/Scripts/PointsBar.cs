@@ -23,7 +23,7 @@ public class PointsBar : MonoBehaviour {
 		points = new Dictionary<string, int> ();
 		var pl = GameObject.FindGameObjectsWithTag("Player");
 		foreach (var p in pl) {
-			print (p.transform.parent.name);
+//			print (p.transform.parent.name);
 			points.Add(p.transform.parent.name, 1);
 		}
 

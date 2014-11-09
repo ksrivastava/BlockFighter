@@ -19,6 +19,7 @@ public class PlayerControl : MonoBehaviour
 	private bool grounded = false;			// Whether or not the player is grounded.
 
 	private bool onPlayer = false;
+	string fireButton;
 
 	void Awake()
 	{
@@ -27,6 +28,7 @@ public class PlayerControl : MonoBehaviour
 		if (playerNum % 2 == 0) {
 			facingRight = !facingRight;
 		}
+		fireButton = "joystick " + playerNum + " button 16";
 	}
 	
 	
@@ -47,9 +49,12 @@ public class PlayerControl : MonoBehaviour
 		}
 		grounded = onGroundLeft || onGroundRight || onPlayer;
 
-		// If the jump button is pressed and the player is grounded then the player should.
-		if(Input.GetButtonDown("Jump" + playerNum) && grounded)
+		if(Input.GetKeyDown (fireButton) && grounded)
 			jump = true;
+
+		// If the jump button is pressed and the player is grounded then the player should
+//		if(Input.GetButtonDown("Jump" + playerNum) && grounded)
+//			jump = true;
 	}
 	
 	
