@@ -17,18 +17,18 @@ public class PlayerControl : MonoBehaviour
 	
 	private Transform groundCheck;			// A position marking where to check if the player is grounded.
 	private bool grounded = false;			// Whether or not the player is grounded.
-	
-	public bool isSecondPlayer = false;
 
 	private bool onPlayer = false;
+	string fireButton;
 
 	void Awake()
 	{
 		// Setting up references.
 		groundCheck = GameObject.Find(transform.parent.name + "/Body/groundCheck").transform;
-		if (!isSecondPlayer) {
+		if (playerNum % 2 == 0) {
 			facingRight = !facingRight;
 		}
+		fireButton = "joystick " + playerNum + " button 16";
 	}
 	
 	
@@ -60,7 +60,11 @@ public class PlayerControl : MonoBehaviour
 		}
 		grounded = onGroundLeft || onGroundRight || onPlayer;
 
-		// If the jump button is pressed and the player is grounded then the player should.
+		// XBox Controls
+//		if(Input.GetKeyDown (fireButton) && grounded)
+//			jump = true;
+
+		// If the jump button is pressed and the player is grounded then the player should
 		if(Input.GetButtonDown("Jump" + playerNum) && grounded)
 			jump = true;
 	}

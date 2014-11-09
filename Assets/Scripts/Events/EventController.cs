@@ -29,8 +29,6 @@ public class EventController : MonoBehaviour {
 			StartCoroutine(NextEvent());
 		}
 	}
-
-
 	
 	static EventType currentEvent;
 

@@ -34,9 +34,6 @@ public class PlayerBehavior : MonoBehaviour {
 	public void ReduceHealth(int n) {
 		healthBar.Health -= n;
 		if (healthBar.Health <= 0) {
-
-
-			//Destroy(this.transform.parent.gameObject);
 			this.Die();
 		}
 	}
@@ -55,15 +52,14 @@ public class PlayerBehavior : MonoBehaviour {
 	}
 
 	void Die(){
-	
 		PlayerEvents.RecordDeath(this.transform.parent.gameObject);
 		var respawnPoint = GameObject.Find ("RespawnPoint");
 		transform.position = respawnPoint.transform.position;
-		this.gameObject.GetComponent<ColorSetter> ().ResetColor ();
+		this.gameObject.GetComponent<ColorSetter>().ResetColor ();
 		healthBar.Health = healthBar.MaxHealth;
 
 		if (this.controller.pickedUpObject) {
-			weapon.GetComponent<ThrowableObject>().Throw ();
+			weapon.GetComponent<ThrowableObject>().Drop ();
 			weapon = GameObject.Find (transform.parent.name+"/Hammer");
 		}
 
