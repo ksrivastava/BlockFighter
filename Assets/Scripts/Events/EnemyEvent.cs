@@ -28,7 +28,7 @@ public class EnemyEvent : MonoBehaviour, IEvent {
 		pos.x = 20.0f;
 		e2.transform.position = pos;
 
-		Invoke ("End", eventDuration);	
+		Invoke ("End", eventDuration);
 	}
 
 	public void End() {
