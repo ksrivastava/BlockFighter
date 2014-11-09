@@ -44,7 +44,18 @@ public class PlayerControl : MonoBehaviour
 		onPlayer = false;
 		for (int player = 1; player <= 4 && !onPlayer; player++) {
 			if(player != playerNum) {
-				onPlayer = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Player" + player));
+				groundPos = groundCheck.position;
+				onPlayer = Physics2D.Linecast(transform.position, groundPos, 1 << LayerMask.NameToLayer("Player" + player));
+				// Check the left of the player if necessary
+				if(!onPlayer) {
+					groundPos.x = groundCheck.collider2D.bounds.min.x;
+					onPlayer = Physics2D.Linecast(transform.position, groundPos, 1 << LayerMask.NameToLayer("Player" + player));
+				}
+				// Check the right of the player if necessary
+				if(!onPlayer) {
+					groundPos.x = groundCheck.collider2D.bounds.max.x;
+					onPlayer = Physics2D.Linecast(transform.position, groundPos, 1 << LayerMask.NameToLayer("Player" + player));
+				}
 			}
 		}
 		grounded = onGroundLeft || onGroundRight || onPlayer;
