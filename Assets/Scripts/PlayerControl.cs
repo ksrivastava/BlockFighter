@@ -17,8 +17,6 @@ public class PlayerControl : MonoBehaviour
 	
 	private Transform groundCheck;			// A position marking where to check if the player is grounded.
 	private bool grounded = false;			// Whether or not the player is grounded.
-	
-	public bool isSecondPlayer = false;
 
 	private bool onPlayer = false;
 
@@ -26,7 +24,7 @@ public class PlayerControl : MonoBehaviour
 	{
 		// Setting up references.
 		groundCheck = GameObject.Find(transform.parent.name + "/Body/groundCheck").transform;
-		if (!isSecondPlayer) {
+		if (playerNum % 2 == 0) {
 			facingRight = !facingRight;
 		}
 	}
