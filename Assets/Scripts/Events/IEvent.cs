@@ -9,7 +9,8 @@ public enum EventType{
 	StraightRockShower,
 	LittleRockShower,
 	MapSpin,
-	PointLights
+	PointLights,
+	EnemyEvent
 };
 
 
