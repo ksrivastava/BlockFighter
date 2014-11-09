@@ -68,12 +68,16 @@ public class PlayerEvents : MonoBehaviour {
 
 	// removes the player from his team
 	public static void RemovePlayerFromTeam(string player){
-		var team = GetPlayerStats (player).team;
-		foreach (var teammate in team) {
-			GetPlayerStats(teammate).RemoveTeammate(player);
+
+		var teammates = new List<string>();
+		foreach (var teammate in GetPlayerStats(player).team) {
+			teammates.Add(teammate);
 		}
-		GetPlayerStats(player).team = new List<string>();
-		GameObject.Find(player).GetComponentsInChildren<ColorSetter>()[0].ResetColor();
+
+		foreach (var teammate in teammates) {
+			GetPlayerStats(teammate).RemoveTeammate(player);
+			GetPlayerStats(player).RemoveTeammate(teammate);
+		}
 	}
 
 
@@ -109,60 +113,51 @@ public class PlayerEvents : MonoBehaviour {
 
 	private static void TeamUpPlayers(List<Tuple<string,float>> playerDeathInfos){
 
-		var colorSetters = new List<ColorSetter>();
-		foreach(var p in playerDeathInfos){
-			var g = GameObject.Find(p.First);
-			if(g!=null)
-			colorSetters.Add (g.GetComponentsInChildren<ColorSetter>()[0]);
-		}
+		// playerDeathInfos is a list of names and last death times
 
-		if(colorSetters.Count != playerDeathInfos.Count) return;
+		var playerStatsList = new List<PlayerStats> ();
 
-		float teamFormTimeTheshold = 10; //only forms teams of people killed in the last 60 seconds
-
-		// check that the players aren't already in a team
-
-
-		var nameString = "";
-		foreach (var p in playerDeathInfos) {
-			var name = p.First;
-			var lastDeath = p.Second;
-			if(Time.time - teamFormTimeTheshold < lastDeath){
-				nameString+=p.First+"\n";
-				foreach(var t in playerDeathInfos){
-					if(t.First != name){
-						var s = GetPlayerStats(name);
-						if(s.team.Count != 0) return;
-						s.AddTeammate(t.First);
-						s.DumpStats();
-					}
-				}
-			}
-		}
-
-		Color color = teamThreeColor;// = teamColors[playerDeathInfos.Count-1];
-
+		Color color = teamThreeColor;
 		if (playerDeathInfos.Count == 2) {
 			color = teamTwoColor;
-
-			if(teamTwoColor == teamTwoColorOne){
-				teamTwoColor = teamTwoColorTwo;
-			} else {
-				teamTwoColor = teamTwoColorOne;
-			}
-
+			teamTwoColor = (teamTwoColor == teamTwoColorOne) ? teamTwoColorTwo : teamTwoColorOne; 
 		} else if (playerDeathInfos.Count == 3) {
 			color = teamThreeColor;
 		}
 
-		foreach (var x in colorSetters){
-			x.SetColor(color);
+
+		var nameString = "";
+		foreach(var p in playerDeathInfos){
+			var g = GameObject.Find(p.First);
+
+			GetPlayerStats(p.First).DumpStats();
+			foreach(var p2 in playerDeathInfos){
+				if(p.First != p2.First)
+				GetPlayerStats(p.First).AddTeammate(p2.First);
+			}
+			nameString+=p.First+"\n";
+
+			// set player color. this has to be done in this way because we're setting active/inactive.
+			// maybe there's a way around this?
+			GameObject.Find("EventRunner").GetComponent<PlayerEvents>().SetPlayerColor(p.First,color);
 		}
 
 		if (nameString == "")
 						return;
 		EventController.DisplayMessage ("A team has been formed!\n" + nameString, 5, new Vector2 (0.5f, 0.5f),0);
+	}
 
+	public void SetPlayerColor(string playerName,Color color){
+		StartCoroutine (playerColorHelper(playerName,color));
+	}
+	
+	private IEnumerator playerColorHelper(string playerName,Color color){
+		GameObject player = GameObject.Find (playerName);
+		while (player == null) {
+			player = GameObject.Find(playerName);
+			yield return null;
+		}
+		player.GetComponentsInChildren<ColorSetter>()[0].SetColor(color);
 	}
 
 	private static List<string> CheckPlayerGangedUpOn(string playerName){
@@ -182,12 +177,6 @@ public class PlayerEvents : MonoBehaviour {
 						return new List<string>();
 
 		var attackers = new List<string>();
-		/*foreach (var hit in lastHits) {
-			var s = attackers.Find( x => x.Equals(hit.attacker));
-			if(s == null){
-				attackers.Add(hit.attacker);
-			}
-		}*/
 
 		foreach(var p in playerNames){
 			var x = lastHits.FindAll (d => d.attacker.Equals (p));
@@ -209,13 +198,6 @@ public class PlayerEvents : MonoBehaviour {
 		if (lastHit != null) {
 			PointsBar.AddPoints (GameObject.Find (lastHit.attacker), 1);
 		}
-
-		/*var playerStats = GetPlayerStats (dead.name);
-		RemovePlayerFromTeam (dead.name);
-		if (playerStats.team.Count > 0) {
-			playerStats.DumpHits();
-
-		}*/
 		ModifyStat (dead.name, AddDeath, Time.time);
 		heatmap.Post (dead.transform.position, deathTag);
 	}
@@ -262,7 +244,6 @@ public class PlayerEvents : MonoBehaviour {
 				return p;
 			}
 		}
-		
 		return null;
 	}
 	
@@ -283,7 +264,6 @@ public class PlayerEvents : MonoBehaviour {
 		float time = (float)(values [1] as object[])[0];
 		p.deaths++;
 		p.deathTimes.Add (time);
-		//print (p.playerName + " has died at time " + time);
 	}
 	
 	private static void AddHit(params object[] values){

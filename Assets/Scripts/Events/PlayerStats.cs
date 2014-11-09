@@ -16,15 +16,11 @@ public class PlayerStats {
 		this.playerName = playerName;
 		this.team = new List<string>();
 	}
+	
 
-	public void DumpStats(){
-		hits = new List<hit>();
-		deathTimes = new List<float>();
-		this.team = new List<string>();
-	}
-
-	public void DumpHits(){
+	public void DumpStats	(){
 		hits = new List<hit> ();
+		deathTimes = new List<float> ();
 	}
 	
 	public void Hit(string attacker, float damage, float time){
@@ -58,13 +54,14 @@ public class PlayerStats {
 	}
 	
 	public void AddTeammate(string teammate){
-		if(isTeammate(teammate)) throw new UnityException ("Tried to re add a teammate");
+		if (isTeammate (teammate))
+						return;
 		this.team.Add (teammate);
 	}
 	
 	public void RemoveTeammate(string teammate){
 		if (!isTeammate (teammate))
-			throw new UnityException ("Tried to remove a non teammate");
+						return;
 		team.Remove (teammate);
 		if (team.Count == 0) {
 			GameObject.Find(playerName).GetComponentInChildren<ColorSetter>().ResetColor();
@@ -73,6 +70,10 @@ public class PlayerStats {
 	
 	public bool isTeammate(string playerName){
 		return (this.team.Find (x => x.Equals (playerName)) == playerName);
+	}
+
+	public bool onTeam(){
+		return (this.team.Count != 0);
 	}
 	
 	public float GetLastDeath(){
