@@ -3,7 +3,7 @@ using System.Collections;
 
 public class EnemyBehavior : MonoBehaviour {
 
-	public float forceMultiplier = 60.0f;
+	public float forceMultiplier = 30.0f;
 	public float attackDelay = 3.0f;
 
 	private float health = 50;
@@ -46,7 +46,7 @@ public class EnemyBehavior : MonoBehaviour {
 
 	IEnumerator Shoot () {
 		while (true) {
-			GameObject obj = Instantiate (Resources.Load ("EnemyAttack")) as GameObject;
+			GameObject obj = Instantiate (Resources.Load ("Events/EnemyAttack")) as GameObject;
 			obj.transform.position = transform.position;
 			EnemyAttack atk = obj.GetComponent<EnemyAttack>();
 
@@ -56,9 +56,10 @@ public class EnemyBehavior : MonoBehaviour {
 			Vector3 dir = targets[target].transform.position - gameObject.transform.position;
 			float dist = dir.magnitude;
 			dir /= dist;
+			Debug.Log (dir.x + " " + dir.y);
 
 			dist *= forceMultiplier;
-			dir.y += 0.1f;
+			dir.y += 0.2f;
 
 			atk.Launch(new Vector2(dist * dir.x, dist * dir.y));
 

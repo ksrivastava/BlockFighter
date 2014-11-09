@@ -34,9 +34,6 @@ public class PlayerBehavior : MonoBehaviour {
 	public void ReduceHealth(int n) {
 		healthBar.Health -= n;
 		if (healthBar.Health <= 0) {
-
-
-			//Destroy(this.transform.parent.gameObject);
 			this.Die();
 		}
 	}
@@ -55,16 +52,14 @@ public class PlayerBehavior : MonoBehaviour {
 	}
 
 	void Die(){
-	
 		PlayerEvents.RecordDeath(this.transform.parent.gameObject);
 		var respawnPoint = GameObject.Find ("RespawnPoint");
-		transform.parent.position = respawnPoint.transform.position;
-		this.gameObject.GetComponent<ColorSetter> ().ResetColor ();
+		transform.position = respawnPoint.transform.position;
+		this.gameObject.GetComponent<ColorSetter>().ResetColor ();
 		healthBar.Health = healthBar.MaxHealth;
 
-		//TODO: fix the case where you die holding a rock :w
 		if (this.controller.pickedUpObject) {
-			weapon.GetComponent<ThrowableObject>().Throw ();
+			weapon.GetComponent<ThrowableObject>().Drop ();
 			weapon = GameObject.Find (transform.parent.name+"/Hammer");
 		}
 

@@ -11,9 +11,9 @@ public class PlayerControl : MonoBehaviour
 	public int playerNum;
 	public bool pickedUpObject = false;
 	
-	private float moveForce = 200f;			// Amount of force added to move the player left and right.
+	private float moveForce = 400f;			// Amount of force added to move the player left and right.
 	private float maxSpeed = 6f;				// The fastest the player can travel in the x axis.
-	private float jumpForce = 800f;			// Amount of force added when the player jumps.
+	private float jumpForce = 1000f;			// Amount of force added when the player jumps.
 	
 	private Transform groundCheck;			// A position marking where to check if the player is grounded.
 	private bool grounded = false;			// Whether or not the player is grounded.
@@ -44,7 +44,18 @@ public class PlayerControl : MonoBehaviour
 		onPlayer = false;
 		for (int player = 1; player <= 4 && !onPlayer; player++) {
 			if(player != playerNum) {
-				onPlayer = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Player" + player));
+				groundPos = groundCheck.position;
+				onPlayer = Physics2D.Linecast(transform.position, groundPos, 1 << LayerMask.NameToLayer("Player" + player));
+				// Check the left of the player if necessary
+				if(!onPlayer) {
+					groundPos.x = groundCheck.collider2D.bounds.min.x;
+					onPlayer = Physics2D.Linecast(transform.position, groundPos, 1 << LayerMask.NameToLayer("Player" + player));
+				}
+				// Check the right of the player if necessary
+				if(!onPlayer) {
+					groundPos.x = groundCheck.collider2D.bounds.max.x;
+					onPlayer = Physics2D.Linecast(transform.position, groundPos, 1 << LayerMask.NameToLayer("Player" + player));
+				}
 			}
 		}
 		grounded = onGroundLeft || onGroundRight || onPlayer;

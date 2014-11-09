@@ -3,33 +3,41 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class PointsBar : MonoBehaviour {
-
-	public float x, y;
-	public float length, height;
+	
+	public float xScale, yScale;
 	public GUIStyle[] styles;
 	
 	public Texture2D p1Texture;
 	public Texture2D p2Texture;
 	public Texture2D p3Texture;
 	public Texture2D p4Texture;
-	
-	private Dictionary<string, int> points;
-	private float total = 4.0f;
+
+	private float x, y;
+	private float length, height;
+
+	private static Dictionary<string, float> points;
+	private static float total = 16.0f;
 
 	private Rect barRect;
 
 	void Start() {
 		styles = new GUIStyle[4];
-		points = new Dictionary<string, int> ();
+		points = new Dictionary<string, float> ();
 		var pl = GameObject.FindGameObjectsWithTag("Player");
 		foreach (var p in pl) {
-//			print (p.transform.parent.name);
-			points.Add(p.transform.parent.name, 1);
+			print (p.transform.parent.name);
+			points.Add(p.transform.parent.name, 4);
 		}
 
 		for (int i = 0; i < styles.Length; ++i) {
 			styles[i] = new GUIStyle();
 		}
+
+		length = yScale * Screen.width;
+		height = xScale * 10;
+
+		x = (Screen.width - length) / 2;
+		y = 10;
 
 		styles[0].normal.background = p1Texture;
 		styles[1].normal.background = p2Texture;
@@ -49,7 +57,7 @@ public class PointsBar : MonoBehaviour {
 		}
 	}
 
-	public void AddPoints(string objName, int p) {
+	public static void AddPoints(string objName, float p) {
 		points[objName] += p;
 		total += p;
 	}

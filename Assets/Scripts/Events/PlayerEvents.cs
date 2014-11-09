@@ -51,9 +51,10 @@ public class PlayerEvents : MonoBehaviour {
 		var gangUpStats = PlayerEvents.GetPlayerGangUpStatistics ();
 
 
-		if (gangUpStats.Count > 1) {
+		if (gangUpStats.Count > 1 && gangUpStats.Count < 4 ) {
 			//TODO:Respawn players once they die
 			TeamUpPlayers(gangUpStats);
+
 		}
 
 		TeamBetrayal ();
@@ -63,7 +64,6 @@ public class PlayerEvents : MonoBehaviour {
 
 	// removes the player from his team
 	public static void RemovePlayerFromTeam(string player){
-
 		var team = GetPlayerStats (player).team;
 		foreach (var teammate in team) {
 			GetPlayerStats(teammate).RemoveTeammate(player);
@@ -82,6 +82,10 @@ public class PlayerEvents : MonoBehaviour {
 				if(playerStats.isTeammate(attacker)){
 					EventController.DisplayMessage(attacker+" betrayed "+playerName,2,new Vector2(0.5f,0.5f),1);
 					RemovePlayerFromTeam(attacker);
+
+					//what is the penalty for betraying your teammate?
+					PointsBar.AddPoints(attacker,-1);
+
 				}
 			}
 		}
@@ -138,7 +142,7 @@ public class PlayerEvents : MonoBehaviour {
 			x.SetColor(color);
 		}
 
-		EventController.DisplayMessage ("A team has been formed!\n" + nameString, 2, new Vector2 (0.5f, 0.5f));
+		EventController.DisplayMessage ("A team has been formed!\n" + nameString, 2, new Vector2 (0.5f, 0.5f),0,13);
 
 	}
 
@@ -149,6 +153,7 @@ public class PlayerEvents : MonoBehaviour {
 			return new List<string>();
 		}
 		float lookBackDuration = 10f;
+		int hitCount = 3; // number of hits before it is considered Ganging up
 
 		// look back lookBackDuration seconds, see if the player has been hit by >1 other players.
 
@@ -158,12 +163,20 @@ public class PlayerEvents : MonoBehaviour {
 						return new List<string>();
 
 		var attackers = new List<string>();
-		foreach (var hit in lastHits) {
-			var s = attackers.Find( x => x.Contains(hit.attacker));
+		/*foreach (var hit in lastHits) {
+			var s = attackers.Find( x => x.Equals(hit.attacker));
 			if(s == null){
 				attackers.Add(hit.attacker);
 			}
+		}*/
+
+		foreach(var p in playerNames){
+			var x = lastHits.FindAll (d => d.attacker.Equals (p));
+			if(x.Count >= hitCount){
+				attackers.Add(p);
+			}
 		}
+
 		return attackers;
 	}
 
@@ -174,6 +187,8 @@ public class PlayerEvents : MonoBehaviour {
 
 	public static void RecordDeath(GameObject dead){
 		ModifyStat (dead.name, AddDeath, Time.time);
+		var lastHit = GetPlayerStats (dead.name).GetLastHit ();
+		PointsBar.AddPoints (lastHit.attacker, 1);
 		heatmap.Post (dead.transform.position, deathTag);
 	}
 

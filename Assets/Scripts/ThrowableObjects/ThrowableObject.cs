@@ -106,4 +106,9 @@ public class ThrowableObject : MonoBehaviour {
 		//this.rigidbody2D.isKinematic = false;
 		this.groundCollisions = 0;
 	}
+
+	public void Drop() {
+		this.state = State.idle;
+		this.collider2D.enabled = true;
+	}
 }
