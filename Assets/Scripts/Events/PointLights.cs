@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class PointLights : MonoBehaviour ,IEvent{
 
-	public float eventDuration = 25;
+	public float eventDuration = 30;
 
 
 	private float zDisplacement = -10f;

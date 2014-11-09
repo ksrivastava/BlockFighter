@@ -12,10 +12,11 @@ public class PlayerBehavior : MonoBehaviour {
 	void Start () {
 		controller = GetComponent<PlayerControl> ();
 		healthBar = GetComponent<HealthBar> ();
-		weapon = GameObject.Find (transform.parent.name+"/Hammer");
 		playerNum = controller.GetPlayerNum ();
+		weapon = GameObject.Find (transform.parent.name + "/Hammer");
+		controller.pickedUpObject = false;
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		if(Input.GetAxis("Fire" + playerNum) > 0){
@@ -33,12 +34,10 @@ public class PlayerBehavior : MonoBehaviour {
 	public void ReduceHealth(int n) {
 		healthBar.Health -= n;
 		if (healthBar.Health <= 0) {
-			
-			//TELL THE PLAYER EVENT CHECKER THAT YOU HAVE JUST DIED
-			PlayerEvents.RecordDeath(this.transform.parent.gameObject);
 
-			Destroy(this.transform.parent.gameObject);
 
+			//Destroy(this.transform.parent.gameObject);
+			this.Die();
 		}
 	}
 
@@ -53,5 +52,28 @@ public class PlayerBehavior : MonoBehaviour {
 				ReduceHealth(10);
 			}
 		}
+	}
+
+	void Die(){
+	
+		PlayerEvents.RecordDeath(this.transform.parent.gameObject);
+		var respawnPoint = GameObject.Find ("RespawnPoint");
+		transform.parent.position = respawnPoint.transform.position;
+		this.gameObject.GetComponent<ColorSetter> ().ResetColor ();
+		healthBar.Health = healthBar.MaxHealth;
+
+		//TODO: fix the case where you die holding a rock :w
+		if (this.controller.pickedUpObject) {
+			weapon.GetComponent<ThrowableObject>().Throw ();
+			weapon = GameObject.Find (transform.parent.name+"/Hammer");
+		}
+
+		//TODO: this causes issues with the TeamUp being called when player is inactive
+		this.transform.parent.gameObject.SetActive (false);
+		Invoke ("ReactivatePlayer", 1.0f);
+	}
+
+	void ReactivatePlayer(){
+		this.transform.parent.gameObject.SetActive (true);
 	}
 }

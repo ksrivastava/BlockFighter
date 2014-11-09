@@ -9,9 +9,10 @@ public class PlayerEvents : MonoBehaviour {
 	static HeatTag deathTag;
 	static string url = "http://iamkos.com/heatmap.php";
 	public bool showDeathmap = false;
+	static GameObject eventRunner;
 
-	
 	public static List<string> playerNames = new List<string> ();
+	public static List<Color> teamColors = new List<Color>();
 
 	void Start(){
 
@@ -31,6 +32,12 @@ public class PlayerEvents : MonoBehaviour {
 		foreach (var p in GetAllPlayers()) {
 			stats.Add(new PlayerStats(p.transform.parent.name));
 		}
+
+		for (int i=0; i<3; i++) {
+			teamColors.Add(new Color(Random.Range(0.0f,1.0f),Random.Range(0.0f,1.0f),Random.Range(0.0f,1.0f)));
+		}
+
+		eventRunner = GameObject.Find ("EventRunner");
 	}
 
 	//keep track of player stats OTHER THAN HITS AND DEATHS.
@@ -39,52 +46,116 @@ public class PlayerEvents : MonoBehaviour {
 	}
 	
 	public static void CheckPlayerEvents(){
+
+		//check ganging up
 		var gangUpStats = PlayerEvents.GetPlayerGangUpStatistics ();
-		foreach (var g in gangUpStats) {
-			print(g.First+ " was ganged up on!");
+
+
+		if (gangUpStats.Count > 1) {
+			//TODO:Respawn players once they die
+			TeamUpPlayers(gangUpStats);
 		}
 
-		if (gangUpStats.Count == 2) {
-			//TODO:Respawn players once they die
-			//TeamUpPlayers(gangUpStats);
+		TeamBetrayal ();
+
+		// check team betrayal
+	}
+
+	// removes the player from his team
+	public static void RemovePlayerFromTeam(string player){
+
+		var team = GetPlayerStats (player).team;
+		foreach (var teammate in team) {
+			GetPlayerStats(teammate).RemoveTeammate(player);
+		}
+		GetPlayerStats(player).team = new List<string>();
+		GameObject.Find(player).GetComponentsInChildren<ColorSetter>()[0].ResetColor();
+	}
+
+
+	public static void TeamBetrayal(){
+		foreach (var playerName in playerNames) {
+			var attackers = CheckPlayerGangedUpOn(playerName);
+			var playerStats = GetPlayerStats(playerName);
+
+			foreach(var attacker in attackers){
+				if(playerStats.isTeammate(attacker)){
+					EventController.DisplayMessage(attacker+" betrayed "+playerName,2,new Vector2(0.5f,0.5f),1);
+					RemovePlayerFromTeam(attacker);
+				}
+			}
 		}
 	}
-	
+
 	//returns a list of tuples<playerName,timeOfDeath> if playerName has been ganged up on.
-	public static List<Tuple<string,float>> GetPlayerGangUpStatistics(){
+	private static List<Tuple<string,float>> GetPlayerGangUpStatistics(){
 		List<Tuple<string,float>> t = new List<Tuple<string,float>>();
 		foreach (var playerName in playerNames) {
-			if(CheckPlayerGangedUpOn(playerName)){
+			var attackers = CheckPlayerGangedUpOn(playerName);
+			if(attackers.Count > 1){
 				t.Add(new Tuple<string,float>(playerName,GetPlayerStats(playerName).GetLastDeath()));
 			}
 		}
 		return t;
 	}
 
-	public static void TeamUpPlayers(List<Tuple<string,float>> playerDeathInfos){
-		var randomColor = new Color(Random.Range(0.0f,1.0f),Random.Range(0.0f,1.0f),Random.Range(0.0f,1.0f)); 
+	private static void TeamUpPlayers(List<Tuple<string,float>> playerDeathInfos){
+
+		var colorSetters = new List<ColorSetter>();
+		foreach(var p in playerDeathInfos){
+			var g = GameObject.Find(p.First);
+			if(g!=null)
+			colorSetters.Add (g.GetComponentsInChildren<ColorSetter>()[0]);
+		}
+
+		if(colorSetters.Count != playerDeathInfos.Count) return;
+
+		float teamFormTimeTheshold = 60; //only forms teams of people killed in the last 60 seconds
+
+		// check that the players aren't already in a team
+
+
+		var nameString = "";
 		foreach (var p in playerDeathInfos) {
 			var name = p.First;
-			var c = GameObject.FindGameObjectWithTag(name).GetComponent<ColorSetter>();
-			c.SetColor(randomColor);
+			var lastDeath = p.Second;
+			if(Time.time - teamFormTimeTheshold < lastDeath){
+				nameString+=p.First+"\n";
+				foreach(var t in playerDeathInfos){
+					if(t.First != name){
+						var s = GetPlayerStats(name);
+						if(s.team.Count != 0) return;
+						s.AddTeammate(t.First);
+						s.DumpHits();
+					}
+				}
+			}
 		}
+
+		var color = teamColors[playerDeathInfos.Count-1];
+
+		foreach (var x in colorSetters){
+			x.SetColor(color);
+		}
+
+		EventController.DisplayMessage ("A team has been formed!\n" + nameString, 2, new Vector2 (0.5f, 0.5f));
 
 	}
 
-	private static bool CheckPlayerGangedUpOn(string playerName){
+	private static List<string> CheckPlayerGangedUpOn(string playerName){
 		var playerStats = GetPlayerStats (playerName);
 
 		if (playerStats.deaths == 0) {
-			return false;
+			return new List<string>();
 		}
-		float lookBackDuration = 30f;
+		float lookBackDuration = 10f;
 
 		// look back lookBackDuration seconds, see if the player has been hit by >1 other players.
 
 		var lastHits = playerStats.GetLastNSecondsHits (lookBackDuration);
 
 		if (lastHits.Count == 0)
-						return false;
+						return new List<string>();
 
 		var attackers = new List<string>();
 		foreach (var hit in lastHits) {
@@ -93,7 +164,7 @@ public class PlayerEvents : MonoBehaviour {
 				attackers.Add(hit.attacker);
 			}
 		}
-		return attackers.Count > 1;
+		return attackers;
 	}
 
 	// attacks are hits on players by other players
@@ -138,66 +209,20 @@ public class PlayerEvents : MonoBehaviour {
 		return playerList;
 	}
 
-	public class PlayerStats {
 
-		public int deaths;
-		public List<float> deathTimes;
-		public List<hit> hits;
-		public string playerName;
-
-		public PlayerStats(string playerName){
-			hits = new List<hit>();
-			deathTimes = new List<float>();
-			this.playerName = playerName;
-		}
-
-		public void Hit(string attacker, float damage, float time){
-			hit h = new hit ();
-			h.attacker = attacker; 
-			h.damage = damage;
-			h.time = time;
-			hits.Add (h);
-			//print (attacker + " caused " + damage + " damage to " + this.playerName +" at time " +time);
-		}
-
-		public List<hit> GetLastNSecondsHits(float n){
-			if (deathTimes.Count == 0)
-								return null;
-			float lastDeathTime = deathTimes[deathTimes.Count - 1];
-			List<hit> h = new List<hit> ();
-			for (int i= hits.Count -1; i>=0; --i) {
-				if(hits[i].time > lastDeathTime-n){
-					h.Add(hits[i]);
-				}
-			}
-			return h;
-		}
-
-		public float GetLastDeath(){
-			if (deathTimes.Count == 0)
-				return float.NaN;
-			return deathTimes [deathTimes.Count - 1];
-		}
-
-		public class hit{
-			public string attacker;
-			public float damage;
-			public float time;
-		}
-	}
-
+	
 	// helper stuff for tracking stats
-
+	
 	private static PlayerStats GetPlayerStats(string playerName){
 		foreach (var p in stats) {
 			if(p.playerName == playerName){
 				return p;
 			}
 		}
-
+		
 		return null;
 	}
-
+	
 	public delegate void Func(params object[] values);
 	
 	private static void ModifyStat(string playerName, Func f, params object[] values){
@@ -208,7 +233,7 @@ public class PlayerEvents : MonoBehaviour {
 			}
 		}
 	}
-
+	
 	//TODO: there has GOT to be a cleaner way of accessing these things.
 	private static void AddDeath(params object[] values){
 		PlayerStats p = values [0] as PlayerStats;
@@ -217,7 +242,7 @@ public class PlayerEvents : MonoBehaviour {
 		p.deathTimes.Add (time);
 		//print (p.playerName + " has died at time " + time);
 	}
-
+	
 	private static void AddHit(params object[] values){
 		PlayerStats p = values [0] as PlayerStats;
 		var valuesTwo = values [1] as object[];
@@ -225,25 +250,5 @@ public class PlayerEvents : MonoBehaviour {
 		var attacker = valuesTwo[1] as GameObject;
 		var damage = (float)valuesTwo[2];
 		p.Hit (attacker.name, damage, time);
-	}
-}
-
-public class Tuple<T1, T2>
-{
-	public T1 First { get; private set; }
-	public T2 Second { get; private set; }
-	internal Tuple(T1 first, T2 second)
-	{
-		First = first;
-		Second = second;
-	}
-}
-
-public static class Tuple
-{
-	public static Tuple<T1, T2> New<T1, T2>(T1 first, T2 second)
-	{
-		var tuple = new Tuple<T1, T2>(first, second);
-		return tuple;
 	}
 }
