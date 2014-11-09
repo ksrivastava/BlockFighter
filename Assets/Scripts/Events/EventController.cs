@@ -7,18 +7,11 @@ public class EventController : MonoBehaviour {
 	private static GameObject eventRunner;
 	private static float timeScale = 1.25f;
 
-	public static Queue<EventHelper> verticalSliceEventQueue = new Queue<EventHelper>();
-
 	// Use this for initialization
 	void Start () {
 
-		verticalSliceEventQueue.Enqueue (new EventHelper(EventType.LittleRockShower, 1));
-		verticalSliceEventQueue.Enqueue (new EventHelper(EventType.EnemyEvent, 1));
-		verticalSliceEventQueue.Enqueue (new EventHelper(EventType.PointLights, 1));
-		verticalSliceEventQueue.Enqueue (new EventHelper(EventType.Blimp, 1));
-
-		eventQueue.Add (verticalSliceEventQueue.Dequeue());
-		StartCoroutine(NextEvent());
+		//QueueEvent (EventType.StraightRockShower);
+		//StartCoroutine(NextEvent());
 		eventRunner = GameObject.Find ("EventRunner");
 
 		//TODO: DELETE THIS LINE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -32,6 +25,24 @@ public class EventController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (Input.GetKeyDown(KeyCode.Alpha1)) {
+			eventLock = false;
+			QueueEvent (EventType.StraightRockShower);
+		}
+		else if (Input.GetKeyDown(KeyCode.Alpha2)) {
+			eventLock = false;
+			QueueEvent (EventType.EnemyEvent);
+		}
+		else if (Input.GetKeyDown(KeyCode.Alpha3)) {
+			eventLock = false;
+			QueueEvent (EventType.LittleRockShower);
+			QueueEvent (EventType.Blimp);
+		}
+		else if (Input.GetKeyDown(KeyCode.Alpha4)) {
+			eventLock = false;
+			QueueEvent (EventType.PointLights);
+		}
+
 		if (CanRunNextEvent ()) {
 			StartCoroutine(NextEvent());
 		}
@@ -87,10 +98,7 @@ public class EventController : MonoBehaviour {
 	// The controller has been notified here that an event has ended. It has also suggested a
 	// next event to run and a delay time before running it.
 	public static void EventEnd(EventType running, EventType nextState, float delay = 0){
-
-		var nextEvent = verticalSliceEventQueue.Dequeue ();
-		eventQueue.Add (nextEvent);
-//		ExecuteEventTransition (nextState, delay);
+		ExecuteEventTransition (nextState, delay);
 		eventLock = false;
 	}
 
