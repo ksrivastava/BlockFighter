@@ -48,6 +48,14 @@ public class PlayerStats {
 		}
 		return h;
 	}
+
+	public hit GetLastHit(){
+		if (hits.Count == 0) {
+			return null;		
+		}
+
+		return hits [hits.Count - 1];
+	}
 	
 	public void AddTeammate(string teammate){
 		if(isTeammate(teammate)) throw new UnityException ("Tried to re add a teammate");
