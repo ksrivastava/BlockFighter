@@ -2180,7 +2180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed40d547c4e9740a0ba1ea3ed416087e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xScale: 1
+  xScale: 1.5
   yScale: .75
   styles: []
   p1Texture: {fileID: 2800000, guid: 17bdde9257683499e8e6264a8738ccf4, type: 3}

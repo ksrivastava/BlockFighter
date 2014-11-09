@@ -84,7 +84,7 @@ public class PlayerEvents : MonoBehaviour {
 					RemovePlayerFromTeam(attacker);
 
 					//what is the penalty for betraying your teammate?
-					PointsBar.AddPoints(attacker,-1);
+					PointsBar.AddPoints(GameObject.Find (attacker),-1);
 
 				}
 			}
@@ -186,9 +186,11 @@ public class PlayerEvents : MonoBehaviour {
 	}
 
 	public static void RecordDeath(GameObject dead){
-		ModifyStat (dead.name, AddDeath, Time.time);
 		var lastHit = GetPlayerStats (dead.name).GetLastHit ();
-		PointsBar.AddPoints (lastHit.attacker, 1);
+		if (lastHit != null) {
+			PointsBar.AddPoints (GameObject.Find (lastHit.attacker), 1);
+		}
+		ModifyStat (dead.name, AddDeath, Time.time);
 		heatmap.Post (dead.transform.position, deathTag);
 	}
 
