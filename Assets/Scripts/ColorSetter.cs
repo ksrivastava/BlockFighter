@@ -17,5 +17,5 @@ public class ColorSetter : MonoBehaviour {
 	public void ResetColor(){
 		SetColor (color);
 	}
-	
+
 }
