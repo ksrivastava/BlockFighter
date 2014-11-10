@@ -10,7 +10,7 @@ public class PlayerNumber : MonoBehaviour {
 		guiText.text = player.GetPlayerNum ().ToString();
 	}
 	
-	void Update () {
+	void Update () {	
 		transform.position = Camera.main.WorldToViewportPoint(new Vector2(parent.position.x, parent.position.y));
 	}
 }
