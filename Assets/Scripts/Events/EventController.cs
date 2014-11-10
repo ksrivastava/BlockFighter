@@ -35,12 +35,12 @@ public class EventController : MonoBehaviour {
 		}
 		else if (Input.GetKeyDown(KeyCode.Alpha3)) {
 			eventLock = false;
-			QueueEvent (EventType.LittleRockShower);
-			QueueEvent (EventType.Blimp);
+			QueueEvent (EventType.PointLights);
 		}
 		else if (Input.GetKeyDown(KeyCode.Alpha4)) {
 			eventLock = false;
-			QueueEvent (EventType.PointLights);
+			QueueEvent (EventType.LittleRockShower);
+			QueueEvent (EventType.Blimp);
 		}
 
 		if (CanRunNextEvent ()) {

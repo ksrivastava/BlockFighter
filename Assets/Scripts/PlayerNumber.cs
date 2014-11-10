@@ -11,7 +11,6 @@ public class PlayerNumber : MonoBehaviour {
 	}
 	
 	void Update () {
-		transform.position = Camera.main.WorldToViewportPoint(new Vector2(parent.position.x - 0.5f, 
-		                                                                  parent.position.y + 0.7f));
+		transform.position = Camera.main.WorldToViewportPoint(new Vector2(parent.position.x, parent.position.y));
 	}
 }
