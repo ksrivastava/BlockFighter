@@ -42,6 +42,14 @@ public class EventController : MonoBehaviour {
 			QueueEvent (EventType.LittleRockShower);
 			QueueEvent (EventType.Blimp);
 		}
+		else if (Input.GetKeyDown(KeyCode.Alpha5)) {
+			eventLock = false;
+			QueueEvent (EventType.Bomb);
+		}
+		else if (Input.GetKeyDown(KeyCode.Alpha6)) {
+			eventLock = false;
+			QueueEvent (EventType.MapSpin);
+		}
 
 		if (CanRunNextEvent ()) {
 			StartCoroutine(NextEvent());
