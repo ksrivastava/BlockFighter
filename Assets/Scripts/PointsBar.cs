@@ -57,11 +57,11 @@ public class PointsBar : MonoBehaviour {
 	}
 
 	public static void AddPoints(GameObject obj, float p) {
-//		PlayerControl c;
-//		if (c = obj.GetComponentInChildren<PlayerControl>()) {
-//			points[c.GetPlayerNum() - 1] += p;
-//			total += p;
-//		}
+		PlayerControl c;
+		if (c = obj.GetComponentInChildren<PlayerControl>()) {
+			points[c.GetPlayerNum() - 1] += p;
+			total += p;
+		}
 	}
 
 	private Texture2D MakeTexture(int width, int height, Color col) {
