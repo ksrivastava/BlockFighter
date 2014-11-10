@@ -6,6 +6,8 @@ public class PointsBar : MonoBehaviour {
 	
 	public float xScale, yScale;
 	public GUIStyle[] styles;
+	public Font myFont;
+	public int myFontSize = 10;
 
 	private float x, y;
 	private float length, height;
@@ -25,6 +27,8 @@ public class PointsBar : MonoBehaviour {
 			points[i] = 4;
 			styles[i] = new GUIStyle();
 			styles[i].alignment = TextAnchor.MiddleCenter;
+			styles[i].font = myFont;
+			styles[i].fontSize = myFontSize;
 		}
 
 		for (int i = 0; i < 4; ++i) {
