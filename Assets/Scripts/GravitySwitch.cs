@@ -28,7 +28,7 @@ public class GravitySwitch : MonoBehaviour {
 	}
 
 	void Flip() {
-		print ("Gravity flipping");
+//		print ("Gravity flipping");
 		var g = Physics2D.gravity;
 		g.y *= -1;
 		Physics2D.gravity = g;

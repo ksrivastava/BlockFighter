@@ -66,7 +66,7 @@ public class EventController : MonoBehaviour {
 
 		eventLock = true;
 		while (eventQueue.Count == 0) {
-			Debug.Log("No more events to run!");
+//			Debug.Log("No more events to run!");
 			yield return null; 
 		}
 
