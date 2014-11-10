@@ -35,6 +35,7 @@ public class EnemyBehavior : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D col) {
+		gameObject.GetComponent<EnemyControl>().speed *= -1;
 		if (col.gameObject.tag == "Hammer") {
 			var hammerController = col.gameObject.transform.parent.GetComponent<HammerControl>();
 			if (hammerController.isHitting && !hammerController.attackComplete) {

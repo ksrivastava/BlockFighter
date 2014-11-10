@@ -20,7 +20,7 @@ public class EnemyControl : MonoBehaviour {
 		Vector3 pos = transform.position;
 
 		if (pos.x <= bottomLeft.x || pos.x + gameObject.transform.localScale.x >= topRight.x) {
-			speed *= -1;
+			//speed *= -1;
 		}
 
 		pos.x += speed;
