@@ -14,7 +14,11 @@ public class LittleRock : ThrowableObject {
 	public override void Damage (Collider2D col)
 	{
 		try{
-			col.gameObject.GetComponent<PlayerBehavior>().ReduceHealth(damageVal);
+			if (col.gameObject.GetComponent<PlayerBehavior>()) {
+				col.gameObject.GetComponent<PlayerBehavior>().ReduceHealth(damageVal);
+			} else if (col.gameObject.GetComponent<EnemyBehavior>()) {
+				col.gameObject.GetComponent<EnemyBehavior>().ReduceHealth(damageVal);
+			}
 		} catch(UnityException ex){
 			print ("Player doesn't exist");
 		}
