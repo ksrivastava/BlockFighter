@@ -98,8 +98,8 @@ public class EventController : MonoBehaviour {
 	}
 
 	// pos is in viewport coordinates ( bottom-left is 0,0 and top-Right is 1,1)
-	public static void DisplayMessage(string message,float seconds,Vector2 pos, float startTime=0, int fontsize=15){
-		eventRunner.GetComponent<Message> ().DisplayMessage (message, seconds, pos, startTime*timeScale,fontsize);
+	public static void DisplayMessage(string message){
+		eventRunner.GetComponent<Message> ().DisplayMessage (message);
 	}
 	
 

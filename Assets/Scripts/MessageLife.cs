@@ -12,6 +12,7 @@ public class MessageLife : MonoBehaviour {
 	}
 
 	public void KillHelper(){
+		Message.Down();	
 		Destroy (this.gameObject);
 	}
 }

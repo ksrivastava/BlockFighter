@@ -88,7 +88,7 @@ public class PlayerEvents : MonoBehaviour {
 
 			foreach(var attacker in attackers){
 				if(playerStats.isTeammate(attacker)){
-					EventController.DisplayMessage(attacker+" betrayed "+playerName,2,new Vector2(0.5f,0.5f),1);
+					EventController.DisplayMessage(attacker+" betrayed "+playerName);
 					RemovePlayerFromTeam(attacker);
 
 					//what is the penalty for betraying your teammate?
@@ -144,7 +144,7 @@ public class PlayerEvents : MonoBehaviour {
 
 		if (nameString == "")
 						return;
-		EventController.DisplayMessage ("A team has been formed!\n" + nameString, 5, new Vector2 (0.5f, 0.5f),0);
+		EventController.DisplayMessage ("A team has been formed!\n" + nameString);
 	}
 
 	public void SetPlayerColor(string playerName,Color color){
@@ -197,6 +197,8 @@ public class PlayerEvents : MonoBehaviour {
 		var lastHit = GetPlayerStats (dead.name).GetLastHit ();
 		if (lastHit != null) {
 			PointsBar.AddPoints (GameObject.Find (lastHit.attacker), 1);
+		} else {
+			Debug.Log("no last hit!");
 		}
 		ModifyStat (dead.name, AddDeath, Time.time);
 		heatmap.Post (dead.transform.position, deathTag);
@@ -204,7 +206,7 @@ public class PlayerEvents : MonoBehaviour {
 
 	public static void ProdPlayerWithHighestHealth(){
 		var playerName = GetPlayerWithHighestHealth ().transform.parent.name;
-		EventController.DisplayMessage (playerName + " is doing quite well...", 4, new Vector2 (0.5f, 0.5f));
+		EventController.DisplayMessage (playerName + " is doing quite well...");
 	}
 
 	public static GameObject GetPlayerWithHighestHealth(){

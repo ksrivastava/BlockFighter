@@ -4,8 +4,20 @@ using System.Collections.Generic;
 
 public class Message : MonoBehaviour {
 
+
+	List<Vector2> positions = new List<Vector2>();
+	static int messagesOnDisplay = 0;
+	static int msgIdx = 0;
+	int maxMessages = 5;
+	float seconds = 3f;
+
 	// Use this for initialization
 	void Start () {
+		positions.Add (new Vector2 (0.5f, 0.9f));
+
+		for (int i=1; i <maxMessages; i++) {
+			positions.Add(new Vector2(0.5f,positions[positions.Count-1].y - 0.05f));
+		}
 	}
 	
 	// Update is called once per frame
@@ -13,21 +25,35 @@ public class Message : MonoBehaviour {
 	
 	}
 
-	public void DisplayMessage(string message,float seconds,Vector2 pos, float startTime, int fontSize){
-		StartCoroutine (helper (message, seconds, pos, startTime, fontSize));
+	public void DisplayMessage(string message){
+		StartCoroutine (helper (message));
 	}
 
-	private IEnumerator helper(string message,float seconds,Vector2 pos, float startTime, int fontSize){
-		
-		while(Time.time < startTime) {
+	private IEnumerator helper(string message){
+
+		while (messagesOnDisplay >= maxMessages) {
 			yield return null;
 		}
+
+		messagesOnDisplay++;
+		msgIdx ++;
+		msgIdx %= maxMessages;
+
+
 		GameObject obj = Object.Instantiate (Resources.Load ("Message")) as GameObject;
 		GUIText guiText = obj.GetComponent<GUIText> ();
 		guiText.text = message;
-		guiText.fontSize = fontSize;
-		guiText.transform.position = pos;
+
+		guiText.transform.position = positions[msgIdx];
 		MessageLife m = obj.GetComponent<MessageLife> ();
 		m.Kill (seconds);
+
+		yield return null;
+	}
+
+	public static void Down(){
+
+		messagesOnDisplay = (messagesOnDisplay == 1) ? 0 : messagesOnDisplay - 1;
+		msgIdx = (messagesOnDisplay == 0) ? 0 : msgIdx--;
 	}
 }

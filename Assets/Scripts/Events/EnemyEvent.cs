@@ -16,7 +16,7 @@ public class EnemyEvent : MonoBehaviour, IEvent {
 	}
 
 	public void Begin() {
-		EventController.DisplayMessage("ENEMIES!",2,new Vector2(0.5f,0.5f));
+		EventController.DisplayMessage("ENEMIES!");
 		GameObject e1 = Instantiate (Resources.Load ("Events/Enemy")) as GameObject;
 		GameObject e2 = Instantiate (Resources.Load ("Events/Enemy")) as GameObject;
 
