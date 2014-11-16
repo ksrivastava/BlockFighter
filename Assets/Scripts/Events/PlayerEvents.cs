@@ -4,17 +4,20 @@ using System.Collections.Generic;
 
 public class PlayerEvents : MonoBehaviour {
 
-	public static Color teamTwoColorOne = new Color(0,111,255);
-	public static Color teamTwoColorTwo = new Color(239,0,255);
+	public static Color teamTwoColorOne = new Color(239,0,255);
+		public static Color teamTwoColorTwo = new Color(0,111,255);
 	public static Color teamThreeColor = new Color(0,255,247);
 	private static Color teamTwoColor;
+
+	//FRIENDLY FIRE CONTROL
+	public static bool FriendlyFireOn = false;
 
 	static List<PlayerStats> stats;
 	static HeatMap heatmap;
 	static HeatTag deathTag;
 	static string url = "http://iamkos.com/heatmap.php";
 	public bool showDeathmap = false;
-	static GameObject eventRunner;
+
 
 	public static List<string> playerNames = new List<string> ();
 	
@@ -39,32 +42,65 @@ public class PlayerEvents : MonoBehaviour {
 			stats.Add(new PlayerStats(p.transform.parent.name));
 		}
 
-
-
-		eventRunner = GameObject.Find ("EventRunner");
 	}
 
 	//keep track of player stats OTHER THAN HITS AND DEATHS.
 	//TODO: make decisions after collecting the data somewhere. In this class?? TBD.
 	void Update(){
 	}
-	
-	public static void CheckPlayerEvents(){
-
-		//check ganging up
-		var gangUpStats = PlayerEvents.GetPlayerGangUpStatistics ();
 
 
-		if (gangUpStats.Count > 1 && gangUpStats.Count < 4 ) {
-			//TODO:Respawn players once they die
-			TeamUpPlayers(gangUpStats);
 
+	public static void TeamUpPlayers(List<string> playerNames){
+
+		// check that they aren't already in teams
+		foreach (var p in playerNames) {
+			if(GetPlayerStats(p).onTeam()){
+				Debug.LogWarning(p+ " is already on a team! Can't put him on two teams at once.");
+				return;
+			}
+		}
+		
+		Color color = teamThreeColor;
+		if (playerNames.Count == 2) {
+			color = teamTwoColor;
+			teamTwoColor = (teamTwoColor == teamTwoColorOne) ? teamTwoColorTwo : teamTwoColorOne; 
+		} else if (playerNames.Count == 3) {
+			color = teamThreeColor;
+		}
+		
+		
+		var nameString = "";
+		foreach(var p in playerNames){
+			
+			GetPlayerStats(p).DumpStats();
+			foreach(var p2 in playerNames){
+				if(p != p2)
+					GetPlayerStats(p).AddTeammate(p2);
+			}
+			nameString+=p+"\n";
+			
+			// set player color. this has to be done in this way because we're setting active/inactive.
+			// maybe there's a way around this?
+			GameObject.Find("EventRunner").GetComponent<PlayerEvents>().SetPlayerColor(p,color);
+		}
+		
+		if (nameString == "") {
+			Debug.LogError("Couldn't map players to names");
+			return;
 		}
 
-		TeamBetrayal ();
+		EventController.DisplayMessage ("A team has been formed!\n" + nameString);
 
-		// check team betrayal
 	}
+
+
+	public static void DissolveTeam(List<string> playerNames){
+		foreach (var p in playerNames) {
+			RemovePlayerFromTeam(p);
+		}
+	}
+
 
 	// removes the player from his team
 	public static void RemovePlayerFromTeam(string player){
@@ -78,7 +114,12 @@ public class PlayerEvents : MonoBehaviour {
 			GetPlayerStats(teammate).RemoveTeammate(player);
 			GetPlayerStats(player).RemoveTeammate(teammate);
 		}
+
+		if (teammates.Count == 1) {
+			EventController.DisplayMessage("A team has been dissolved!");
+		}
 	}
+
 
 
 	public static void TeamBetrayal(){
@@ -110,42 +151,7 @@ public class PlayerEvents : MonoBehaviour {
 		}
 		return t;
 	}
-
-	private static void TeamUpPlayers(List<Tuple<string,float>> playerDeathInfos){
-
-		// playerDeathInfos is a list of names and last death times
-
-		var playerStatsList = new List<PlayerStats> ();
-
-		Color color = teamThreeColor;
-		if (playerDeathInfos.Count == 2) {
-			color = teamTwoColor;
-			teamTwoColor = (teamTwoColor == teamTwoColorOne) ? teamTwoColorTwo : teamTwoColorOne; 
-		} else if (playerDeathInfos.Count == 3) {
-			color = teamThreeColor;
-		}
-
-
-		var nameString = "";
-		foreach(var p in playerDeathInfos){
-			var g = GameObject.Find(p.First);
-
-			GetPlayerStats(p.First).DumpStats();
-			foreach(var p2 in playerDeathInfos){
-				if(p.First != p2.First)
-				GetPlayerStats(p.First).AddTeammate(p2.First);
-			}
-			nameString+=p.First+"\n";
-
-			// set player color. this has to be done in this way because we're setting active/inactive.
-			// maybe there's a way around this?
-			GameObject.Find("EventRunner").GetComponent<PlayerEvents>().SetPlayerColor(p.First,color);
-		}
-
-		if (nameString == "")
-						return;
-		EventController.DisplayMessage ("A team has been formed!\n" + nameString);
-	}
+	
 
 	public void SetPlayerColor(string playerName,Color color){
 		StartCoroutine (playerColorHelper(playerName,color));
@@ -240,7 +246,7 @@ public class PlayerEvents : MonoBehaviour {
 	
 	// helper stuff for tracking stats
 	
-	private static PlayerStats GetPlayerStats(string playerName){
+	public static PlayerStats GetPlayerStats(string playerName){
 		foreach (var p in stats) {
 			if(p.playerName == playerName){
 				return p;

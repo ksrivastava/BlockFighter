@@ -46,7 +46,16 @@ public class PlayerBehavior : MonoBehaviour {
 				PlayerEvents.RecordAttack(transform.parent.gameObject,col.transform.parent.transform.parent.gameObject,10);
 			
 				col.gameObject.collider2D.enabled = false;
-				ReduceHealth(10);
+
+				//if the guy who hit you is a teammate, don't take any damage.
+
+				if( !PlayerEvents.FriendlyFireOn && PlayerEvents.GetPlayerStats(col.transform.parent.transform.parent.gameObject.name).isTeammate(transform.parent.gameObject.name)){
+					//print("Hit by a teammate!");
+
+					// do no damage
+				} else{
+					ReduceHealth(10);
+				} 
 			}
 		}
 	}

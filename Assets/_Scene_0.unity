@@ -438,6 +438,10 @@ Prefab:
       propertyPath: littleBox
       value: 
       objectReference: {fileID: 619546066}
+    - target: {fileID: 8200000, guid: 0fba5de53a76648949c678cc6655f0a0, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fba5de53a76648949c678cc6655f0a0, type: 2}
   m_RootGameObject: {fileID: 1978182289}
@@ -5667,7 +5671,7 @@ AudioSource:
     type: 2}
   m_PrefabInternal: {fileID: 182590031}
   m_GameObject: {fileID: 1978182289}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_audioClip: {fileID: 8300000, guid: ac1fa391b894740c686531cbc854e9a7, type: 3}
   m_PlayOnAwake: 1

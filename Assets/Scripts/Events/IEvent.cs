@@ -4,13 +4,14 @@ using System.Collections;
 
 public enum EventType{
 	Bomb,
-	Idle,
 	Blimp,
 	StraightRockShower,
 	LittleRockShower,
 	MapSpin,
 	PointLights,
-	EnemyEvent
+	EnemyEvent,
+	Idle,
+	NUM_TYPES
 };
 
 

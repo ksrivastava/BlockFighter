@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class EventController : MonoBehaviour {		
 
 	private static GameObject eventRunner;
-	private static float timeScale = 1.25f;
+
 
 	// Use this for initialization
 	void Start () {
@@ -15,14 +15,22 @@ public class EventController : MonoBehaviour {
 		eventRunner = GameObject.Find ("EventRunner");
 
 		//TODO: DELETE THIS LINE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-		InvokeRepeating ("TestCheckEvents",0, 1);
+		InvokeRepeating ("TestFormTeam",0, 31);
+
 	}
 
 	//TODO: DELETE THIS Function
-	void TestCheckEvents(){
-		PlayerEvents.CheckPlayerEvents ();
+	void TestFormTeam(){
+		
+		/*List<string> zz = new List<string> ();
+		zz.Add ("PlayerOne");
+		zz.Add ("PlayerThree");
+		zz.Add ("PlayerFour");
+		PlayerEvents.TeamUpPlayers (zz);
+		*/
 	}
 	
+
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyDown(KeyCode.Alpha1)) {
@@ -61,6 +69,7 @@ public class EventController : MonoBehaviour {
 	public static List<EventHelper> eventQueue = new List<EventHelper>();
 
 	private static bool eventLock = false;
+	
 
 	public static IEnumerator  NextEvent(){
 
