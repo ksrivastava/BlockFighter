@@ -3,7 +3,7 @@ using System.Collections;
 
 public class HealthPowerUpEvent : MonoBehaviour, IEvent {
 
-	public string path = "HealthPowerUp";
+	string path = "PowerUp/HealthPowerUp";
 
 	void Start () {
 		var healthPack = Object.Instantiate (Resources.Load (path)) as GameObject;
