@@ -56,8 +56,8 @@ public class PlayerControl : MonoBehaviour
 		}
 		grounded = onGroundLeft || onGroundRight || onPlayer;
 
-		//if(Input.GetKeyDown (fireButton) && grounded)
-		//	jump = true;
+//		if(Input.GetKeyDown (fireButton) && grounded)
+//			jump = true;
 			
 		// If the jump button is pressed and the player is grounded then the player should.
 		if(Input.GetButtonDown("Jump" + playerNum) && grounded)

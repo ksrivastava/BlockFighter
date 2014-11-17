@@ -67,4 +67,8 @@ public class HealthBar : MonoBehaviour {
 	void Update() {
 
 	}
+
+	public void AddHealth(float addedhealth) {
+		Health = Mathf.Min (MaxHealth, Health + addedhealth);
+	}
 }

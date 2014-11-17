@@ -22,12 +22,11 @@ public class EventController : MonoBehaviour {
 	//TODO: DELETE THIS Function
 	void TestFormTeam(){
 		
-		/*List<string> zz = new List<string> ();
-		zz.Add ("PlayerOne");
-		zz.Add ("PlayerThree");
-		zz.Add ("PlayerFour");
-		PlayerEvents.TeamUpPlayers (zz);
-		*/
+//		List<string> zz = new List<string> ();
+//		zz.Add ("PlayerOne");
+//		zz.Add ("PlayerThree");
+//		zz.Add ("PlayerFour");
+//		PlayerEvents.TeamUpPlayers (zz);
 	}
 	
 
@@ -57,6 +56,10 @@ public class EventController : MonoBehaviour {
 		else if (Input.GetKeyDown(KeyCode.Alpha6)) {
 			eventLock = false;
 			QueueEvent (EventType.MapSpin);
+		}
+		else if (Input.GetKeyDown(KeyCode.Alpha7)) {
+			eventLock = false;
+			QueueEvent (EventType.HealthPowerUpEvent);
 		}
 
 		if (CanRunNextEvent ()) {
@@ -94,7 +97,7 @@ public class EventController : MonoBehaviour {
 		currentEvent = next.type;
 
 		if (next.type != EventType.Idle) {
-			GameObject obj = Object.Instantiate (Resources.Load ("Events/"+next.type.ToString ())) as GameObject;
+			GameObject obj = Object.Instantiate (Resources.Load ("Events/" + next.type.ToString ())) as GameObject;
 			IEvent evt = (IEvent) obj.GetComponent(typeof(IEvent));
 			evt.Begin();
 		}
