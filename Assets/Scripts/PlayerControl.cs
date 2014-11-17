@@ -60,8 +60,9 @@ public class PlayerControl : MonoBehaviour
 		//	jump = true;
 			
 		// If the jump button is pressed and the player is grounded then the player should.
-		if(Input.GetButtonDown("Jump" + playerNum) && grounded)
+		if(Input.GetButtonDown("Jump" + playerNum) && grounded) {
 			jump = true;
+		}
 	}
 	
 	
@@ -115,5 +116,9 @@ public class PlayerControl : MonoBehaviour
 
 	public int GetPlayerNum() {
 		return playerNum;
+	}
+
+	public bool IsGrounded() {
+		return grounded;
 	}
 }
