@@ -53,9 +53,9 @@ public class PlayerBehavior : MonoBehaviour {
 					//print("Hit by a teammate!");
 
 					// do no damage
-				} else{
-					ReduceHealth(10);
-				} 
+				} else {
+						ReduceHealth(10);
+				}
 			}
 		}
 	}
