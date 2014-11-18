@@ -21,7 +21,7 @@ public class PlayerControl : MonoBehaviour
 	private Transform groundCheck;			// A position marking where to check if the player is grounded.
 	public bool grounded = false;			// Whether or not the player is grounded.
 	private bool onPlayer = false;
-	string jumpButton;
+	string jumpButton, leftDashButton, rightDashButton;
 
 	public HealthBar healthBar;
 
@@ -31,6 +31,8 @@ public class PlayerControl : MonoBehaviour
 		healthBar = GetComponent<HealthBar> ();
 		groundCheck = GameObject.Find(transform.parent.name + "/Body/groundCheck").transform;
 		jumpButton = "joystick " + playerNum + " button 16";
+		leftDashButton = "joystick " + playerNum + " button 13";
+		rightDashButton = "joystick " + playerNum + " button 14";
 	}
 	
 	
@@ -62,24 +64,29 @@ public class PlayerControl : MonoBehaviour
 		}
 		grounded = onGroundLeft || onGroundRight || onPlayer;
 
+		// XBOX
+
 //		if(Input.GetKeyDown (jumpButton) && grounded)
 //			jump = true;
 //			
-//		if (Input.GetKeyDown(KeyCode.LeftBracket)) {
+//		if (Input.GetKeyDown(leftDashButton) && (healthBar.Dash >= 0.5f)) {
 //			leftDash = true;
 //		}
-//		if (Input.GetKeyDown(KeyCode.RightBracket)) {
+//		else if (Input.GetKeyDown(rightDashButton) && (healthBar.Dash >= 0.5f)) {
 //			rightDash = true;
 //		}
 
-		// If the jump button is pressed and the player is grounded then the player should.
+
+		// KEYBOARD
+
+//		 If the jump button is pressed and the player is grounded then the player should.
 		if(Input.GetButtonDown("Jump" + playerNum) && grounded) {
 			jump = true;
 		}
-		if (Input.GetButtonDown("LeftDash" + playerNum) && healthBar.Dash >= 0.5f) {
+		if (Input.GetButtonDown("LeftDash" + playerNum) && (healthBar.Dash >= 0.5f)) {
 			leftDash = true;
 		}
-		else if (Input.GetButtonDown("RightDash" + playerNum) && healthBar.Dash >= 0.5f) {
+		else if (Input.GetButtonDown("RightDash" + playerNum) && (healthBar.Dash >= 0.5f)) {
 			rightDash = true;
 		}
 

@@ -91,7 +91,7 @@ public class HealthBar : MonoBehaviour {
 	}
 
 	float deltaTime;
-	float duration = 0.02f;
+	float duration = 0.04f;
 
 	void Update() {
 		if (deltaTime >= duration) {
