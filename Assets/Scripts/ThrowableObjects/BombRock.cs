@@ -9,6 +9,7 @@ public class BombRock : StraightRock {
 	PlayerBehavior stickPlayerBehaviour;
 	string stickPlayerName;
 
+	int damage = 80;
 	float countDown = 4;
 
 	public override void Damage (Collider2D col)
@@ -46,8 +47,8 @@ public class BombRock : StraightRock {
 	}
 
 	void Explode(){
-		float xForce = 2000;
-		float upForce = 2000;//1000;
+		float xForce = 5000;
+		float upForce = 2000;
 
 
 		stickPlayerControl.allowMovement = false;
@@ -58,15 +59,22 @@ public class BombRock : StraightRock {
 			stickPlayerControl.rigidbody2D.AddForce (new Vector2 (-xForce, upForce));
 		}
 
-		Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer("Ground"),LayerMask.NameToLayer(GetPlayerLayerName()),true);
-		Invoke ("DoDamage", 1f);
+		if (stickPlayerBehaviour.healthBar.Health - damage > 0) {
+			Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer("Ground"),LayerMask.NameToLayer(GetPlayerLayerName()),true);	
+		}
+
+
+		Invoke ("DoDamage", 0.25f);
 
 	}
 
 	void DoDamage(){
-		stickPlayerBehaviour.ReduceHealth (80);
-		// turn on stickplayercontrol
-		//Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer("Ground"),LayerMask.NameToLayer(GetPlayerLayerName()),false);
+
+
+		stickPlayerBehaviour.ReduceHealth (damage);
+
+		//Collider[] hitColliders = Physics.OverlapSphere(center, radius);
+
 		stickPlayerControl.allowMovement = true;
 		Destroy (this.gameObject);
 	}
@@ -80,10 +88,10 @@ public class BombRock : StraightRock {
 			playerLayer += "2";		
 		} else if (stickPlayerName == "PlayerThree") {
 			playerLayer += "3";
-		} else if (stickPlayerName == "PlayerOne") {
+		} else if (stickPlayerName == "PlayerFour") {
 			playerLayer += "4";
 		}
-
+		print (playerLayer + " playerLayer");
 		return playerLayer;
 	}
 }

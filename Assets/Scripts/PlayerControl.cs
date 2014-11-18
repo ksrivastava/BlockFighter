@@ -101,6 +101,11 @@ public class PlayerControl : MonoBehaviour
 			rightDash = true;
 		}
 
+
+		// turn on collisions between ground and self if velocity is ever < zero.
+		if (rigidbody2D.velocity.y < 0) {
+			Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer("Ground"),this.gameObject.layer, false);
+		}
 	}
 	
 	float dashMultiplier = 30f;
