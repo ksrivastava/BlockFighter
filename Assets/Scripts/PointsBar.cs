@@ -4,66 +4,75 @@ using System.Collections.Generic;
 
 public class PointsBar : MonoBehaviour {
 	
-	public float xScale, yScale;
 	public GUIStyle[] styles;
 	public Font myFont;
 	public int myFontSize = 10;
-
-	private float x, y;
+	
+	private float y;
 	private float length, height;
-
+	
 	private static float[] points;
 	private static float total = 16.0f;
-
-	private Rect barRect;
-
+	
 	void Start() {
-		styles = new GUIStyle[4];
+		styles = new GUIStyle[5];
 		points = new float[4];
-
+		
 		GameObject[] pl = GameObject.FindGameObjectsWithTag("Player");
-
+		
 		for (int i = 0; i < 4; ++i) {
-			points[i] = 4;
+			points[i] = 0;
 			styles[i] = new GUIStyle();
 			styles[i].alignment = TextAnchor.MiddleCenter;
 			styles[i].font = myFont;
 			styles[i].fontSize = myFontSize;
 		}
-
+		
 		for (int i = 0; i < 4; ++i) {
 			PlayerControl c = pl[i].GetComponent<PlayerControl>();
-			Texture2D tex = MakeTexture (100,100,pl[i].GetComponent<ColorSetter>().color);
-			styles[c.GetPlayerNum() - 1].normal.background = tex;
+			styles[c.GetPlayerNum() - 1].normal.textColor = pl[i].GetComponent<ColorSetter>().color;
 		}
-	}
 
+		styles[4] = new GUIStyle ();
+		styles[4].alignment = TextAnchor.MiddleCenter;
+		styles[4].font = myFont;
+		styles[4].fontSize = 30;
+		styles[4].normal.textColor = Color.white;
+	}
+	
 	void OnGUI() {
-		length = yScale * Screen.width;
-		height = xScale * 10;
+		length = 40;
+		height = 40;
 		
-		x = (Screen.width - length) / 2;
-		y = 10;
-
-		barRect = new Rect (x, y, length, height);
-		GUI.Box (barRect, "");
-
-		float last = 0;
+		y = Screen.height - height - 14;
+		
 		for (int i = 0; i < 4; ++i) {
-			GUI.Box (new Rect(barRect.xMin + last * length, y, length * (points[i] / total), height),
-			         (i + 1).ToString(), styles[i]);
-			last += (points[i] / total);
+			GUI.Box (new Rect((i + 1) * Screen.width / 5f - length / 2, y, length, height), points[i].ToString(), styles[4]);
+			GUI.Box (new Rect((i + 1) * Screen.width / 5f - length / 2 - 10, y + 25, length + 25, height), "Player " + (i + 1).ToString(), styles[i]);
 		}
 	}
-
+	
 	public static void AddPoints(GameObject obj, float p) {
 		PlayerControl c;
 		if (c = obj.GetComponentInChildren<PlayerControl>()) {
 			points[c.GetPlayerNum() - 1] += p;
 			total += p;
+			//PrintAddedPoint(c, p, Color.yellow);
 		}
 	}
-
+	
+	public static void PrintAddedPoint(PlayerControl c, float p, Color col) {
+		GameObject points = Instantiate(Resources.Load("Points")) as GameObject;
+		points.GetComponent<PointsAnimation> ().SetColor (col);
+		points.GetComponent<PointsAnimation> ().SetPlayer (c);
+		if(p > 0) {
+			points.guiText.text = "+" + p.ToString ();
+		} else if (p < 0) {
+			points.guiText.text = "-" + p.ToString ();
+		}
+		//points.transform.position = Camera.main.WorldToViewportPoint (pointsPos[c.GetPlayerNum() - 1]);
+	}
+	
 	private Texture2D MakeTexture(int width, int height, Color col) {
 		col.a = 1;
 		Color[] pix = new Color[width * height];
@@ -76,5 +85,4 @@ public class PointsBar : MonoBehaviour {
 		result.Apply();
 		return result;
 	}
-	
 }

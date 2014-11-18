@@ -8,6 +8,7 @@ public class ColorSetter : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		ResetColor ();
+		color.a = 1;
 	}
 
 	public void SetColor(Color c){
