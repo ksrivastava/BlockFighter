@@ -197,12 +197,13 @@ public class PlayerEvents : MonoBehaviour {
 	// attacks are hits on players by other players
 	public static void RecordAttack(GameObject attackee, GameObject attacker, float damage){
 		ModifyStat (attackee.name, AddHit, Time.time, attacker, damage);
+		PointsBar.AddPoints (attacker, 5);
 	}
 
 	public static void RecordDeath(GameObject dead){
 		var lastHit = GetPlayerStats (dead.name).GetLastHit ();
 		if (lastHit != null) {
-			PointsBar.AddPoints (GameObject.Find (lastHit.attacker), 1);
+			PointsBar.AddPoints (GameObject.Find (lastHit.attacker), 50);
 		} else {
 			Debug.Log("no last hit!");
 		}
