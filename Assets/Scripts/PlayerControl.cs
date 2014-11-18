@@ -37,7 +37,14 @@ public class PlayerControl : MonoBehaviour
 		jumpButton = "joystick " + playerNum + " button 16";
 		dashButton = "joystick " + playerNum + " button 14";
 	}
-	
+
+	public void SetInfinityMaxSpeed(){
+		maxSpeed = float.MaxValue;
+	}
+
+	public void ResetMaxSpeed(){
+		maxSpeed = 6f;
+	}
 	
 	void Update()
 	{

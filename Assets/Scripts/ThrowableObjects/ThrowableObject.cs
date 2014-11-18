@@ -34,7 +34,7 @@ public class ThrowableObject : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	public virtual void Update () {
 //		print (this.state);
 		if (hammer == null || controller == null) {
 			this.state = State.idle;
@@ -63,11 +63,10 @@ public class ThrowableObject : MonoBehaviour {
 				}
 
 				this.state = State.pickedUp;
-
+				
 				behaviour.weapon = this.gameObject;
 				controller.pickedUpObject = true;
 				this.collider2D.enabled = false;
-
 			
 			} else if (this.state == State.thrown) {
 				Damage(col);
@@ -85,6 +84,7 @@ public class ThrowableObject : MonoBehaviour {
 
 		
 	}
+
 
 	void OnCollisionStay2D(Collision2D coll){
 		if (coll.gameObject.layer == LayerMask.NameToLayer ("Ground") 
