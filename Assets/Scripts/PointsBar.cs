@@ -2,6 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 
+public enum DisplayType {
+	Point,
+	Health
+}
+
 public class PointsBar : MonoBehaviour {
 
 	public GUIStyle[] styles;
@@ -48,8 +53,6 @@ public class PointsBar : MonoBehaviour {
 
 		yScore = Screen.height - height;
 		yPlayer = Screen.height - 1.33f * playerFontSize;
-		//xPlayer = Screen.width / 100;
-		xPlayer = 0;
 
 		styles [4].fontSize = (int)scoreFontSize;
 		for (int i = 0; i < 4; ++i) {
@@ -64,20 +67,30 @@ public class PointsBar : MonoBehaviour {
 		if (c = obj.GetComponentInChildren<PlayerControl>()) {
 			points[c.GetPlayerNum() - 1] += p;
 			total += p;
-			//PrintAddedPoint(c, p, Color.yellow);
+			DisplayNumber(c, p, DisplayType.Point);
 		}
 	}
 
-	public static void PrintAddedPoint(PlayerControl c, float p, Color col) {
+	public static void DisplayNumber(PlayerControl c, float p, DisplayType type) {
 		GameObject points = Instantiate(Resources.Load("Points")) as GameObject;
-		points.GetComponent<PointsAnimation> ().SetColor (col);
 		points.GetComponent<PointsAnimation> ().SetPlayer (c);
-		if(p > 0) {
-			points.guiText.text = "+" + p.ToString ();
-		} else if (p < 0) {
-			points.guiText.text = "-" + p.ToString ();
+		if (type == DisplayType.Health) {
+			if(p > 0) {
+				points.guiText.text = "+" + p.ToString ();
+				points.GetComponent<PointsAnimation> ().SetColor (Color.green);
+			} else {
+				points.guiText.text = "-" + p.ToString ();
+				points.GetComponent<PointsAnimation> ().SetColor (Color.red);
+			}
+		} else if (type == DisplayType.Point) {
+			if(p > 0) {
+				points.guiText.text = "+" + p.ToString () + "P";
+				points.GetComponent<PointsAnimation> ().SetColor (Color.yellow);
+			} else {
+				points.guiText.text = "-" + p.ToString () + "P";
+				points.GetComponent<PointsAnimation> ().SetColor (Color.magenta);
+			}
 		}
-		//points.transform.position = Camera.main.WorldToViewportPoint (pointsPos[c.GetPlayerNum() - 1]);
 	}
 
 	public static float GetPoints(GameObject obj){

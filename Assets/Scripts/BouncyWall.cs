@@ -15,7 +15,7 @@ public class BouncyWall : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other){
 		if( LayerMask.LayerToName(other.gameObject.layer).Contains("Player")){
-			Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer("Ground"),other.gameObject.layer,false);
+			Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer("Ground"), other.gameObject.layer, false);
 		}
 	}
 }

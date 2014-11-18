@@ -34,7 +34,7 @@ public class EventController : MonoBehaviour {
 	void Update () {
 		if (Input.GetKeyDown(KeyCode.Alpha1)) {
 			eventLock = false;
-			QueueEvent (EventType.PointsBounty);
+			QueueEvent (EventType.StraightRockShower);
 		}
 		else if (Input.GetKeyDown(KeyCode.Alpha2)) {
 			eventLock = false;
@@ -60,6 +60,10 @@ public class EventController : MonoBehaviour {
 		else if (Input.GetKeyDown(KeyCode.Alpha7)) {
 			eventLock = false;
 			QueueEvent (EventType.HealthPowerUpEvent);
+		}
+		else if (Input.GetKeyDown(KeyCode.Alpha8)) {
+			eventLock = false;
+			QueueEvent (EventType.PointsBounty);
 		}
 
 		if (CanRunNextEvent ()) {
