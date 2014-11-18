@@ -16,7 +16,7 @@ public class PlayerControl : MonoBehaviour
 	private float jumpForce = 1000f;			// Amount of force added when the player jumps.
 	
 	private Transform groundCheck;			// A position marking where to check if the player is grounded.
-	private bool grounded = false;			// Whether or not the player is grounded.
+	public bool grounded = false;			// Whether or not the player is grounded.
 	private bool onPlayer = false;
 	string fireButton;
 
@@ -92,14 +92,18 @@ public class PlayerControl : MonoBehaviour
 		// If the player should jump...
 		if(jump)
 		{
-			var j = (Physics2D.gravity.y > 0)? -jumpForce : jumpForce;
-
-			// Add a vertical force to the player.
-			rigidbody2D.AddForce(new Vector2(0f, j));
-			
-			// Make sure the player can't jump again until the jump conditions from Update are satisfied.
-			jump = false;
+			Jump();
 		}
+	}
+
+	public void Jump(){
+		var j = (Physics2D.gravity.y > 0)? -jumpForce : jumpForce;
+		
+		// Add a vertical force to the player.
+		rigidbody2D.AddForce(new Vector2(0f, j));
+		
+		// Make sure the player can't jump again until the jump conditions from Update are satisfied.
+		jump = false;
 	}
 	
 	void Flip ()
