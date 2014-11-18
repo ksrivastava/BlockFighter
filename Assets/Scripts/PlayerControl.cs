@@ -8,7 +8,8 @@ public class PlayerControl : MonoBehaviour
 	[HideInInspector]
 	public bool jump = false;				// Condition for whether the player should jump.
 	
-	bool dash = false;	
+	bool leftDash = false;
+	bool rightDash = false;
 
 	public int playerNum;
 	public bool pickedUpObject = false;
@@ -20,7 +21,7 @@ public class PlayerControl : MonoBehaviour
 	private Transform groundCheck;			// A position marking where to check if the player is grounded.
 	public bool grounded = false;			// Whether or not the player is grounded.
 	private bool onPlayer = false;
-	string jumpButton, dashButton;
+	string jumpButton, leftDashButton, rightDashButton;
 
 	PlayerBehavior behavior;
 
@@ -35,7 +36,8 @@ public class PlayerControl : MonoBehaviour
 		behavior = GetComponent<PlayerBehavior> ();
 		groundCheck = GameObject.Find(transform.parent.name + "/Body/groundCheck").transform;
 		jumpButton = "joystick " + playerNum + " button 16";
-		dashButton = "joystick " + playerNum + " button 14";
+		leftDashButton = "joystick " + playerNum + " button 13";
+		rightDashButton = "joystick " + playerNum + " button 14";
 	}
 
 	public void SetInfinityMaxSpeed(){
@@ -78,8 +80,11 @@ public class PlayerControl : MonoBehaviour
 		if(Input.GetKeyDown (jumpButton) && grounded)
 			jump = true;
 			
-		if (Input.GetKeyDown(dashButton) && (healthBar.Dash >= 0.5f)) {
-			dash = true;
+		if (Input.GetKeyDown(leftDashButton) && (healthBar.Dash >= 0.5f)) {
+			leftDash = true;
+		}
+		else if (Input.GetKeyDown(rightDashButton) && (healthBar.Dash >= 0.5f)) {
+			rightDash = true;
 		}
 
 
@@ -108,9 +113,15 @@ public class PlayerControl : MonoBehaviour
 
 		if (allowMovement) {
 
-			if (dash) {
-				int dir = facingRight ? 1 : -1;
-				rigidbody2D.AddForce(Vector2.right * dir * moveForce * dashMultiplier);
+			if (leftDash) {
+//				if (facingRight) Flip ();
+				rigidbody2D.AddForce(Vector2.right * -1 * moveForce * dashMultiplier);
+				healthBar.Dash -= 0.5f;
+			}
+			
+			else if (rightDash) {
+//				if (!facingRight) Flip ();
+				rigidbody2D.AddForce(Vector2.right * moveForce * dashMultiplier);
 				healthBar.Dash -= 0.5f;
 			}
 			
@@ -135,7 +146,8 @@ public class PlayerControl : MonoBehaviour
 			}
 		}
 
-		dash = false;
+		leftDash = false;
+		rightDash = false;
 		jump = false;
 
 	}
