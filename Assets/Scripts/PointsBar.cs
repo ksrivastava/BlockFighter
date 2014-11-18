@@ -64,6 +64,15 @@ public class PointsBar : MonoBehaviour {
 		}
 	}
 
+	public static float GetPoints(GameObject obj){
+		PlayerControl c;
+		if (c = obj.GetComponentInChildren<PlayerControl>()) {
+			return points[c.GetPlayerNum() - 1];
+		}
+
+		return -1;
+	}
+
 	private Texture2D MakeTexture(int width, int height, Color col) {
 		col.a = 1;
 		Color[] pix = new Color[width * height];

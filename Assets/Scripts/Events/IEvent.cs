@@ -10,6 +10,7 @@ public enum EventType{
 	MapSpin,
 	PointLights,
 	EnemyEvent,
+	PointsBounty,
 	HealthPowerUpEvent,
 	Idle,
 	NUM_TYPES

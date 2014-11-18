@@ -206,6 +206,8 @@ public class PlayerEvents : MonoBehaviour {
 		} else {
 			Debug.Log("no last hit!");
 		}
+
+
 		ModifyStat (dead.name, AddDeath, Time.time);
 		heatmap.Post (dead.transform.position, deathTag);
 	}
