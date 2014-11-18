@@ -7,9 +7,8 @@ public class PlayerControl : MonoBehaviour
 	public bool facingRight = true;			// For determining which way the player is currently facing.
 	[HideInInspector]
 	public bool jump = false;				// Condition for whether the player should jump.
-
-	bool leftDash = false;	
-	bool rightDash = false;	
+	
+	bool dash = false;	
 
 	public int playerNum;
 	public bool pickedUpObject = false;
@@ -21,7 +20,7 @@ public class PlayerControl : MonoBehaviour
 	private Transform groundCheck;			// A position marking where to check if the player is grounded.
 	public bool grounded = false;			// Whether or not the player is grounded.
 	private bool onPlayer = false;
-	string jumpButton, leftDashButton, rightDashButton;
+	string jumpButton, dashButton;
 
 	PlayerBehavior behavior;
 
@@ -36,8 +35,7 @@ public class PlayerControl : MonoBehaviour
 		behavior = GetComponent<PlayerBehavior> ();
 		groundCheck = GameObject.Find(transform.parent.name + "/Body/groundCheck").transform;
 		jumpButton = "joystick " + playerNum + " button 16";
-		leftDashButton = "joystick " + playerNum + " button 13";
-		rightDashButton = "joystick " + playerNum + " button 14";
+		dashButton = "joystick " + playerNum + " button 14";
 	}
 	
 	
@@ -70,29 +68,22 @@ public class PlayerControl : MonoBehaviour
 		grounded = onGroundLeft || onGroundRight || onPlayer;
 
 		// XBOX
-
-//		if(Input.GetKeyDown (jumpButton) && grounded)
-//			jump = true;
-//			
-//		if (Input.GetKeyDown(leftDashButton) && (healthBar.Dash >= 0.5f)) {
-//			leftDash = true;
-//		}
-//		else if (Input.GetKeyDown(rightDashButton) && (healthBar.Dash >= 0.5f)) {
-//			rightDash = true;
-//		}
+		if(Input.GetKeyDown (jumpButton) && grounded)
+			jump = true;
+			
+		if (Input.GetKeyDown(dashButton) && (healthBar.Dash >= 0.5f)) {
+			dash = true;
+		}
 
 
 		// KEYBOARD
 
-		if(Input.GetButtonDown("Jump" + playerNum) && grounded) {
-			jump = true;
-		}
-		if (Input.GetButtonDown("LeftDash" + playerNum) && (healthBar.Dash >= 0.5f)) {
-			leftDash = true;
-		}
-		else if (Input.GetButtonDown("RightDash" + playerNum) && (healthBar.Dash >= 0.5f)) {
-			rightDash = true;
-		}
+//		if(Input.GetButtonDown("Jump" + playerNum) && grounded) {
+//			jump = true;
+//		}
+//		if (Input.GetButtonDown("RightDash" + playerNum) && (healthBar.Dash >= 0.5f)) {
+//			dash = true;
+//		}
 
 	}
 	
@@ -109,13 +100,10 @@ public class PlayerControl : MonoBehaviour
 			rigidbody2D.velocity = new Vector2(Mathf.Sign(rigidbody2D.velocity.x) * maxSpeed, rigidbody2D.velocity.y);
 
 		if (allowMovement) {
-			if (leftDash) {
-				rigidbody2D.AddForce(Vector2.right * -1 * moveForce * dashMultiplier);
-				healthBar.Dash -= 0.5f;
-			}
-			
-			else if (rightDash) {
-				rigidbody2D.AddForce(Vector2.right * moveForce * dashMultiplier);
+
+			if (dash) {
+				int dir = facingRight ? 1 : -1;
+				rigidbody2D.AddForce(Vector2.right * dir * moveForce * dashMultiplier);
 				healthBar.Dash -= 0.5f;
 			}
 			
@@ -140,8 +128,7 @@ public class PlayerControl : MonoBehaviour
 			}
 		}
 
-		leftDash = false;
-		rightDash = false;
+		dash = false;
 		jump = false;
 
 	}
