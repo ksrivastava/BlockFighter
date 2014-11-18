@@ -23,9 +23,12 @@ public class PlayerControl : MonoBehaviour
 	private bool onPlayer = false;
 	string jumpButton;
 
+	public HealthBar healthBar;
+
 	void Awake()
 	{
 		// Setting up references.
+		healthBar = GetComponent<HealthBar> ();
 		groundCheck = GameObject.Find(transform.parent.name + "/Body/groundCheck").transform;
 		jumpButton = "joystick " + playerNum + " button 16";
 	}
@@ -73,10 +76,10 @@ public class PlayerControl : MonoBehaviour
 		if(Input.GetButtonDown("Jump" + playerNum) && grounded) {
 			jump = true;
 		}
-		if (Input.GetButtonDown("LeftDash" + playerNum)) {
+		if (Input.GetButtonDown("LeftDash" + playerNum) && healthBar.Dash >= 1) {
 			leftDash = true;
 		}
-		if (Input.GetButtonDown("RightDash" + playerNum)) {
+		else if (Input.GetButtonDown("RightDash" + playerNum) && healthBar.Dash >= 1) {
 			rightDash = true;
 		}
 
@@ -88,11 +91,13 @@ public class PlayerControl : MonoBehaviour
 		if (leftDash) {
 			rigidbody2D.AddForce(Vector2.right * -1 * moveForce * 20);
 			leftDash = false;
+			healthBar.Dash = 0;
 		}
 		
-		if (rightDash) {
+		else if (rightDash) {
 			rigidbody2D.AddForce(Vector2.right * moveForce * 20);
 			rightDash = false;
+			healthBar.Dash = 0;
 		}
 
 		// Cache the horizontal input.
