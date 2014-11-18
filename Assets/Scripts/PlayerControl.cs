@@ -96,7 +96,7 @@ public class PlayerControl : MonoBehaviour
 
 	}
 	
-	float dashMultiplier = 50f;
+	float dashMultiplier = 30f;
 
 	void FixedUpdate ()
 	{

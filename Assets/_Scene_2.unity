@@ -633,7 +633,7 @@ Rigidbody2D:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!23 &243951493
 Renderer:
   m_ObjectHideFlags: 0
@@ -1377,6 +1377,14 @@ Prefab:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 6200000, guid: 3386072ea2f3e47e8836d00d013caf95, type: 2}
+    - target: {fileID: 5000000, guid: 91393ec1629a90d44b532201536787f4, type: 2}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5000000, guid: 91393ec1629a90d44b532201536787f4, type: 2}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 91393ec1629a90d44b532201536787f4, type: 2}
   m_RootGameObject: {fileID: 1622265009}
@@ -2058,7 +2066,7 @@ Rigidbody2D:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!23 &681653723
 Renderer:
   m_ObjectHideFlags: 0
@@ -2433,7 +2441,7 @@ Rigidbody2D:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!23 &689671112
 Renderer:
   m_ObjectHideFlags: 0
@@ -2856,7 +2864,7 @@ Rigidbody2D:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!23 &711086107
 Renderer:
   m_ObjectHideFlags: 0
@@ -3628,6 +3636,10 @@ Prefab:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 6200000, guid: 3386072ea2f3e47e8836d00d013caf95, type: 2}
+    - target: {fileID: 5000000, guid: 91393ec1629a90d44b532201536787f4, type: 2}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 91393ec1629a90d44b532201536787f4, type: 2}
   m_RootGameObject: {fileID: 448656843}
@@ -4601,6 +4613,10 @@ Prefab:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 6200000, guid: 3386072ea2f3e47e8836d00d013caf95, type: 2}
+    - target: {fileID: 5000000, guid: 91393ec1629a90d44b532201536787f4, type: 2}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 91393ec1629a90d44b532201536787f4, type: 2}
   m_RootGameObject: {fileID: 1416009902}
