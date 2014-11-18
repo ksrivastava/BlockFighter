@@ -8,6 +8,9 @@ public class PlayerControl : MonoBehaviour
 	[HideInInspector]
 	public bool jump = false;				// Condition for whether the player should jump.
 
+	bool leftDash = false;	
+	bool rightDash = false;	
+
 	public int playerNum;
 	public bool pickedUpObject = false;
 	
@@ -16,15 +19,20 @@ public class PlayerControl : MonoBehaviour
 	private float jumpForce = 1000f;			// Amount of force added when the player jumps.
 	
 	private Transform groundCheck;			// A position marking where to check if the player is grounded.
-	private bool grounded = false;			// Whether or not the player is grounded.
+	public bool grounded = false;			// Whether or not the player is grounded.
 	private bool onPlayer = false;
-	string fireButton;
+	string jumpButton, leftDashButton, rightDashButton;
+
+	public HealthBar healthBar;
 
 	void Awake()
 	{
 		// Setting up references.
+		healthBar = GetComponent<HealthBar> ();
 		groundCheck = GameObject.Find(transform.parent.name + "/Body/groundCheck").transform;
-		fireButton = "joystick " + playerNum + " button 16";
+		jumpButton = "joystick " + playerNum + " button 16";
+		leftDashButton = "joystick " + playerNum + " button 13";
+		rightDashButton = "joystick " + playerNum + " button 14";
 	}
 	
 	
@@ -56,18 +64,49 @@ public class PlayerControl : MonoBehaviour
 		}
 		grounded = onGroundLeft || onGroundRight || onPlayer;
 
-		//if(Input.GetKeyDown (fireButton) && grounded)
-		//	jump = true;
-			
-		// If the jump button is pressed and the player is grounded then the player should.
+		// XBOX
+
+//		if(Input.GetKeyDown (jumpButton) && grounded)
+//			jump = true;
+//			
+//		if (Input.GetKeyDown(leftDashButton) && (healthBar.Dash >= 0.5f)) {
+//			leftDash = true;
+//		}
+//		else if (Input.GetKeyDown(rightDashButton) && (healthBar.Dash >= 0.5f)) {
+//			rightDash = true;
+//		}
+
+
+		// KEYBOARD
+
+//		 If the jump button is pressed and the player is grounded then the player should.
 		if(Input.GetButtonDown("Jump" + playerNum) && grounded) {
 			jump = true;
 		}
+		if (Input.GetButtonDown("LeftDash" + playerNum) && (healthBar.Dash >= 0.5f)) {
+			leftDash = true;
+		}
+		else if (Input.GetButtonDown("RightDash" + playerNum) && (healthBar.Dash >= 0.5f)) {
+			rightDash = true;
+		}
+
 	}
 	
 	
 	void FixedUpdate ()
 	{
+		if (leftDash) {
+			rigidbody2D.AddForce(Vector2.right * -1 * moveForce * 20);
+			leftDash = false;
+			healthBar.Dash -= 0.5f;
+		}
+		
+		else if (rightDash) {
+			rigidbody2D.AddForce(Vector2.right * moveForce * 20);
+			rightDash = false;
+			healthBar.Dash -= 0.5f;
+		}
+
 		// Cache the horizontal input.
 		float h = Input.GetAxis ("Horizontal" + playerNum);
 		
@@ -93,14 +132,18 @@ public class PlayerControl : MonoBehaviour
 		// If the player should jump...
 		if(jump)
 		{
-			var j = (Physics2D.gravity.y > 0)? -jumpForce : jumpForce;
-
-			// Add a vertical force to the player.
-			rigidbody2D.AddForce(new Vector2(0f, j));
-			
-			// Make sure the player can't jump again until the jump conditions from Update are satisfied.
-			jump = false;
+			Jump();
 		}
+	}
+
+	public void Jump(){
+		var j = (Physics2D.gravity.y > 0)? -jumpForce : jumpForce;
+		
+		// Add a vertical force to the player.
+		rigidbody2D.AddForce(new Vector2(0f, j));
+		
+		// Make sure the player can't jump again until the jump conditions from Update are satisfied.
+		jump = false;
 	}
 	
 	void Flip ()

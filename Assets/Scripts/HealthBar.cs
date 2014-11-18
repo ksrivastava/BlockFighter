@@ -36,13 +36,31 @@ public class HealthBar : MonoBehaviour {
 			// The responsibility of 'dying' is up to the controller of the script
 		}
 	}
-	
+
+	public bool showDashbar = true;
+	public Texture2D dashBarTexture;
+	private float dash;
+	private float MaxDash = 1;
+	public GUIStyle dashBarStyle;
+
+	public float Dash {
+		get {
+			return dash;
+		}
+		
+		set {
+			dash = value;
+		}
+	}
+
 	Vector2 posRatio = new Vector2(0.06f, 0.03f);
-	Vector2 sizeRatio = new Vector2(0.05f, 0.02f);
+	Vector2 sizeRatio = new Vector2(0.05f, 0.008f);
 	string barText = "";
 
 	void Start() {
 		Health = MaxHealth;
+		Dash = MaxDash;
+		dashBarStyle.normal.background = dashBarTexture;
 	}
 	
 	void OnGUI() {
@@ -50,7 +68,7 @@ public class HealthBar : MonoBehaviour {
 		Vector2 size = new Vector2(sizeRatio.x * Screen.width, sizeRatio.y * Screen.height);
 
 		Vector3 t_pos = transform.position;
-		t_pos.y += playerSize.y / 2 + 2f;
+		t_pos.y += playerSize.y / 2 + 2.5f;
 
 		Vector2 pos = Camera.main.WorldToScreenPoint (t_pos);
 
@@ -58,13 +76,34 @@ public class HealthBar : MonoBehaviour {
 		pos.y += size.y / 2;
 
 		//draw the background:
-		GUI.BeginGroup(new Rect(pos.x, Screen.height - pos.y, size.x, size.y));
-		GUI.Box(new Rect(0,0, size.x * barDisplay, size.y), barText, health_full);
 
-		GUI.EndGroup();
+		if (showDashbar) {
+			GUI.BeginGroup(new Rect(pos.x, Screen.height - pos.y, size.x, size.y * 2));
+			GUI.Box(new Rect(0,0, size.x * barDisplay, size.y), barText, health_full);
+			GUI.Box(new Rect(0, size.y + 1f, size.x * Dash, size.y), barText, dashBarStyle);
+			GUI.EndGroup();
+		}
+		else {
+			GUI.BeginGroup(new Rect(pos.x, Screen.height - pos.y, size.x, size.y));
+			GUI.Box(new Rect(0, 0, size.x * barDisplay, size.y), barText, health_full);
+			GUI.EndGroup();
+		}
 	}
-	
-	void Update() {
 
+	float deltaTime;
+	float duration = 0.04f;
+
+	void Update() {
+		if (deltaTime >= duration) {
+			Dash = Mathf.Min (MaxDash, Dash + 0.02f);
+			deltaTime = 0f;
+		}
+		else {
+			deltaTime += Time.deltaTime;
+		}
+	}
+
+	public void AddHealth(float addedhealth) {
+		Health = Mathf.Min (MaxHealth, Health + addedhealth);
 	}
 }

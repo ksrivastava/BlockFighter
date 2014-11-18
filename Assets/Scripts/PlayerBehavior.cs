@@ -8,6 +8,9 @@ public class PlayerBehavior : MonoBehaviour {
 	public HealthBar healthBar;
 	private int playerNum;
 
+
+	public bool active = true;
+
 	// Use this for initialization
 	void Start () {
 		controller = GetComponent<PlayerControl> ();
@@ -32,6 +35,8 @@ public class PlayerBehavior : MonoBehaviour {
 	}
 
 	public void ReduceHealth(int n) {
+	//	print (playerNum + " got hit");
+
 		healthBar.Health -= n;
 		if (healthBar.Health <= 0) {
 			this.Die();
@@ -44,12 +49,18 @@ public class PlayerBehavior : MonoBehaviour {
 			if (hammerController.isHitting && !hammerController.attackComplete) {
 				// TELL THE PLAYER EVENT CHECKER THAT YOU HAVE BEEN HIT
 				PlayerEvents.RecordAttack(transform.parent.gameObject,col.transform.parent.transform.parent.gameObject,10);
-			
+
+				// do push back stuff
+
+
 				col.gameObject.collider2D.enabled = false;
 
 				//if the guy who hit you is a teammate, don't take any damage.
+				this.TakeHitAction(col.transform.parent.parent.GetChild(0).position);
 
-				if( !PlayerEvents.FriendlyFireOn && PlayerEvents.GetPlayerStats(col.transform.parent.transform.parent.gameObject.name).isTeammate(transform.parent.gameObject.name)){
+				//TAKE DAMAGE
+
+				if(!PlayerEvents.FriendlyFireOn && PlayerEvents.GetPlayerStats(col.transform.parent.transform.parent.gameObject.name).isTeammate(transform.parent.gameObject.name)){
 					//print("Hit by a teammate!");
 
 					// do no damage
@@ -58,6 +69,31 @@ public class PlayerBehavior : MonoBehaviour {
 				}
 			}
 		}
+	}
+
+	void TakeHitAction(Vector3 hitterPosition){
+		//this.GetComponent<PlayerControl>().Jump();
+		float knockForce = 300f;
+		float upForce = 300f;
+
+		rigidbody2D.velocity = Vector2.zero;
+
+		//print (hitterPosition.x + "  " + this.transform.position.x);
+		if (hitterPosition.x > this.transform.position.x) {
+			// hitter is on the right
+			rigidbody2D.AddForce(new Vector2(-knockForce,upForce));
+		} else {
+			// hitter is on the left
+			rigidbody2D.AddForce(new Vector2(knockForce,upForce));
+		}
+
+		this.gameObject.GetComponent<PlayerControl> ().enabled = false;
+		Invoke ("EnablePlayerControl", 1f);
+
+	}
+
+	void EnablePlayerControl(){
+		this.gameObject.GetComponent<PlayerControl> ().enabled = true;
 	}
 
 	void Die(){
@@ -73,12 +109,36 @@ public class PlayerBehavior : MonoBehaviour {
 			weapon = GameObject.Find (transform.parent.name+"/Hammer");
 		}
 
-		//TODO: this causes issues with the TeamUp being called when player is inactive
-		this.transform.parent.gameObject.SetActive (false);
-		Invoke ("ReactivatePlayer", 1.0f);
+		MakePlayerInactive ();
+		Invoke ("MakePlayerActive", 1.0f);
 	}
 
-	void ReactivatePlayer(){
-		this.transform.parent.gameObject.SetActive (true);
+
+
+	void MakePlayerInactive(){
+		PlayerActiveSetter (false);
+	}
+
+	void MakePlayerActive(){
+		PlayerActiveSetter (true);
+	}
+
+	
+	void PlayerActiveSetter(bool value){
+		//state variable
+		this.active = value;
+		
+		// scripts
+		this.GetComponent<PlayerControl> ().enabled = value;
+		this.GetComponent<HealthBar> ().enabled = value;
+		
+		// renderers
+		this.renderer.enabled = value;
+		this.GetComponentInChildren<GUIText> ().enabled = value;
+		this.transform.parent.GetComponentInChildren<HammerControl> ().transform.GetChild (0).renderer.enabled = value;
+		this.transform.parent.GetComponentInChildren<HammerControl> ().transform.GetChild (1).renderer.enabled = value;
+		
+		// physics. If it is kinematic then unity physics don't apply, else they do. THATS WHY IT IS SET TO !VALUE. DON'T CHANGE
+		this.gameObject.rigidbody2D.isKinematic = !value;
 	}
 }
