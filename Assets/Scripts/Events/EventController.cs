@@ -63,7 +63,7 @@ public class EventController : MonoBehaviour {
 		}
 		else if (Input.GetKeyDown(KeyCode.Alpha8)) {
 			eventLock = false;
-			QueueEvent (EventType.PointsBounty);
+			QueueEvent (EventType.BombPowerUpEvent);
 		}
 
 		if (CanRunNextEvent ()) {
