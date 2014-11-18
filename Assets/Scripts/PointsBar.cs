@@ -7,8 +7,10 @@ public class PointsBar : MonoBehaviour {
 	public GUIStyle[] styles;
 	public Font myFont;
 	public int myFontSize = 10;
-
-	private float y;
+	
+	private float scoreFontSize = Screen.height / 25;
+	private float playerFontSize = Screen.height / 65;
+	private float yScore, yPlayer, xPlayer;
 	private float length, height;
 
 	private static float[] points;
@@ -41,14 +43,19 @@ public class PointsBar : MonoBehaviour {
 	}
 
 	void OnGUI() {
-		length = 40;
-		height = 40;
+		length = Screen.width / 12f;
+		height = scoreFontSize + 2.5f * playerFontSize;
 
-		y = Screen.height - height - 14;
+		yScore = Screen.height - height;
+		yPlayer = Screen.height - 1.33f * playerFontSize;
+		//xPlayer = Screen.width / 100;
+		xPlayer = 0;
 
+		styles [4].fontSize = (int)scoreFontSize;
 		for (int i = 0; i < 4; ++i) {
-			GUI.Box (new Rect((i + 1) * Screen.width / 5f - length / 2, y, length, height), points[i].ToString(), styles[4]);
-			GUI.Box (new Rect((i + 1) * Screen.width / 5f - length / 2 - 10, y + 25, length + 25, height), "Player " + (i + 1).ToString(), styles[i]);
+			styles[i].fontSize = (int)playerFontSize;
+			GUI.Box (new Rect((i + 0.5f) * Screen.width / 4.5f, yScore, length, scoreFontSize), points[i].ToString(), styles[4]);
+			GUI.Box (new Rect((i + 0.5f) * Screen.width / 4.5f + length / 27f, yPlayer, length, playerFontSize), "Player " + (i + 1).ToString(), styles[i]);
 		}
 	}
 

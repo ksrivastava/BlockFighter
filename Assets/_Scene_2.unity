@@ -495,9 +495,70 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   MaxHealth: 100
-  fullHealth: {fileID: 2800000, guid: 17bdde9257683499e8e6264a8738ccf4, type: 3}
+  fullHealth: {fileID: 2800000, guid: 08b8c9a54033843b5a74cfa77b8bf80e, type: 3}
   halfHealth: {fileID: 2800000, guid: 885935c2b569e4a8485d3997a8cf5c63, type: 3}
   lowHealth: {fileID: 2800000, guid: 1d051c70905cd4cc3b5135f828d7ae29, type: 3}
+  showDashbar: 1
+  dashBarTexture: {fileID: 2800000, guid: 84eaca8679d4d4a7eacf101cc3289851, type: 3}
+  dashBarStyle:
+    m_Name: 
+    m_Normal:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Hover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Active:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Focused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnNormal:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnHover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnActive:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnFocused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Margin:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Padding:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Overflow:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Font: {fileID: 0}
+    m_FontSize: 0
+    m_FontStyle: 0
+    m_Alignment: 0
+    m_WordWrap: 0
+    m_RichText: 1
+    m_TextClipping: 0
+    m_ImagePosition: 0
+    m_ContentOffset: {x: 0, y: 0}
+    m_FixedWidth: 0
+    m_FixedHeight: 0
+    m_StretchWidth: 1
+    m_StretchHeight: 0
 --- !u!114 &243951488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -512,6 +573,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon: {fileID: 0}
   healthBar: {fileID: 0}
+  active: 1
 --- !u!114 &243951489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -528,6 +590,9 @@ MonoBehaviour:
   jump: 0
   playerNum: 1
   pickedUpObject: 0
+  grounded: 0
+  healthBar: {fileID: 0}
+  allowMovement: 1
 --- !u!114 &243951490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -568,7 +633,7 @@ Rigidbody2D:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!23 &243951493
 Renderer:
   m_ObjectHideFlags: 0
@@ -1308,6 +1373,18 @@ Prefab:
       propertyPath: m_Name
       value: PlayerOne
       objectReference: {fileID: 0}
+    - target: {fileID: 6100004, guid: 91393ec1629a90d44b532201536787f4, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 3386072ea2f3e47e8836d00d013caf95, type: 2}
+    - target: {fileID: 5000000, guid: 91393ec1629a90d44b532201536787f4, type: 2}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5000000, guid: 91393ec1629a90d44b532201536787f4, type: 2}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 91393ec1629a90d44b532201536787f4, type: 2}
   m_RootGameObject: {fileID: 1622265009}
@@ -1851,9 +1928,70 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   MaxHealth: 100
-  fullHealth: {fileID: 2800000, guid: 17bdde9257683499e8e6264a8738ccf4, type: 3}
+  fullHealth: {fileID: 2800000, guid: 08b8c9a54033843b5a74cfa77b8bf80e, type: 3}
   halfHealth: {fileID: 2800000, guid: 885935c2b569e4a8485d3997a8cf5c63, type: 3}
   lowHealth: {fileID: 2800000, guid: 1d051c70905cd4cc3b5135f828d7ae29, type: 3}
+  showDashbar: 1
+  dashBarTexture: {fileID: 2800000, guid: 84eaca8679d4d4a7eacf101cc3289851, type: 3}
+  dashBarStyle:
+    m_Name: 
+    m_Normal:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Hover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Active:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Focused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnNormal:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnHover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnActive:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnFocused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Margin:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Padding:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Overflow:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Font: {fileID: 0}
+    m_FontSize: 0
+    m_FontStyle: 0
+    m_Alignment: 0
+    m_WordWrap: 0
+    m_RichText: 1
+    m_TextClipping: 0
+    m_ImagePosition: 0
+    m_ContentOffset: {x: 0, y: 0}
+    m_FixedWidth: 0
+    m_FixedHeight: 0
+    m_StretchWidth: 1
+    m_StretchHeight: 0
 --- !u!114 &681653718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1868,6 +2006,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon: {fileID: 0}
   healthBar: {fileID: 0}
+  active: 1
 --- !u!114 &681653719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1884,6 +2023,9 @@ MonoBehaviour:
   jump: 0
   playerNum: 2
   pickedUpObject: 0
+  grounded: 0
+  healthBar: {fileID: 0}
+  allowMovement: 1
 --- !u!114 &681653720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1924,7 +2066,7 @@ Rigidbody2D:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!23 &681653723
 Renderer:
   m_ObjectHideFlags: 0
@@ -2161,9 +2303,70 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   MaxHealth: 100
-  fullHealth: {fileID: 2800000, guid: 17bdde9257683499e8e6264a8738ccf4, type: 3}
+  fullHealth: {fileID: 2800000, guid: 08b8c9a54033843b5a74cfa77b8bf80e, type: 3}
   halfHealth: {fileID: 2800000, guid: 885935c2b569e4a8485d3997a8cf5c63, type: 3}
   lowHealth: {fileID: 2800000, guid: 1d051c70905cd4cc3b5135f828d7ae29, type: 3}
+  showDashbar: 1
+  dashBarTexture: {fileID: 2800000, guid: 84eaca8679d4d4a7eacf101cc3289851, type: 3}
+  dashBarStyle:
+    m_Name: 
+    m_Normal:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Hover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Active:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Focused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnNormal:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnHover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnActive:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnFocused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Margin:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Padding:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Overflow:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Font: {fileID: 0}
+    m_FontSize: 0
+    m_FontStyle: 0
+    m_Alignment: 0
+    m_WordWrap: 0
+    m_RichText: 1
+    m_TextClipping: 0
+    m_ImagePosition: 0
+    m_ContentOffset: {x: 0, y: 0}
+    m_FixedWidth: 0
+    m_FixedHeight: 0
+    m_StretchWidth: 1
+    m_StretchHeight: 0
 --- !u!114 &689671107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2178,6 +2381,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon: {fileID: 0}
   healthBar: {fileID: 0}
+  active: 1
 --- !u!114 &689671108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2194,6 +2398,9 @@ MonoBehaviour:
   jump: 0
   playerNum: 4
   pickedUpObject: 0
+  grounded: 0
+  healthBar: {fileID: 0}
+  allowMovement: 1
 --- !u!114 &689671109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2234,7 +2441,7 @@ Rigidbody2D:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!23 &689671112
 Renderer:
   m_ObjectHideFlags: 0
@@ -2519,9 +2726,70 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   MaxHealth: 100
-  fullHealth: {fileID: 2800000, guid: 17bdde9257683499e8e6264a8738ccf4, type: 3}
+  fullHealth: {fileID: 2800000, guid: 08b8c9a54033843b5a74cfa77b8bf80e, type: 3}
   halfHealth: {fileID: 2800000, guid: 885935c2b569e4a8485d3997a8cf5c63, type: 3}
   lowHealth: {fileID: 2800000, guid: 1d051c70905cd4cc3b5135f828d7ae29, type: 3}
+  showDashbar: 1
+  dashBarTexture: {fileID: 2800000, guid: 84eaca8679d4d4a7eacf101cc3289851, type: 3}
+  dashBarStyle:
+    m_Name: 
+    m_Normal:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Hover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Active:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Focused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnNormal:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnHover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnActive:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnFocused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Margin:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Padding:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Overflow:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Font: {fileID: 0}
+    m_FontSize: 0
+    m_FontStyle: 0
+    m_Alignment: 0
+    m_WordWrap: 0
+    m_RichText: 1
+    m_TextClipping: 0
+    m_ImagePosition: 0
+    m_ContentOffset: {x: 0, y: 0}
+    m_FixedWidth: 0
+    m_FixedHeight: 0
+    m_StretchWidth: 1
+    m_StretchHeight: 0
 --- !u!114 &711086102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2536,6 +2804,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon: {fileID: 0}
   healthBar: {fileID: 0}
+  active: 1
 --- !u!114 &711086103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2552,6 +2821,9 @@ MonoBehaviour:
   jump: 0
   playerNum: 3
   pickedUpObject: 0
+  grounded: 0
+  healthBar: {fileID: 0}
+  allowMovement: 1
 --- !u!114 &711086104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2592,7 +2864,7 @@ Rigidbody2D:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!23 &711086107
 Renderer:
   m_ObjectHideFlags: 0
@@ -3001,7 +3273,7 @@ BoxCollider2D:
   m_PrefabInternal: {fileID: 1388932521}
   m_GameObject: {fileID: 816189294}
   m_Enabled: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 3386072ea2f3e47e8836d00d013caf95, type: 2}
   m_IsTrigger: 0
   m_Size: {x: 1, y: 1}
   m_Center: {x: 0, y: -4.76837158e-07}
@@ -3360,6 +3632,14 @@ Prefab:
       propertyPath: m_Layer
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 6100004, guid: 91393ec1629a90d44b532201536787f4, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 3386072ea2f3e47e8836d00d013caf95, type: 2}
+    - target: {fileID: 5000000, guid: 91393ec1629a90d44b532201536787f4, type: 2}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 91393ec1629a90d44b532201536787f4, type: 2}
   m_RootGameObject: {fileID: 448656843}
@@ -3694,7 +3974,7 @@ BoxCollider2D:
   m_PrefabInternal: {fileID: 1976599579}
   m_GameObject: {fileID: 1120909552}
   m_Enabled: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 3386072ea2f3e47e8836d00d013caf95, type: 2}
   m_IsTrigger: 0
   m_Size: {x: 1, y: 1}
   m_Center: {x: 0, y: -4.76837158e-07}
@@ -4092,7 +4372,7 @@ BoxCollider2D:
   m_PrefabInternal: {fileID: 1028341217}
   m_GameObject: {fileID: 1310653743}
   m_Enabled: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 3386072ea2f3e47e8836d00d013caf95, type: 2}
   m_IsTrigger: 0
   m_Size: {x: 1, y: 1}
   m_Center: {x: 0, y: -4.76837158e-07}
@@ -4328,6 +4608,14 @@ Prefab:
     - target: {fileID: 100008, guid: 91393ec1629a90d44b532201536787f4, type: 2}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100004, guid: 91393ec1629a90d44b532201536787f4, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 3386072ea2f3e47e8836d00d013caf95, type: 2}
+    - target: {fileID: 5000000, guid: 91393ec1629a90d44b532201536787f4, type: 2}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 91393ec1629a90d44b532201536787f4, type: 2}
@@ -5226,6 +5514,10 @@ Prefab:
       propertyPath: m_Layer
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 6100004, guid: 91393ec1629a90d44b532201536787f4, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 3386072ea2f3e47e8836d00d013caf95, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 91393ec1629a90d44b532201536787f4, type: 2}
   m_RootGameObject: {fileID: 313213216}
@@ -5590,7 +5882,7 @@ BoxCollider2D:
   m_PrefabInternal: {fileID: 560232543}
   m_GameObject: {fileID: 2025984658}
   m_Enabled: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 3386072ea2f3e47e8836d00d013caf95, type: 2}
   m_IsTrigger: 0
   m_Size: {x: 1, y: 1}
   m_Center: {x: 0, y: -4.76837158e-07}
