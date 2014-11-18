@@ -8,6 +8,9 @@ public class PlayerControl : MonoBehaviour
 	[HideInInspector]
 	public bool jump = false;				// Condition for whether the player should jump.
 
+	bool leftDash = false;	
+	bool rightDash = false;	
+
 	public int playerNum;
 	public bool pickedUpObject = false;
 	
@@ -18,13 +21,16 @@ public class PlayerControl : MonoBehaviour
 	private Transform groundCheck;			// A position marking where to check if the player is grounded.
 	public bool grounded = false;			// Whether or not the player is grounded.
 	private bool onPlayer = false;
-	string fireButton;
+	string jumpButton;
+
+	public HealthBar healthBar;
 
 	void Awake()
 	{
 		// Setting up references.
+		healthBar = GetComponent<HealthBar> ();
 		groundCheck = GameObject.Find(transform.parent.name + "/Body/groundCheck").transform;
-		fireButton = "joystick " + playerNum + " button 16";
+		jumpButton = "joystick " + playerNum + " button 16";
 	}
 	
 	
@@ -56,17 +62,44 @@ public class PlayerControl : MonoBehaviour
 		}
 		grounded = onGroundLeft || onGroundRight || onPlayer;
 
-		//if(Input.GetKeyDown (fireButton) && grounded)
-		//	jump = true;
-			
+//		if(Input.GetKeyDown (jumpButton) && grounded)
+//			jump = true;
+//			
+//		if (Input.GetKeyDown(KeyCode.LeftBracket)) {
+//			leftDash = true;
+//		}
+//		if (Input.GetKeyDown(KeyCode.RightBracket)) {
+//			rightDash = true;
+//		}
+
 		// If the jump button is pressed and the player is grounded then the player should.
-		if(Input.GetButtonDown("Jump" + playerNum) && grounded)
+		if(Input.GetButtonDown("Jump" + playerNum) && grounded) {
 			jump = true;
+		}
+		if (Input.GetButtonDown("LeftDash" + playerNum) && healthBar.Dash >= 1) {
+			leftDash = true;
+		}
+		else if (Input.GetButtonDown("RightDash" + playerNum) && healthBar.Dash >= 1) {
+			rightDash = true;
+		}
+
 	}
 	
 	
 	void FixedUpdate ()
 	{
+		if (leftDash) {
+			rigidbody2D.AddForce(Vector2.right * -1 * moveForce * 20);
+			leftDash = false;
+			healthBar.Dash = 0;
+		}
+		
+		else if (rightDash) {
+			rigidbody2D.AddForce(Vector2.right * moveForce * 20);
+			rightDash = false;
+			healthBar.Dash = 0;
+		}
+
 		// Cache the horizontal input.
 		float h = Input.GetAxis ("Horizontal" + playerNum);
 		
@@ -119,5 +152,9 @@ public class PlayerControl : MonoBehaviour
 
 	public int GetPlayerNum() {
 		return playerNum;
+	}
+
+	public bool IsGrounded() {
+		return grounded;
 	}
 }

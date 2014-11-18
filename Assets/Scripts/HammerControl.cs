@@ -3,10 +3,17 @@ using System.Collections;
 
 public class HammerControl : MonoBehaviour {
 
+	public bool isBigHammer;
+
+	private float aoeXRange = 7f;
+	private float aoeYRange = 1f;
+	private float aoeForce = 500f;
+
 	[HideInInspector]
 	public bool isHitting = false;
 	bool isJabbing = false;
-	float speed = 400f;
+	bool doAoe = false;
+	float speed = 300f;
 
 	PlayerControl controller;
 	Transform player;
@@ -19,7 +26,7 @@ public class HammerControl : MonoBehaviour {
 		collider = GameObject.Find (transform.parent.name + "/Hammer/Body").collider2D;
 	}
 
-	float duration = 0.2f;
+	float duration = 0.6f;
 	float deltaTime = 0f;
 	[HideInInspector]
 	public bool attackComplete = false;
@@ -40,7 +47,10 @@ public class HammerControl : MonoBehaviour {
 		pos.x += (player.renderer.bounds.size.x/2 + 0.2f) * direction;
 		pos.z = -1;
 		transform.position = pos;
-		
+
+		if (isBigHammer)
+			UpgradeHammer ();
+
 		if (isHitting) {
 
 			if (attackComplete) {
@@ -58,7 +68,10 @@ public class HammerControl : MonoBehaviour {
 				else {
 					deltaTime += Time.deltaTime;
 				}
-
+				if (doAoe) {
+					AOEDamage ();
+					doAoe = false;
+				}
 			}
 			else {
 				if (isJabbing) {
@@ -66,6 +79,9 @@ public class HammerControl : MonoBehaviour {
 				}
 				else {
 					attackComplete = SwingDown();
+				}
+				if (attackComplete && isBigHammer) {
+					doAoe = true;
 				}
 			}
 		}
@@ -137,5 +153,35 @@ public class HammerControl : MonoBehaviour {
 		}
 		
 		return false;
+	}
+
+	public void AOEDamage() {
+		float hammerX = transform.position.x;
+		GameObject[] pl = GameObject.FindGameObjectsWithTag("Player");
+		for (int i = 0; i < pl.Length; ++i) {
+			float pX = pl[i].transform.position.x;
+			float pY = pl[i].transform.position.y;
+			PlayerControl pC = pl[i].GetComponent<PlayerControl>();
+			if (pC != controller && Mathf.Abs(hammerX - pX) < aoeXRange && Mathf.Abs(pY - player.position.y) < aoeYRange) {
+				if (pC.IsGrounded()) {
+					pC.rigidbody2D.AddForce (new Vector2(0f, aoeForce));
+					pl[i].GetComponent<PlayerBehavior>().ReduceHealth(10);
+				}
+			}
+		}
+	}
+
+	public void UpgradeHammer() {
+		isBigHammer = true;
+
+		GameObject body = GameObject.Find (transform.parent.name + "/Hammer/Body");
+		Vector3 scale = body.transform.localScale;
+		scale.x = 1.5f;
+		scale.y = 1.0f;
+		body.transform.localScale = scale;
+	}
+
+	public void DowngradeHammer() {
+		isBigHammer = false;
 	}
 }

@@ -35,6 +35,8 @@ public class PlayerBehavior : MonoBehaviour {
 	}
 
 	public void ReduceHealth(int n) {
+	//	print (playerNum + " got hit");
+
 		healthBar.Health -= n;
 		if (healthBar.Health <= 0) {
 			this.Die();
@@ -63,8 +65,8 @@ public class PlayerBehavior : MonoBehaviour {
 
 					// do no damage
 				} else {
-					ReduceHealth(10);
-				} 
+						ReduceHealth(10);
+				}
 			}
 		}
 	}

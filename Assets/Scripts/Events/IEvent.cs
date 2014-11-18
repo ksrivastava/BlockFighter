@@ -11,6 +11,7 @@ public enum EventType{
 	PointLights,
 	EnemyEvent,
 	PointsBounty,
+	HealthPowerUpEvent,
 	Idle,
 	NUM_TYPES
 };
