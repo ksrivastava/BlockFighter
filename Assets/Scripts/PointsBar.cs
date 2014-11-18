@@ -13,9 +13,9 @@ public class PointsBar : MonoBehaviour {
 	public Font myFont;
 	public int myFontSize = 10;
 	
-	private float scoreFontSize = Screen.height / 15;
-	private float playerFontSize = Screen.height / 45;
-	private float yScore, yPlayer;
+	private float scoreFontSize = Screen.height / 25;
+	private float playerFontSize = Screen.height / 65;
+	private float yScore, yPlayer, xPlayer;
 	private float length, height;
 
 	private static float[] points;
@@ -49,7 +49,7 @@ public class PointsBar : MonoBehaviour {
 
 	void OnGUI() {
 		length = Screen.width / 12f;
-		height = scoreFontSize + 1.5f * playerFontSize;
+		height = scoreFontSize + 2.5f * playerFontSize;
 
 		yScore = Screen.height - height;
 		yPlayer = Screen.height - 1.33f * playerFontSize;
