@@ -71,32 +71,33 @@ public class PlayerControl : MonoBehaviour
 
 		// XBOX
 
-//		if(Input.GetKeyDown (jumpButton) && grounded)
-//			jump = true;
-//			
-//		if (Input.GetKeyDown(leftDashButton) && (healthBar.Dash >= 0.5f)) {
-//			leftDash = true;
-//		}
-//		else if (Input.GetKeyDown(rightDashButton) && (healthBar.Dash >= 0.5f)) {
-//			rightDash = true;
-//		}
+		if(Input.GetKeyDown (jumpButton) && grounded)
+			jump = true;
+			
+		if (Input.GetKeyDown(leftDashButton) && (healthBar.Dash >= 0.5f)) {
+			leftDash = true;
+		}
+		else if (Input.GetKeyDown(rightDashButton) && (healthBar.Dash >= 0.5f)) {
+			rightDash = true;
+		}
 
 
 		// KEYBOARD
 
-		if(Input.GetButtonDown("Jump" + playerNum) && grounded) {
-			jump = true;
-		}
-		if (Input.GetButtonDown("LeftDash" + playerNum) && (healthBar.Dash >= 0.5f)) {
-			leftDash = true;
-		}
-		else if (Input.GetButtonDown("RightDash" + playerNum) && (healthBar.Dash >= 0.5f)) {
-			rightDash = true;
-		}
+//		if(Input.GetButtonDown("Jump" + playerNum) && grounded) {
+//			jump = true;
+//		}
+//		if (Input.GetButtonDown("LeftDash" + playerNum) && (healthBar.Dash >= 0.5f)) {
+//			leftDash = true;
+//		}
+//		else if (Input.GetButtonDown("RightDash" + playerNum) && (healthBar.Dash >= 0.5f)) {
+//			rightDash = true;
+//		}
 
 	}
 	
-	
+	float dashMultiplier = 50f;
+
 	void FixedUpdate ()
 	{
 		// Cache the horizontal input.
@@ -109,13 +110,13 @@ public class PlayerControl : MonoBehaviour
 
 		if (allowMovement) {
 			if (leftDash) {
-				rigidbody2D.AddForce(Vector2.right * -1 * moveForce * 20);
+				rigidbody2D.AddForce(Vector2.right * -1 * moveForce * dashMultiplier);
 				leftDash = false;
 				healthBar.Dash -= 0.5f;
 			}
 			
 			else if (rightDash) {
-				rigidbody2D.AddForce(Vector2.right * moveForce * 20);
+				rigidbody2D.AddForce(Vector2.right * moveForce * dashMultiplier);
 				rightDash = false;
 				healthBar.Dash -= 0.5f;
 			}

@@ -6,15 +6,15 @@ InputManager:
   m_Axes:
   - serializedVersion: 3
     m_Name: Horizontal1
-    descriptiveName:
-    descriptiveNegativeName:
+    descriptiveName: 
+    descriptiveNegativeName: 
     negativeButton: left
     positiveButton: right
-    altNegativeButton:
-    altPositiveButton:
+    altNegativeButton: 
+    altPositiveButton: 
     gravity: 3000
     dead: .100000001
-    sensitivity: .5
+    sensitivity: .300000012
     snap: 1
     invert: 0
     type: 2
@@ -22,15 +22,15 @@ InputManager:
     joyNum: 1
   - serializedVersion: 3
     m_Name: Horizontal2
-    descriptiveName:
-    descriptiveNegativeName:
+    descriptiveName: 
+    descriptiveNegativeName: 
     negativeButton: a
     positiveButton: d
-    altNegativeButton:
-    altPositiveButton:
+    altNegativeButton: 
+    altPositiveButton: 
     gravity: 3000
     dead: .100000001
-    sensitivity: .5
+    sensitivity: .300000012
     snap: 1
     invert: 0
     type: 2
@@ -38,15 +38,15 @@ InputManager:
     joyNum: 2
   - serializedVersion: 3
     m_Name: Horizontal3
-    descriptiveName:
-    descriptiveNegativeName:
-    negativeButton:
-    positiveButton:
-    altNegativeButton:
-    altPositiveButton:
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
     gravity: 3000
     dead: .100000001
-    sensitivity: .5
+    sensitivity: .300000012
     snap: 1
     invert: 0
     type: 2
@@ -54,15 +54,15 @@ InputManager:
     joyNum: 3
   - serializedVersion: 3
     m_Name: Horizontal4
-    descriptiveName:
-    descriptiveNegativeName:
-    negativeButton:
-    positiveButton:
-    altNegativeButton:
-    altPositiveButton:
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
     gravity: 3000
     dead: .100000001
-    sensitivity: .5
+    sensitivity: .300000012
     snap: 1
     invert: 0
     type: 2
@@ -70,12 +70,12 @@ InputManager:
     joyNum: 4
   - serializedVersion: 3
     m_Name: Fire1
-    descriptiveName:
-    descriptiveNegativeName:
-    negativeButton:
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
     positiveButton: /
-    altNegativeButton:
-    altPositiveButton:
+    altNegativeButton: 
+    altPositiveButton: 
     gravity: 1000
     dead: .00100000005
     sensitivity: 1000
@@ -86,12 +86,12 @@ InputManager:
     joyNum: 1
   - serializedVersion: 3
     m_Name: Fire2
-    descriptiveName:
-    descriptiveNegativeName:
-    negativeButton:
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
     positiveButton: z
-    altNegativeButton:
-    altPositiveButton:
+    altNegativeButton: 
+    altPositiveButton: 
     gravity: 1000
     dead: .00100000005
     sensitivity: 1000
@@ -102,12 +102,12 @@ InputManager:
     joyNum: 2
   - serializedVersion: 3
     m_Name: Fire3
-    descriptiveName:
-    descriptiveNegativeName:
-    negativeButton:
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
     positiveButton: v
-    altNegativeButton:
-    altPositiveButton:
+    altNegativeButton: 
+    altPositiveButton: 
     gravity: 1000
     dead: .00100000005
     sensitivity: 1000
@@ -118,12 +118,12 @@ InputManager:
     joyNum: 3
   - serializedVersion: 3
     m_Name: Fire4
-    descriptiveName:
-    descriptiveNegativeName:
-    negativeButton:
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
     positiveButton: m
-    altNegativeButton:
-    altPositiveButton:
+    altNegativeButton: 
+    altPositiveButton: 
     gravity: 1000
     dead: .00100000005
     sensitivity: 1000
@@ -134,12 +134,12 @@ InputManager:
     joyNum: 4
   - serializedVersion: 3
     m_Name: Jump1
-    descriptiveName:
-    descriptiveNegativeName:
-    negativeButton:
-    positiveButton:
-    altNegativeButton:
-    altPositiveButton:
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
     gravity: 0
     dead: 0
     sensitivity: 1000
@@ -150,12 +150,12 @@ InputManager:
     joyNum: 1
   - serializedVersion: 3
     m_Name: Jump2
-    descriptiveName:
-    descriptiveNegativeName:
-    negativeButton:
-    positiveButton:
-    altNegativeButton:
-    altPositiveButton:
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
     gravity: 0
     dead: 0
     sensitivity: 1000
@@ -166,12 +166,12 @@ InputManager:
     joyNum: 2
   - serializedVersion: 3
     m_Name: Jump3
-    descriptiveName:
-    descriptiveNegativeName:
-    negativeButton:
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
     positiveButton: t
-    altNegativeButton:
-    altPositiveButton:
+    altNegativeButton: 
+    altPositiveButton: 
     gravity: 0
     dead: 0
     sensitivity: 1000
@@ -182,12 +182,12 @@ InputManager:
     joyNum: 3
   - serializedVersion: 3
     m_Name: Jump4
-    descriptiveName:
-    descriptiveNegativeName:
-    negativeButton:
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
     positiveButton: t
-    altNegativeButton:
-    altPositiveButton:
+    altNegativeButton: 
+    altPositiveButton: 
     gravity: 0
     dead: 0
     sensitivity: 1000
@@ -198,12 +198,12 @@ InputManager:
     joyNum: 4
   - serializedVersion: 3
     m_Name: LeftDash1
-    descriptiveName:
-    descriptiveNegativeName:
-    negativeButton:
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
     positiveButton: ','
-    altNegativeButton:
-    altPositiveButton:
+    altNegativeButton: 
+    altPositiveButton: 
     gravity: 1000
     dead: .00100000005
     sensitivity: 1000
@@ -214,12 +214,12 @@ InputManager:
     joyNum: 1
   - serializedVersion: 3
     m_Name: LeftDash2
-    descriptiveName:
-    descriptiveNegativeName:
-    negativeButton:
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
     positiveButton: q
-    altNegativeButton:
-    altPositiveButton:
+    altNegativeButton: 
+    altPositiveButton: 
     gravity: 1000
     dead: .00100000005
     sensitivity: 1000
@@ -230,12 +230,12 @@ InputManager:
     joyNum: 2
   - serializedVersion: 3
     m_Name: LeftDash3
-    descriptiveName:
-    descriptiveNegativeName:
-    negativeButton:
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
     positiveButton: r
-    altNegativeButton:
-    altPositiveButton:
+    altNegativeButton: 
+    altPositiveButton: 
     gravity: 1000
     dead: .00100000005
     sensitivity: 1000
@@ -246,12 +246,12 @@ InputManager:
     joyNum: 3
   - serializedVersion: 3
     m_Name: LeftDash4
-    descriptiveName:
-    descriptiveNegativeName:
-    negativeButton:
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
     positiveButton: u
-    altNegativeButton:
-    altPositiveButton:
+    altNegativeButton: 
+    altPositiveButton: 
     gravity: 1000
     dead: .00100000005
     sensitivity: 1000
@@ -262,12 +262,12 @@ InputManager:
     joyNum: 4
   - serializedVersion: 3
     m_Name: RightDash1
-    descriptiveName:
-    descriptiveNegativeName:
-    negativeButton:
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
     positiveButton: .
-    altNegativeButton:
-    altPositiveButton:
+    altNegativeButton: 
+    altPositiveButton: 
     gravity: 1000
     dead: .00100000005
     sensitivity: 1000
@@ -278,12 +278,12 @@ InputManager:
     joyNum: 1
   - serializedVersion: 3
     m_Name: RightDash2
-    descriptiveName:
-    descriptiveNegativeName:
-    negativeButton:
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
     positiveButton: e
-    altNegativeButton:
-    altPositiveButton:
+    altNegativeButton: 
+    altPositiveButton: 
     gravity: 1000
     dead: .00100000005
     sensitivity: 1000
@@ -294,12 +294,12 @@ InputManager:
     joyNum: 2
   - serializedVersion: 3
     m_Name: RightDash3
-    descriptiveName:
-    descriptiveNegativeName:
-    negativeButton:
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
     positiveButton: y
-    altNegativeButton:
-    altPositiveButton:
+    altNegativeButton: 
+    altPositiveButton: 
     gravity: 1000
     dead: .00100000005
     sensitivity: 1000
@@ -310,12 +310,12 @@ InputManager:
     joyNum: 3
   - serializedVersion: 3
     m_Name: RightDash4
-    descriptiveName:
-    descriptiveNegativeName:
-    negativeButton:
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
     positiveButton: o
-    altNegativeButton:
-    altPositiveButton:
+    altNegativeButton: 
+    altPositiveButton: 
     gravity: 1000
     dead: .00100000005
     sensitivity: 1000

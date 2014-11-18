@@ -592,6 +592,7 @@ MonoBehaviour:
   pickedUpObject: 0
   grounded: 0
   healthBar: {fileID: 0}
+  allowMovement: 1
 --- !u!114 &243951490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1372,6 +1373,10 @@ Prefab:
       propertyPath: m_Name
       value: PlayerOne
       objectReference: {fileID: 0}
+    - target: {fileID: 6100004, guid: 91393ec1629a90d44b532201536787f4, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 3386072ea2f3e47e8836d00d013caf95, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 91393ec1629a90d44b532201536787f4, type: 2}
   m_RootGameObject: {fileID: 1622265009}
@@ -2012,6 +2017,7 @@ MonoBehaviour:
   pickedUpObject: 0
   grounded: 0
   healthBar: {fileID: 0}
+  allowMovement: 1
 --- !u!114 &681653720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2386,6 +2392,7 @@ MonoBehaviour:
   pickedUpObject: 0
   grounded: 0
   healthBar: {fileID: 0}
+  allowMovement: 1
 --- !u!114 &689671109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2808,6 +2815,7 @@ MonoBehaviour:
   pickedUpObject: 0
   grounded: 0
   healthBar: {fileID: 0}
+  allowMovement: 1
 --- !u!114 &711086104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3257,7 +3265,7 @@ BoxCollider2D:
   m_PrefabInternal: {fileID: 1388932521}
   m_GameObject: {fileID: 816189294}
   m_Enabled: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 3386072ea2f3e47e8836d00d013caf95, type: 2}
   m_IsTrigger: 0
   m_Size: {x: 1, y: 1}
   m_Center: {x: 0, y: -4.76837158e-07}
@@ -3616,6 +3624,10 @@ Prefab:
       propertyPath: m_Layer
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 6100004, guid: 91393ec1629a90d44b532201536787f4, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 3386072ea2f3e47e8836d00d013caf95, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 91393ec1629a90d44b532201536787f4, type: 2}
   m_RootGameObject: {fileID: 448656843}
@@ -3950,7 +3962,7 @@ BoxCollider2D:
   m_PrefabInternal: {fileID: 1976599579}
   m_GameObject: {fileID: 1120909552}
   m_Enabled: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 3386072ea2f3e47e8836d00d013caf95, type: 2}
   m_IsTrigger: 0
   m_Size: {x: 1, y: 1}
   m_Center: {x: 0, y: -4.76837158e-07}
@@ -4348,7 +4360,7 @@ BoxCollider2D:
   m_PrefabInternal: {fileID: 1028341217}
   m_GameObject: {fileID: 1310653743}
   m_Enabled: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 3386072ea2f3e47e8836d00d013caf95, type: 2}
   m_IsTrigger: 0
   m_Size: {x: 1, y: 1}
   m_Center: {x: 0, y: -4.76837158e-07}
@@ -4585,6 +4597,10 @@ Prefab:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 6100004, guid: 91393ec1629a90d44b532201536787f4, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 3386072ea2f3e47e8836d00d013caf95, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 91393ec1629a90d44b532201536787f4, type: 2}
   m_RootGameObject: {fileID: 1416009902}
@@ -5482,6 +5498,10 @@ Prefab:
       propertyPath: m_Layer
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 6100004, guid: 91393ec1629a90d44b532201536787f4, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 3386072ea2f3e47e8836d00d013caf95, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 91393ec1629a90d44b532201536787f4, type: 2}
   m_RootGameObject: {fileID: 313213216}
@@ -5846,7 +5866,7 @@ BoxCollider2D:
   m_PrefabInternal: {fileID: 560232543}
   m_GameObject: {fileID: 2025984658}
   m_Enabled: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 3386072ea2f3e47e8836d00d013caf95, type: 2}
   m_IsTrigger: 0
   m_Size: {x: 1, y: 1}
   m_Center: {x: 0, y: -4.76837158e-07}
