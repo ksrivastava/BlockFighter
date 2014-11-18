@@ -3,8 +3,8 @@ using System.Collections;
 
 public class PointsAnimation : MonoBehaviour {
 
-	public float speed = 10f;
-	public float animationTime = .5f;
+	public float speed = 0.01f;
+	public float animationTime = 20f;
 
 	private Color col;
 	private PlayerControl c;
@@ -24,13 +24,11 @@ public class PointsAnimation : MonoBehaviour {
 		if (animationTime > 0) {
 			animationTime -= Time.deltaTime;
 
-			// GET POS OF PLAYER
+			Vector2 pos = c.GetPosition();
+			pos.y += y;
 			y += speed * Time.deltaTime;
-			// ADD Y TO PLAYER Y
 
-			//Vector2 pos = Camera.main.ViewportToWorldPoint(transform.position);
-			//pos.y += speed * Time.deltaTime;
-			//transform.position = Camera.main.WorldToViewportPoint(pos);
+			transform.position = Camera.main.WorldToViewportPoint(pos);
 		}
 		
 		if (animationTime < 0) {

@@ -164,4 +164,8 @@ public class PlayerControl : MonoBehaviour
 	public bool IsGrounded() {
 		return grounded;
 	}
+
+	public Vector2 GetPosition() {
+		return transform.position;
+	}
 }
