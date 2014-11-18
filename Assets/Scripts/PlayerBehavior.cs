@@ -72,7 +72,8 @@ public class PlayerBehavior : MonoBehaviour {
 	}
 
 	void TakeHitAction(Vector3 hitterPosition){
-		//this.GetComponent<PlayerControl>().Jump();
+
+		print ("KnockBack! " + this.transform.parent.name);
 		float knockForce = 300f;
 		float upForce = 300f;
 
@@ -121,6 +122,20 @@ public class PlayerBehavior : MonoBehaviour {
 
 	void MakePlayerActive(){
 		PlayerActiveSetter (true);
+	}
+
+	 void TurnCollidersOff(){
+		ColliderSetter (false);
+	}
+
+	void TurnCollidersOn(){
+		ColliderSetter (true);
+	}
+
+	void ColliderSetter(bool value){
+		foreach (var collider in transform.parent.GetComponentsInChildren<Collider2D>()) {
+			collider.enabled = value;
+		}
 	}
 
 	
