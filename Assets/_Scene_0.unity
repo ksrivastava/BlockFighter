@@ -1097,6 +1097,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdff821646abf4b568636a429a00c611, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isBigHammer: 0
   isHitting: 0
   attackComplete: 0
 --- !u!1 &377003391
@@ -2997,6 +2998,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdff821646abf4b568636a429a00c611, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isBigHammer: 0
   isHitting: 0
   attackComplete: 0
 --- !u!1 &725237615
@@ -3500,6 +3502,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdff821646abf4b568636a429a00c611, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isBigHammer: 0
   isHitting: 0
   attackComplete: 0
 --- !u!1 &1019711415
@@ -5805,6 +5808,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdff821646abf4b568636a429a00c611, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isBigHammer: 0
   isHitting: 0
   attackComplete: 0
 --- !u!1 &2019365131
