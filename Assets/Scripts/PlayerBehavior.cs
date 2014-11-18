@@ -7,8 +7,7 @@ public class PlayerBehavior : MonoBehaviour {
 	PlayerControl controller = null;
 	public HealthBar healthBar;
 	private int playerNum;
-
-
+	
 	public bool active = true;
 
 	// Use this for initialization
@@ -73,7 +72,7 @@ public class PlayerBehavior : MonoBehaviour {
 
 	void TakeHitAction(Vector3 hitterPosition){
 
-		print ("KnockBack! " + this.transform.parent.name);
+//		print ("KnockBack! " + this.transform.parent.name);
 		float knockForce = 300f;
 		float upForce = 300f;
 
