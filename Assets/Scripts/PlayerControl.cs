@@ -23,12 +23,17 @@ public class PlayerControl : MonoBehaviour
 	private bool onPlayer = false;
 	string jumpButton, leftDashButton, rightDashButton;
 
+	PlayerBehavior behavior;
+
 	public HealthBar healthBar;
+	[HideInInspector]
+	public bool allowMovement = true;
 
 	void Awake()
 	{
 		// Setting up references.
 		healthBar = GetComponent<HealthBar> ();
+		behavior = GetComponent<PlayerBehavior> ();
 		groundCheck = GameObject.Find(transform.parent.name + "/Body/groundCheck").transform;
 		jumpButton = "joystick " + playerNum + " button 16";
 		leftDashButton = "joystick " + playerNum + " button 13";
@@ -79,7 +84,6 @@ public class PlayerControl : MonoBehaviour
 
 		// KEYBOARD
 
-//		 If the jump button is pressed and the player is grounded then the player should.
 		if(Input.GetButtonDown("Jump" + playerNum) && grounded) {
 			jump = true;
 		}
@@ -95,45 +99,48 @@ public class PlayerControl : MonoBehaviour
 	
 	void FixedUpdate ()
 	{
-		if (leftDash) {
-			rigidbody2D.AddForce(Vector2.right * -1 * moveForce * 20);
-			leftDash = false;
-			healthBar.Dash -= 0.5f;
-		}
-		
-		else if (rightDash) {
-			rigidbody2D.AddForce(Vector2.right * moveForce * 20);
-			rightDash = false;
-			healthBar.Dash -= 0.5f;
-		}
-
 		// Cache the horizontal input.
 		float h = Input.GetAxis ("Horizontal" + playerNum);
-		
-		// If the player is changing direction (h has a different sign to velocity.x) or hasn't reached maxSpeed yet...
-		if(h * rigidbody2D.velocity.x < maxSpeed)
-			// ... add a force to the player.
-			rigidbody2D.AddForce(Vector2.right * h * moveForce);
-		
+
 		// If the player's horizontal velocity is greater than the maxSpeed...
 		if(Mathf.Abs(rigidbody2D.velocity.x) > maxSpeed)
 			// ... set the player's velocity to the maxSpeed in the x axis.
 			rigidbody2D.velocity = new Vector2(Mathf.Sign(rigidbody2D.velocity.x) * maxSpeed, rigidbody2D.velocity.y);
-		
-		// If the input is moving the player right and the player is facing left...
-		if(h > 0 && !facingRight)
-			// ... flip the player.
-			Flip();
-		// Otherwise if the input is moving the player left and the player is facing right...
-		else if(h < 0 && facingRight)
-			// ... flip the player.
-			Flip();
-		
-		// If the player should jump...
-		if(jump)
-		{
-			Jump();
+
+		if (allowMovement) {
+			if (leftDash) {
+				rigidbody2D.AddForce(Vector2.right * -1 * moveForce * 20);
+				leftDash = false;
+				healthBar.Dash -= 0.5f;
+			}
+			
+			else if (rightDash) {
+				rigidbody2D.AddForce(Vector2.right * moveForce * 20);
+				rightDash = false;
+				healthBar.Dash -= 0.5f;
+			}
+			
+			// If the player is changing direction (h has a different sign to velocity.x) or hasn't reached maxSpeed yet...
+			if(h * rigidbody2D.velocity.x < maxSpeed)
+				// ... add a force to the player.
+				rigidbody2D.AddForce(Vector2.right * h * moveForce);
+			
+			// If the input is moving the player right and the player is facing left...
+			if(h > 0 && !facingRight)
+				// ... flip the player.
+				Flip();
+			// Otherwise if the input is moving the player left and the player is facing right...
+			else if(h < 0 && facingRight)
+				// ... flip the player.
+				Flip();
+			
+			// If the player should jump...
+			if(jump)
+			{
+				Jump();
+			}
 		}
+
 	}
 
 	public void Jump(){

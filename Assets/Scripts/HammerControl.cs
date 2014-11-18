@@ -35,7 +35,7 @@ public class HammerControl : MonoBehaviour {
 	public void Hit(){
 		if (!isHitting) {
 			isHitting = true;
-			controller.enabled = false;
+			controller.allowMovement = false;
 		}
 	}
 
@@ -61,7 +61,7 @@ public class HammerControl : MonoBehaviour {
 						isJabbing = false;
 						attackComplete = false;
 						collider.enabled = true;
-						controller.enabled = true;
+						controller.allowMovement = true;
 						deltaTime = 0f;
 					}
 				}
