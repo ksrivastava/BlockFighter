@@ -3,7 +3,7 @@ using System.Collections;
 
 public class HealthPowerUp : PowerUp {
 
-	public float addedhealth = 30f;
+	float addedhealth = 50f;
 
 	protected override void OnCollisionWithPlayerBody(GameObject player) {
 		HealthBar healthBar = player.GetComponent<HealthBar>();

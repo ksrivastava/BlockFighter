@@ -95,12 +95,7 @@ public class HealthBar : MonoBehaviour {
 
 	void Update() {
 		if (deltaTime >= duration) {
-			if (Dash < 1) {
-				Dash += 0.02f;
-			}
-			else {
-				Dash = 1;
-			}
+			Dash = Mathf.Min (MaxDash, Dash + 0.02f);
 			deltaTime = 0f;
 		}
 		else {

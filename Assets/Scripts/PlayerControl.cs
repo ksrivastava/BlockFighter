@@ -76,10 +76,10 @@ public class PlayerControl : MonoBehaviour
 		if(Input.GetButtonDown("Jump" + playerNum) && grounded) {
 			jump = true;
 		}
-		if (Input.GetButtonDown("LeftDash" + playerNum) && healthBar.Dash >= 1) {
+		if (Input.GetButtonDown("LeftDash" + playerNum) && healthBar.Dash >= 0.5f) {
 			leftDash = true;
 		}
-		else if (Input.GetButtonDown("RightDash" + playerNum) && healthBar.Dash >= 1) {
+		else if (Input.GetButtonDown("RightDash" + playerNum) && healthBar.Dash >= 0.5f) {
 			rightDash = true;
 		}
 
@@ -91,13 +91,13 @@ public class PlayerControl : MonoBehaviour
 		if (leftDash) {
 			rigidbody2D.AddForce(Vector2.right * -1 * moveForce * 20);
 			leftDash = false;
-			healthBar.Dash = 0;
+			healthBar.Dash -= 0.5f;
 		}
 		
 		else if (rightDash) {
 			rigidbody2D.AddForce(Vector2.right * moveForce * 20);
 			rightDash = false;
-			healthBar.Dash = 0;
+			healthBar.Dash -= 0.5f;
 		}
 
 		// Cache the horizontal input.
