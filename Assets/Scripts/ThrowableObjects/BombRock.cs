@@ -7,6 +7,7 @@ public class BombRock : StraightRock {
 	GameObject stickObject;
 	PlayerControl stickPlayerControl;
 	PlayerBehavior stickPlayerBehaviour;
+	string stickPlayerName;
 
 	float countDown = 4;
 
@@ -14,8 +15,8 @@ public class BombRock : StraightRock {
 	{
 		try{
 
-			var playerName = col.transform.parent.name;
-			print(playerName);
+			stickPlayerName = col.transform.parent.name;
+
 
 			stick=true;
 			stickObject = col.transform.gameObject;
@@ -45,23 +46,44 @@ public class BombRock : StraightRock {
 	}
 
 	void Explode(){
-		float xForce = 5000;
-		float upForce = 500;
-		// turn off stickplayercontrol
+		float xForce = 2000;
+		float upForce = 2000;//1000;
+
+
+		stickPlayerControl.allowMovement = false;
+
 		if (stickPlayerControl.facingRight) {
 			stickPlayerControl.rigidbody2D.AddForce (new Vector2 (xForce, upForce));
 		} else {
 			stickPlayerControl.rigidbody2D.AddForce (new Vector2 (-xForce, upForce));
 		}
 
-
-		Invoke ("DoDamage", 0.25f);
+		Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer("Ground"),LayerMask.NameToLayer(GetPlayerLayerName()),true);
+		Invoke ("DoDamage", 1f);
 
 	}
 
 	void DoDamage(){
 		stickPlayerBehaviour.ReduceHealth (80);
 		// turn on stickplayercontrol
+		//Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer("Ground"),LayerMask.NameToLayer(GetPlayerLayerName()),false);
+		stickPlayerControl.allowMovement = true;
 		Destroy (this.gameObject);
+	}
+
+	string GetPlayerLayerName(){
+		string playerLayer = "Player";
+		
+		if (stickPlayerName == "PlayerOne") {
+			playerLayer += "1";
+		} else if (stickPlayerName == "PlayerTwo") {
+			playerLayer += "2";		
+		} else if (stickPlayerName == "PlayerThree") {
+			playerLayer += "3";
+		} else if (stickPlayerName == "PlayerOne") {
+			playerLayer += "4";
+		}
+
+		return playerLayer;
 	}
 }

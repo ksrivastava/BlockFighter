@@ -124,7 +124,7 @@ public class PlayerBehavior : MonoBehaviour {
 		PlayerActiveSetter (true);
 	}
 
-	 void TurnCollidersOff(){
+	public void TurnCollidersOff(){
 		ColliderSetter (false);
 	}
 
