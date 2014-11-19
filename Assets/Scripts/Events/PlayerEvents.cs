@@ -202,6 +202,12 @@ public class PlayerEvents : MonoBehaviour {
 
 	public static void RecordDeath(GameObject dead){
 		var lastHit = GetPlayerStats (dead.name).GetLastHit ();
+
+		// do pointsBounty stuff TODO: is there a cleaner way of doing this?
+		if (EventController.currentEvent == EventType.PointsBounty) {
+			PointsBounty.BountyWinner(GameObject.Find(lastHit.attacker));
+		}
+
 		if (lastHit != null) {
 			PointsBar.AddPoints (GameObject.Find (lastHit.attacker), 50);
 		} else {

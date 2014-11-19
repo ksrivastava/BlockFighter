@@ -3,9 +3,9 @@ using System.Collections;
 
 public class PointsBounty : MonoBehaviour, IEvent {
 	
-	PlayerBehavior bountyPlayerBehaviour;
-	string bountyPlayerName;
-	float bounty;
+	static PlayerBehavior bountyPlayerBehaviour;
+	static string bountyPlayerName;
+	static float bounty;
 
 	// Use this for initialization
 	void Start () {
@@ -33,8 +33,11 @@ public class PointsBounty : MonoBehaviour, IEvent {
 				bounty = maxPoints;
 			}
 		}
+		if (maxPoints == 0 || maxPlayerName == "")
+						return;
 
-		EventController.DisplayMessage("There is a "+maxPoints+" bounty on "+maxPlayerName);
+		bounty = Mathf.Floor (maxPoints / 2);
+		EventController.DisplayMessage("There is a "+bounty+" point bounty on "+maxPlayerName);
 
 		// begin waiting for player death
 		StartCoroutine (ListenForDeath ());
@@ -42,18 +45,23 @@ public class PointsBounty : MonoBehaviour, IEvent {
 	}
 	
 	public void End(){
-		//EventController.EventEnd (EventType.PointsBounty,  EventType.Idle, 1);
-		EventController.DisplayMessage ("Bounty has been gained!");
 	}
 	
 	public void OnDestroy(){
-		End ();
 	}
 
 	public IEnumerator ListenForDeath(){
-		while (bountyPlayerBehaviour.active) {
+		while (bountyPlayerBehaviour != null && bountyPlayerBehaviour.active) {
 			yield return null;
 		}
 		End ();
+	}
+
+	public static void BountyWinner(GameObject winner){
+		if (winner == null)
+						return;
+		PointsBar.AddPoints (winner, bounty);
+		PointsBar.AddPoints (bountyPlayerBehaviour.transform.parent.gameObject, -bounty);
+		EventController.DisplayMessage(winner.name+" has taken "+bounty+" points from "+bountyPlayerName);
 	}
 }

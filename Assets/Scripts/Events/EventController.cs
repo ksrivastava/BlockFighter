@@ -65,13 +65,17 @@ public class EventController : MonoBehaviour {
 			eventLock = false;
 			QueueEvent (EventType.BombPowerUpEvent);
 		}
+		else if (Input.GetKeyDown(KeyCode.Alpha9)) {
+			eventLock = false;
+			QueueEvent (EventType.PointsBounty);
+		}
 
 		if (CanRunNextEvent ()) {
 			StartCoroutine(NextEvent());
 		}
 	}
 	
-	static EventType currentEvent;
+	public static EventType currentEvent;
 
 	public static List<EventHelper> eventQueue = new List<EventHelper>();
 
