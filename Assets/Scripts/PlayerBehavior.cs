@@ -55,7 +55,7 @@ public class PlayerBehavior : MonoBehaviour {
 				col.gameObject.collider2D.enabled = false;
 
 				//if the guy who hit you is a teammate, don't take any damage.
-				this.TakeHitAction(col.transform.parent.parent.GetChild(0).position);
+				this.KnockBack(col.transform.parent.parent.GetChild(0).position);
 
 				//TAKE DAMAGE
 
@@ -70,7 +70,7 @@ public class PlayerBehavior : MonoBehaviour {
 		}
 	}
 
-	void TakeHitAction(Vector3 hitterPosition){
+	public void KnockBack(Vector3 hitterPosition){
 
 //		print ("KnockBack! " + this.transform.parent.name);
 		float knockForce = 300f;

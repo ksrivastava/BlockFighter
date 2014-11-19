@@ -9,7 +9,7 @@ public class ThrowableObject : MonoBehaviour {
 	protected State state;
 
 	public GameObject hammer = null;
-	PlayerControl controller;
+	protected PlayerControl controller;
 	PlayerBehavior behaviour;
 
 	protected float throwForce = 1000f;
@@ -97,7 +97,7 @@ public class ThrowableObject : MonoBehaviour {
 		}
 	}
 
-	public void Throw(){
+	public virtual void Throw(){
 		this.transform.parent = null;
 		Vector2 rightOrLeft = (controller.facingRight) ? Vector2.right*xMult : Vector2.right*-1*xMult;
 

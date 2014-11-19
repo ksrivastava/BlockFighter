@@ -9,8 +9,13 @@ public class BombRock : StraightRock {
 	PlayerBehavior stickPlayerBehaviour;
 	string stickPlayerName;
 
+	GameObject thrower;
+
+
 	int damage = 80;
+	int AOEDamage = 10;
 	float countDown = 4;
+	float blastRadius = 30;
 
 	public override void Damage (Collider2D col)
 	{
@@ -47,7 +52,7 @@ public class BombRock : StraightRock {
 	}
 
 	void Explode(){
-		float xForce = 5000;
+		float xForce = 2000;
 		float upForce = 2000;
 
 
@@ -64,16 +69,33 @@ public class BombRock : StraightRock {
 		}
 
 
+		
+		var hitColliders = Physics2D.OverlapCircleAll(transform.position, blastRadius);
+
+		foreach (var collider in hitColliders) {
+			if(collider.gameObject.tag == "Player" && !LayerMask.LayerToName(collider.gameObject.layer).Equals(GetPlayerLayerName())){
+				collider.gameObject.GetComponent<PlayerBehavior>().ReduceHealth(AOEDamage);
+				PlayerEvents.RecordAttack(collider.gameObject.transform.parent.gameObject,stickPlayerControl.transform.parent.gameObject,AOEDamage);
+				collider.gameObject.GetComponent<PlayerBehavior>().KnockBack(this.transform.position);
+
+			}
+		}
+
 		Invoke ("DoDamage", 0.25f);
 
 	}
 
+	public override void Throw(){
+		thrower = controller.transform.parent.gameObject;
+		base.Throw ();
+	}
+
 	void DoDamage(){
 
-
+		PlayerEvents.RecordAttack (stickPlayerControl.transform.parent.gameObject,thrower,damage);
+		PlayerEvents.RecordAttack (stickPlayerControl.transform.parent.gameObject,thrower,damage);
 		stickPlayerBehaviour.ReduceHealth (damage);
 
-		//Collider[] hitColliders = Physics.OverlapSphere(center, radius);
 
 		stickPlayerControl.allowMovement = true;
 		Destroy (this.gameObject);
@@ -91,7 +113,6 @@ public class BombRock : StraightRock {
 		} else if (stickPlayerName == "PlayerFour") {
 			playerLayer += "4";
 		}
-		print (playerLayer + " playerLayer");
 		return playerLayer;
 	}
 }

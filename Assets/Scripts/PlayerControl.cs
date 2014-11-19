@@ -76,26 +76,29 @@ public class PlayerControl : MonoBehaviour
 		}
 		grounded = onGroundLeft || onGroundRight || onPlayer;
 
-		// XBOX
-		if(Input.GetKeyDown (jumpButton) && grounded)
-			jump = true;
-			
-		if (Input.GetKeyDown(leftDashButton) && (healthBar.Dash >= 0.5f)) {
-			leftDash = true;
-		}
-		else if (Input.GetKeyDown(rightDashButton) && (healthBar.Dash >= 0.5f)) {
-			rightDash = true;
-		}
-
+//		// XBOX
+//		if(Input.GetKeyDown (jumpButton) && grounded)
+//			jump = true;
+//			
+//		if (Input.GetKeyDown(leftDashButton) && (healthBar.Dash >= 0.5f)) {
+//			leftDash = true;
+//		}
+//		else if (Input.GetKeyDown(rightDashButton) && (healthBar.Dash >= 0.5f)) {
+//			rightDash = true;
+//		}
+//
 
 		// KEYBOARD
 
-//		if(Input.GetButtonDown("Jump" + playerNum) && grounded) {
-//			jump = true;
-//		}
-//		if (Input.GetButtonDown("RightDash" + playerNum) && (healthBar.Dash >= 0.5f)) {
-//			dash = true;
-//		}
+		if(Input.GetButtonDown("Jump" + playerNum) && grounded) {
+			jump = true;
+		}
+		if (Input.GetButtonDown("LeftDash" + playerNum) && (healthBar.Dash >= 0.5f)) {
+			leftDash = true;
+		}
+		else if (Input.GetButtonDown("RightDash" + playerNum) && (healthBar.Dash >= 0.5f)) {
+			rightDash = true;
+		}
 
 
 		// turn on collisions between ground and self if velocity is ever < zero.
