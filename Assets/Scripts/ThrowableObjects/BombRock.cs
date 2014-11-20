@@ -48,6 +48,8 @@ public class BombRock : StraightRock {
 			}
 			Invoke ("Explode",countDown);
 
+
+
 		} catch(UnityException ex){
 			print ("Player doesn't exist");
 		}

@@ -96,6 +96,8 @@ public class PointsBar : MonoBehaviour {
 	
 	public static void DisplayNumber(GameObject g, float p, DisplayType type) {
 		GameObject points = Instantiate(Resources.Load("Points")) as GameObject;
+
+		points.transform.position = g.transform.position;
 		if (type == DisplayType.Health) {
 			if(p > 0) {
 				points.guiText.text = "+" + p.ToString ();
@@ -117,6 +119,7 @@ public class PointsBar : MonoBehaviour {
 				points.GetComponent<PointsAnimation> ().SetColor (Color.white);
 				points.GetComponent<PointsAnimation> ().SetAnimationTime(.25f);
 		}
+
 		points.GetComponent<PointsAnimation> ().SetGameObject(g);
 	}
 }
