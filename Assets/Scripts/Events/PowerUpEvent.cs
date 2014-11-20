@@ -12,6 +12,7 @@ public class PowerUpEvent : MonoBehaviour, IEvent {
 		pos = powerUp.transform.position;
 		pos.x += Random.Range (-30, 30);
 		powerUp.transform.position = pos;
+		Destroy (this.gameObject);
 	}
 	
 	public void Begin(){
