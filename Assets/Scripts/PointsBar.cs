@@ -103,21 +103,23 @@ public class PointsBar : MonoBehaviour {
 				points.guiText.text = "+" + p.ToString ();
 				points.GetComponent<PointsAnimation> ().SetColor (Color.green);
 			} else {
-				points.guiText.text = "-" + p.ToString ();
+				points.guiText.text = p.ToString ();
 				points.GetComponent<PointsAnimation> ().SetColor (Color.red);
+				points.GetComponent<PointsAnimation> ().SetScale(0.3f);
 			}
 		} else if (type == DisplayType.Point) {
 			if(p > 0) {
 				points.guiText.text = "+" + p.ToString () + "P";
 				points.GetComponent<PointsAnimation> ().SetColor (Color.yellow);
 			} else {
-				points.guiText.text = "-" + p.ToString () + "P";
+				points.guiText.text = p.ToString () + "P";
 				points.GetComponent<PointsAnimation> ().SetColor (Color.magenta);
 			}
 		} else if (type == DisplayType.Bomb) {
-				points.guiText.text = "+" + p.ToString () + "s";
-				points.GetComponent<PointsAnimation> ().SetColor (Color.white);
+				points.guiText.text = p.ToString ();
+				points.GetComponent<PointsAnimation> ().SetColor (Color.red);
 				points.GetComponent<PointsAnimation> ().SetAnimationTime(.25f);
+				points.GetComponent<PointsAnimation> ().SetScale(0.3f);
 		}
 
 		points.GetComponent<PointsAnimation> ().SetGameObject(g);

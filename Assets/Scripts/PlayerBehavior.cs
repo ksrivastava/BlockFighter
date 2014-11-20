@@ -43,6 +43,7 @@ public class PlayerBehavior : MonoBehaviour {
 	public void ReduceHealth(int n) {
 	//	print (playerNum + " got hit");
 
+		PointsBar.DisplayNumber(this.gameObject, -n, DisplayType.Health);
 		healthBar.Health -= n;
 		if (healthBar.Health <= 0) {
 			this.Die();
@@ -144,7 +145,6 @@ public class PlayerBehavior : MonoBehaviour {
 		}
 	}
 
-	
 	void PlayerActiveSetter(bool value){
 		//state variable
 		this.active = value;

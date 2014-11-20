@@ -58,4 +58,13 @@ public class PointsAnimation : MonoBehaviour {
 	public void SetAnimationSpeed(float s) {
 		speed = s;
 	}
+
+	public void SetScale(float s) {
+		Vector3 scale = this.transform.localScale;
+		scale.x *= s;
+		scale.y *= s;
+		scale.z *= s;
+
+		this.transform.localScale = scale;
+	}
 }
