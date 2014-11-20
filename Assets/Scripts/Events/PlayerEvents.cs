@@ -197,7 +197,10 @@ public class PlayerEvents : MonoBehaviour {
 	// attacks are hits on players by other players
 	public static void RecordAttack(GameObject attackee, GameObject attacker, float damage){
 		ModifyStat (attackee.name, AddHit, Time.time, attacker, damage);
-		PointsBar.AddPoints (attacker, 5);
+
+		if(attackee.name != attacker.name){
+			PointsBar.AddPoints (attacker, 5);
+		}
 	}
 
 	public static void RecordDeath(GameObject dead){
@@ -208,7 +211,7 @@ public class PlayerEvents : MonoBehaviour {
 			PointsBounty.BountyWinner(GameObject.Find(lastHit.attacker));
 		}
 
-		if (lastHit != null) {
+		if (lastHit != null && lastHit.attacker != dead.name) {
 			PointsBar.AddPoints (GameObject.Find (lastHit.attacker), 50);
 		} else {
 			Debug.Log("no last hit!");
