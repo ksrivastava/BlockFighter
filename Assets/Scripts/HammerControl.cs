@@ -13,7 +13,7 @@ public class HammerControl : MonoBehaviour {
 	public bool isHitting = false;
 	bool isJabbing = false;
 	bool doAoe = false;
-	float speed = 600f;
+	float speed = 700f;
 
 	PlayerControl controller;
 	Transform player;
@@ -26,7 +26,7 @@ public class HammerControl : MonoBehaviour {
 		collider = GameObject.Find (transform.parent.name + "/Hammer/Body").collider2D;
 	}
 
-	float duration = 0.2f;
+	float duration = 0.1f;
 	float deltaTime = 0f;
 	[HideInInspector]
 	public bool attackComplete = false;

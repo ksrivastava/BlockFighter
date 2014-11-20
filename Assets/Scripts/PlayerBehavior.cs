@@ -10,6 +10,7 @@ public class PlayerBehavior : MonoBehaviour {
 	
 	public bool active = true;
 
+	// Use this for initialization
 	void Start () {
 		controller = GetComponent<PlayerControl> ();
 		healthBar = GetComponent<HealthBar> ();
@@ -18,8 +19,10 @@ public class PlayerBehavior : MonoBehaviour {
 		controller.pickedUpObject = false;
 	}
 
+	bool isPressedDown = false;
+	// Update is called once per frame
 	void Update () {
-		if(Input.GetAxis("Fire" + playerNum) > 0){
+		if(Input.GetAxis("Fire" + playerNum) > 0.2f && !isPressedDown){
 			if(controller.pickedUpObject){
 				ThrowableObject t = weapon.GetComponent<ThrowableObject>();
 				t.Throw();
@@ -28,6 +31,12 @@ public class PlayerBehavior : MonoBehaviour {
 				HammerControl h = weapon.GetComponent<HammerControl>();
 				h.Hit();
 			}
+
+			isPressedDown = true;
+		}
+
+		else if (Input.GetAxis("Fire" + playerNum) < 0.2f) {
+			isPressedDown = false;
 		}
 	}
 
@@ -111,6 +120,8 @@ public class PlayerBehavior : MonoBehaviour {
 		Invoke ("MakePlayerActive", 1.0f);
 	}
 
+
+
 	void MakePlayerInactive(){
 		PlayerActiveSetter (false);
 	}
@@ -133,6 +144,7 @@ public class PlayerBehavior : MonoBehaviour {
 		}
 	}
 
+	
 	void PlayerActiveSetter(bool value){
 		//state variable
 		this.active = value;
