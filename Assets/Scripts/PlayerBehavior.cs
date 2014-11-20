@@ -73,8 +73,8 @@ public class PlayerBehavior : MonoBehaviour {
 	public void KnockBack(Vector3 hitterPosition){
 
 //		print ("KnockBack! " + this.transform.parent.name);
-		float knockForce = 300f;
-		float upForce = 300f;
+		float knockForce = 500f;
+		float upForce = 500f;
 
 		rigidbody2D.velocity = Vector2.zero;
 

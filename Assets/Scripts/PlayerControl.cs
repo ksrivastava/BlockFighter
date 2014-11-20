@@ -167,6 +167,14 @@ public class PlayerControl : MonoBehaviour
 		rigidbody2D.AddForce(new Vector2(0f, j));
 
 	}
+
+	public void TogglePointLight(){
+		if (EventController.currentEvent != EventType.PointLights)
+						return;
+
+		var light = GetComponentInChildren<Light> ();
+		light.enabled = !light.enabled;
+	}
 	
 	void Flip ()
 	{

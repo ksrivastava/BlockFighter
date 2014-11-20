@@ -15,7 +15,7 @@ public class BombRock : StraightRock {
 	int damage = 80;
 	int AOEDamage = 10;
 	float countDown = 4;
-	float blastRadius = 30;
+	float blastRadius = 20;
 
 	public override void Damage (Collider2D col)
 	{
@@ -78,6 +78,10 @@ public class BombRock : StraightRock {
 				PlayerEvents.RecordAttack(collider.gameObject.transform.parent.gameObject,stickPlayerControl.transform.parent.gameObject,AOEDamage);
 				collider.gameObject.GetComponent<PlayerBehavior>().KnockBack(this.transform.position);
 
+			} else if(collider.gameObject.name.Contains("Rock")){
+				collider.gameObject.GetComponent<ThrowableObject>().KnockBack(this.transform.position);
+			} else if(collider.gameObject.name.Contains("PowerUp")){
+				collider.gameObject.GetComponent<PowerUp>().KnockBack(this.transform.position);
 			}
 		}
 
