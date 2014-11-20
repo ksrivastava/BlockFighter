@@ -19,9 +19,10 @@ public class PlayerBehavior : MonoBehaviour {
 		controller.pickedUpObject = false;
 	}
 
+	bool isPressedDown = false;
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetAxis("Fire" + playerNum) > 0){
+		if(Input.GetAxis("Fire" + playerNum) > 0.2f && !isPressedDown){
 			if(controller.pickedUpObject){
 				ThrowableObject t = weapon.GetComponent<ThrowableObject>();
 				t.Throw();
@@ -30,6 +31,12 @@ public class PlayerBehavior : MonoBehaviour {
 				HammerControl h = weapon.GetComponent<HammerControl>();
 				h.Hit();
 			}
+
+			isPressedDown = true;
+		}
+
+		else if (Input.GetAxis("Fire" + playerNum) < 0.2f) {
+			isPressedDown = false;
 		}
 	}
 
