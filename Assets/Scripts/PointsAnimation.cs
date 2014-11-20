@@ -3,28 +3,30 @@ using System.Collections;
 
 public class PointsAnimation : MonoBehaviour {
 
-	public float speed = 0.01f;
-	public float animationTime = 20f;
+	public float speed = 10f;
+	public float animationTime = 0.5f;
 
 	private Color col;
-	private PlayerControl c;
+	private GameObject g;
 	private float y;
+	private bool start = false;
 
-	// Use this for initialization
-	void Start () {
-	}
-	
 	// Update is called once per frame
 	void Update () {
-		Animate ();
-		guiText.color = col;
+		if(start) {
+			if (!g.renderer.enabled) {
+				animationTime = 0f;
+			}
+			Animate ();
+			guiText.color = col;
+		}
 	}
 	
 	void Animate() {
 		if (animationTime > 0) {
 			animationTime -= Time.deltaTime;
 
-			Vector2 pos = c.GetPosition();
+			Vector2 pos = g.transform.position;
 			pos.y += y;
 			y += speed * Time.deltaTime;
 
@@ -34,7 +36,7 @@ public class PointsAnimation : MonoBehaviour {
 		if (animationTime < 0) {
 			animationTime = 0;
 		}
-		
+
 		if (animationTime == 0) {
 			Destroy(this.gameObject);
 		}
@@ -44,7 +46,16 @@ public class PointsAnimation : MonoBehaviour {
 		col = color;
 	}
 
-	public void SetPlayer(PlayerControl player) {
-		c = player;
+	public void SetGameObject(GameObject game) {
+		start = true;
+		g = game;
+	}
+
+	public void SetAnimationTime(float t) {
+		animationTime = t;
+	}
+
+	public void SetAnimationSpeed(float s) {
+		speed = s;
 	}
 }

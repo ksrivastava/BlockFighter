@@ -10,7 +10,6 @@ public class PlayerBehavior : MonoBehaviour {
 	
 	public bool active = true;
 
-	// Use this for initialization
 	void Start () {
 		controller = GetComponent<PlayerControl> ();
 		healthBar = GetComponent<HealthBar> ();
@@ -19,7 +18,6 @@ public class PlayerBehavior : MonoBehaviour {
 		controller.pickedUpObject = false;
 	}
 
-	// Update is called once per frame
 	void Update () {
 		if(Input.GetAxis("Fire" + playerNum) > 0){
 			if(controller.pickedUpObject){
@@ -113,8 +111,6 @@ public class PlayerBehavior : MonoBehaviour {
 		Invoke ("MakePlayerActive", 1.0f);
 	}
 
-
-
 	void MakePlayerInactive(){
 		PlayerActiveSetter (false);
 	}
@@ -137,7 +133,6 @@ public class PlayerBehavior : MonoBehaviour {
 		}
 	}
 
-	
 	void PlayerActiveSetter(bool value){
 		//state variable
 		this.active = value;

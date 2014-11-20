@@ -4,7 +4,8 @@ using System.Collections.Generic;
 
 public enum DisplayType {
 	Point,
-	Health
+	Health,
+	Bomb
 }
 
 public class PointsBar : MonoBehaviour {
@@ -67,29 +68,7 @@ public class PointsBar : MonoBehaviour {
 		if (c = obj.GetComponentInChildren<PlayerControl>()) {
 			points[c.GetPlayerNum() - 1] += p;
 			total += p;
-			DisplayNumber(c, p, DisplayType.Point);
-		}
-	}
-
-	public static void DisplayNumber(PlayerControl c, float p, DisplayType type) {
-		GameObject points = Instantiate(Resources.Load("Points")) as GameObject;
-		points.GetComponent<PointsAnimation> ().SetPlayer (c);
-		if (type == DisplayType.Health) {
-			if(p > 0) {
-				points.guiText.text = "+" + p.ToString ();
-				points.GetComponent<PointsAnimation> ().SetColor (Color.green);
-			} else {
-				points.guiText.text = "-" + p.ToString ();
-				points.GetComponent<PointsAnimation> ().SetColor (Color.red);
-			}
-		} else if (type == DisplayType.Point) {
-			if(p > 0) {
-				points.guiText.text = "+" + p.ToString () + "P";
-				points.GetComponent<PointsAnimation> ().SetColor (Color.yellow);
-			} else {
-				points.guiText.text = "-" + p.ToString () + "P";
-				points.GetComponent<PointsAnimation> ().SetColor (Color.magenta);
-			}
+			DisplayNumber(obj.transform.GetChild(0).gameObject, p, DisplayType.Point);
 		}
 	}
 
@@ -113,5 +92,31 @@ public class PointsBar : MonoBehaviour {
 		result.SetPixels( pix );
 		result.Apply();
 		return result;
+	}
+	
+	public static void DisplayNumber(GameObject g, float p, DisplayType type) {
+		GameObject points = Instantiate(Resources.Load("Points")) as GameObject;
+		if (type == DisplayType.Health) {
+			if(p > 0) {
+				points.guiText.text = "+" + p.ToString ();
+				points.GetComponent<PointsAnimation> ().SetColor (Color.green);
+			} else {
+				points.guiText.text = "-" + p.ToString ();
+				points.GetComponent<PointsAnimation> ().SetColor (Color.red);
+			}
+		} else if (type == DisplayType.Point) {
+			if(p > 0) {
+				points.guiText.text = "+" + p.ToString () + "P";
+				points.GetComponent<PointsAnimation> ().SetColor (Color.yellow);
+			} else {
+				points.guiText.text = "-" + p.ToString () + "P";
+				points.GetComponent<PointsAnimation> ().SetColor (Color.magenta);
+			}
+		} else if (type == DisplayType.Bomb) {
+				points.guiText.text = "+" + p.ToString () + "s";
+				points.GetComponent<PointsAnimation> ().SetColor (Color.white);
+				points.GetComponent<PointsAnimation> ().SetAnimationTime(.25f);
+		}
+		points.GetComponent<PointsAnimation> ().SetGameObject(g);
 	}
 }

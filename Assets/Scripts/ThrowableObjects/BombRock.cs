@@ -11,23 +11,36 @@ public class BombRock : StraightRock {
 
 	GameObject thrower;
 
-
 	int damage = 80;
 	int AOEDamage = 10;
 	float countDown = 4;
 	float blastRadius = 20;
 
+	float countDownTimer;
+	float secondTimer = 0f;
+
+	public override void Update(){
+		if (stick) {
+			if(stickPlayerControl.facingRight){
+				transform.position = stickObject.transform.position + new Vector3(-1,0,0);
+			} else {
+				transform.position = stickObject.transform.position + new Vector3(1,0,0);
+			}
+			Countdown ();
+		}
+		base.Update ();
+	}
+
 	public override void Damage (Collider2D col)
 	{
 		try{
-
 			stickPlayerName = col.transform.parent.name;
-
 
 			stick=true;
 			stickObject = col.transform.gameObject;
 			stickPlayerControl = stickObject.GetComponent<PlayerControl>();
 			stickPlayerBehaviour =  stickObject.GetComponent<PlayerBehavior>();
+			countDownTimer = countDown;
 
 			this.rigidbody2D.isKinematic = true;
 			foreach (var collider in GetComponents<Collider2D>()){
@@ -40,21 +53,9 @@ public class BombRock : StraightRock {
 		}
 	}
 
-	public override void Update(){
-		if (stick) {
-			if(stickPlayerControl.facingRight){
-				transform.position = stickObject.transform.position + new Vector3(-1,0,0);
-			} else {
-				transform.position = stickObject.transform.position + new Vector3(1,0,0);
-			}
-		}
-		base.Update ();
-	}
-
 	void Explode(){
 		float xForce = 2000;
 		float upForce = 2000;
-
 
 		stickPlayerControl.allowMovement = false;
 
@@ -67,8 +68,6 @@ public class BombRock : StraightRock {
 		if (stickPlayerBehaviour.healthBar.Health - damage > 0) {
 			Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer("Ground"),LayerMask.NameToLayer(GetPlayerLayerName()),true);	
 		}
-
-
 		
 		var hitColliders = Physics2D.OverlapCircleAll(transform.position, blastRadius);
 
@@ -86,7 +85,6 @@ public class BombRock : StraightRock {
 		}
 
 		Invoke ("DoDamage", 0.25f);
-
 	}
 
 	public override void Throw(){
@@ -95,11 +93,9 @@ public class BombRock : StraightRock {
 	}
 
 	void DoDamage(){
-
 		PlayerEvents.RecordAttack (stickPlayerControl.transform.parent.gameObject,thrower,damage);
 		PlayerEvents.RecordAttack (stickPlayerControl.transform.parent.gameObject,thrower,damage);
 		stickPlayerBehaviour.ReduceHealth (damage);
-
 
 		stickPlayerControl.allowMovement = true;
 		Destroy (this.gameObject);
@@ -118,5 +114,21 @@ public class BombRock : StraightRock {
 			playerLayer += "4";
 		}
 		return playerLayer;
+	}
+
+	void Countdown() {
+		if (secondTimer > 0) {
+			secondTimer -= Time.deltaTime;
+		}
+		
+		if (secondTimer < 0) {
+			secondTimer = 0;
+		}
+		
+		if (secondTimer == 0 && countDownTimer >= 1) {
+			PointsBar.DisplayNumber(this.gameObject, countDownTimer, DisplayType.Bomb);
+			countDownTimer--;
+			secondTimer = 1;
+		}
 	}
 }
