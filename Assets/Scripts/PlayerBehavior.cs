@@ -105,6 +105,18 @@ public class PlayerBehavior : MonoBehaviour {
 	}
 
 	void Die(){
+
+		
+		// detach all bombs and leeches
+		foreach (var bomb in GetComponentsInChildren<BombRock>()) {
+			Destroy(bomb.gameObject);
+		}
+		
+		foreach (var leech in GetComponentsInChildren<LeechRock>()) {
+			Destroy(leech.gameObject);
+		}	
+
+
 		PlayerEvents.RecordDeath(this.transform.parent.gameObject);
 		var respawnPoint = GameObject.Find ("RespawnPoint");
 		transform.position = respawnPoint.transform.position;

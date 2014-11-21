@@ -54,9 +54,11 @@ public class LeechRock : BombRock {
 				PlayerEvents.RecordAttack(stickPlayerBehaviour.transform.parent.gameObject,thrower,5);
 				stickPlayerBehaviour.ReduceHealth(5);
 				Detach();
+				return;
 			}
 
 			stickPlayerBehaviour.ReduceHealth(5);
+
 
 			countDownTimer--;
 			secondTimer = 2;

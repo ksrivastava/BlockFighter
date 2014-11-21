@@ -8,7 +8,7 @@ public class PointsBounty : MonoBehaviour, IEvent {
 	static float bounty;
 
 	static bool collected = false;
-	float bountyExpireTime = 60;
+	float bountyExpireTime = 30;
 	// Use this for initialization
 	void Start () {
 	
@@ -47,14 +47,21 @@ public class PointsBounty : MonoBehaviour, IEvent {
 			return;
 		}
 
-		EventController.DisplayMessage("There is a "+bounty+" point bounty on "+maxPlayerName);
+		EventController.DisplayMessage ("There is a " + bounty + " point bounty on " + maxPlayerName);
+
 
 		// begin waiting for player death
 		StartCoroutine (ListenForDeath ());
+		Invoke ("CollectWarning", 2);
 		Invoke ("AwardToPlayer", bountyExpireTime);
+	}
+
+	public void CollectWarning(){
+		EventController.DisplayMessage("Collect it within "+bountyExpireTime+" seconds or they will get away with it!");
 	}
 	
 	public void End(){
+		//print ("End!");
 		Destroy (this.gameObject);
 	}
 	
@@ -76,11 +83,11 @@ public class PointsBounty : MonoBehaviour, IEvent {
 	}
 
 	public static void BountyWinner(GameObject winner){
+		//print ("Winner is " + winner.name);
 		if (winner == null || collected)
 						return;
 		PointsBar.AddPoints (winner, bounty);
-		PointsBar.AddPoints (bountyPlayerBehaviour.transform.parent.gameObject, -bounty);
-		EventController.DisplayMessage(winner.name+" has taken "+bounty+" points from "+bountyPlayerName);
+		EventController.DisplayMessage(winner.name+" has taken the bounty! "+bounty+" points");
 		collected = true;
 	}
 }

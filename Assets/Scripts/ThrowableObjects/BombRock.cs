@@ -49,6 +49,7 @@ public class BombRock : StraightRock {
 			stickPlayerBehaviour =  stickObject.GetComponent<PlayerBehavior>();
 			countDownTimer = countDown;
 
+			this.transform.parent = col.transform;
 			this.rigidbody2D.isKinematic = true;
 			foreach (var collider in GetComponents<Collider2D>()){
 				collider.enabled = false;
@@ -80,8 +81,8 @@ public class BombRock : StraightRock {
 
 		foreach (var collider in hitColliders) {
 			if(collider.gameObject.tag == "Player" && !LayerMask.LayerToName(collider.gameObject.layer).Equals(GetPlayerLayerName())){
-				collider.gameObject.GetComponent<PlayerBehavior>().ReduceHealth(AOEDamage);
 				PlayerEvents.RecordAttack(collider.gameObject.transform.parent.gameObject,stickPlayerControl.transform.parent.gameObject,AOEDamage);
+				collider.gameObject.GetComponent<PlayerBehavior>().ReduceHealth(AOEDamage);
 				collider.gameObject.GetComponent<PlayerBehavior>().KnockBack(this.transform.position);
 
 			} else if(collider.gameObject.name.Contains("Rock")){
