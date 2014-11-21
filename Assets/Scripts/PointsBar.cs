@@ -81,6 +81,10 @@ public class PointsBar : MonoBehaviour {
 		return -1;
 	}
 
+	public static float[] GetAllPoints() {
+		return points;
+	}
+
 	private Texture2D MakeTexture(int width, int height, Color col) {
 		col.a = 1;
 		Color[] pix = new Color[width * height];
