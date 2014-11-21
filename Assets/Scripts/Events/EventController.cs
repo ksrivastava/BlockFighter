@@ -68,6 +68,9 @@ public class EventController : MonoBehaviour {
 		else if (Input.GetKeyDown(KeyCode.Alpha9)) {
 			eventLock = false;
 			QueueEvent (EventType.PointsBounty);
+		}else if (Input.GetKeyDown(KeyCode.Alpha0)) {
+			eventLock = false;
+			QueueEvent (EventType.LeechPowerUpEvent);
 		}
 
 		if (CanRunNextEvent ()) {

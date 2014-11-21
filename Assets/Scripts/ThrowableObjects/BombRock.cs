@@ -3,21 +3,21 @@ using System.Collections;
 
 public class BombRock : StraightRock {
 
-	bool stick = false;
-	GameObject stickObject;
-	PlayerControl stickPlayerControl;
-	PlayerBehavior stickPlayerBehaviour;
-	string stickPlayerName;
+	protected bool stick = false;
+	protected GameObject stickObject;
+	protected PlayerControl stickPlayerControl;
+	protected PlayerBehavior stickPlayerBehaviour;
+	protected string stickPlayerName;
 
 	GameObject thrower;
 
 	int damage = 80;
 	int AOEDamage = 10;
-	float countDown = 4;
+	protected float countDown = 4;
 	float blastRadius = 20;
 
-	float countDownTimer;
-	float secondTimer = 0f;
+	protected float countDownTimer;
+	protected float secondTimer = 0f;
 
 	public override void Update(){
 		if (stick) {
@@ -116,7 +116,7 @@ public class BombRock : StraightRock {
 		return playerLayer;
 	}
 
-	void Countdown() {
+	public virtual void Countdown() {
 		if (secondTimer > 0) {
 			secondTimer -= Time.deltaTime;
 		}
