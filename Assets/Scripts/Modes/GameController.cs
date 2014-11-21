@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-	public GameMode mode;
+	public static GameMode mode;
 
 	private GameObject controller;
 	private bool started = false;
@@ -11,8 +11,9 @@ public class GameController : MonoBehaviour
 	void Start()
 	{
 		controller = GameObject.Find ("GameController");
+		StartGameMode ();
 		//StartGameMode (new TimeLimitMode (30000));
-		StartGameMode (new PointsMode (100));
+		//StartGameMode (new PointsMode (100));
 	}
 
 	void Update()
@@ -32,9 +33,8 @@ public class GameController : MonoBehaviour
 	{
 	}
 
-	public bool StartGameMode(GameMode m)
+	public bool StartGameMode()
 	{
-		mode = m;
 		mode.Start ();
 		started = true;
 		return started;

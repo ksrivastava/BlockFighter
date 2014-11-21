@@ -12,6 +12,8 @@ public class PointsMode : GameMode
 
 	public override bool Start()
 	{
+		GameObject.Find ("GameController").GetComponent<Message> ()
+			.DisplayMessage ("Deathmatch Start!");
 		return true;
 	}
 

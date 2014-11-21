@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 public class LivesMode : GameMode
 {
@@ -8,6 +9,8 @@ public class LivesMode : GameMode
 
 	public override bool Start()
 	{
+		GameObject.Find ("GameController").GetComponent<Message> ()
+			.DisplayMessage ("Elimination Start!");
 		return false;
 	}
 

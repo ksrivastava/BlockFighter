@@ -22,6 +22,8 @@ public class TimeLimitMode : GameMode
 
 	public override bool Start()
 	{
+		GameObject.Find ("GameController").GetComponent<Message> ()
+			.DisplayMessage ("Time Trial Start!");
 		timer.Enabled = true;
 		return true;
 	}
