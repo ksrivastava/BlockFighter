@@ -12,7 +12,7 @@ public class LeechRock : BombRock {
 		try{
 			stickPlayerName = col.transform.parent.name;
 
-			if(col.GetComponentInChildren<LeechRock>() != null){
+			if(col.GetComponentInChildren<LeechRock>() != null || col.GetComponentInChildren<BombRock>() != null){
 				return;
 			}
 
@@ -49,7 +49,15 @@ public class LeechRock : BombRock {
 		
 		if (secondTimer == 0 && countDownTimer >= 1) {
 			//PointsBar.DisplayNumber(this.gameObject, countDownTimer, DisplayType.Bomb);
+
+			if(stickPlayerBehaviour.healthBar.Health <= 5 ){
+				PlayerEvents.RecordAttack(stickPlayerBehaviour.transform.parent.gameObject,thrower,5);
+				stickPlayerBehaviour.ReduceHealth(5);
+				Detach();
+			}
+
 			stickPlayerBehaviour.ReduceHealth(5);
+
 			countDownTimer--;
 			secondTimer = 2;
 		}

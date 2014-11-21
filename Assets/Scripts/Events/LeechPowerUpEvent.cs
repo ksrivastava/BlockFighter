@@ -4,6 +4,7 @@ using System.Collections;
 public class LeechPowerUpEvent : PowerUpEvent {
 
 	protected void Start() {
+		EventController.DisplayMessage ("Leech!");
 		path = "ThrowableObjects/LeechRock";
 		eventType = EventType.BombPowerUpEvent;
 		base.Start ();

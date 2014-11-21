@@ -9,7 +9,7 @@ public class BombRock : StraightRock {
 	protected PlayerBehavior stickPlayerBehaviour;
 	protected string stickPlayerName;
 
-	GameObject thrower;
+	protected GameObject thrower;
 
 	int damage = 80;
 	int AOEDamage = 10;
@@ -34,7 +34,14 @@ public class BombRock : StraightRock {
 	public override void Damage (Collider2D col)
 	{
 		try{
+
+		
+
 			stickPlayerName = col.transform.parent.name;
+
+			if(col.GetComponentInChildren<LeechRock>() != null || col.GetComponentInChildren<BombRock>() != null){
+				return;
+			}
 
 			stick=true;
 			stickObject = col.transform.gameObject;
