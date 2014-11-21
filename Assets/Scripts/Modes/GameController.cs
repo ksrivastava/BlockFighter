@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class GameController : MonoBehaviour
@@ -12,8 +13,6 @@ public class GameController : MonoBehaviour
 	{
 		controller = GameObject.Find ("GameController");
 		StartGameMode ();
-		//StartGameMode (new TimeLimitMode (30000));
-		//StartGameMode (new PointsMode (100));
 	}
 
 	void Update()
@@ -24,6 +23,7 @@ public class GameController : MonoBehaviour
 			{
 				Pause();
 				controller.GetComponent<Message>().DisplayMessage("Game Over!");
+				StartCoroutine(LoadGameOverScreen());
 				started = false;
 			}
 		}
@@ -38,5 +38,12 @@ public class GameController : MonoBehaviour
 		mode.Start ();
 		started = true;
 		return started;
+	}
+
+	private IEnumerator LoadGameOverScreen()
+	{
+		yield return new WaitForSeconds (2.0f);
+		MenuController.menu = MenuController.Menu.GameOver;
+		Application.LoadLevel (0);
 	}
 }
