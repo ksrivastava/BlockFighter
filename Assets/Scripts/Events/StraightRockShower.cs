@@ -7,11 +7,24 @@ public class StraightRockShower : MonoBehaviour, IEvent {
 	public string path = "ThrowableObjects/StraightRock";
 	// Use this for initialization
 	public IEnumerator Start () {
+
+		int x = Random.Range (0, 2);
+		if (x == 0) {
+			this.GetComponent<TopLeftEntryMovement>().enabled = true;
+		} else {
+			this.GetComponent<TopRightEntryMovement>().enabled = true;
+		}
+
+
+
 		for(int i=0; i< numRocks; i++){
 			yield return new WaitForSeconds(0.5f);
 			CreateRock();
 		}
+
+
 		Destroy (this.gameObject);
+
 	}
 
 	void CreateRock(){

@@ -3,21 +3,21 @@ using System.Collections;
 
 public class BombRock : StraightRock {
 
-	bool stick = false;
-	GameObject stickObject;
-	PlayerControl stickPlayerControl;
-	PlayerBehavior stickPlayerBehaviour;
-	string stickPlayerName;
+	protected bool stick = false;
+	protected GameObject stickObject;
+	protected PlayerControl stickPlayerControl;
+	protected PlayerBehavior stickPlayerBehaviour;
+	protected string stickPlayerName;
 
-	GameObject thrower;
+	protected GameObject thrower;
 
 	int damage = 80;
 	int AOEDamage = 10;
-	float countDown = 4;
+	protected float countDown = 4;
 	float blastRadius = 20;
 
-	float countDownTimer;
-	float secondTimer = 0f;
+	protected float countDownTimer;
+	protected float secondTimer = 0f;
 
 	public override void Update(){
 		if (stick) {
@@ -34,7 +34,14 @@ public class BombRock : StraightRock {
 	public override void Damage (Collider2D col)
 	{
 		try{
+
+		
+
 			stickPlayerName = col.transform.parent.name;
+
+			if(col.GetComponentInChildren<LeechRock>() != null || col.GetComponentInChildren<BombRock>() != null){
+				return;
+			}
 
 			stick=true;
 			stickObject = col.transform.gameObject;
@@ -42,6 +49,7 @@ public class BombRock : StraightRock {
 			stickPlayerBehaviour =  stickObject.GetComponent<PlayerBehavior>();
 			countDownTimer = countDown;
 
+			this.transform.parent = col.transform;
 			this.rigidbody2D.isKinematic = true;
 			foreach (var collider in GetComponents<Collider2D>()){
 				collider.enabled = false;
@@ -73,8 +81,8 @@ public class BombRock : StraightRock {
 
 		foreach (var collider in hitColliders) {
 			if(collider.gameObject.tag == "Player" && !LayerMask.LayerToName(collider.gameObject.layer).Equals(GetPlayerLayerName())){
-				collider.gameObject.GetComponent<PlayerBehavior>().ReduceHealth(AOEDamage);
 				PlayerEvents.RecordAttack(collider.gameObject.transform.parent.gameObject,stickPlayerControl.transform.parent.gameObject,AOEDamage);
+				collider.gameObject.GetComponent<PlayerBehavior>().ReduceHealth(AOEDamage);
 				collider.gameObject.GetComponent<PlayerBehavior>().KnockBack(this.transform.position);
 
 			} else if(collider.gameObject.name.Contains("Rock")){
@@ -116,7 +124,7 @@ public class BombRock : StraightRock {
 		return playerLayer;
 	}
 
-	void Countdown() {
+	public virtual void Countdown() {
 		if (secondTimer > 0) {
 			secondTimer -= Time.deltaTime;
 		}

@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BombPowerUpEvent : PowerUpEvent {
+public class LeechPowerUpEvent : PowerUpEvent {
 
 	protected void Start() {
-		EventController.DisplayMessage ("Bomb!");
-		path = "ThrowableObjects/BombRock";
+		EventController.DisplayMessage ("Leech!");
+		path = "ThrowableObjects/LeechRock";
 		eventType = EventType.BombPowerUpEvent;
 		base.Start ();
 	}

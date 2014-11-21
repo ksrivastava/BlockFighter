@@ -7,6 +7,8 @@ public class PointsBounty : MonoBehaviour, IEvent {
 	static string bountyPlayerName;
 	static float bounty;
 
+	static bool collected = false;
+	float bountyExpireTime = 30;
 	// Use this for initialization
 	void Start () {
 	
@@ -14,6 +16,10 @@ public class PointsBounty : MonoBehaviour, IEvent {
 	
 	// Update is called once per frame
 	void Update () {
+
+		if (collected) {
+			End ();
+		}
 	}
 
 	public void Begin(){
@@ -33,18 +39,30 @@ public class PointsBounty : MonoBehaviour, IEvent {
 				bounty = maxPoints;
 			}
 		}
-		if (maxPoints == 0 || maxPlayerName == "")
-						return;
 
 		bounty = Mathf.Floor (maxPoints / 2);
-		EventController.DisplayMessage("There is a "+bounty+" point bounty on "+maxPlayerName);
+
+		if (maxPoints == 0 || maxPlayerName == "" || bounty == 0) {
+			End ();
+			return;
+		}
+
+		EventController.DisplayMessage ("There is a " + bounty + " point bounty on " + maxPlayerName);
+
 
 		// begin waiting for player death
 		StartCoroutine (ListenForDeath ());
+		Invoke ("CollectWarning", 2);
+		Invoke ("AwardToPlayer", bountyExpireTime);
+	}
 
+	public void CollectWarning(){
+		EventController.DisplayMessage("Collect it within "+bountyExpireTime+" seconds or they will get away with it!");
 	}
 	
 	public void End(){
+		//print ("End!");
+		Destroy (this.gameObject);
 	}
 	
 	public void OnDestroy(){
@@ -57,11 +75,19 @@ public class PointsBounty : MonoBehaviour, IEvent {
 		End ();
 	}
 
+	public void AwardToPlayer(){
+		PointsBar.AddPoints (bountyPlayerBehaviour.transform.parent.gameObject, bounty);
+		EventController.DisplayMessage (bountyPlayerName + " got away with the bounty!");
+		collected = true;
+
+	}
+
 	public static void BountyWinner(GameObject winner){
-		if (winner == null)
+		//print ("Winner is " + winner.name);
+		if (winner == null || collected)
 						return;
 		PointsBar.AddPoints (winner, bounty);
-		PointsBar.AddPoints (bountyPlayerBehaviour.transform.parent.gameObject, -bounty);
-		EventController.DisplayMessage(winner.name+" has taken "+bounty+" points from "+bountyPlayerName);
+		EventController.DisplayMessage(winner.name+" has taken the bounty! "+bounty+" points");
+		collected = true;
 	}
 }

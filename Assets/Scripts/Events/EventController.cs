@@ -6,6 +6,9 @@ public class EventController : MonoBehaviour {
 
 	private static GameObject eventRunner;
 
+	private static float bombTimer=10;
+	private static float leechTimer=10;
+	private static float healthTimer=10;
 
 	// Use this for initialization
 	void Start () {
@@ -16,6 +19,10 @@ public class EventController : MonoBehaviour {
 
 		//TODO: DELETE THIS LINE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		InvokeRepeating ("TestFormTeam",0, 31);
+
+		if (Application.loadedLevelName == "_Level_1") {
+
+		}
 
 	}
 
@@ -28,10 +35,19 @@ public class EventController : MonoBehaviour {
 //		zz.Add ("PlayerFour");
 //		PlayerEvents.TeamUpPlayers (zz);
 	}
+
+	void FixedUpdate(){
+		
+		CheckEnoughBombs ();
+		CheckEnoughLeeches ();
+		CheckEnoughHealthPacks ();
+
+	}
 	
 
 	// Update is called once per frame
 	void Update () {
+
 		if (Input.GetKeyDown(KeyCode.Alpha1)) {
 			eventLock = false;
 			QueueEvent (EventType.StraightRockShower);
@@ -68,10 +84,34 @@ public class EventController : MonoBehaviour {
 		else if (Input.GetKeyDown(KeyCode.Alpha9)) {
 			eventLock = false;
 			QueueEvent (EventType.PointsBounty);
+		}else if (Input.GetKeyDown(KeyCode.Alpha0)) {
+			eventLock = false;
+			QueueEvent (EventType.LeechPowerUpEvent);
 		}
 
 		if (CanRunNextEvent ()) {
 			StartCoroutine(NextEvent());
+		}
+	}
+
+	public void CheckEnoughBombs(){
+		if (Random.Range(0.0f,1.0f) < 0.001) {
+			eventLock = false;
+			QueueEvent(EventType.BombPowerUpEvent,0);
+		}
+	}
+
+	public void CheckEnoughHealthPacks(){
+		if (Random.Range(0.0f,1.0f) < 0.001) {
+			eventLock = false;
+			QueueEvent(EventType.HealthPowerUpEvent,0);
+		}
+	}
+
+	public void CheckEnoughLeeches(){
+		if (Random.Range(0.0f,1.0f) < 0.001) {
+			eventLock = false;
+			QueueEvent(EventType.LeechPowerUpEvent,0);
 		}
 	}
 	
