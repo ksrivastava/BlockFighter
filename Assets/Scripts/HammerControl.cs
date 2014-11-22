@@ -9,6 +9,8 @@ public class HammerControl : MonoBehaviour {
 	private float aoeYRange = 1f;
 	private float aoeForce = 500f;
 
+	private Vector3 origScale;
+
 	[HideInInspector]
 	public bool isHitting = false;
 	bool isJabbing = false;
@@ -24,6 +26,8 @@ public class HammerControl : MonoBehaviour {
 		controller = GameObject.Find (transform.parent.name + "/Body").GetComponent<PlayerControl> ();
 		player = GameObject.Find (transform.parent.name + "/Body").transform;
 		collider = GameObject.Find (transform.parent.name + "/Hammer/Body").collider2D;
+
+		origScale = GameObject.Find (transform.parent.name + "/Hammer/Body").transform.localScale;
 	}
 
 	float duration = 0.1f;
@@ -48,8 +52,15 @@ public class HammerControl : MonoBehaviour {
 		pos.z = -1;
 		transform.position = pos;
 
-		if (isBigHammer)
-			UpgradeHammer ();
+		GameObject body = GameObject.Find (transform.parent.name + "/Hammer/Body");
+		if (isBigHammer) {
+			Vector3 scale = body.transform.localScale;
+			scale.x = 1.5f;
+			scale.y = 1.0f;
+			body.transform.localScale = scale;
+		} else {
+			body.transform.localScale = origScale;
+		}
 
 		if (isHitting) {
 
@@ -171,17 +182,13 @@ public class HammerControl : MonoBehaviour {
 		}
 	}
 
-	public void UpgradeHammer() {
+	public void UpgradeHammerTime(float time) {
 		isBigHammer = true;
-
-		GameObject body = GameObject.Find (transform.parent.name + "/Hammer/Body");
-		Vector3 scale = body.transform.localScale;
-		scale.x = 1.5f;
-		scale.y = 1.0f;
-		body.transform.localScale = scale;
+		StartCoroutine (StopPowerUpAfterTime (time));
 	}
 
-	public void DowngradeHammer() {
+	private IEnumerator StopPowerUpAfterTime(float time) {
+		yield return new WaitForSeconds (time);
 		isBigHammer = false;
 	}
 }
