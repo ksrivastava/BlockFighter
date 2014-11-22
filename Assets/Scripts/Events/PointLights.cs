@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -72,7 +72,7 @@ public class PointLights : MonoBehaviour ,IEvent{
 	}
 
 	private void CleanUp(){
-		EventController.EventEnd (EventType.PointLights, EventType.Idle, 1);
+		EventController.EventEnd (RunnableEventType.PointLights, RunnableEventType.Idle, 1);
 		foreach (var light in lights) {
 			Destroy(light);
 		}

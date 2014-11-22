@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class LittleRockShower : StraightRockShower {
@@ -10,6 +10,6 @@ public class LittleRockShower : StraightRockShower {
 	}
 
 	public override void End(){
-		EventController.EventEnd (EventType.LittleRockShower, EventType.Idle, 10);
+		EventController.EventEnd (RunnableEventType.LittleRockShower, RunnableEventType.Idle, 10);
 	}
 }

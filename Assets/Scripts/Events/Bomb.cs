@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class Bomb : MonoBehaviour, IEvent {
@@ -52,7 +52,7 @@ public class Bomb : MonoBehaviour, IEvent {
 
 	//TODO: Implement end logic. How do you decide what event to call next??
 	public void End(){
-		EventController.EventEnd (EventType.Bomb, EventType.Idle, 1);
+		EventController.EventEnd (RunnableEventType.Bomb, RunnableEventType.Idle, 1);
 	}
 
 	public void OnDestroy(){

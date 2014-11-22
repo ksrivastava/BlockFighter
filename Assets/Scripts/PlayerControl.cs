@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using InControl;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -105,6 +106,23 @@ public class PlayerControl : MonoBehaviour
 		if (rigidbody2D.velocity.y < 0) {
 			Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer("Ground"),this.gameObject.layer, false);
 		}
+
+		
+		
+		var inputDevice = (InputManager.Devices.Count > playerNum-1) ? InputManager.Devices[playerNum-1] : null;
+		if (inputDevice == null)
+			return;
+		if (inputDevice.LeftBumper.WasPressed && (healthBar.Dash >= 0.5f)) {
+			leftDash = true;
+		}
+		
+		if (inputDevice.RightBumper.WasPressed && (healthBar.Dash >= 0.5f)) {
+			rightDash = true;
+		}
+		
+		if (inputDevice.Action1.WasPressed && grounded) {
+			jump = true;
+		}
 	}
 	
 	float dashMultiplier = 30f;
@@ -113,6 +131,17 @@ public class PlayerControl : MonoBehaviour
 	{
 		// Cache the horizontal input.
 		float h = Input.GetAxis ("Horizontal" + playerNum);
+		
+		
+		var inputDevice = (InputManager.Devices.Count > playerNum-1) ? InputManager.Devices[playerNum-1] : null;
+		if (inputDevice != null) {
+			if(inputDevice.Direction.Left.IsPressed){
+				h=-1;
+			} else if(inputDevice.Direction.Right.IsPressed){
+				h=+1;
+			}
+
+		}
 
 		// If the player's horizontal velocity is greater than the maxSpeed...
 		if(Mathf.Abs(rigidbody2D.velocity.x) > maxSpeed)
@@ -169,7 +198,7 @@ public class PlayerControl : MonoBehaviour
 	}
 
 	public void TogglePointLight(){
-		if (EventController.currentEvent != EventType.PointLights)
+		if (EventController.currentEvent != RunnableEventType.PointLights)
 						return;
 
 		var light = GetComponentInChildren<Light> ();

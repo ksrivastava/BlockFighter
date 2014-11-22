@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class EnemyEvent : MonoBehaviour, IEvent {
@@ -32,7 +32,7 @@ public class EnemyEvent : MonoBehaviour, IEvent {
 	}
 
 	public void End() {
-		EventController.EventEnd (EventType.EnemyEvent, EventType.Idle, 3);
+		EventController.EventEnd (RunnableEventType.EnemyEvent, RunnableEventType.Idle, 3);
 	}
 
 	public void OnDestroy() {

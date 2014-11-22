@@ -1,10 +1,10 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class PowerUpEvent : MonoBehaviour, IEvent {
 	
 	protected string path = null;
-	protected EventType eventType = EventType.Idle;
+	protected RunnableEventType eventType = RunnableEventType.Idle;
 
 	protected virtual void Start () {
 		var powerUp = Object.Instantiate (Resources.Load (path)) as GameObject;
@@ -19,7 +19,7 @@ public class PowerUpEvent : MonoBehaviour, IEvent {
 	}
 	
 	public void End(){
-		EventController.EventEnd (eventType,  EventType.Idle, 1);
+		EventController.EventEnd (eventType,  RunnableEventType.Idle, 1);
 	}
 	
 	public void OnDestroy(){

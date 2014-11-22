@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using InControl;
 
 public class PlayerBehavior : MonoBehaviour {
 	
@@ -22,7 +23,14 @@ public class PlayerBehavior : MonoBehaviour {
 	bool isPressedDown = false;
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetAxis("Fire" + playerNum) > 0.2f && !isPressedDown){
+		var inputDevice = (InputManager.Devices.Count > playerNum-1) ? InputManager.Devices[playerNum-1] : null;
+		if( (Input.GetAxis("Fire" + playerNum) > 0.2f && !isPressedDown) || 
+		   (inputDevice != null && inputDevice.RightTrigger.WasPressed)){
+
+			if(inputDevice != null){
+				inputDevice.Vibrate(500);
+			}
+
 			if(controller.pickedUpObject){
 				ThrowableObject t = weapon.GetComponent<ThrowableObject>();
 				t.Throw();

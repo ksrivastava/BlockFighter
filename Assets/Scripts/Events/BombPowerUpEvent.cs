@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class BombPowerUpEvent : PowerUpEvent {
@@ -6,7 +6,7 @@ public class BombPowerUpEvent : PowerUpEvent {
 	protected void Start() {
 		EventController.DisplayMessage ("Bomb!");
 		path = "ThrowableObjects/BombRock";
-		eventType = EventType.BombPowerUpEvent;
+		eventType = RunnableEventType.BombPowerUpEvent;
 		base.Start ();
 	}
 }
