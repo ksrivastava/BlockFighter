@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class StraightRockShower : MonoBehaviour, IEvent {
@@ -39,7 +39,7 @@ public class StraightRockShower : MonoBehaviour, IEvent {
 	}
 
 	public virtual void End(){
-		EventController.EventEnd (EventType.StraightRockShower, EventType.Idle, 3);
+		EventController.EventEnd (RunnableEventType.StraightRockShower, RunnableEventType.Idle, 3);
 	}
 
 	public void OnDestroy(){

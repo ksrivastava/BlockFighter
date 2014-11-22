@@ -2,7 +2,7 @@
 using System.Collections;
 
 
-public enum EventType{
+public enum RunnableEventType{
 	Bomb,
 	Blimp,
 	StraightRockShower,

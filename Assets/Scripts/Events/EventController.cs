@@ -10,6 +10,8 @@ public class EventController : MonoBehaviour {
 	private static float leechTimer=10;
 	private static float healthTimer=10;
 
+	private static float chance = 0.05f;
+
 	// Use this for initialization
 	void Start () {
 
@@ -23,6 +25,10 @@ public class EventController : MonoBehaviour {
 		if (Application.loadedLevelName == "_Level_1") {
 
 		}
+
+		InvokeRepeating("CheckEnoughBombs",0,1);
+		InvokeRepeating("CheckEnoughHealthPacks",0,1);
+		InvokeRepeating("CheckEnoughLeeches",0,1);
 
 	}
 
@@ -38,9 +44,6 @@ public class EventController : MonoBehaviour {
 
 	void FixedUpdate(){
 		
-		CheckEnoughBombs ();
-		CheckEnoughLeeches ();
-		CheckEnoughHealthPacks ();
 
 	}
 	
@@ -50,43 +53,43 @@ public class EventController : MonoBehaviour {
 
 		if (Input.GetKeyDown(KeyCode.Alpha1)) {
 			eventLock = false;
-			QueueEvent (EventType.StraightRockShower);
+			QueueEvent (RunnableEventType.StraightRockShower);
 		}
 		else if (Input.GetKeyDown(KeyCode.Alpha2)) {
 			eventLock = false;
-			QueueEvent (EventType.EnemyEvent);
+			QueueEvent (RunnableEventType.EnemyEvent);
 		}
 		else if (Input.GetKeyDown(KeyCode.Alpha3)) {
 			eventLock = false;
-			QueueEvent (EventType.PointLights);
+			QueueEvent (RunnableEventType.PointLights);
 		}
 		else if (Input.GetKeyDown(KeyCode.Alpha4)) {
 			eventLock = false;
-			QueueEvent (EventType.LittleRockShower);
-			QueueEvent (EventType.Blimp);
+			QueueEvent (RunnableEventType.LittleRockShower);
+			QueueEvent (RunnableEventType.Blimp);
 		}
 		else if (Input.GetKeyDown(KeyCode.Alpha5)) {
 			eventLock = false;
-			QueueEvent (EventType.Bomb);
+			QueueEvent (RunnableEventType.Bomb);
 		}
 		else if (Input.GetKeyDown(KeyCode.Alpha6)) {
 			eventLock = false;
-			QueueEvent (EventType.MapSpin);
+			QueueEvent (RunnableEventType.MapSpin);
 		}
 		else if (Input.GetKeyDown(KeyCode.Alpha7)) {
 			eventLock = false;
-			QueueEvent (EventType.HealthPowerUpEvent);
+			QueueEvent (RunnableEventType.HealthPowerUpEvent);
 		}
 		else if (Input.GetKeyDown(KeyCode.Alpha8)) {
 			eventLock = false;
-			QueueEvent (EventType.BombPowerUpEvent);
+			QueueEvent (RunnableEventType.BombPowerUpEvent);
 		}
 		else if (Input.GetKeyDown(KeyCode.Alpha9)) {
 			eventLock = false;
-			QueueEvent (EventType.PointsBounty);
+			QueueEvent (RunnableEventType.PointsBounty);
 		}else if (Input.GetKeyDown(KeyCode.Alpha0)) {
 			eventLock = false;
-			QueueEvent (EventType.LeechPowerUpEvent);
+			QueueEvent (RunnableEventType.LeechPowerUpEvent);
 		}
 
 		if (CanRunNextEvent ()) {
@@ -95,27 +98,30 @@ public class EventController : MonoBehaviour {
 	}
 
 	public void CheckEnoughBombs(){
-		if (Random.Range(0.0f,1.0f) < 0.001) {
+
+		if (Random.Range(0.0f,1.0f) < chance) {
 			eventLock = false;
-			QueueEvent(EventType.BombPowerUpEvent,0);
+			QueueEvent(RunnableEventType.BombPowerUpEvent,0);
 		}
 	}
 
 	public void CheckEnoughHealthPacks(){
-		if (Random.Range(0.0f,1.0f) < 0.001) {
+
+		if (Random.Range(0.0f,1.0f) < chance) {
 			eventLock = false;
-			QueueEvent(EventType.HealthPowerUpEvent,0);
+			QueueEvent(RunnableEventType.HealthPowerUpEvent,0);
 		}
 	}
 
 	public void CheckEnoughLeeches(){
-		if (Random.Range(0.0f,1.0f) < 0.001) {
+
+		if (Random.Range(0.0f,1.0f) < chance) {
 			eventLock = false;
-			QueueEvent(EventType.LeechPowerUpEvent,0);
+			QueueEvent(RunnableEventType.LeechPowerUpEvent,0);
 		}
 	}
 	
-	public static EventType currentEvent;
+	public static RunnableEventType currentEvent;
 
 	public static List<EventHelper> eventQueue = new List<EventHelper>();
 
@@ -144,7 +150,7 @@ public class EventController : MonoBehaviour {
 		//Debug.Log("Running " + next.type);
 		currentEvent = next.type;
 
-		if (next.type != EventType.Idle) {
+		if (next.type != RunnableEventType.Idle) {
 			GameObject obj = Object.Instantiate (Resources.Load ("Events/" + next.type.ToString ())) as GameObject;
 			IEvent evt = (IEvent) obj.GetComponent(typeof(IEvent));
 			evt.Begin();
@@ -153,7 +159,7 @@ public class EventController : MonoBehaviour {
 		yield return null;
 	}
 	
-	public static void QueueEvent(EventType e,float delay=0){
+	public static void QueueEvent(RunnableEventType e,float delay=0){
 		eventQueue.Add (new EventHelper(e,delay));
 	}
 
@@ -165,12 +171,12 @@ public class EventController : MonoBehaviour {
 
 	// The controller has been notified here that an event has ended. It has also suggested a
 	// next event to run and a delay time before running it.
-	public static void EventEnd(EventType running, EventType nextState, float delay = 0){
+	public static void EventEnd(RunnableEventType running, RunnableEventType nextState, float delay = 0){
 		ExecuteEventTransition (nextState, delay);
 		eventLock = false;
 	}
 
-	public static void ExecuteEventTransition(EventType nextState, float delay){
+	public static void ExecuteEventTransition(RunnableEventType nextState, float delay){
 
 		//TODO: encode state machine
 		// if(currentEvent == blablabla)
@@ -182,10 +188,10 @@ public class EventController : MonoBehaviour {
 	}
 
 	public class EventHelper{
-		public EventType type;
+		public RunnableEventType type;
 		public float delay;
 
-		public EventHelper(EventType t,float d){
+		public EventHelper(RunnableEventType t,float d){
 			type=t;
 			delay=d;
 		}

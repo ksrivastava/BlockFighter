@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class MapSpin : MonoBehaviour, IEvent {
@@ -29,7 +29,7 @@ public class MapSpin : MonoBehaviour, IEvent {
 	}
 	
 	public void End(){
-		EventController.EventEnd (EventType.MapSpin, EventType.Idle, 3);
+		EventController.EventEnd (RunnableEventType.MapSpin, RunnableEventType.Idle, 3);
 	}
 	
 	public void OnDestroy(){
