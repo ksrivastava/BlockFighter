@@ -29,6 +29,9 @@ public class PlayerControl : MonoBehaviour
 	public HealthBar healthBar;
 	[HideInInspector]
 	public bool allowMovement = true;
+	
+	[HideInInspector]
+	public bool allowHitting = true;
 
 	void Awake()
 	{

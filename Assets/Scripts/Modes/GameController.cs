@@ -31,6 +31,20 @@ public class GameController : MonoBehaviour
 
 	public void Pause()
 	{
+		foreach (string p in PlayerEvents.playerNames) {
+			var playerController = GameObject.Find (p).GetComponentInChildren<PlayerControl>();
+			playerController.allowMovement = false;
+			playerController.allowHitting = false;
+		}
+	}
+
+	public void Unpause()
+	{
+		foreach (string p in PlayerEvents.playerNames) {
+			var playerController = GameObject.Find (p).GetComponentInChildren<PlayerControl>();
+			playerController.allowMovement = true;
+			playerController.allowHitting = true;
+		}
 	}
 
 	public bool StartGameMode()
@@ -44,6 +58,7 @@ public class GameController : MonoBehaviour
 	{
 		yield return new WaitForSeconds (2.0f);
 		MenuController.menu = MenuController.Menu.GameOver;
+		Unpause ();
 		Application.LoadLevel (0);
 	}
 }
