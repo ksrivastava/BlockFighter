@@ -20,25 +20,23 @@ public class GameModeMenuController : MonoBehaviour {
 		var downPressed = false;
 		var upPressed = false;
 		var actionPressed = false;
+		var returnPressed = false;
 		
 		foreach (var device in InputManager.Devices) {
-			if(device.DPadDown.WasPressed){
+			if (device.DPadDown.WasPressed) {
 				downPressed = true;
 				break;
-			}
-
-			if(device.DPadUp.WasPressed){
+			} else if(device.DPadUp.WasPressed) {
 				upPressed = true;
 				break;
-			}
-
-			if(device.Action1.WasPressed){
+			} else if (device.Action1.WasPressed) {
 				actionPressed = true;
+				break;
+			} else if (device.Action2.WasPressed) {
+				returnPressed = true;
 				break;
 			}
 		}
-
-
 
 		if (Input.GetKeyDown(KeyCode.DownArrow) || (downPressed)) {
 			selectedOption = (ModeOption) ((int) (selectedOption + 1) % modeOptions.Length);
@@ -63,6 +61,9 @@ public class GameModeMenuController : MonoBehaviour {
 					Application.LoadLevel (1);
 					break;
 			}
+		} else if (Input.GetKeyDown (KeyCode.Backspace) || (returnPressed)) {
+			MenuController.menu = MenuController.Menu.Title;
+			Application.LoadLevel (0);
 		}
 
 		Vector3 pos = marker.transform.position;
