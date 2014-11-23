@@ -23,15 +23,15 @@ public class TimeLimitMode : GameMode
 	
 	public override bool Start()
 	{
-		DisplayMessage ("Time Trial Start!");
+		DisplayMessage ("Time Trial Start!", Color.blue);
 		timer.Enabled = true;
 		return true;
 	}
 
-	public static void DisplayMessage(string msg)
+	public static void DisplayMessage(string msg, Color color)
 	{
 		GameObject.Find ("GameController").GetComponent<Message> ()
-			.DisplayMessage (msg);
+			.DisplayMessage (msg, color);
 	}
 
 	public override bool CheckGameOver ()
@@ -54,15 +54,15 @@ public class TimeLimitMode : GameMode
 
 		if (timeLeft == 30000) {
 			GameController.ExecuteOnMainThread.Enqueue (() => {
-				DisplayMessage("30 seconds left");
+				DisplayMessage("30 seconds left", Color.red);
 			});
 		} else if (timeLeft == 10000) {
 			GameController.ExecuteOnMainThread.Enqueue (() => {
-				DisplayMessage("10 seconds left");
+				DisplayMessage("10 seconds left", Color.red);
 			});
 		} else if (timeLeft < 4000 && timeLeft > 0) {
 			GameController.ExecuteOnMainThread.Enqueue (() => {
-				DisplayMessage(((int)(timeLeft/1000)).ToString());
+				DisplayMessage(((int)(timeLeft/1000)).ToString(), Color.red);
 			});
 		}
 	}

@@ -5,12 +5,19 @@ using InControl;
 public class EndGameMenuController : MonoBehaviour {
 
 	private string[] players = {"PlayerOne", "PlayerTwo", "PlayerThree", "PlayerFour"};
+	private Color32[] colors = {new Color32(129,22,159,255), new Color32(255,255,0,255),
+		new Color32(37,218,38,255), new Color32(212,45,45,255)};
 
 	void Start () {
 		float[] points = PointsBar.GetAllPoints ();
 
+		Transform labels = GameObject.Find ("PlayerLabels").transform;
+		for (int i = 0; i < players.Length; ++i) {
+			labels.GetChild (i).gameObject.GetComponent<TextMesh>().color = colors[i];
+		}
+
 		Transform pointsTransform = GameObject.Find ("Points").transform;
-			for (int i = 0; i < players.Length; ++i) {
+		for (int i = 0; i < players.Length; ++i) {
 			pointsTransform.GetChild (i).gameObject.GetComponent<TextMesh>().text = points[i].ToString ();
 		}
 		
@@ -28,18 +35,26 @@ public class EndGameMenuController : MonoBehaviour {
 		}
 
 		Transform trophy = GameObject.Find ("Trophy").transform;
-		float highestPoints = -1;
+		float highestPoints = 0;
+		bool tie = true;
 		int idx = -1;
 		for (int i = 0; i < points.Length; ++i) {
 			if (points[i] > highestPoints) {
 				highestPoints = points[i];
 				idx = i;
+				tie = false;
+			} else if (points[i] == highestPoints) {
+				tie = true;
 			}
 		}
 
-		Vector3 pos = trophy.position;
-		pos.x += (idx * 40);
-		trophy.position = pos;
+		if (!tie) {
+			Vector3 pos = trophy.position;
+			pos.x += (idx * 40);
+			trophy.position = pos;
+		} else {
+			Destroy (trophy.gameObject);
+		}
 
 	}
 

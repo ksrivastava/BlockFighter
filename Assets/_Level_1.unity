@@ -643,6 +643,7 @@ MonoBehaviour:
   grounded: 0
   healthBar: {fileID: 0}
   allowMovement: 1
+  allowHitting: 1
 --- !u!114 &243951490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2115,6 +2116,7 @@ MonoBehaviour:
   grounded: 0
   healthBar: {fileID: 0}
   allowMovement: 1
+  allowHitting: 1
 --- !u!114 &681653720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2490,6 +2492,7 @@ MonoBehaviour:
   grounded: 0
   healthBar: {fileID: 0}
   allowMovement: 1
+  allowHitting: 1
 --- !u!114 &689671109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2913,6 +2916,7 @@ MonoBehaviour:
   grounded: 0
   healthBar: {fileID: 0}
   allowMovement: 1
+  allowHitting: 1
 --- !u!114 &711086104
 MonoBehaviour:
   m_ObjectHideFlags: 0

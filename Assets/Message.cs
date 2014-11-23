@@ -26,10 +26,14 @@ public class Message : MonoBehaviour {
 	}
 
 	public void DisplayMessage(string message){
-		StartCoroutine (helper (message));
+		StartCoroutine (helper (message, Color.clear));
 	}
 
-	private IEnumerator helper(string message){
+	public void DisplayMessage(string message, Color color){
+		StartCoroutine (helper (message, color));
+	}
+
+	private IEnumerator helper(string message, Color color){
 
 		while (messagesOnDisplay >= maxMessages) {
 			yield return null;
@@ -43,6 +47,9 @@ public class Message : MonoBehaviour {
 		GameObject obj = Object.Instantiate (Resources.Load ("Message")) as GameObject;
 		GUIText guiText = obj.GetComponent<GUIText> ();
 		guiText.text = message;
+		if (color != Color.clear) {
+			guiText.color = color;
+		}
 
 		guiText.transform.position = positions[msgIdx];
 		MessageLife m = obj.GetComponent<MessageLife> ();
