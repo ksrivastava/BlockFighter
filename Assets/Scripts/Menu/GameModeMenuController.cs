@@ -23,10 +23,10 @@ public class GameModeMenuController : MonoBehaviour {
 		var returnPressed = false;
 		
 		foreach (var device in InputManager.Devices) {
-			if (device.DPadDown.WasPressed) {
+			if (device.Direction.Down.WasPressed) {
 				downPressed = true;
 				break;
-			} else if(device.DPadUp.WasPressed) {
+			} else if(device.Direction.Up.WasPressed) {
 				upPressed = true;
 				break;
 			} else if (device.Action1.WasPressed) {
