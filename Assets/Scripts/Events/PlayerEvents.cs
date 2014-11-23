@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class PlayerEvents : MonoBehaviour {
 
 	public static Color teamTwoColorOne = new Color(239,0,255);
-		public static Color teamTwoColorTwo = new Color(0,111,255);
+	public static Color teamTwoColorTwo = new Color(0,111,255);
 	public static Color teamThreeColor = new Color(0,255,247);
 	private static Color teamTwoColor;
 
@@ -213,6 +213,7 @@ public class PlayerEvents : MonoBehaviour {
 
 		if (lastHit != null && lastHit.attacker != dead.name) {
 			PointsBar.AddPoints (GameObject.Find (lastHit.attacker), 50);
+			GetPlayerStats (lastHit.attacker).RecordKill();
 		} else {
 			Debug.Log("no last hit!");
 		}

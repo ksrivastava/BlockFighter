@@ -22,14 +22,28 @@ public class EventController : MonoBehaviour {
 		//TODO: DELETE THIS LINE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		InvokeRepeating ("TestFormTeam",0, 31);
 
-		if (Application.loadedLevelName == "_Level_1") {
+		if (Application.loadedLevelName == "_Level_1") {	
 
+
+			Invoke ("QueueStraightRockShower",10);
+
+			InvokeRepeating("CheckEnoughBombs",5,3);
+			InvokeRepeating("CheckEnoughHealthPacks",5,3);
+			InvokeRepeating("CheckEnoughLeeches",5,3);
+
+			InvokeRepeating("QueuePointLights",60,180);
 		}
 
-		InvokeRepeating("CheckEnoughBombs",0,1);
-		InvokeRepeating("CheckEnoughHealthPacks",0,1);
-		InvokeRepeating("CheckEnoughLeeches",0,1);
+	}
 
+	void QueuePointLights(){
+		eventLock = false;
+		QueueEvent (RunnableEventType.PointLights);
+	}
+
+	void QueueStraightRockShower(){
+		eventLock = false;
+		QueueEvent(RunnableEventType.StraightRockShower);
 	}
 
 	//TODO: DELETE THIS Function
@@ -50,47 +64,47 @@ public class EventController : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-
-		if (Input.GetKeyDown(KeyCode.Alpha1)) {
-			eventLock = false;
-			QueueEvent (RunnableEventType.StraightRockShower);
-		}
-		else if (Input.GetKeyDown(KeyCode.Alpha2)) {
-			eventLock = false;
-			QueueEvent (RunnableEventType.EnemyEvent);
-		}
-		else if (Input.GetKeyDown(KeyCode.Alpha3)) {
-			eventLock = false;
-			QueueEvent (RunnableEventType.PointLights);
-		}
-		else if (Input.GetKeyDown(KeyCode.Alpha4)) {
-			eventLock = false;
-			QueueEvent (RunnableEventType.LittleRockShower);
-			QueueEvent (RunnableEventType.Blimp);
-		}
-		else if (Input.GetKeyDown(KeyCode.Alpha5)) {
-			eventLock = false;
-			QueueEvent (RunnableEventType.Bomb);
-		}
-		else if (Input.GetKeyDown(KeyCode.Alpha6)) {
-			eventLock = false;
-			QueueEvent (RunnableEventType.MapSpin);
-		}
-		else if (Input.GetKeyDown(KeyCode.Alpha7)) {
-			eventLock = false;
-			QueueEvent (RunnableEventType.HealthPowerUpEvent);
-		}
-		else if (Input.GetKeyDown(KeyCode.Alpha8)) {
-			eventLock = false;
-			QueueEvent (RunnableEventType.BombPowerUpEvent);
-		}
-		else if (Input.GetKeyDown(KeyCode.Alpha9)) {
-			eventLock = false;
-			QueueEvent (RunnableEventType.PointsBounty);
-		}else if (Input.GetKeyDown(KeyCode.Alpha0)) {
-			eventLock = false;
-			QueueEvent (RunnableEventType.LeechPowerUpEvent);
-		}
+//
+//		if (Input.GetKeyDown(KeyCode.Alpha1)) {
+//			eventLock = false;
+//			QueueEvent (RunnableEventType.StraightRockShower);
+//		}
+//		else if (Input.GetKeyDown(KeyCode.Alpha2)) {
+//			eventLock = false;
+//			QueueEvent (RunnableEventType.EnemyEvent);
+//		}
+//		else if (Input.GetKeyDown(KeyCode.Alpha3)) {
+//			eventLock = false;
+//			QueueEvent (RunnableEventType.PointLights);
+//		}
+//		else if (Input.GetKeyDown(KeyCode.Alpha4)) {
+//			eventLock = false;
+//			QueueEvent (RunnableEventType.LittleRockShower);
+//			QueueEvent (RunnableEventType.Blimp);
+//		}
+//		else if (Input.GetKeyDown(KeyCode.Alpha5)) {
+//			eventLock = false;
+//			QueueEvent (RunnableEventType.Bomb);
+//		}
+//		else if (Input.GetKeyDown(KeyCode.Alpha6)) {
+//			eventLock = false;
+//			QueueEvent (RunnableEventType.MapSpin);
+//		}
+//		else if (Input.GetKeyDown(KeyCode.Alpha7)) {
+//			eventLock = false;
+//			QueueEvent (RunnableEventType.HealthPowerUpEvent);
+//		}
+//		else if (Input.GetKeyDown(KeyCode.Alpha8)) {
+//			eventLock = false;
+//			QueueEvent (RunnableEventType.BombPowerUpEvent);
+//		}
+//		else if (Input.GetKeyDown(KeyCode.Alpha9)) {
+//			eventLock = false;
+//			QueueEvent (RunnableEventType.PointsBounty);
+//		}else if (Input.GetKeyDown(KeyCode.Alpha0)) {
+//			eventLock = false;
+//			QueueEvent (RunnableEventType.LeechPowerUpEvent);
+//		}
 
 		if (CanRunNextEvent ()) {
 			StartCoroutine(NextEvent());
@@ -107,7 +121,7 @@ public class EventController : MonoBehaviour {
 
 	public void CheckEnoughHealthPacks(){
 
-		if (Random.Range(0.0f,1.0f) < chance) {
+		if (Random.Range(0.0f,1.0f) < chance/2) {
 			eventLock = false;
 			QueueEvent(RunnableEventType.HealthPowerUpEvent,0);
 		}
