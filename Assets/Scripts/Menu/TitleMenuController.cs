@@ -20,20 +20,16 @@ public class TitleMenuController : MonoBehaviour {
 		var actionPressed = false;
 
 		foreach (var device in InputManager.Devices) {
-				if (device.DPadDown.WasPressed) {
-						downPressed = true;
-						break;
-				}
-	
-				if (device.DPadUp.WasPressed) {
-						upPressed = true;
-						break;
-				}
-	
-				if (device.Action1.WasPressed) {
-						actionPressed = true;
-						break;
-				}
+			if (device.Direction.Down.WasPressed) {
+				downPressed = true;
+				break;
+			} else if (device.Direction.Up.WasPressed) {
+				upPressed = true;
+				break;
+			} else if (device.Action1.WasPressed) {
+				actionPressed = true;
+				break;
+			}
 		}
 
 
