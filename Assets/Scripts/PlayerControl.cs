@@ -126,41 +126,36 @@ public class PlayerControl : MonoBehaviour
 		if (inputDevice.Action1.WasPressed && grounded) {
 			jump = true;
 		}
-	}
-	
-	float dashMultiplier = 30f;
 
-	void FixedUpdate ()
-	{
 		// Cache the horizontal input.
 		float h = Input.GetAxis ("Horizontal" + playerNum);
 		
 		
-		var inputDevice = (InputManager.Devices.Count > playerNum-1) ? InputManager.Devices[playerNum-1] : null;
+		//var inputDevice = (InputManager.Devices.Count > playerNum-1) ? InputManager.Devices[playerNum-1] : null;
 		if (inputDevice != null) {
 			if(inputDevice.Direction.Left.IsPressed){
 				h=-1;
 			} else if(inputDevice.Direction.Right.IsPressed){
 				h=+1;
 			}
-
+			
 		}
-
+		
 		// If the player's horizontal velocity is greater than the maxSpeed...
 		if(Mathf.Abs(rigidbody2D.velocity.x) > maxSpeed)
 			// ... set the player's velocity to the maxSpeed in the x axis.
 			rigidbody2D.velocity = new Vector2(Mathf.Sign(rigidbody2D.velocity.x) * maxSpeed, rigidbody2D.velocity.y);
-
+		
 		if (allowMovement) {
-
+			
 			if (leftDash) {
-//				if (facingRight) Flip ();
+				//				if (facingRight) Flip ();
 				rigidbody2D.AddForce(Vector2.right * -1 * moveForce * dashMultiplier);
 				healthBar.Dash -= 0.5f;
 			}
 			
 			else if (rightDash) {
-//				if (!facingRight) Flip ();
+				//				if (!facingRight) Flip ();
 				rigidbody2D.AddForce(Vector2.right * moveForce * dashMultiplier);
 				healthBar.Dash -= 0.5f;
 			}
@@ -185,10 +180,17 @@ public class PlayerControl : MonoBehaviour
 				Jump();
 			}
 		}
-
+		
 		leftDash = false;
 		rightDash = false;
 		jump = false;
+
+	}
+	
+	float dashMultiplier = 30f;
+
+	void FixedUpdate ()
+	{
 
 	}
 

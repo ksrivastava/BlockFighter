@@ -14,7 +14,7 @@ public class PointsAnimation : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(start) {
-			if (!g.renderer.enabled) {
+			if (g != null && !g.renderer.enabled) {
 				animationTime = 0f;
 			}
 			Animate ();

@@ -15,7 +15,7 @@ public class GameController : MonoBehaviour
 		StartGameMode ();
 	}
 
-	void Update()
+	void FixedUpdate()
 	{
 		if (started)
 		{

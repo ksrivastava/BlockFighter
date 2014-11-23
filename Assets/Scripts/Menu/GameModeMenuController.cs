@@ -15,24 +15,47 @@ public class GameModeMenuController : MonoBehaviour {
 	}
 
 	void Update () {
-		var inputDevice = InputManager.Devices [0];
 
-		if (Input.GetKeyDown(KeyCode.DownArrow) || (inputDevice != null && inputDevice.DPadDown.WasPressed )) {
+
+		var downPressed = false;
+		var upPressed = false;
+		var actionPressed = false;
+		
+		foreach (var device in InputManager.Devices) {
+			if(device.DPadDown.WasPressed){
+				downPressed = true;
+				break;
+			}
+
+			if(device.DPadUp.WasPressed){
+				upPressed = true;
+				break;
+			}
+
+			if(device.Action1.WasPressed){
+				actionPressed = true;
+				break;
+			}
+		}
+
+
+
+		if (Input.GetKeyDown(KeyCode.DownArrow) || (downPressed)) {
 			selectedOption = (ModeOption) ((int) (selectedOption + 1) % modeOptions.Length);
-		} else if (Input.GetKeyDown(KeyCode.UpArrow) || (inputDevice != null && inputDevice.DPadUp.WasPressed )) {
+		} else if (Input.GetKeyDown(KeyCode.UpArrow) || (upPressed)) {
 			int opt = (int) (selectedOption - 1) % modeOptions.Length;
 			if (opt < 0) {
 				opt += modeOptions.Length;
 			}
 			selectedOption = (ModeOption) opt;
-		} else if (Input.GetKeyDown(KeyCode.Return) || (inputDevice != null && inputDevice.Action1.WasPressed ) ){
+		} else if (Input.GetKeyDown(KeyCode.Return) || (actionPressed ) ){
 			switch (selectedOption) {
 				case ModeOption.TimeLimit:
-					GameController.mode = new TimeLimitMode(5000);
+					GameController.mode = new TimeLimitMode(90000);
 					Application.LoadLevel (1);
 					break;
 				case ModeOption.Points:
-					GameController.mode = new PointsMode(100);
+					GameController.mode = new PointsMode(1000);
 					Application.LoadLevel (1);
 					break;
 				case ModeOption.Lives:

@@ -27,12 +27,34 @@ public class EndGameMenuController : MonoBehaviour {
 			deathsTransform.GetChild (i).gameObject.GetComponent<TextMesh>().text = numDeaths.ToString ();
 		}
 
+		Transform trophy = GameObject.Find ("Trophy").transform;
+		float highestPoints = -1;
+		int idx = -1;
+		for (int i = 0; i < points.Length; ++i) {
+			if (points[i] > highestPoints) {
+				highestPoints = points[i];
+				idx = i;
+			}
+		}
+
+		Vector3 pos = trophy.position;
+		pos.x += (idx * 40);
+		trophy.position = pos;
+
 	}
 
 	void Update () {
-		var inputDevice = InputManager.Devices [0];
 
-		if (Input.GetKeyDown(KeyCode.Return) || (inputDevice != null && inputDevice.MenuWasPressed)) {
+		var menuPressed = false;
+
+		foreach (var device in InputManager.Devices) {
+			if(device.MenuWasPressed){
+				menuPressed = true;
+				break;
+			}
+		}
+
+		if (Input.GetKeyDown(KeyCode.Return) || (menuPressed)) {
 			MenuController.menu = MenuController.Menu.GameModeSelection;
 			Application.LoadLevel (0);
 		}

@@ -8,6 +8,7 @@ public class TimeLimitMode : GameMode
 	private Timer timer;
 	private double timeLeft;
 	private bool gameOver;
+	private Message message;
 
 	public TimeLimitMode (double time)
 	{
@@ -19,7 +20,7 @@ public class TimeLimitMode : GameMode
 
 		gameOver = false;
 	}
-
+	
 	public override bool Start()
 	{
 		GameObject.Find ("GameController").GetComponent<Message> ()
@@ -30,6 +31,13 @@ public class TimeLimitMode : GameMode
 
 	public override bool CheckGameOver ()
 	{
+		if (timeLeft == 30000) {
+			GameObject.Find ("GameController").GetComponent<Message> ()
+				.DisplayMessage ("30 seconds left");
+		} else if (timeLeft < 10000 && timeLeft > 0) {
+			GameObject.Find ("GameController").GetComponent<Message> ()
+				.DisplayMessage (((int)(timeLeft/1000)).ToString());
+		}
 		return gameOver;
 	}
 
