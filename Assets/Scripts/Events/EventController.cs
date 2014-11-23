@@ -34,6 +34,8 @@ public class EventController : MonoBehaviour {
 			InvokeRepeating("QueuePointLights",60,180);
 		}
 
+
+
 	}
 
 	void QueuePointLights(){

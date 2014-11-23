@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameController : MonoBehaviour
@@ -8,6 +9,9 @@ public class GameController : MonoBehaviour
 
 	private GameObject controller;
 	private bool started = false;
+
+	public readonly static Queue<Action> ExecuteOnMainThread = new Queue<Action>();
+
 
 	void Start()
 	{
@@ -25,6 +29,11 @@ public class GameController : MonoBehaviour
 				controller.GetComponent<Message>().DisplayMessage("Game Over!");
 				StartCoroutine(LoadGameOverScreen());
 				started = false;
+			}
+
+			while (ExecuteOnMainThread.Count > 0)
+			{
+				ExecuteOnMainThread.Dequeue().Invoke();
 			}
 		}
 	}

@@ -23,21 +23,19 @@ public class TimeLimitMode : GameMode
 	
 	public override bool Start()
 	{
-		GameObject.Find ("GameController").GetComponent<Message> ()
-			.DisplayMessage ("Time Trial Start!");
+		DisplayMessage ("Time Trial Start!");
 		timer.Enabled = true;
 		return true;
 	}
 
+	public static void DisplayMessage(string msg)
+	{
+		GameObject.Find ("GameController").GetComponent<Message> ()
+			.DisplayMessage (msg);
+	}
+
 	public override bool CheckGameOver ()
 	{
-		if (timeLeft == 30000) {
-			GameObject.Find ("GameController").GetComponent<Message> ()
-				.DisplayMessage ("30 seconds left");
-		} else if (timeLeft < 10000 && timeLeft > 0) {
-			GameObject.Find ("GameController").GetComponent<Message> ()
-				.DisplayMessage (((int)(timeLeft/1000)).ToString());
-		}
 		return gameOver;
 	}
 
@@ -52,6 +50,20 @@ public class TimeLimitMode : GameMode
 		if (timeLeft <= 0) {
 			gameOver = true;
 			timer.Enabled = false;
+		}
+
+		if (timeLeft == 30000) {
+			GameController.ExecuteOnMainThread.Enqueue (() => {
+				DisplayMessage("30 seconds left");
+			});
+		} else if (timeLeft == 10000) {
+			GameController.ExecuteOnMainThread.Enqueue (() => {
+				DisplayMessage("10 seconds left");
+			});
+		} else if (timeLeft < 4000 && timeLeft > 0) {
+			GameController.ExecuteOnMainThread.Enqueue (() => {
+				DisplayMessage(((int)(timeLeft/1000)).ToString());
+			});
 		}
 	}
 }

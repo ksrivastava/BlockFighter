@@ -18,8 +18,8 @@ public class ThrowableObject : MonoBehaviour {
 
 	public bool canPickUp = true;
 
-	private int groundCollisionsBeforeIdle = 10;
-	private Vector2 velocityBeforeIdle = new Vector2(3f,3f);
+	private int groundCollisionsBeforeIdle = 5;
+	private Vector2 velocityBeforeIdle = new Vector2(15f,15f);
 	private int groundCollisions = 0;
 	private Vector2 displacement = new Vector2(1.1f,0);
 
@@ -88,8 +88,8 @@ public class ThrowableObject : MonoBehaviour {
 
 	void OnCollisionStay2D(Collision2D coll){
 		if (coll.gameObject.layer == LayerMask.NameToLayer ("Ground") 
-		    && Mathf.Abs(this.rigidbody2D.velocity.x) <= velocityBeforeIdle.x
-		    && Mathf.Abs(this.rigidbody2D.velocity.y) <= velocityBeforeIdle.y) {
+		    /*&& Mathf.Abs(this.rigidbody2D.velocity.x) <= velocityBeforeIdle.x
+		    && Mathf.Abs(this.rigidbody2D.velocity.y) <= velocityBeforeIdle.y*/) {
 			if(this.groundCollisions == this.groundCollisionsBeforeIdle){
 				this.state = State.idle;
 			}
