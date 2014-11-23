@@ -7,7 +7,7 @@ public class ColorSetter : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		ResetColor ();
+		//ResetColor ();
 		color.a = 1;
 	}
 

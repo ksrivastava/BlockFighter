@@ -24,6 +24,8 @@ public class PlayerControl : MonoBehaviour
 	private bool onPlayer = false;
 	string jumpButton, leftDashButton, rightDashButton;
 
+	Animator anim;
+
 	PlayerBehavior behavior;
 
 	public HealthBar healthBar;
@@ -42,6 +44,11 @@ public class PlayerControl : MonoBehaviour
 		jumpButton = "joystick " + playerNum + " button 16";
 		leftDashButton = "joystick " + playerNum + " button 13";
 		rightDashButton = "joystick " + playerNum + " button 14";
+	}
+
+	void Start() 
+	{
+		anim = this.GetComponent<Animator> ();
 	}
 
 	public void SetInfinityMaxSpeed(){
@@ -144,7 +151,12 @@ public class PlayerControl : MonoBehaviour
 				} else if(inputDevice.Direction.Right.IsPressed){
 					h=+1;
 				}
-				
+			}
+
+			if(h != 0) {
+				anim.SetBool ("isMoving", true);
+			} else {
+				anim.SetBool ("isMoving", false);
 			}
 			
 			// If the player's horizontal velocity is greater than the maxSpeed...
@@ -152,7 +164,6 @@ public class PlayerControl : MonoBehaviour
 				// ... set the player's velocity to the maxSpeed in the x axis.
 				rigidbody2D.velocity = new Vector2(Mathf.Sign(rigidbody2D.velocity.x) * maxSpeed, rigidbody2D.velocity.y);
 		
-
 			
 			if (leftDash) {
 				//				if (facingRight) Flip ();
