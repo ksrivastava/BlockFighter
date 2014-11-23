@@ -3,20 +3,34 @@ using System.Collections;
 
 public class MenuController : MonoBehaviour {
 
-	public enum Menu {GameModeSelection, GameOver};
+	public enum Menu {Title, Help, GameModeSelection, GameOver};
 
-	public static Menu menu;
+	public static Menu menu = Menu.Title;
 
 	void Start () {
+		GameObject camera = null;
 		switch (menu) {
+			case Menu.Title:
+				camera = GameObject.Find ("TitleCamera");
+				break;
+			case Menu.Help:
+				camera = GameObject.Find ("HelpCamera");
+				break;
 			case Menu.GameModeSelection:
-				GameObject.Find ("GameModeCamera").SetActive(true);
-				GameObject.Find ("EndGameCamera").SetActive(false);
+				camera = GameObject.Find ("GameModeCamera");
 				break;
 			case Menu.GameOver:
-				GameObject.Find ("EndGameCamera").SetActive(true);
-				GameObject.Find ("GameModeCamera").SetActive(false);
+				camera = GameObject.Find ("EndGameCamera");
 				break;
 		}
+		DisableAllCameras ();
+		camera.SetActive (true);
+	}
+
+	private void DisableAllCameras() {
+		GameObject.Find ("TitleCamera").SetActive(false);
+		GameObject.Find ("HelpCamera").SetActive(false);
+		GameObject.Find ("GameModeCamera").SetActive(false);
+		GameObject.Find ("EndGameCamera").SetActive(false);
 	}
 }
