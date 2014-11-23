@@ -8,6 +8,7 @@ public class StraightRockShower : MonoBehaviour, IEvent {
 	// Use this for initialization
 	public IEnumerator Start () {
 
+		EventController.DisplayMessage ("Rock Shower! Throw rocks at each other!");
 		int x = Random.Range (0, 2);
 		if (x == 0) {
 			this.GetComponent<TopLeftEntryMovement>().enabled = true;
@@ -21,8 +22,6 @@ public class StraightRockShower : MonoBehaviour, IEvent {
 			yield return new WaitForSeconds(0.5f);
 			CreateRock();
 		}
-
-
 		Destroy (this.gameObject);
 
 	}

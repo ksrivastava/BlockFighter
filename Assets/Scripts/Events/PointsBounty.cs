@@ -84,8 +84,9 @@ public class PointsBounty : MonoBehaviour, IEvent {
 
 	public static void BountyWinner(GameObject winner){
 		//print ("Winner is " + winner.name);
-		if (winner == null || collected)
-						return;
+		if (winner == null || collected) {
+			return;
+		}
 		PointsBar.AddPoints (winner, bounty);
 		EventController.DisplayMessage(winner.name+" has taken the bounty! "+bounty+" points");
 		collected = true;
