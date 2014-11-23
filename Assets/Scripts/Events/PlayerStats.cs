@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class PlayerStats {
 	
 	public int deaths;
+	public int kills;
 	public List<float> deathTimes;
 	private List<hit> hits;
 	public string playerName;
@@ -51,6 +52,10 @@ public class PlayerStats {
 		}
 
 		return hits [hits.Count - 1];
+	}
+
+	public void RecordKill() {
+		kills++;
 	}
 	
 	public void AddTeammate(string teammate){
