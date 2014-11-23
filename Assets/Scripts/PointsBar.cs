@@ -50,10 +50,10 @@ public class PointsBar : MonoBehaviour {
 
 	void OnGUI() {
 		length = Screen.width / 12f;
-		height = scoreFontSize + 2.5f * playerFontSize;
+		height = scoreFontSize + 1.8f * playerFontSize;
 
 		yScore = Screen.height - height;
-		yPlayer = Screen.height - 1.33f * playerFontSize;
+		yPlayer = Screen.height - 1.333f * playerFontSize;
 
 		styles [4].fontSize = (int)scoreFontSize;
 		for (int i = 0; i < 4; ++i) {
