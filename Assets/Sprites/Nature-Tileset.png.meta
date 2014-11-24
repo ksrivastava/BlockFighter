@@ -1,0 +1,388 @@
+fileFormatVersion: 2
+guid: 71cfb115fdda19c40bde0d71beb9f8e2
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Single Block
+    21300002: Left Edge
+    21300004: Center Extender
+    21300006: Right Edge
+    21300008: Curved Left
+    21300010: Platform Single
+    21300012: Platform Left
+    21300014: Cliff Left
+    21300016: No Grass Extender
+    21300018: Cliff Right
+    21300020: No Grass Single
+    21300022: Curved Right
+    21300024: Platform Extender
+    21300026: Platform Right
+    21300028: Cactus Tall
+    21300030: Cactus Short
+    21300032: Wacky Inflatable Arm Flailing Tube Man 1
+    21300034: Wacky Inflated Arm Waving Tube Man 2
+    21300036: Exit
+    21300038: '! Box No Outline'
+    21300040: '! Box Outine'
+    21300042: Wave Top 1
+    21300044: Wave Top 2
+    21300046: Wave Top 3
+    21300048: Wave Top 4
+    21300050: \ Block
+    21300052: X Block
+    21300054: Wave Bottom 1
+    21300056: Wave Bottom 2
+    21300058: Wave Bottom 3
+    21300060: Wave Bottom 4
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Single Block
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 119
+        width: 21
+        height: 21
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Left Edge
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 119
+        width: 21
+        height: 21
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Center Extender
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 119
+        width: 21
+        height: 21
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Right Edge
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 119
+        width: 21
+        height: 21
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Curved Left
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 119
+        width: 21
+        height: 21
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Platform Single
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 129
+        width: 21
+        height: 11
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Platform Left
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 129
+        width: 21
+        height: 11
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Cliff Left
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 21
+        height: 21
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: No Grass Extender
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 96
+        width: 21
+        height: 21
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Cliff Right
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 96
+        width: 21
+        height: 21
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: No Grass Single
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 96
+        width: 21
+        height: 21
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Curved Right
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 96
+        width: 21
+        height: 21
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Platform Extender
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 106
+        width: 21
+        height: 11
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Platform Right
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 106
+        width: 21
+        height: 11
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Cactus Tall
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 50
+        width: 15
+        height: 42
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Cactus Short
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 50
+        width: 15
+        height: 29
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Wacky Inflatable Arm Flailing Tube Man 1
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 50
+        width: 19
+        height: 42
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Wacky Inflated Arm Waving Tube Man 2
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 50
+        width: 19
+        height: 42
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Exit
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 71
+        width: 21
+        height: 21
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: '! Box No Outline'
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 27
+        width: 21
+        height: 21
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: '! Box Outine'
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 27
+        width: 21
+        height: 21
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Wave Top 1
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 33
+        width: 21
+        height: 12
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Wave Top 2
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 33
+        width: 21
+        height: 12
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Wave Top 3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 33
+        width: 21
+        height: 12
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Wave Top 4
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 33
+        width: 21
+        height: 12
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: \ Block
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4
+        width: 21
+        height: 21
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: X Block
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 4
+        width: 21
+        height: 21
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Wave Bottom 1
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 10
+        width: 21
+        height: 21
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Wave Bottom 2
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 10
+        width: 21
+        height: 21
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Wave Bottom 3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 10
+        width: 21
+        height: 21
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Wave Bottom 4
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 10
+        width: 21
+        height: 21
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
