@@ -103,6 +103,8 @@ public class PointsBar : MonoBehaviour {
 	}
 	
 	public static void DisplayNumber(GameObject g, float p, DisplayType type) {
+
+
 		GameObject points = Instantiate(Resources.Load("Points")) as GameObject;
 
 		points.transform.position = g.transform.position;

@@ -126,7 +126,7 @@ public class PlayerBehavior : MonoBehaviour {
 		}	
 
 
-		PlayerEvents.RecordDeath(this.transform.parent.gameObject);
+		StartCoroutine (RecordDeathDelayed());
 		var respawnPoint = GameObject.Find ("RespawnPoint");
 		transform.position = respawnPoint.transform.position;
 		PlayerEvents.RemovePlayerFromTeam (this.transform.parent.name);
@@ -139,6 +139,11 @@ public class PlayerBehavior : MonoBehaviour {
 
 		MakePlayerInactive ();
 		Invoke ("MakePlayerActive", 1.0f);
+	}
+
+	IEnumerator RecordDeathDelayed(){
+		yield return new WaitForSeconds(0.2f);
+		PlayerEvents.RecordDeath(this.transform.parent.gameObject);
 	}
 
 
