@@ -639,6 +639,7 @@ MonoBehaviour:
   facingRight: 1
   jump: 0
   playerNum: 1
+  playerName: 
   pickedUpObject: 0
   grounded: 0
   healthBar: {fileID: 0}
@@ -2112,6 +2113,7 @@ MonoBehaviour:
   facingRight: 1
   jump: 0
   playerNum: 2
+  playerName: 
   pickedUpObject: 0
   grounded: 0
   healthBar: {fileID: 0}
@@ -2488,6 +2490,7 @@ MonoBehaviour:
   facingRight: 1
   jump: 0
   playerNum: 4
+  playerName: 
   pickedUpObject: 0
   grounded: 0
   healthBar: {fileID: 0}
@@ -2912,6 +2915,7 @@ MonoBehaviour:
   facingRight: 1
   jump: 0
   playerNum: 3
+  playerName: 
   pickedUpObject: 0
   grounded: 0
   healthBar: {fileID: 0}
@@ -5344,7 +5348,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
 --- !u!1 &1604954767
 GameObject:
   m_ObjectHideFlags: 0
@@ -5490,7 +5494,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 15
 --- !u!1 &1625591949
 GameObject:
   m_ObjectHideFlags: 0
