@@ -55,3 +55,7 @@ TagManager:
     userID: 0
     uniqueID: 0
     locked: 0
+  - name: Water
+    userID: 3
+    uniqueID: 2940521371
+    locked: 0
