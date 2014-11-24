@@ -179,7 +179,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
   m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .109999999}
+  m_Size: {x: .209999993, y: .0900000036}
   m_Center: {x: .104999997, y: .0549999997}
 --- !u!50 &38726987
 Rigidbody2D:
@@ -257,7 +257,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
   m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .109999999}
+  m_Size: {x: .209999993, y: .0900000036}
   m_Center: {x: .104999997, y: .0549999997}
 --- !u!50 &40193342
 Rigidbody2D:
@@ -469,7 +469,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
   m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .109999999}
+  m_Size: {x: .209999993, y: .0900000036}
   m_Center: {x: .104999997, y: .0549999997}
 --- !u!50 &137447811
 Rigidbody2D:
@@ -803,7 +803,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
   m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .109999999}
+  m_Size: {x: .209999993, y: .0900000036}
   m_Center: {x: .104999997, y: .0549999997}
 --- !u!50 &200835810
 Rigidbody2D:
@@ -1476,7 +1476,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
   m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .109999999}
+  m_Size: {x: .209999993, y: .0900000036}
   m_Center: {x: .104999997, y: .0549999997}
 --- !u!50 &257219482
 Rigidbody2D:
@@ -1554,7 +1554,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
   m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .109999999}
+  m_Size: {x: .209999993, y: .0900000036}
   m_Center: {x: .104999997, y: .0549999997}
 --- !u!50 &306749835
 Rigidbody2D:
@@ -1782,7 +1782,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
   m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .109999999}
+  m_Size: {x: .209999993, y: .0900000036}
   m_Center: {x: .104999997, y: .0549999997}
 --- !u!50 &351369599
 Rigidbody2D:
@@ -2166,7 +2166,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
   m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .109999999}
+  m_Size: {x: .209999993, y: .0900000036}
   m_Center: {x: .104999997, y: .0549999997}
 --- !u!50 &410513256
 Rigidbody2D:
@@ -2244,7 +2244,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
   m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .109999999}
+  m_Size: {x: .209999993, y: .0900000036}
   m_Center: {x: .104999997, y: .0549999997}
 --- !u!50 &412574608
 Rigidbody2D:
@@ -2839,7 +2839,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
   m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .109999999}
+  m_Size: {x: .209999993, y: .0900000036}
   m_Center: {x: .104999997, y: .0549999997}
 --- !u!50 &557867356
 Rigidbody2D:
@@ -3121,7 +3121,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
   m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .109999999}
+  m_Size: {x: .209999993, y: .0900000036}
   m_Center: {x: .104999997, y: .0549999997}
 --- !u!50 &606662995
 Rigidbody2D:
@@ -3199,7 +3199,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
   m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .109999999}
+  m_Size: {x: .209999993, y: .0900000036}
   m_Center: {x: .104999997, y: .0549999997}
 --- !u!50 &608239495
 Rigidbody2D:
@@ -3277,7 +3277,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
   m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .109999999}
+  m_Size: {x: .209999993, y: .0900000036}
   m_Center: {x: .104999997, y: .0549999997}
 --- !u!50 &643964947
 Rigidbody2D:
@@ -3356,7 +3356,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
   m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .109999999}
+  m_Size: {x: .209999993, y: .0900000036}
   m_Center: {x: .104999997, y: .0549999997}
 --- !u!50 &665554043
 Rigidbody2D:
@@ -4609,7 +4609,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
   m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .109999999}
+  m_Size: {x: .209999993, y: .0900000036}
   m_Center: {x: .104999997, y: .0549999997}
 --- !u!50 &786797837
 Rigidbody2D:
@@ -4852,7 +4852,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
   m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .109999999}
+  m_Size: {x: .209999993, y: .0900000036}
   m_Center: {x: .104999997, y: .0549999997}
 --- !u!50 &824677239
 Rigidbody2D:
@@ -4931,7 +4931,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
   m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .109999999}
+  m_Size: {x: .209999993, y: .0900000036}
   m_Center: {x: .104999997, y: .0549999997}
 --- !u!50 &827836564
 Rigidbody2D:
@@ -5165,7 +5165,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
   m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .109999999}
+  m_Size: {x: .209999993, y: .0900000036}
   m_Center: {x: .104999997, y: .0549999997}
 --- !u!50 &857309810
 Rigidbody2D:
@@ -5321,7 +5321,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
   m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .109999999}
+  m_Size: {x: .209999993, y: .0900000036}
   m_Center: {x: .104999997, y: .0549999997}
 --- !u!50 &885349207
 Rigidbody2D:
@@ -5399,7 +5399,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
   m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .109999999}
+  m_Size: {x: .209999993, y: .0900000036}
   m_Center: {x: .104999997, y: .0549999997}
 --- !u!50 &902730138
 Rigidbody2D:
@@ -5555,7 +5555,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
   m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .109999999}
+  m_Size: {x: .209999993, y: .0900000036}
   m_Center: {x: .104999997, y: .0549999997}
 --- !u!50 &926006243
 Rigidbody2D:
@@ -5711,7 +5711,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
   m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .109999999}
+  m_Size: {x: .209999993, y: .0900000036}
   m_Center: {x: .104999997, y: .0549999997}
 --- !u!50 &931202992
 Rigidbody2D:
@@ -5789,7 +5789,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
   m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .109999999}
+  m_Size: {x: .209999993, y: .0900000036}
   m_Center: {x: .104999997, y: .0549999997}
 --- !u!50 &969383111
 Rigidbody2D:
@@ -5867,7 +5867,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
   m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .109999999}
+  m_Size: {x: .209999993, y: .0900000036}
   m_Center: {x: .104999997, y: .0549999997}
 --- !u!50 &996111607
 Rigidbody2D:
@@ -6040,7 +6040,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
   m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .109999999}
+  m_Size: {x: .209999993, y: .0900000036}
   m_Center: {x: .104999997, y: .0549999997}
 --- !u!50 &1044106909
 Rigidbody2D:
@@ -6693,7 +6693,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
   m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .109999999}
+  m_Size: {x: .209999993, y: .0900000036}
   m_Center: {x: .104999997, y: .0549999997}
 --- !u!50 &1149656918
 Rigidbody2D:
@@ -6771,7 +6771,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
   m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .109999999}
+  m_Size: {x: .209999993, y: .0900000036}
   m_Center: {x: .104999997, y: .0549999997}
 --- !u!50 &1150068977
 Rigidbody2D:
@@ -6943,7 +6943,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
   m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .109999999}
+  m_Size: {x: .209999993, y: .0900000036}
   m_Center: {x: .104999997, y: .0549999997}
 --- !u!50 &1211194105
 Rigidbody2D:
@@ -7265,7 +7265,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
   m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .109999999}
+  m_Size: {x: .209999993, y: .0900000036}
   m_Center: {x: .104999997, y: .0549999997}
 --- !u!50 &1285157643
 Rigidbody2D:
@@ -7495,7 +7495,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
   m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .109999999}
+  m_Size: {x: .209999993, y: .0900000036}
   m_Center: {x: .104999997, y: .0549999997}
 --- !u!50 &1377306094
 Rigidbody2D:
@@ -7759,7 +7759,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
   m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .109999999}
+  m_Size: {x: .209999993, y: .0900000036}
   m_Center: {x: .104999997, y: .0549999997}
 --- !u!50 &1444892824
 Rigidbody2D:
@@ -7903,7 +7903,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
   m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .109999999}
+  m_Size: {x: .209999993, y: .0900000036}
   m_Center: {x: .104999997, y: .0549999997}
 --- !u!50 &1475182049
 Rigidbody2D:
@@ -8053,7 +8053,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
   m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .109999999}
+  m_Size: {x: .209999993, y: .0900000036}
   m_Center: {x: .104999997, y: .0549999997}
 --- !u!50 &1507777530
 Rigidbody2D:
@@ -8236,7 +8236,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
   m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .109999999}
+  m_Size: {x: .209999993, y: .0900000036}
   m_Center: {x: .104999997, y: .0549999997}
 --- !u!50 &1538683396
 Rigidbody2D:
@@ -8652,7 +8652,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
   m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .109999999}
+  m_Size: {x: .209999993, y: .0900000036}
   m_Center: {x: .104999997, y: .0549999997}
 --- !u!50 &1590984610
 Rigidbody2D:
@@ -8807,7 +8807,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
   m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .109999999}
+  m_Size: {x: .209999993, y: .0900000036}
   m_Center: {x: .104999997, y: .0549999997}
 --- !u!50 &1609799434
 Rigidbody2D:
@@ -9340,7 +9340,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
   m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .109999999}
+  m_Size: {x: .209999993, y: .0900000036}
   m_Center: {x: .104999997, y: .0549999997}
 --- !u!50 &1714692821
 Rigidbody2D:
@@ -9496,7 +9496,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
   m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .109999999}
+  m_Size: {x: .209999993, y: .0900000036}
   m_Center: {x: .104999997, y: .0549999997}
 --- !u!50 &1737779824
 Rigidbody2D:
@@ -9785,7 +9785,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
   m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .109999999}
+  m_Size: {x: .209999993, y: .0900000036}
   m_Center: {x: .104999997, y: .0549999997}
 --- !u!50 &1758707935
 Rigidbody2D:
@@ -10019,7 +10019,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
   m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .109999999}
+  m_Size: {x: .209999993, y: .0900000036}
   m_Center: {x: .104999997, y: .0549999997}
 --- !u!50 &1788477547
 Rigidbody2D:
@@ -10098,7 +10098,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
   m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .109999999}
+  m_Size: {x: .209999993, y: .0900000036}
   m_Center: {x: .104999997, y: .0549999997}
 --- !u!50 &1801494413
 Rigidbody2D:
@@ -10325,7 +10325,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
   m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .109999999}
+  m_Size: {x: .209999993, y: .0900000036}
   m_Center: {x: .104999997, y: .0549999997}
 --- !u!50 &1836310951
 Rigidbody2D:
@@ -10481,7 +10481,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
   m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .109999999}
+  m_Size: {x: .209999993, y: .0900000036}
   m_Center: {x: .104999997, y: .0549999997}
 --- !u!50 &1901464537
 Rigidbody2D:
@@ -10615,7 +10615,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
   m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .109999999}
+  m_Size: {x: .209999993, y: .0900000036}
   m_Center: {x: .104999997, y: .0549999997}
 --- !u!50 &1929561276
 Rigidbody2D:
@@ -11130,7 +11130,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
   m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .109999999}
+  m_Size: {x: .209999993, y: .0900000036}
   m_Center: {x: .104999997, y: .0549999997}
 --- !u!50 &2037656228
 Rigidbody2D:
@@ -11208,7 +11208,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
   m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .109999999}
+  m_Size: {x: .209999993, y: .0900000036}
   m_Center: {x: .104999997, y: .0549999997}
 --- !u!50 &2038409157
 Rigidbody2D:
@@ -11364,7 +11364,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
   m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .109999999}
+  m_Size: {x: .209999993, y: .0900000036}
   m_Center: {x: .104999997, y: .0549999997}
 --- !u!50 &2062982992
 Rigidbody2D:
@@ -11443,7 +11443,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
   m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .109999999}
+  m_Size: {x: .209999993, y: .0900000036}
   m_Center: {x: .104999997, y: .0549999997}
 --- !u!50 &2067147562
 Rigidbody2D:
@@ -11521,7 +11521,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
   m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .109999999}
+  m_Size: {x: .209999993, y: .0900000036}
   m_Center: {x: .104999997, y: .0549999997}
 --- !u!50 &2109470068
 Rigidbody2D:
@@ -11599,7 +11599,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
   m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .109999999}
+  m_Size: {x: .209999993, y: .0900000036}
   m_Center: {x: .104999997, y: .0549999997}
 --- !u!50 &2111536748
 Rigidbody2D:
@@ -11677,7 +11677,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
   m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .109999999}
+  m_Size: {x: .209999993, y: .0900000036}
   m_Center: {x: .104999997, y: .0549999997}
 --- !u!50 &2117038433
 Rigidbody2D:
