@@ -22,7 +22,7 @@ public class EventController : MonoBehaviour {
 		//TODO: DELETE THIS LINE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		InvokeRepeating ("TestFormTeam",0, 31);
 
-		if (Application.loadedLevelName == "_Map_2") {	
+		if (Application.loadedLevelName == "_Map_2" || Application.loadedLevelName == "_Map_3") {	
 
 
 			Invoke ("QueueStraightRockShower",10);
