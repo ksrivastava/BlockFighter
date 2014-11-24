@@ -41,18 +41,19 @@ public class ThrowableObject : MonoBehaviour {
 		}
 
 		if (this.state == State.pickedUp) {
-			this.rigidbody2D.velocity = Vector2.zero;
-			var pos = new Vector3(hammer.transform.position.x, hammer.transform.position.y, this.transform.position.z);
-			pos.x  = (controller.facingRight) ? pos.x + displacement.x : pos.x - displacement.x;
-			this.transform.position = pos;
-		}
+				this.rigidbody2D.velocity = Vector2.zero;
+				var pos = new Vector3 (hammer.transform.position.x, hammer.transform.position.y, this.transform.position.z);
+				pos.x = (controller.facingRight) ? pos.x + displacement.x : pos.x - displacement.x;
+				this.transform.position = pos;
+		} 
 	}
 
 	void OnTriggerEnter2D(Collider2D col) {
 
-		if (col.gameObject.tag == "Player" || col.gameObject.tag == "Enemy") {
+		if (col.gameObject.tag == "Player" || col.gameObject.tag == "Enemy" || LayerMask.LayerToName(col.gameObject.layer).Contains("Player")) {
 
-			if (this.state == State.idle && this.canPickUp && col.gameObject.tag == "Player") {
+			if (this.state == State.idle && this.canPickUp && col.gameObject.tag == "Player" ) {
+
 
 				hammer = GameObject.Find (col.transform.parent.name + "/Hammer/Body");
 
@@ -69,20 +70,29 @@ public class ThrowableObject : MonoBehaviour {
 				this.collider2D.enabled = false;
 			
 			} else if (this.state == State.thrown) {
-				Damage(col);
+
+				
+				//find highest parent
+				
+				Transform playerTransform = null;
+				Transform c = col.gameObject.transform;
+				
+				while(c.transform.parent != null){
+					playerTransform = c.transform.parent;
+					c = playerTransform;
+				}
+			
+				Damage(playerTransform.GetComponentInChildren<PlayerBehavior>().gameObject.collider2D);
 				this.rigidbody2D.velocity = Vector2.zero;
 				this.state = State.idle;
 				
 				
 				// RECORD EVENT WITH PLAYER TRACKER
 				if (col.gameObject.tag == "Player") {
-					PlayerEvents.RecordAttack(col.transform.parent.gameObject,controller.transform.parent.gameObject,damageVal);
+					PlayerEvents.RecordAttack(playerTransform.gameObject,controller.transform.parent.gameObject,damageVal);
 				}
 			}
 		}
-
-
-		
 	}
 
 
