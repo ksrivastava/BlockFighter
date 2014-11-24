@@ -13,6 +13,7 @@ public class PlayerControl : MonoBehaviour
 	bool rightDash = false;
 
 	public int playerNum;
+	public string playerName;
 	public bool pickedUpObject = false;
 	
 	private float moveForce = 400f;			// Amount of force added to move the player left and right.
@@ -240,5 +241,9 @@ public class PlayerControl : MonoBehaviour
 
 	public Vector2 GetPosition() {
 		return transform.position;
+	}
+
+	public string GetName() {
+		return playerName;
 	}
 }

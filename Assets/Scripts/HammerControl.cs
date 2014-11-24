@@ -48,7 +48,8 @@ public class HammerControl : MonoBehaviour {
 
 		var pos = player.position;
 		direction = (controller.facingRight) ? 1 : -1;
-		pos.x += (player.renderer.bounds.size.x/2 - 0.1f) * direction;
+		pos.x += (player.renderer.bounds.size.x/2) * direction;
+		pos.y += 0.1f;
 		pos.z = -1;
 		transform.position = pos;
 

@@ -19,12 +19,15 @@ public class PointsBar : MonoBehaviour {
 	private float yScore, yPlayer, xPlayer;
 	private float length, height;
 
+	private string[] names;
+
 	private static float[] points;
 	private static float total = 16.0f;
 
 	void Start() {
 		styles = new GUIStyle[5];
 		points = new float[4];
+		names = new string[4];
 
 		GameObject[] pl = GameObject.FindGameObjectsWithTag("Player");
 
@@ -39,6 +42,7 @@ public class PointsBar : MonoBehaviour {
 		for (int i = 0; i < 4; ++i) {
 			PlayerControl c = pl[i].GetComponent<PlayerControl>();
 			styles[c.GetPlayerNum() - 1].normal.textColor = pl[i].GetComponent<ColorSetter>().color;
+			names[c.GetPlayerNum() - 1] = c.GetName();
 		}
 
 		styles[4] = new GUIStyle ();
@@ -59,7 +63,7 @@ public class PointsBar : MonoBehaviour {
 		for (int i = 0; i < 4; ++i) {
 			styles[i].fontSize = (int)playerFontSize;
 			GUI.Box (new Rect((i + 0.5f) * Screen.width / 4.5f, yScore, length, scoreFontSize), points[i].ToString(), styles[4]);
-			GUI.Box (new Rect((i + 0.5f) * Screen.width / 4.5f + length / 27f, yPlayer, length, playerFontSize), "Player " + (i + 1).ToString(), styles[i]);
+			GUI.Box (new Rect((i + 0.5f) * Screen.width / 4.5f + length / 27f, yPlayer, length, playerFontSize), names[i], styles[i]);
 		}
 	}
 
