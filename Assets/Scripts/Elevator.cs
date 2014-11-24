@@ -3,19 +3,25 @@ using System.Collections;
 
 public class Elevator : MonoBehaviour {
 
-	public float bottom;
-	public float top;
-	public float speed;
+
+	float height=20;
+	float durationUp = 5;
+	float durationDown = 1;
+
+	Movement m = null; 
+
+	void Start(){
+		m = new Movement(this.gameObject);
+		Vector3 start = transform.position;
+		Vector3 end = transform.position;
+		end.y += height;
+		m.AddLine (start, end, durationUp);
+		m.AddLine (end, start, durationDown);
+		m.SetRepeat ();
+		m.Start ();
+	}
 	
 	void Update () {
-		if(transform.position.y < bottom) {
-			speed *= -1;
-		} else if (transform.position.y > top) {
-			speed *= -1;
-		}
-
-		Vector2 pos = transform.position;
-		pos.y += speed * Time.deltaTime;
-		transform.position = pos;
+		m.Update ();
 	}
 }
