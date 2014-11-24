@@ -7,10 +7,18 @@ public class HealthPowerUp : PowerUp {
 
 	protected override void OnCollisionWithPlayerBody(GameObject player) {
 		HealthBar healthBar = player.GetComponent<HealthBar>();
-		if (healthBar.Health < healthBar.MaxHealth) {
-			PointsBar.DisplayNumber(player, addedhealth, DisplayType.Health);
-			healthBar.AddHealth(addedhealth);
-			Destroy(this.gameObject);
+
+		float healedHeath;
+		if (healthBar.MaxHealth - healthBar.Health >= addedhealth) {
+			healedHeath = addedhealth;
+		} else {
+			healedHeath = healthBar.MaxHealth - healthBar.Health;
 		}
+
+		if(healedHeath > 0) {
+			PointsBar.DisplayNumber(player, healedHeath, DisplayType.Health);
+			healthBar.AddHealth(healedHeath);
+		}
+		Destroy(this.gameObject);
 	}
 }

@@ -1,0 +1,432 @@
+fileFormatVersion: 2
+guid: 7ed19bec0f2c3614dab1e423507f136b
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Gray/Brown
+    21300002: Gray with Green Light
+    21300004: Sheet Metal Rect
+    21300006: Sheet Metal Small
+    21300008: White Platform
+    21300010: Sheet Metal Rect
+    21300012: Light Black Big
+    21300014: Bars Big
+    21300016: Dark Gray/Brown Rect
+    21300018: Light Gray Rect
+    21300020: Gray Rusted Rect
+    21300022: Dark Gray/Brown Small
+    21300024: Light Gray Small
+    21300026: Gray Rusted Small
+    21300028: Black Platform
+    21300030: Black Box 2 Big
+    21300032: Bars Really Big
+    21300034: Tiger Big
+    21300036: Tiger Small
+    21300038: Stacked Box
+    21300040: X Box
+    21300042: Light Box Off
+    21300044: Light Box On
+    21300046: Light Gray Rusted Big
+    21300048: Black Box Big
+    21300050: Gray Rusted Platform
+    21300052: Dark Sheet Metal Big
+    21300054: Dark Gray with Green Light
+    21300056: Light Grey Platform
+    21300058: Cobalt Big
+    21300060: Dark Gray/Brown Platform
+    21300062: SciFi-Tileset_31
+    21300064: Grey Platform (House)
+    21300066: Grey Backdrop
+    21300068: Grey Backdrop Square
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Gray/Brown
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 704
+        width: 96
+        height: 96
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Gray with Green Light
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 705
+        width: 96
+        height: 95
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Sheet Metal Rect
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 736
+        width: 96
+        height: 64
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Sheet Metal Small
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 736
+        width: 64
+        height: 64
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: White Platform
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 763
+        width: 128
+        height: 32
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Sheet Metal Rect
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 702
+        width: 96
+        height: 32
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Light Black Big
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 637
+        width: 96
+        height: 94
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Bars Big
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 635
+        width: 96
+        height: 96
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Dark Gray/Brown Rect
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 637
+        width: 96
+        height: 64
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Light Gray Rect
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 637
+        width: 96
+        height: 64
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Gray Rusted Rect
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 637
+        width: 96
+        height: 64
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Dark Gray/Brown Small
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 569
+        width: 64
+        height: 64
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Light Gray Small
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 569
+        width: 64
+        height: 64
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Gray Rusted Small
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 569
+        width: 64
+        height: 64
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Black Platform
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 596
+        width: 64
+        height: 32
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Black Box 2 Big
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 534
+        width: 96
+        height: 94
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Bars Really Big
+      rect:
+        serializedVersion: 2
+        x: 413
+        y: 499
+        width: 128
+        height: 128
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Tiger Big
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 471
+        width: 96
+        height: 96
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Tiger Small
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 503
+        width: 65
+        height: 64
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Stacked Box
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 501
+        width: 32
+        height: 64
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: X Box
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 534
+        width: 32
+        height: 32
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Light Box Off
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 403
+        width: 64
+        height: 64
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Light Box On
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 403
+        width: 64
+        height: 64
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Light Gray Rusted Big
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 431
+        width: 96
+        height: 96
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Black Box Big
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 431
+        width: 96
+        height: 96
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Gray Rusted Platform
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 362
+        width: 96
+        height: 32
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Dark Sheet Metal Big
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 300
+        width: 96
+        height: 94
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Dark Gray with Green Light
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 300
+        width: 96
+        height: 96
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Light Grey Platform
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 387
+        width: 96
+        height: 32
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Cobalt Big
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 264
+        width: 96
+        height: 94
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Dark Gray/Brown Platform
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 338
+        width: 96
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SciFi-Tileset_31
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 480
+        height: 256
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Grey Platform (House)
+      rect:
+        serializedVersion: 2
+        x: 317
+        y: 301
+        width: 160
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Grey Backdrop
+      rect:
+        serializedVersion: 2
+        x: 438
+        y: 366
+        width: 288
+        height: 96
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Grey Backdrop Square
+      rect:
+        serializedVersion: 2
+        x: 562
+        y: 478
+        width: 96
+        height: 90
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 

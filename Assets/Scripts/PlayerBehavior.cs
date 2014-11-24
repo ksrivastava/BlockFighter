@@ -112,8 +112,6 @@ public class PlayerBehavior : MonoBehaviour {
 	}
 
 	void Die(){
-
-		
 		// detach all bombs and leeches
 		foreach (var bomb in GetComponentsInChildren<BombRock>()) {
 			Destroy(bomb.gameObject);
@@ -127,7 +125,6 @@ public class PlayerBehavior : MonoBehaviour {
 		PlayerEvents.RecordDeath(this.transform.parent.gameObject);
 		var respawnPoint = GameObject.Find ("RespawnPoint");
 		transform.position = respawnPoint.transform.position;
-		this.gameObject.GetComponent<ColorSetter>().ResetColor ();
 		PlayerEvents.RemovePlayerFromTeam (this.transform.parent.name);
 		healthBar.Health = healthBar.MaxHealth;
 

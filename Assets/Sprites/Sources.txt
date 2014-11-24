@@ -6,3 +6,9 @@ http://opengameart.org/content/medals-3
 
 Characters:
 http://opengameart.org/content/micro-character-bases-basics
+
+SciFi Tileset:
+http://opengameart.org/content/sci-fi-platform-tiles
+
+Hammer:
+http://opengameart.org/content/maces-64-x-64

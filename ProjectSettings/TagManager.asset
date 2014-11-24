@@ -47,6 +47,10 @@ TagManager:
     userID: 1
     uniqueID: 824485163
     locked: 0
+  - name: Intermediate
+    userID: 2
+    uniqueID: 569353797
+    locked: 0
   - name: Default
     userID: 0
     uniqueID: 0

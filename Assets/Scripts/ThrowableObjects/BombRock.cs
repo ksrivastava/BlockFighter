@@ -19,14 +19,13 @@ public class BombRock : StraightRock {
 	protected float countDownTimer;
 	protected float secondTimer = 0f;
 	private Animator anim;
-	private bool start = true;
+
+	void Awake() {
+		anim = this.GetComponent<Animator> ();
+		anim.SetBool ("isExploding", false);
+	}
 
 	public override void Update(){
-		if(start) {
-			anim = this.GetComponent<Animator> ();
-			anim.SetBool ("isExploding", false);
-			start = false;
-		}
 		if (stick) {
 			if(stickPlayerControl.facingRight){
 				transform.position = stickObject.transform.position + new Vector3(-1,0,0);
@@ -66,7 +65,6 @@ public class BombRock : StraightRock {
 	}
 
 	void Explode(){
-		stick = false;
 		anim.SetBool ("isExploding", true);
 		float xForce = 2000;
 		float upForce = 2000;
