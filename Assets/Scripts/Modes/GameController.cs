@@ -26,7 +26,7 @@ public class GameController : MonoBehaviour
 			if (mode.CheckGameOver())
 			{
 				Pause();
-				controller.GetComponent<Message>().DisplayMessage("Game Over!");
+				controller.GetComponent<Message>().DisplayMessage("Game Over!", Color.red);
 				StartCoroutine(LoadGameOverScreen());
 				started = false;
 			}
