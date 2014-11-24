@@ -49,7 +49,7 @@ public class GameModeMenuController : MonoBehaviour {
 		} else if (Input.GetKeyDown(KeyCode.Return) || (actionPressed ) ){
 			switch (selectedOption) {
 				case ModeOption.TimeLimit:
-					GameController.mode = new TimeLimitMode(10000);
+					GameController.mode = new TimeLimitMode(120000);
 					Application.LoadLevel (1);
 					break;
 				case ModeOption.Points:
