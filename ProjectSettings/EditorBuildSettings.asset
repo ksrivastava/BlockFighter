@@ -8,6 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scene_Menu.unity
   - enabled: 1
+<<<<<<< HEAD
     path: Assets/_Map_2.unity
+=======
+    path: Assets/_Map_1.unity
+>>>>>>> ca6c474c477022a2ce66aa70b76477da0a0bc0d3
   - enabled: 1
     path: Assets/_Level_1.unity

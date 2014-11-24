@@ -11,11 +11,6 @@ public class EndGameMenuController : MonoBehaviour {
 	void Start () {
 		float[] points = PointsBar.GetAllPoints ();
 
-		Transform labels = GameObject.Find ("PlayerLabels").transform;
-		for (int i = 0; i < players.Length; ++i) {
-			labels.GetChild (i).gameObject.GetComponent<TextMesh>().color = colors[i];
-		}
-
 		Transform pointsTransform = GameObject.Find ("Points").transform;
 		for (int i = 0; i < players.Length; ++i) {
 			pointsTransform.GetChild (i).gameObject.GetComponent<TextMesh>().text = points[i].ToString ();
