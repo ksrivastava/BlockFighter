@@ -201,7 +201,7 @@ Transform:
   m_LocalScale: {x: 10.1028748, y: 10.1028738, z: 1}
   m_Children: []
   m_Father: {fileID: 506835701}
-  m_RootOrder: 64
+  m_RootOrder: 66
 --- !u!1 &40193340
 GameObject:
   m_ObjectHideFlags: 0
@@ -253,7 +253,7 @@ Transform:
   - {fileID: 315626977}
   - {fileID: 111249113}
   m_Father: {fileID: 506835701}
-  m_RootOrder: 74
+  m_RootOrder: 76
 --- !u!1 &46488515
 GameObject:
   m_ObjectHideFlags: 0
@@ -329,8 +329,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 55723429}
   - 212: {fileID: 55723428}
-  - 50: {fileID: 55723431}
-  - 61: {fileID: 55723430}
   m_Layer: 8
   m_Name: No Grass Extender
   m_TagString: Untagged
@@ -372,32 +370,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 506835701}
   m_RootOrder: 38
---- !u!61 &55723430
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 55723427}
-  m_Enabled: 1
-  m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
-  m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .209999993}
-  m_Center: {x: .104999997, y: .104999997}
---- !u!50 &55723431
-Rigidbody2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 55723427}
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: .0500000007
-  m_GravityScale: 1
-  m_FixedAngle: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
 --- !u!1 &94248602
 GameObject:
   m_ObjectHideFlags: 0
@@ -557,7 +529,7 @@ Transform:
   m_LocalScale: {x: 10.1028748, y: 10.1028738, z: 1}
   m_Children: []
   m_Father: {fileID: 506835701}
-  m_RootOrder: 83
+  m_RootOrder: 85
 --- !u!1 &168892718
 GameObject:
   m_ObjectHideFlags: 0
@@ -863,7 +835,7 @@ Transform:
   m_LocalScale: {x: 10.1028748, y: 10.1028738, z: 1}
   m_Children: []
   m_Father: {fileID: 506835701}
-  m_RootOrder: 76
+  m_RootOrder: 78
 --- !u!1 &218709983
 GameObject:
   m_ObjectHideFlags: 0
@@ -1044,8 +1016,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 236823580}
   - 212: {fileID: 236823579}
-  - 50: {fileID: 236823582}
-  - 61: {fileID: 236823581}
   m_Layer: 8
   m_Name: No Grass Extender
   m_TagString: Untagged
@@ -1087,32 +1057,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 506835701}
   m_RootOrder: 36
---- !u!61 &236823581
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 236823578}
-  m_Enabled: 1
-  m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
-  m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .209999993}
-  m_Center: {x: .104999997, y: .104999997}
---- !u!50 &236823582
-Rigidbody2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 236823578}
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: .0500000007
-  m_GravityScale: 1
-  m_FixedAngle: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
 --- !u!1 &243951485
 GameObject:
   m_ObjectHideFlags: 0
@@ -1508,7 +1452,7 @@ Transform:
   m_LocalScale: {x: 10.1028748, y: 10.1028738, z: 1}
   m_Children: []
   m_Father: {fileID: 506835701}
-  m_RootOrder: 61
+  m_RootOrder: 63
 --- !u!1 &306749833
 GameObject:
   m_ObjectHideFlags: 0
@@ -1558,7 +1502,7 @@ Transform:
   m_LocalScale: {x: 10.1028748, y: 10.1028738, z: 1}
   m_Children: []
   m_Father: {fileID: 506835701}
-  m_RootOrder: 78
+  m_RootOrder: 80
 --- !u!1 &313213216
 GameObject:
   m_ObjectHideFlags: 0
@@ -1709,6 +1653,61 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1552719914}
   m_RootOrder: 0
+--- !u!1 &337001479
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 337001480}
+  - 50: {fileID: 337001482}
+  - 61: {fileID: 337001481}
+  m_Layer: 0
+  m_Name: End
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &337001480
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 337001479}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -.512081981, y: 2.530509, z: 0}
+  m_LocalScale: {x: .0216490049, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1552719914}
+  m_RootOrder: 4
+--- !u!61 &337001481
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 337001479}
+  m_Enabled: 1
+  m_Material: {fileID: 6200000, guid: 3386072ea2f3e47e8836d00d013caf95, type: 2}
+  m_IsTrigger: 0
+  m_Size: {x: 1, y: 1.95466256}
+  m_Center: {x: 0, y: -.477332115}
+--- !u!50 &337001482
+Rigidbody2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 337001479}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 1
+  m_FixedAngle: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
 --- !u!1 &351369597
 GameObject:
   m_ObjectHideFlags: 0
@@ -1758,7 +1757,7 @@ Transform:
   m_LocalScale: {x: 10.1028748, y: 10.1028738, z: 1}
   m_Children: []
   m_Father: {fileID: 506835701}
-  m_RootOrder: 40
+  m_RootOrder: 42
 --- !u!1 &355150421
 GameObject:
   m_ObjectHideFlags: 0
@@ -1813,8 +1812,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 359435909}
   - 212: {fileID: 359435908}
-  - 50: {fileID: 359435911}
-  - 61: {fileID: 359435910}
   m_Layer: 8
   m_Name: No Grass Extender
   m_TagString: Untagged
@@ -1856,32 +1853,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 506835701}
   m_RootOrder: 32
---- !u!61 &359435910
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 359435907}
-  m_Enabled: 1
-  m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
-  m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .209999993}
-  m_Center: {x: .104999997, y: .104999997}
---- !u!50 &359435911
-Rigidbody2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 359435907}
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: .0500000007
-  m_GravityScale: 1
-  m_FixedAngle: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
 --- !u!1 &378304857
 GameObject:
   m_ObjectHideFlags: 0
@@ -1996,8 +1967,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 405142452}
   - 212: {fileID: 405142451}
-  - 50: {fileID: 405142454}
-  - 61: {fileID: 405142453}
   m_Layer: 8
   m_Name: No Grass Extender
   m_TagString: Untagged
@@ -2039,32 +2008,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 506835701}
   m_RootOrder: 22
---- !u!61 &405142453
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 405142450}
-  m_Enabled: 1
-  m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
-  m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .209999993}
-  m_Center: {x: .104999997, y: .104999997}
---- !u!50 &405142454
-Rigidbody2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 405142450}
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: .0500000007
-  m_GravityScale: 1
-  m_FixedAngle: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
 --- !u!1 &410513254
 GameObject:
   m_ObjectHideFlags: 0
@@ -2114,7 +2057,7 @@ Transform:
   m_LocalScale: {x: 10.1028748, y: 10.1028738, z: 1}
   m_Children: []
   m_Father: {fileID: 506835701}
-  m_RootOrder: 50
+  m_RootOrder: 52
 --- !u!1 &412574606
 GameObject:
   m_ObjectHideFlags: 0
@@ -2164,7 +2107,7 @@ Transform:
   m_LocalScale: {x: 10.1028748, y: 10.1028738, z: 1}
   m_Children: []
   m_Father: {fileID: 506835701}
-  m_RootOrder: 41
+  m_RootOrder: 43
 --- !u!1 &437099363
 GameObject:
   m_ObjectHideFlags: 0
@@ -2174,8 +2117,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 437099365}
   - 212: {fileID: 437099364}
-  - 50: {fileID: 437099367}
-  - 61: {fileID: 437099366}
   m_Layer: 8
   m_Name: No Grass Extender
   m_TagString: Untagged
@@ -2217,32 +2158,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 506835701}
   m_RootOrder: 31
---- !u!61 &437099366
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 437099363}
-  m_Enabled: 1
-  m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
-  m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .209999993}
-  m_Center: {x: .104999997, y: .104999997}
---- !u!50 &437099367
-Rigidbody2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 437099363}
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: .0500000007
-  m_GravityScale: 1
-  m_FixedAngle: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
 --- !u!1 &448656843
 GameObject:
   m_ObjectHideFlags: 0
@@ -2437,8 +2352,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 479179161}
   - 212: {fileID: 479179160}
-  - 50: {fileID: 479179163}
-  - 61: {fileID: 479179162}
   m_Layer: 8
   m_Name: No Grass Extender
   m_TagString: Untagged
@@ -2480,32 +2393,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 506835701}
   m_RootOrder: 33
---- !u!61 &479179162
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 479179159}
-  m_Enabled: 1
-  m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
-  m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .209999993}
-  m_Center: {x: .104999997, y: .104999997}
---- !u!50 &479179163
-Rigidbody2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 479179159}
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: .0500000007
-  m_GravityScale: 1
-  m_FixedAngle: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
 --- !u!1 &506835700
 GameObject:
   m_ObjectHideFlags: 0
@@ -2570,6 +2457,8 @@ Transform:
   - {fileID: 236823580}
   - {fileID: 796619899}
   - {fileID: 55723429}
+  - {fileID: 1818208742}
+  - {fileID: 1589502712}
   - {fileID: 1475182051}
   - {fileID: 351369601}
   - {fileID: 412574610}
@@ -2731,7 +2620,7 @@ Transform:
   m_LocalScale: {x: 10.1028748, y: 10.1028738, z: 1}
   m_Children: []
   m_Father: {fileID: 506835701}
-  m_RootOrder: 51
+  m_RootOrder: 53
 --- !u!1 &572727287
 GameObject:
   m_ObjectHideFlags: 0
@@ -2895,7 +2784,7 @@ Transform:
   m_LocalScale: {x: 1, y: 62.645462, z: 1}
   m_Children: []
   m_Father: {fileID: 506835701}
-  m_RootOrder: 90
+  m_RootOrder: 92
 --- !u!61 &592921140
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2985,7 +2874,7 @@ Transform:
   m_LocalScale: {x: 10.1028748, y: 10.1028738, z: 1}
   m_Children: []
   m_Father: {fileID: 506835701}
-  m_RootOrder: 43
+  m_RootOrder: 45
 --- !u!1 &608239493
 GameObject:
   m_ObjectHideFlags: 0
@@ -3035,7 +2924,7 @@ Transform:
   m_LocalScale: {x: 10.1028748, y: 10.1028738, z: 1}
   m_Children: []
   m_Father: {fileID: 506835701}
-  m_RootOrder: 58
+  m_RootOrder: 60
 --- !u!1 &643964945
 GameObject:
   m_ObjectHideFlags: 0
@@ -3086,7 +2975,7 @@ Transform:
   m_Children:
   - {fileID: 94248603}
   m_Father: {fileID: 506835701}
-  m_RootOrder: 54
+  m_RootOrder: 56
 --- !u!1 &665554041
 GameObject:
   m_ObjectHideFlags: 0
@@ -3136,7 +3025,7 @@ Transform:
   m_LocalScale: {x: 10.1028748, y: 10.1028738, z: 1}
   m_Children: []
   m_Father: {fileID: 506835701}
-  m_RootOrder: 87
+  m_RootOrder: 89
 --- !u!1 &679252694
 GameObject:
   m_ObjectHideFlags: 0
@@ -4270,6 +4159,61 @@ MonoBehaviour:
   isBigHammer: 0
   isHitting: 0
   attackComplete: 0
+--- !u!1 &727441191
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 727441192}
+  - 50: {fileID: 727441194}
+  - 61: {fileID: 727441193}
+  m_Layer: 0
+  m_Name: End
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &727441192
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 727441191}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .51170516, y: 2.530509, z: 0}
+  m_LocalScale: {x: .0216490012, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1552719914}
+  m_RootOrder: 5
+--- !u!61 &727441193
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 727441191}
+  m_Enabled: 1
+  m_Material: {fileID: 6200000, guid: 3386072ea2f3e47e8836d00d013caf95, type: 2}
+  m_IsTrigger: 0
+  m_Size: {x: 1, y: 1.95466256}
+  m_Center: {x: 0, y: -.477332115}
+--- !u!50 &727441194
+Rigidbody2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 727441191}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 1
+  m_FixedAngle: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
 --- !u!1 &751668277
 GameObject:
   m_ObjectHideFlags: 0
@@ -4362,7 +4306,7 @@ Transform:
   m_Children:
   - {fileID: 1757562770}
   m_Father: {fileID: 506835701}
-  m_RootOrder: 89
+  m_RootOrder: 91
 --- !u!1 &796619897
 GameObject:
   m_ObjectHideFlags: 0
@@ -4372,8 +4316,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 796619899}
   - 212: {fileID: 796619898}
-  - 50: {fileID: 796619901}
-  - 61: {fileID: 796619900}
   m_Layer: 8
   m_Name: No Grass Extender
   m_TagString: Untagged
@@ -4415,32 +4357,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 506835701}
   m_RootOrder: 37
---- !u!61 &796619900
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 796619897}
-  m_Enabled: 1
-  m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
-  m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .209999993}
-  m_Center: {x: .104999997, y: .104999997}
---- !u!50 &796619901
-Rigidbody2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 796619897}
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: .0500000007
-  m_GravityScale: 1
-  m_FixedAngle: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
 --- !u!1 &816189294
 GameObject:
   m_ObjectHideFlags: 0
@@ -4578,7 +4494,7 @@ Transform:
   - {fileID: 575654870}
   - {fileID: 920072892}
   m_Father: {fileID: 506835701}
-  m_RootOrder: 55
+  m_RootOrder: 57
 --- !u!1 &827836562
 GameObject:
   m_ObjectHideFlags: 0
@@ -4628,7 +4544,7 @@ Transform:
   m_LocalScale: {x: 10.1028748, y: 10.1028738, z: 1}
   m_Children: []
   m_Father: {fileID: 506835701}
-  m_RootOrder: 62
+  m_RootOrder: 64
 --- !u!1 &830513404
 GameObject:
   m_ObjectHideFlags: 0
@@ -4638,8 +4554,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 830513406}
   - 212: {fileID: 830513405}
-  - 50: {fileID: 830513408}
-  - 61: {fileID: 830513407}
   m_Layer: 8
   m_Name: No Grass Extender
   m_TagString: Untagged
@@ -4681,32 +4595,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 506835701}
   m_RootOrder: 30
---- !u!61 &830513407
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 830513404}
-  m_Enabled: 1
-  m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
-  m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .209999993}
-  m_Center: {x: .104999997, y: .104999997}
---- !u!50 &830513408
-Rigidbody2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 830513404}
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: .0500000007
-  m_GravityScale: 1
-  m_FixedAngle: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
 --- !u!1 &831903182
 GameObject:
   m_ObjectHideFlags: 0
@@ -4716,8 +4604,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 831903184}
   - 212: {fileID: 831903183}
-  - 50: {fileID: 831903186}
-  - 61: {fileID: 831903185}
   m_Layer: 8
   m_Name: No Grass Extender
   m_TagString: Untagged
@@ -4759,32 +4645,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 506835701}
   m_RootOrder: 25
---- !u!61 &831903185
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 831903182}
-  m_Enabled: 1
-  m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
-  m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .209999993}
-  m_Center: {x: .104999997, y: .104999997}
---- !u!50 &831903186
-Rigidbody2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 831903182}
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: .0500000007
-  m_GravityScale: 1
-  m_FixedAngle: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
 --- !u!1 &857309808
 GameObject:
   m_ObjectHideFlags: 0
@@ -4834,7 +4694,7 @@ Transform:
   m_LocalScale: {x: 10.1028748, y: 10.1028738, z: 1}
   m_Children: []
   m_Father: {fileID: 506835701}
-  m_RootOrder: 70
+  m_RootOrder: 72
 --- !u!1 &876871170
 GameObject:
   m_ObjectHideFlags: 0
@@ -4962,7 +4822,7 @@ Transform:
   m_LocalScale: {x: 10.1028748, y: 10.1028738, z: 1}
   m_Children: []
   m_Father: {fileID: 506835701}
-  m_RootOrder: 63
+  m_RootOrder: 65
 --- !u!1 &902730136
 GameObject:
   m_ObjectHideFlags: 0
@@ -5012,7 +4872,7 @@ Transform:
   m_LocalScale: {x: 10.1028748, y: 10.1028738, z: 1}
   m_Children: []
   m_Father: {fileID: 506835701}
-  m_RootOrder: 84
+  m_RootOrder: 86
 --- !u!1 &912803995
 GameObject:
   m_ObjectHideFlags: 0
@@ -5195,7 +5055,7 @@ Transform:
   m_LocalScale: {x: 10.1028748, y: 10.1028738, z: 1}
   m_Children: []
   m_Father: {fileID: 506835701}
-  m_RootOrder: 86
+  m_RootOrder: 88
 --- !u!1 &930075112
 GameObject:
   m_ObjectHideFlags: 0
@@ -5323,7 +5183,7 @@ Transform:
   m_LocalScale: {x: 10.1028748, y: 10.1028738, z: 1}
   m_Children: []
   m_Father: {fileID: 506835701}
-  m_RootOrder: 88
+  m_RootOrder: 90
 --- !u!1 &942813778
 GameObject:
   m_ObjectHideFlags: 0
@@ -5439,7 +5299,7 @@ Transform:
   m_LocalScale: {x: 10.1028748, y: 10.1028738, z: 1}
   m_Children: []
   m_Father: {fileID: 506835701}
-  m_RootOrder: 53
+  m_RootOrder: 55
 --- !u!1 &996111605
 GameObject:
   m_ObjectHideFlags: 0
@@ -5490,7 +5350,7 @@ Transform:
   m_Children:
   - {fileID: 1612341501}
   m_Father: {fileID: 506835701}
-  m_RootOrder: 46
+  m_RootOrder: 48
 --- !u!1 &999511266
 GameObject:
   m_ObjectHideFlags: 0
@@ -5689,7 +5549,7 @@ Transform:
   m_LocalScale: {x: 10.1028748, y: 10.1028738, z: 1}
   m_Children: []
   m_Father: {fileID: 506835701}
-  m_RootOrder: 67
+  m_RootOrder: 69
 --- !u!1 &1096350249
 GameObject:
   m_ObjectHideFlags: 0
@@ -6118,8 +5978,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1136901463}
   - 212: {fileID: 1136901462}
-  - 50: {fileID: 1136901465}
-  - 61: {fileID: 1136901464}
   m_Layer: 8
   m_Name: No Grass Extender
   m_TagString: Untagged
@@ -6161,32 +6019,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 506835701}
   m_RootOrder: 28
---- !u!61 &1136901464
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1136901461}
-  m_Enabled: 1
-  m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
-  m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .209999993}
-  m_Center: {x: .104999997, y: .104999997}
---- !u!50 &1136901465
-Rigidbody2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1136901461}
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: .0500000007
-  m_GravityScale: 1
-  m_FixedAngle: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
 --- !u!1 &1140848986
 GameObject:
   m_ObjectHideFlags: 0
@@ -6196,8 +6028,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1140848988}
   - 212: {fileID: 1140848987}
-  - 50: {fileID: 1140848990}
-  - 61: {fileID: 1140848989}
   m_Layer: 8
   m_Name: No Grass Extender
   m_TagString: Untagged
@@ -6239,32 +6069,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 506835701}
   m_RootOrder: 24
---- !u!61 &1140848989
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1140848986}
-  m_Enabled: 1
-  m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
-  m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .209999993}
-  m_Center: {x: .104999997, y: .104999997}
---- !u!50 &1140848990
-Rigidbody2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1140848986}
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: .0500000007
-  m_GravityScale: 1
-  m_FixedAngle: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
 --- !u!1 &1149656916
 GameObject:
   m_ObjectHideFlags: 0
@@ -6314,7 +6118,7 @@ Transform:
   m_LocalScale: {x: 10.1028748, y: 10.1028738, z: 1}
   m_Children: []
   m_Father: {fileID: 506835701}
-  m_RootOrder: 77
+  m_RootOrder: 79
 --- !u!1 &1150068975
 GameObject:
   m_ObjectHideFlags: 0
@@ -6364,7 +6168,7 @@ Transform:
   m_LocalScale: {x: 10.1028748, y: 10.1028738, z: 1}
   m_Children: []
   m_Father: {fileID: 506835701}
-  m_RootOrder: 59
+  m_RootOrder: 61
 --- !u!1001 &1196413269
 Prefab:
   m_ObjectHideFlags: 0
@@ -6508,7 +6312,7 @@ Transform:
   m_LocalScale: {x: 10.1028748, y: 10.1028738, z: 1}
   m_Children: []
   m_Father: {fileID: 506835701}
-  m_RootOrder: 75
+  m_RootOrder: 77
 --- !u!1 &1220533407
 GameObject:
   m_ObjectHideFlags: 0
@@ -6857,7 +6661,7 @@ Transform:
   m_LocalScale: {x: 10.1028748, y: 10.1028738, z: 1}
   m_Children: []
   m_Father: {fileID: 506835701}
-  m_RootOrder: 69
+  m_RootOrder: 71
 --- !u!1 &1307259569
 GameObject:
   m_ObjectHideFlags: 0
@@ -7110,7 +6914,7 @@ Transform:
   m_Children:
   - {fileID: 1934138171}
   m_Father: {fileID: 506835701}
-  m_RootOrder: 81
+  m_RootOrder: 83
 --- !u!1 &1416009902
 GameObject:
   m_ObjectHideFlags: 0
@@ -7345,7 +7149,7 @@ Transform:
   m_LocalScale: {x: 10.1028748, y: 10.1028738, z: 1}
   m_Children: []
   m_Father: {fileID: 506835701}
-  m_RootOrder: 68
+  m_RootOrder: 70
 --- !u!1 &1446759446
 GameObject:
   m_ObjectHideFlags: 0
@@ -7463,7 +7267,7 @@ Transform:
   - {fileID: 1533858177}
   - {fileID: 2096560948}
   m_Father: {fileID: 506835701}
-  m_RootOrder: 39
+  m_RootOrder: 41
 --- !u!1 &1476688799
 GameObject:
   m_ObjectHideFlags: 0
@@ -7560,7 +7364,7 @@ Transform:
   m_LocalScale: {x: 1, y: 62.645462, z: 1}
   m_Children: []
   m_Father: {fileID: 506835701}
-  m_RootOrder: 91
+  m_RootOrder: 93
 --- !u!61 &1498638088
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7650,7 +7454,7 @@ Transform:
   m_LocalScale: {x: 10.1028748, y: 10.1028738, z: 1}
   m_Children: []
   m_Father: {fileID: 506835701}
-  m_RootOrder: 48
+  m_RootOrder: 50
 --- !u!1 &1533858176
 GameObject:
   m_ObjectHideFlags: 0
@@ -7755,7 +7559,7 @@ Transform:
   m_LocalScale: {x: 10.1028748, y: 10.1028738, z: 1}
   m_Children: []
   m_Father: {fileID: 506835701}
-  m_RootOrder: 44
+  m_RootOrder: 46
 --- !u!1 &1539460062
 GameObject:
   m_ObjectHideFlags: 0
@@ -7765,8 +7569,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1539460064}
   - 212: {fileID: 1539460063}
-  - 50: {fileID: 1539460066}
-  - 61: {fileID: 1539460065}
   m_Layer: 8
   m_Name: No Grass Extender
   m_TagString: Untagged
@@ -7808,32 +7610,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 506835701}
   m_RootOrder: 29
---- !u!61 &1539460065
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1539460062}
-  m_Enabled: 1
-  m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
-  m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .209999993}
-  m_Center: {x: .104999997, y: .104999997}
---- !u!50 &1539460066
-Rigidbody2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1539460062}
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: .0500000007
-  m_GravityScale: 1
-  m_FixedAngle: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
 --- !u!1 &1552719913
 GameObject:
   m_ObjectHideFlags: 0
@@ -7866,8 +7642,10 @@ Transform:
   - {fileID: 1263284774}
   - {fileID: 1322818748}
   - {fileID: 1446759449}
+  - {fileID: 337001480}
+  - {fileID: 727441192}
   m_Father: {fileID: 506835701}
-  m_RootOrder: 93
+  m_RootOrder: 95
 --- !u!114 &1552719915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8094,6 +7872,61 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
+--- !u!1 &1589502711
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1589502712}
+  - 61: {fileID: 1589502714}
+  - 50: {fileID: 1589502713}
+  m_Layer: 8
+  m_Name: Collider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1589502712
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1589502711}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.74727964, y: -.306084633, z: -.00390599994}
+  m_LocalScale: {x: 10.1028748, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 506835701}
+  m_RootOrder: 40
+--- !u!50 &1589502713
+Rigidbody2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1589502711}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 1
+  m_FixedAngle: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+--- !u!61 &1589502714
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1589502711}
+  m_Enabled: 1
+  m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
+  m_IsTrigger: 0
+  m_Size: {x: 3.31483865, y: 1}
+  m_Center: {x: 1.15741253, y: 0}
 --- !u!1 &1590984608
 GameObject:
   m_ObjectHideFlags: 0
@@ -8143,7 +7976,7 @@ Transform:
   m_LocalScale: {x: 10.1028748, y: 10.1028738, z: 1}
   m_Children: []
   m_Father: {fileID: 506835701}
-  m_RootOrder: 42
+  m_RootOrder: 44
 --- !u!1 &1604954767
 GameObject:
   m_ObjectHideFlags: 0
@@ -8270,7 +8103,7 @@ Transform:
   m_LocalScale: {x: 10.1028748, y: 10.1028738, z: 1}
   m_Children: []
   m_Father: {fileID: 506835701}
-  m_RootOrder: 45
+  m_RootOrder: 47
 --- !u!1 &1612341500
 GameObject:
   m_ObjectHideFlags: 0
@@ -8775,7 +8608,7 @@ Transform:
   m_LocalScale: {x: 10.1028748, y: 10.1028738, z: 1}
   m_Children: []
   m_Father: {fileID: 506835701}
-  m_RootOrder: 56
+  m_RootOrder: 58
 --- !u!1 &1733084281
 GameObject:
   m_ObjectHideFlags: 0
@@ -8785,8 +8618,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1733084283}
   - 212: {fileID: 1733084282}
-  - 50: {fileID: 1733084285}
-  - 61: {fileID: 1733084284}
   m_Layer: 8
   m_Name: No Grass Extender
   m_TagString: Untagged
@@ -8828,32 +8659,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 506835701}
   m_RootOrder: 21
---- !u!61 &1733084284
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1733084281}
-  m_Enabled: 1
-  m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
-  m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .209999993}
-  m_Center: {x: .104999997, y: .104999997}
---- !u!50 &1733084285
-Rigidbody2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1733084281}
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: .0500000007
-  m_GravityScale: 1
-  m_FixedAngle: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
 --- !u!1 &1737779822
 GameObject:
   m_ObjectHideFlags: 0
@@ -8903,7 +8708,7 @@ Transform:
   m_LocalScale: {x: 10.1028748, y: 10.1028738, z: 1}
   m_Children: []
   m_Father: {fileID: 506835701}
-  m_RootOrder: 85
+  m_RootOrder: 87
 --- !u!1 &1752935514
 GameObject:
   m_ObjectHideFlags: 0
@@ -8913,8 +8718,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1752935516}
   - 212: {fileID: 1752935515}
-  - 50: {fileID: 1752935518}
-  - 61: {fileID: 1752935517}
   m_Layer: 8
   m_Name: No Grass Extender
   m_TagString: Untagged
@@ -8956,32 +8759,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 506835701}
   m_RootOrder: 35
---- !u!61 &1752935517
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1752935514}
-  m_Enabled: 1
-  m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
-  m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .209999993}
-  m_Center: {x: .104999997, y: .104999997}
---- !u!50 &1752935518
-Rigidbody2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1752935514}
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: .0500000007
-  m_GravityScale: 1
-  m_FixedAngle: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
 --- !u!1 &1755959278
 GameObject:
   m_ObjectHideFlags: 0
@@ -8991,8 +8768,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1755959280}
   - 212: {fileID: 1755959279}
-  - 50: {fileID: 1755959282}
-  - 61: {fileID: 1755959281}
   m_Layer: 8
   m_Name: No Grass Extender
   m_TagString: Untagged
@@ -9034,32 +8809,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 506835701}
   m_RootOrder: 34
---- !u!61 &1755959281
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1755959278}
-  m_Enabled: 1
-  m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
-  m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .209999993}
-  m_Center: {x: .104999997, y: .104999997}
---- !u!50 &1755959282
-Rigidbody2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1755959278}
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: .0500000007
-  m_GravityScale: 1
-  m_FixedAngle: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
 --- !u!1 &1757562769
 GameObject:
   m_ObjectHideFlags: 0
@@ -9164,7 +8913,7 @@ Transform:
   m_LocalScale: {x: 10.1028748, y: 10.1028738, z: 1}
   m_Children: []
   m_Father: {fileID: 506835701}
-  m_RootOrder: 80
+  m_RootOrder: 82
 --- !u!1 &1763037709
 GameObject:
   m_ObjectHideFlags: 0
@@ -9174,8 +8923,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1763037711}
   - 212: {fileID: 1763037710}
-  - 50: {fileID: 1763037713}
-  - 61: {fileID: 1763037712}
   m_Layer: 8
   m_Name: No Grass Extender
   m_TagString: Untagged
@@ -9217,32 +8964,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 506835701}
   m_RootOrder: 27
---- !u!61 &1763037712
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1763037709}
-  m_Enabled: 1
-  m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
-  m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .209999993}
-  m_Center: {x: .104999997, y: .104999997}
---- !u!50 &1763037713
-Rigidbody2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1763037709}
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: .0500000007
-  m_GravityScale: 1
-  m_FixedAngle: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
 --- !u!1 &1765415278
 GameObject:
   m_ObjectHideFlags: 0
@@ -9252,8 +8973,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1765415280}
   - 212: {fileID: 1765415279}
-  - 50: {fileID: 1765415282}
-  - 61: {fileID: 1765415281}
   m_Layer: 8
   m_Name: No Grass Extender
   m_TagString: Untagged
@@ -9295,32 +9014,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 506835701}
   m_RootOrder: 23
---- !u!61 &1765415281
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1765415278}
-  m_Enabled: 1
-  m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
-  m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .209999993}
-  m_Center: {x: .104999997, y: .104999997}
---- !u!50 &1765415282
-Rigidbody2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1765415278}
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: .0500000007
-  m_GravityScale: 1
-  m_FixedAngle: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
 --- !u!1 &1788477545
 GameObject:
   m_ObjectHideFlags: 0
@@ -9371,7 +9064,7 @@ Transform:
   m_Children:
   - {fileID: 404843548}
   m_Father: {fileID: 506835701}
-  m_RootOrder: 65
+  m_RootOrder: 67
 --- !u!1 &1801494411
 GameObject:
   m_ObjectHideFlags: 0
@@ -9421,7 +9114,7 @@ Transform:
   m_LocalScale: {x: 10.1028748, y: 10.1028738, z: 1}
   m_Children: []
   m_Father: {fileID: 506835701}
-  m_RootOrder: 72
+  m_RootOrder: 74
 --- !u!1 &1802920746
 GameObject:
   m_ObjectHideFlags: 0
@@ -9431,8 +9124,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1802920748}
   - 212: {fileID: 1802920747}
-  - 50: {fileID: 1802920750}
-  - 61: {fileID: 1802920749}
   m_Layer: 8
   m_Name: No Grass Extender
   m_TagString: Untagged
@@ -9474,23 +9165,41 @@ Transform:
   m_Children: []
   m_Father: {fileID: 506835701}
   m_RootOrder: 20
---- !u!61 &1802920749
-BoxCollider2D:
+--- !u!1 &1818208741
+GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1802920746}
-  m_Enabled: 1
-  m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
-  m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .209999993}
-  m_Center: {x: .104999997, y: .104999997}
---- !u!50 &1802920750
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1818208742}
+  - 61: {fileID: 1818208744}
+  - 50: {fileID: 1818208743}
+  m_Layer: 8
+  m_Name: Collider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1818208742
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1818208741}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -33.5927238, y: -.306084633, z: -.00390599994}
+  m_LocalScale: {x: 10.1028748, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 506835701}
+  m_RootOrder: 39
+--- !u!50 &1818208743
 Rigidbody2D:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1802920746}
+  m_GameObject: {fileID: 1818208741}
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
@@ -9500,6 +9209,17 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
+--- !u!61 &1818208744
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1818208741}
+  m_Enabled: 1
+  m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
+  m_IsTrigger: 0
+  m_Size: {x: 3.18463564, y: 1}
+  m_Center: {x: 1.09231138, y: 0}
 --- !u!1 &1825179240
 GameObject:
   m_ObjectHideFlags: 0
@@ -9530,7 +9250,7 @@ Transform:
   m_LocalScale: {x: 1, y: 75, z: 1}
   m_Children: []
   m_Father: {fileID: 506835701}
-  m_RootOrder: 92
+  m_RootOrder: 94
 --- !u!61 &1825179242
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9620,7 +9340,7 @@ Transform:
   m_LocalScale: {x: 10.1028748, y: 10.1028738, z: 1}
   m_Children: []
   m_Father: {fileID: 506835701}
-  m_RootOrder: 79
+  m_RootOrder: 81
 --- !u!1 &1861100928
 GameObject:
   m_ObjectHideFlags: 0
@@ -9750,7 +9470,7 @@ Transform:
   - {fileID: 1928791563}
   - {fileID: 2108913714}
   m_Father: {fileID: 506835701}
-  m_RootOrder: 47
+  m_RootOrder: 49
 --- !u!1 &1928791562
 GameObject:
   m_ObjectHideFlags: 0
@@ -9857,7 +9577,7 @@ Transform:
   - {fileID: 1661973890}
   - {fileID: 1261088401}
   m_Father: {fileID: 506835701}
-  m_RootOrder: 82
+  m_RootOrder: 84
 --- !u!1 &1934138170
 GameObject:
   m_ObjectHideFlags: 0
@@ -10343,7 +10063,7 @@ Transform:
   m_LocalScale: {x: 10.1028748, y: 10.1028738, z: 1}
   m_Children: []
   m_Father: {fileID: 506835701}
-  m_RootOrder: 57
+  m_RootOrder: 59
 --- !u!1 &2038409155
 GameObject:
   m_ObjectHideFlags: 0
@@ -10393,7 +10113,7 @@ Transform:
   m_LocalScale: {x: 10.1028748, y: 10.1028738, z: 1}
   m_Children: []
   m_Father: {fileID: 506835701}
-  m_RootOrder: 49
+  m_RootOrder: 51
 --- !u!1 &2043142696
 GameObject:
   m_ObjectHideFlags: 0
@@ -10403,8 +10123,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 2043142698}
   - 212: {fileID: 2043142697}
-  - 50: {fileID: 2043142700}
-  - 61: {fileID: 2043142699}
   m_Layer: 8
   m_Name: No Grass Extender
   m_TagString: Untagged
@@ -10446,32 +10164,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 506835701}
   m_RootOrder: 26
---- !u!61 &2043142699
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2043142696}
-  m_Enabled: 1
-  m_Material: {fileID: 6200000, guid: ff11cd3088581497b9c81277149d06a3, type: 2}
-  m_IsTrigger: 0
-  m_Size: {x: .209999993, y: .209999993}
-  m_Center: {x: .104999997, y: .104999997}
---- !u!50 &2043142700
-Rigidbody2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2043142696}
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: .0500000007
-  m_GravityScale: 1
-  m_FixedAngle: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
 --- !u!1 &2062982990
 GameObject:
   m_ObjectHideFlags: 0
@@ -10523,7 +10215,7 @@ Transform:
   - {fileID: 1614683456}
   - {fileID: 1019933885}
   m_Father: {fileID: 506835701}
-  m_RootOrder: 66
+  m_RootOrder: 68
 --- !u!1 &2067147560
 GameObject:
   m_ObjectHideFlags: 0
@@ -10573,7 +10265,7 @@ Transform:
   m_LocalScale: {x: 10.1028748, y: 10.1028738, z: 1}
   m_Children: []
   m_Father: {fileID: 506835701}
-  m_RootOrder: 52
+  m_RootOrder: 54
 --- !u!1 &2096560947
 GameObject:
   m_ObjectHideFlags: 0
@@ -10733,7 +10425,7 @@ Transform:
   m_LocalScale: {x: 10.1028748, y: 10.1028738, z: 1}
   m_Children: []
   m_Father: {fileID: 506835701}
-  m_RootOrder: 60
+  m_RootOrder: 62
 --- !u!1 &2111536746
 GameObject:
   m_ObjectHideFlags: 0
@@ -10783,7 +10475,7 @@ Transform:
   m_LocalScale: {x: 10.1028748, y: 10.1028738, z: 1}
   m_Children: []
   m_Father: {fileID: 506835701}
-  m_RootOrder: 71
+  m_RootOrder: 73
 --- !u!1 &2117038431
 GameObject:
   m_ObjectHideFlags: 0
@@ -10834,4 +10526,4 @@ Transform:
   m_Children:
   - {fileID: 512385203}
   m_Father: {fileID: 506835701}
-  m_RootOrder: 73
+  m_RootOrder: 75
