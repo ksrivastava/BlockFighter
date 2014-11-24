@@ -9,3 +9,5 @@ EditorBuildSettings:
     path: Assets/_Scene_Menu.unity
   - enabled: 1
     path: Assets/_Map_2.unity
+  - enabled: 1
+    path: Assets/_Map_3.unity
