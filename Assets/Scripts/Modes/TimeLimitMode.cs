@@ -23,10 +23,7 @@ public class TimeLimitMode : GameMode
 	
 	public override bool Start()
 	{
-		// Shouldn't have to do this, but Message isn't done initializing
-		GameController.ExecuteOnMainThread.Enqueue (() => {
-			DisplayMessage("Time Trial Start!", Color.red);
-		});
+		DisplayMessage("Time Trial Start!", Color.red);
 		timer.Enabled = true;
 		return true;
 	}
