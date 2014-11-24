@@ -174,7 +174,6 @@ public class PlayerBehavior : MonoBehaviour {
 		
 		// renderers
 		this.renderer.enabled = value;
-		this.GetComponentInChildren<GUIText> ().enabled = value;
 		this.transform.parent.GetComponentInChildren<HammerControl> ().transform.GetChild (0).renderer.enabled = value;
 		this.transform.parent.GetComponentInChildren<HammerControl> ().transform.GetChild (1).renderer.enabled = value;
 		
