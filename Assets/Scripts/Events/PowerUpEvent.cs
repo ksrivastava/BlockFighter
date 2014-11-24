@@ -11,7 +11,7 @@ public class PowerUpEvent : MonoBehaviour, IEvent {
 
 		var itemSpawnCamera = GameObject.Find ("ItemSpawnCamera");
 
-		Vector3 screenPosition = itemSpawnCamera.camera.ScreenToWorldPoint(new Vector3(Random.Range(0,Screen.width), Random.Range(0,Screen.height), Camera.main.farClipPlane/2));
+		Vector3 screenPosition = itemSpawnCamera.camera.ScreenToWorldPoint(new Vector3(Random.Range(0,Screen.width), Random.Range(0,Screen.height), 10));
 		powerUp.transform.position = screenPosition;
 		Destroy (this.gameObject);
 	}
