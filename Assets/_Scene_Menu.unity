@@ -716,7 +716,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 341984377}
-  m_Text: Jump - X
+  m_Text: Jump - A
   m_OffsetZ: 0
   m_CharacterSize: 3
   m_LineSpacing: 1

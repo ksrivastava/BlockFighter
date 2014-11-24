@@ -147,14 +147,15 @@ public class PlayerControl : MonoBehaviour
 
 			var inputDevice = (InputManager.Devices.Count > playerNum-1) ? InputManager.Devices[playerNum-1] : null;
 			if (inputDevice != null) {
-				if(inputDevice.Direction.Left.IsPressed){
-					h=-1;
-				} else if(inputDevice.Direction.Right.IsPressed){
-					h=+1;
+				inputDevice.LeftStickX.Sensitivity = 1f;
+				h = inputDevice.LeftStickX.Value;
+
+				if (Mathf.Abs(h) <= 0.65f) {
+					h = 0f;
 				}
 			}
 
-			if(h != 0 && anim != null) {
+			if(h != 0f && anim != null) {
 				anim.SetBool ("isMoving", true);
 			} else if (anim != null) {
 				anim.SetBool ("isMoving", false);

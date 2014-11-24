@@ -23,6 +23,7 @@ public class PlayerBehavior : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		var inputDevice = (InputManager.Devices.Count > playerNum-1) ? InputManager.Devices[playerNum-1] : null;
+
 		if( ((Input.GetAxis("Fire" + playerNum) > 0.2f && !isPressedDown) || 
 		   (inputDevice != null && inputDevice.RightTrigger.WasPressed)) && controller.allowHitting){
 
