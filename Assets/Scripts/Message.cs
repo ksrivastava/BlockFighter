@@ -39,9 +39,9 @@ public class Message : MonoBehaviour {
 			yield return null;
 		}
 
-		messagesOnDisplay++;
-		msgIdx ++;
-		msgIdx %= maxMessages;
+		messagesOnDisplay = messagesOnDisplay + 1;
+		msgIdx = msgIdx + 1;
+		msgIdx = msgIdx % maxMessages;
 
 
 		GameObject obj = Object.Instantiate (Resources.Load ("Message")) as GameObject;
