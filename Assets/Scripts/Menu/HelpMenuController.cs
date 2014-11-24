@@ -14,7 +14,7 @@ public class HelpMenuController : MonoBehaviour {
 			}
 		}
 		
-		if (Input.GetKeyDown (KeyCode.Backspace) || (returnPressed)) {
+		if (Input.GetKeyDown (KeyCode.Escape) || (returnPressed)) {
 			MenuController.menu = MenuController.Menu.Title;
 			Application.LoadLevel (0);
 		}
