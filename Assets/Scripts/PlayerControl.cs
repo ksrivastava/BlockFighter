@@ -25,7 +25,7 @@ public class PlayerControl : MonoBehaviour
 	private bool onPlayer = false;
 	string jumpButton, leftDashButton, rightDashButton;
 
-	Animator anim;
+	private Animator anim;
 
 	PlayerBehavior behavior;
 

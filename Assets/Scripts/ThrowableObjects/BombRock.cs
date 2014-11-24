@@ -18,8 +18,15 @@ public class BombRock : StraightRock {
 
 	protected float countDownTimer;
 	protected float secondTimer = 0f;
+	private Animator anim;
+	private bool start = true;
 
 	public override void Update(){
+		if(start) {
+			anim = this.GetComponent<Animator> ();
+			anim.SetBool ("isExploding", false);
+			start = false;
+		}
 		if (stick) {
 			if(stickPlayerControl.facingRight){
 				transform.position = stickObject.transform.position + new Vector3(-1,0,0);
@@ -34,9 +41,6 @@ public class BombRock : StraightRock {
 	public override void Damage (Collider2D col)
 	{
 		try{
-
-		
-
 			stickPlayerName = col.transform.parent.name;
 
 			if(col.GetComponentInChildren<LeechRock>() != null || col.GetComponentInChildren<BombRock>() != null){
@@ -62,6 +66,8 @@ public class BombRock : StraightRock {
 	}
 
 	void Explode(){
+		stick = false;
+		anim.SetBool ("isExploding", true);
 		float xForce = 2000;
 		float upForce = 2000;
 
@@ -92,7 +98,7 @@ public class BombRock : StraightRock {
 			}
 		}
 
-		Invoke ("DoDamage", 0.25f);
+		Invoke ("DoDamage", 0.5f);
 	}
 
 	public override void Throw(){
