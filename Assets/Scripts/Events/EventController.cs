@@ -67,46 +67,46 @@ public class EventController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 //
-//		if (Input.GetKeyDown(KeyCode.Alpha1)) {
-//			eventLock = false;
-//			QueueEvent (RunnableEventType.StraightRockShower);
-//		}
-//		else if (Input.GetKeyDown(KeyCode.Alpha2)) {
-//			eventLock = false;
-//			QueueEvent (RunnableEventType.EnemyEvent);
-//		}
-//		else if (Input.GetKeyDown(KeyCode.Alpha3)) {
-//			eventLock = false;
-//			QueueEvent (RunnableEventType.PointLights);
-//		}
-//		else if (Input.GetKeyDown(KeyCode.Alpha4)) {
-//			eventLock = false;
-//			QueueEvent (RunnableEventType.LittleRockShower);
-//			QueueEvent (RunnableEventType.Blimp);
-//		}
-//		else if (Input.GetKeyDown(KeyCode.Alpha5)) {
-//			eventLock = false;
-//			QueueEvent (RunnableEventType.Bomb);
-//		}
-//		else if (Input.GetKeyDown(KeyCode.Alpha6)) {
-//			eventLock = false;
-//			QueueEvent (RunnableEventType.MapSpin);
-//		}
-//		else if (Input.GetKeyDown(KeyCode.Alpha7)) {
-//			eventLock = false;
-//			QueueEvent (RunnableEventType.HealthPowerUpEvent);
-//		}
-//		else if (Input.GetKeyDown(KeyCode.Alpha8)) {
-//			eventLock = false;
-//			QueueEvent (RunnableEventType.BombPowerUpEvent);
-//		}
-//		else if (Input.GetKeyDown(KeyCode.Alpha9)) {
-//			eventLock = false;
-//			QueueEvent (RunnableEventType.PointsBounty);
-//		}else if (Input.GetKeyDown(KeyCode.Alpha0)) {
-//			eventLock = false;
-//			QueueEvent (RunnableEventType.LeechPowerUpEvent);
-//		}
+		if (Input.GetKeyDown(KeyCode.Alpha1)) {
+			eventLock = false;
+			QueueEvent (RunnableEventType.StraightRockShower);
+		}
+		else if (Input.GetKeyDown(KeyCode.Alpha2)) {
+			eventLock = false;
+			QueueEvent (RunnableEventType.EnemyEvent);
+		}
+		else if (Input.GetKeyDown(KeyCode.Alpha3)) {
+			eventLock = false;
+			QueueEvent (RunnableEventType.PointLights);
+		}
+		else if (Input.GetKeyDown(KeyCode.Alpha4)) {
+			eventLock = false;
+			QueueEvent (RunnableEventType.LittleRockShower);
+			QueueEvent (RunnableEventType.Blimp);
+		}
+		else if (Input.GetKeyDown(KeyCode.Alpha5)) {
+			eventLock = false;
+			QueueEvent (RunnableEventType.Bomb);
+		}
+		else if (Input.GetKeyDown(KeyCode.Alpha6)) {
+			eventLock = false;
+			QueueEvent (RunnableEventType.MapSpin);
+		}
+		else if (Input.GetKeyDown(KeyCode.Alpha7)) {
+			eventLock = false;
+			QueueEvent (RunnableEventType.HealthPowerUpEvent);
+		}
+		else if (Input.GetKeyDown(KeyCode.Alpha8)) {
+			eventLock = false;
+			QueueEvent (RunnableEventType.BombPowerUpEvent);
+		}
+		else if (Input.GetKeyDown(KeyCode.Alpha9)) {
+			eventLock = false;
+			QueueEvent (RunnableEventType.PointsBounty);
+		}else if (Input.GetKeyDown(KeyCode.Alpha0)) {
+			eventLock = false;
+			QueueEvent (RunnableEventType.LeechPowerUpEvent);
+		}
 
 		if (CanRunNextEvent ()) {
 			StartCoroutine(NextEvent());
