@@ -154,9 +154,9 @@ public class PlayerControl : MonoBehaviour
 				}
 			}
 
-			if(h != 0) {
+			if(h != 0 && anim != null) {
 				anim.SetBool ("isMoving", true);
-			} else {
+			} else if (anim != null) {
 				anim.SetBool ("isMoving", false);
 			}
 			
