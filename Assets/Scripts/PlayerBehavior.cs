@@ -85,6 +85,10 @@ public class PlayerBehavior : MonoBehaviour {
 		}
 	}
 
+	void OnCollisionStay2D(Collision2D col){
+		OnCollisionEnter2D (col);
+	}
+
 	public void KnockBack(Vector3 hitterPosition){
 
 //		print ("KnockBack! " + this.transform.parent.name);
