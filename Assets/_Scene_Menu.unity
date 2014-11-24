@@ -1683,7 +1683,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1174752400}
-  m_Text: leech
+  m_Text: Poison Rock
   m_OffsetZ: 0
   m_CharacterSize: 3
   m_LineSpacing: 1
