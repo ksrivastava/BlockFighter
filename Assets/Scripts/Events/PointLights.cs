@@ -7,7 +7,7 @@ public class PointLights : MonoBehaviour ,IEvent{
 	public float eventDuration = 30;
 
 
-	private float zDisplacement = -10f;
+	private float zDisplacement = -4f;
 	private float intensityDelta = 0.05f;
 	private float intensityTimeDelta = 0.05f;
 	private float finalIntensity = 0.8f;
