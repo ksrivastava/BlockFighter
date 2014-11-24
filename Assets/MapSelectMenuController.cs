@@ -5,7 +5,7 @@ using InControl;
 public class MapSelectMenuController : MonoBehaviour {
 
 	public enum GameMap {Map1, Map2};
-	public GameObject[] modeOptions;
+	public GameObject[] mapOptions;
 	public GameObject marker;
 	
 	private GameMap selectedOption;
@@ -39,11 +39,11 @@ public class MapSelectMenuController : MonoBehaviour {
 		}
 		
 		if (Input.GetKeyDown(KeyCode.RightArrow) || (rightPressed)) {
-			selectedOption = (GameMap) ((int) (selectedOption + 1) % modeOptions.Length);
+			selectedOption = (GameMap) ((int) (selectedOption + 1) % mapOptions.Length);
 		} else if (Input.GetKeyDown(KeyCode.LeftArrow) || (leftPressed)) {
-			int opt = (int) (selectedOption - 1) % modeOptions.Length;
+			int opt = (int) (selectedOption - 1) % mapOptions.Length;
 			if (opt < 0) {
-				opt += modeOptions.Length;
+				opt += mapOptions.Length;
 			}
 			selectedOption = (GameMap) opt;
 		} else if (Input.GetKeyDown(KeyCode.Return) || (actionPressed ) ){
@@ -59,9 +59,11 @@ public class MapSelectMenuController : MonoBehaviour {
 			MenuController.menu = MenuController.Menu.GameModeSelection;
 			Application.LoadLevel (0);
 		}
-//		
-//		Vector3 pos = marker.transform.position;
-//		pos.y = modeOptions [(int) selectedOption].transform.position.y - 5;
-//		marker.transform.position = pos;
+
+		for (int i = 0; i < mapOptions.Length; ++i) {
+			mapOptions [i].renderer.material.shader = Shader.Find ("Diffuse");
+		}
+
+		mapOptions [(int)selectedOption].renderer.material.shader = Shader.Find ("Unlit/Texture");
 	}
 }
