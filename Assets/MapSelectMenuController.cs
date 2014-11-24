@@ -55,7 +55,7 @@ public class MapSelectMenuController : MonoBehaviour {
 				Application.LoadLevel (2);
 				break;
 			}
-		} else if (Input.GetKeyDown (KeyCode.Backspace) || (returnPressed)) {
+		} else if (Input.GetKeyDown (KeyCode.Escape) || (returnPressed)) {
 			MenuController.menu = MenuController.Menu.GameModeSelection;
 			Application.LoadLevel (0);
 		}

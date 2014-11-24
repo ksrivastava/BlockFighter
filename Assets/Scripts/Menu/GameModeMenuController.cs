@@ -62,7 +62,7 @@ public class GameModeMenuController : MonoBehaviour {
 					Application.LoadLevel (0);
 					break;
 			}
-		} else if (Input.GetKeyDown (KeyCode.Backspace) || (returnPressed)) {
+		} else if (Input.GetKeyDown (KeyCode.Escape) || (returnPressed)) {
 			MenuController.menu = MenuController.Menu.Title;
 			Application.LoadLevel (0);
 		}
