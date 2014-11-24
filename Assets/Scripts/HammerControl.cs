@@ -27,7 +27,6 @@ public class HammerControl : MonoBehaviour {
 		controller = GameObject.Find (transform.parent.name + "/Body").GetComponent<PlayerControl> ();
 		player = GameObject.Find (transform.parent.name + "/Body").transform;
 		collider = GameObject.Find (transform.parent.name + "/Hammer/Body").collider2D;
-
 		origScale = GameObject.Find (transform.parent.name + "/Hammer/Body").transform.localScale;
 	}
 
@@ -49,7 +48,7 @@ public class HammerControl : MonoBehaviour {
 
 		var pos = player.position;
 		direction = (controller.facingRight) ? 1 : -1;
-		pos.x += (player.renderer.bounds.size.x/2 + 0.2f) * direction;
+		pos.x += (player.renderer.bounds.size.x/2 - 0.1f) * direction;
 		pos.z = -1;
 		transform.position = pos;
 
@@ -64,7 +63,6 @@ public class HammerControl : MonoBehaviour {
 		}
 
 		if (isHitting) {
-
 			if (attackComplete) {
 				if (deltaTime >= duration) {
 					if ((isJabbing && StopJab()) ||
@@ -107,12 +105,10 @@ public class HammerControl : MonoBehaviour {
 		return SwingDown ();
 	}
 
-	
 	Vector2 angleOne = new Vector2 (0, 250); // 270 - 20
 	Vector2 angleTwo = new Vector2 (360, 110); // 90 + 20
 
 	bool SwingDown() {
-
 		int dir = (Physics2D.gravity.y > 0) ? -direction : direction;
 
 		if (Physics2D.gravity.y > 0) {
@@ -132,12 +128,10 @@ public class HammerControl : MonoBehaviour {
 			) {
 			return true;
 		}
-		
 		return false;
 	}
 
 	bool SwingUp() {
-
 		int dir = (Physics2D.gravity.y > 0) ? -direction : direction;
 
 		if (Physics2D.gravity.y > 0) {
@@ -163,7 +157,6 @@ public class HammerControl : MonoBehaviour {
 			
 			return true;
 		}
-		
 		return false;
 	}
 

@@ -62,6 +62,7 @@ public class PlayerBehavior : MonoBehaviour {
 		if (col.gameObject.tag == "Hammer") {
 			var hammerController = col.gameObject.transform.parent.GetComponent<HammerControl>();
 			if (hammerController.isHitting && !hammerController.attackComplete) {
+			Debug.Log("HELLLLO");
 				// TELL THE PLAYER EVENT CHECKER THAT YOU HAVE BEEN HIT
 				PlayerEvents.RecordAttack(transform.parent.gameObject,col.transform.parent.transform.parent.gameObject,10);
 
