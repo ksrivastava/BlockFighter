@@ -42,7 +42,7 @@ public class ThrowableObject : MonoBehaviour {
 
 		if (this.state == State.pickedUp) {
 				this.rigidbody2D.velocity = Vector2.zero;
-				var pos = new Vector3 (hammer.transform.position.x, hammer.transform.position.y, this.transform.position.z);
+				var pos = new Vector3 (hammer.transform.position.x, hammer.transform.position.y, 0);
 				pos.x = (controller.facingRight) ? pos.x + displacement.x : pos.x - displacement.x;
 				this.transform.position = pos;
 		} 

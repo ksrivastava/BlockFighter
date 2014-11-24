@@ -46,19 +46,20 @@ public class GameModeMenuController : MonoBehaviour {
 				opt += modeOptions.Length;
 			}
 			selectedOption = (ModeOption) opt;
-		} else if (Input.GetKeyDown(KeyCode.Return) || (actionPressed ) ){
+		} else if (Input.GetKeyDown(KeyCode.Return) || (actionPressed ) ) {
+			MenuController.menu = MenuController.Menu.MapSelection;
 			switch (selectedOption) {
 				case ModeOption.TimeLimit:
-					GameController.mode = new TimeLimitMode(10000);
-					Application.LoadLevel (1);
+					GameController.mode = new TimeLimitMode(120000);
+					Application.LoadLevel (0);
 					break;
 				case ModeOption.Points:
 					GameController.mode = new PointsMode(1000);
-					Application.LoadLevel (1);
+					Application.LoadLevel (0);
 					break;
 				case ModeOption.Lives:
 					GameController.mode = new LivesMode();
-					Application.LoadLevel (1);
+					Application.LoadLevel (0);
 					break;
 			}
 		} else if (Input.GetKeyDown (KeyCode.Backspace) || (returnPressed)) {
