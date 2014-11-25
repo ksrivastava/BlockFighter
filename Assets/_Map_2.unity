@@ -5280,7 +5280,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: .730000019, y: 1}
   m_Center: {x: 0, y: 0}
 --- !u!33 &1037956603
 MeshFilter:
@@ -5602,7 +5602,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.10000002, y: 1}
   m_Center: {x: 0, y: 0}
 --- !u!33 &1119849854
 MeshFilter:
@@ -6019,7 +6019,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: .800000012, y: 1}
   m_Center: {x: 0, y: 0}
 --- !u!33 &1220533410
 MeshFilter:
@@ -7495,7 +7495,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: .850000024, y: 1}
   m_Center: {x: 0, y: 0}
 --- !u!33 &1583042956
 MeshFilter:
