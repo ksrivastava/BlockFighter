@@ -17,6 +17,7 @@ public class StraightRock : ThrowableObject {
 	{
 		try{
 			if (col.gameObject.GetComponent<PlayerBehavior>()) {
+				PlayerEvents.RecordAttack(col.transform.parent.gameObject,controller.transform.parent.gameObject,damageVal);
 				col.gameObject.GetComponent<PlayerBehavior>().ReduceHealth(damageVal);
 				col.gameObject.GetComponent<PlayerBehavior>().KnockBack(this.transform.position);
 			} else if (col.gameObject.GetComponent<EnemyBehavior>()) {

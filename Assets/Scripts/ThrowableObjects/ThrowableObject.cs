@@ -22,7 +22,7 @@ public class ThrowableObject : MonoBehaviour {
 	private Vector2 velocityBeforeIdle = new Vector2(15f,15f);
 	private int groundCollisions = 0;
 	private Vector2 displacement = new Vector2(1.1f,0);
-
+	private bool canDamageSelf = false;
 
 	// this is what you override to implement damage and things.
 	public virtual void Damage(Collider2D col){}
@@ -38,6 +38,7 @@ public class ThrowableObject : MonoBehaviour {
 //		print (this.state);
 		if (hammer == null || controller == null) {
 			this.state = State.idle;
+			this.canDamageSelf = false;
 		}
 
 		if (this.state == State.pickedUp) {
@@ -45,15 +46,16 @@ public class ThrowableObject : MonoBehaviour {
 				var pos = new Vector3 (hammer.transform.position.x, hammer.transform.position.y, 0);
 				pos.x = (controller.facingRight) ? pos.x + displacement.x : pos.x - displacement.x;
 				this.transform.position = pos;
+			this.canDamageSelf = false;
 		} 
 	}
 
 	void OnTriggerEnter2D(Collider2D col) {
 
+
 		if (col.gameObject.tag == "Player" || col.gameObject.tag == "Enemy" || LayerMask.LayerToName(col.gameObject.layer).Contains("Player")) {
 
 			if (this.state == State.idle && this.canPickUp && col.gameObject.tag == "Player" ) {
-
 
 				hammer = GameObject.Find (col.transform.parent.name + "/Hammer/Body");
 
@@ -64,7 +66,8 @@ public class ThrowableObject : MonoBehaviour {
 				}
 
 				this.state = State.pickedUp;
-				
+
+				this.canDamageSelf = false;
 				behaviour.weapon = this.gameObject;
 				controller.pickedUpObject = true;
 				this.collider2D.enabled = false;
@@ -81,17 +84,23 @@ public class ThrowableObject : MonoBehaviour {
 					playerTransform = c.transform.parent;
 					c = playerTransform;
 				}
-			
-				Damage(playerTransform.GetComponentInChildren<PlayerBehavior>().gameObject.collider2D);
+
+				// don't damage self
+
+				if( (playerTransform.GetComponentInChildren<PlayerControl>().playerName != controller.playerName) || canDamageSelf){
+					Damage(playerTransform.GetComponentInChildren<PlayerBehavior>().gameObject.collider2D);
+				}
 				this.rigidbody2D.velocity = Vector2.zero;
 				this.state = State.idle;
-				
+				this.canDamageSelf = false;
 				
 				// RECORD EVENT WITH PLAYER TRACKER
 				if (col.gameObject.tag == "Player") {
 					PlayerEvents.RecordAttack(playerTransform.gameObject,controller.transform.parent.gameObject,damageVal);
 				}
 			}
+		} else if(col.gameObject.name == "BouncyWall"){
+			canDamageSelf = true;
 		}
 	}
 
@@ -102,6 +111,7 @@ public class ThrowableObject : MonoBehaviour {
 		    && Mathf.Abs(this.rigidbody2D.velocity.y) <= velocityBeforeIdle.y*/) {
 			if(this.groundCollisions == this.groundCollisionsBeforeIdle){
 				this.state = State.idle;
+				this.canDamageSelf = false;
 			}
 			this.groundCollisions++;
 		}
@@ -125,6 +135,7 @@ public class ThrowableObject : MonoBehaviour {
 
 	public void Drop() {
 		this.state = State.idle;
+		this.canDamageSelf = false;
 		this.collider2D.enabled = true;
 		controller.pickedUpObject = false;
 	}

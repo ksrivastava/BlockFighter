@@ -24,6 +24,7 @@ public class PlayerBehavior : MonoBehaviour {
 	void Update () {
 		var inputDevice = (InputManager.Devices.Count > playerNum-1) ? InputManager.Devices[playerNum-1] : null;
 
+
 		if( ((Input.GetAxis("Fire" + playerNum) > 0.2f && !isPressedDown) || 
 		   (inputDevice != null && inputDevice.RightTrigger.WasPressed)) && controller.allowHitting){
 
@@ -35,10 +36,9 @@ public class PlayerBehavior : MonoBehaviour {
 				ThrowableObject t = weapon.GetComponent<ThrowableObject>();
 				t.Throw();
 				weapon = GameObject.Find (transform.parent.name+"/Hammer");
-			} else {
-				HammerControl h = weapon.GetComponent<HammerControl>();
-				h.Hit();
-			}
+			} 
+				
+			transform.parent.GetComponentInChildren<HammerControl>().Hit();
 
 			isPressedDown = true;
 		}
@@ -93,7 +93,7 @@ public class PlayerBehavior : MonoBehaviour {
 	public void KnockBack(Vector3 hitterPosition){
 
 //		print ("KnockBack! " + this.transform.parent.name);
-		float knockForce = 500f;
+		float knockForce = 1000f;
 		float upForce = 500f;
 
 		rigidbody2D.velocity = Vector2.zero;
