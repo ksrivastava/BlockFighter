@@ -41,6 +41,7 @@ public class PlayerControl : MonoBehaviour
 	Movement dashMovement = null;
 	float dashDuration = 0.05f;
 	float dashXDist = 10f;
+	int dashDamage = 10;
 
 	void Awake()
 	{
@@ -191,8 +192,7 @@ public class PlayerControl : MonoBehaviour
 		
 			
 			if (leftDash) {
-				//				if (facingRight) Flip ();
-				//rigidbody2D.AddForce(Vector2.right * -1 * moveForce * dashMultiplier);
+
 				this.rigidbody2D.velocity = Vector2.zero;
 				this.rigidbody2D.angularVelocity = 0;
 				var startPosition = transform.position;
@@ -207,27 +207,27 @@ public class PlayerControl : MonoBehaviour
 				
 				var cast = Physics2D.Linecast( (Vector2)this.transform.position - new Vector2(2,0),endPosition);
 				if(cast.collider != null && cast.collider.gameObject.name != null){
-					if( LayerMask.LayerToName(cast.collider.gameObject.layer).Contains("Player")){
-						// colliding with a player
-						getTopParent(cast.collider.gameObject).GetComponentInChildren<PlayerBehavior>().KnockBack(transform.position);
-					} else if(cast.collider.gameObject.name.Contains("Rock")){
-						getTopParent(cast.collider.gameObject).GetComponentInChildren<ThrowableObject>().KnockBack(transform.position);
-					} else {
+					if(cast.collider.gameObject.name.Equals("BouncyWall")){
+						endPosition.x = cast.collider.bounds.max.x + 2;
+					} else if(LayerMask.LayerToName(cast.collider.gameObject.layer).Contains("Player")){
+//						getTopParent(cast.collider.gameObject).GetComponentInChildren<PlayerBehavior>().ReduceHealth(dashDamage);
+//						PlayerEvents.RecordAttack(getTopParent(cast.collider.gameObject),getTopParent(this.gameObject),dashDamage);
+					} else if (!cast.collider.gameObject.name.Contains("Rock")) {
 						endPosition = cast.point + new Vector2(2,0);
+					} else {
+						
 					}
 				}
 
 				dashMovement  = new Movement(this.gameObject);
 				dashMovement.AddLine(startPosition,endPosition,dashDuration);
 				dashMovement.Start();
-		
+				
 				healthBar.Dash -= 0.5f;
 
 			}
 			
 			else if (rightDash) {
-				//				if (!facingRight) Flip ();
-				//rigidbody2D.AddForce(Vector2.right * moveForce * dashMultiplier);
 
 				var startPosition = transform.position;
 				var endPosition = startPosition;
@@ -241,13 +241,15 @@ public class PlayerControl : MonoBehaviour
 				
 				var cast = Physics2D.Linecast( (Vector2)this.transform.position + new Vector2(2,0),endPosition);
 				if(cast.collider != null && cast.collider.gameObject.name != null){
-					if( LayerMask.LayerToName(cast.collider.gameObject.layer).Contains("Player")){
-						// colliding with a player
-						getTopParent(cast.collider.gameObject).GetComponentInChildren<PlayerBehavior>().KnockBack(transform.position);
-					} else if(cast.collider.gameObject.name.Contains("Rock")){
-						getTopParent(cast.collider.gameObject).GetComponentInChildren<ThrowableObject>().KnockBack(transform.position);
-					} else {
+					if(cast.collider.gameObject.name.Equals("BouncyWall")){
+						endPosition.x = cast.collider.bounds.min.x - 2;
+					} else if(LayerMask.LayerToName(cast.collider.gameObject.layer).Contains("Player")){
+//						getTopParent(cast.collider.gameObject).GetComponentInChildren<PlayerBehavior>().ReduceHealth(dashDamage);
+//						PlayerEvents.RecordAttack(getTopParent(cast.collider.gameObject),getTopParent(this.gameObject),dashDamage);
+					} else if (!cast.collider.gameObject.name.Contains("Rock")) {
 						endPosition = cast.point - new Vector2(2,0);
+					} else {
+
 					}
 				}
 
