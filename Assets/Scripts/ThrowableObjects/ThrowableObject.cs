@@ -107,8 +107,7 @@ public class ThrowableObject : MonoBehaviour {
 
 	void OnCollisionStay2D(Collision2D coll){
 		if (coll.gameObject.layer == LayerMask.NameToLayer ("Ground") 
-		    /*&& Mathf.Abs(this.rigidbody2D.velocity.x) <= velocityBeforeIdle.x
-		    && Mathf.Abs(this.rigidbody2D.velocity.y) <= velocityBeforeIdle.y*/) {
+		    || this.rigidbody2D.velocity.magnitude <= velocityBeforeIdle.magnitude) {
 			if(this.groundCollisions == this.groundCollisionsBeforeIdle){
 				this.state = State.idle;
 				this.canDamageSelf = false;

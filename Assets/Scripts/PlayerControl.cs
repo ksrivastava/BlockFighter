@@ -36,6 +36,12 @@ public class PlayerControl : MonoBehaviour
 	[HideInInspector]
 	public bool allowHitting = true;
 
+
+	// DASHING
+	Movement dashMovement = null;
+	float dashDuration = 0.05f;
+	float dashXDist = 10f;
+
 	void Awake()
 	{
 		// Setting up references.
@@ -62,6 +68,11 @@ public class PlayerControl : MonoBehaviour
 	
 	void Update()
 	{
+		if (dashMovement != null) {
+			dashMovement.Update();
+		}
+
+
 		// The player is grounded if a linecast to the groundcheck position hits anything on the ground layer.
 		Vector3 groundPos = groundCheck.position;
 		groundPos.x = groundCheck.collider2D.bounds.min.x;
@@ -138,6 +149,18 @@ public class PlayerControl : MonoBehaviour
 	
 	float dashMultiplier = 30f;
 
+	GameObject getTopParent(GameObject input){
+		Transform t = input.transform;
+		Transform p = input.transform.parent;
+		
+		while (p != null) {
+			t = p;
+			p = p.transform.parent;
+		}
+		
+		return t.gameObject;
+	}
+
 	void FixedUpdate ()
 	{
 		if (allowMovement) {
@@ -169,14 +192,71 @@ public class PlayerControl : MonoBehaviour
 			
 			if (leftDash) {
 				//				if (facingRight) Flip ();
-				rigidbody2D.AddForce(Vector2.right * -1 * moveForce * dashMultiplier);
+				//rigidbody2D.AddForce(Vector2.right * -1 * moveForce * dashMultiplier);
+				this.rigidbody2D.velocity = Vector2.zero;
+				this.rigidbody2D.angularVelocity = 0;
+				var startPosition = transform.position;
+				var endPosition = startPosition;
+				var startTime = Time.time;
+
+				
+				Vector3 outsideBodyPosition = startPosition;
+
+				endPosition.x -= dashXDist;
+
+				
+				var cast = Physics2D.Linecast( (Vector2)this.transform.position - new Vector2(2,0),endPosition);
+				if(cast.collider != null && cast.collider.gameObject.name != null){
+					if( LayerMask.LayerToName(cast.collider.gameObject.layer).Contains("Player")){
+						// colliding with a player
+						getTopParent(cast.collider.gameObject).GetComponentInChildren<PlayerBehavior>().KnockBack(transform.position);
+					} else if(cast.collider.gameObject.name.Contains("Rock")){
+						getTopParent(cast.collider.gameObject).GetComponentInChildren<ThrowableObject>().KnockBack(transform.position);
+					} else {
+						endPosition = cast.point + new Vector2(2,0);
+					}
+				}
+
+				dashMovement  = new Movement(this.gameObject);
+				dashMovement.AddLine(startPosition,endPosition,dashDuration);
+				dashMovement.Start();
+		
 				healthBar.Dash -= 0.5f;
+
 			}
 			
 			else if (rightDash) {
 				//				if (!facingRight) Flip ();
-				rigidbody2D.AddForce(Vector2.right * moveForce * dashMultiplier);
+				//rigidbody2D.AddForce(Vector2.right * moveForce * dashMultiplier);
+
+				var startPosition = transform.position;
+				var endPosition = startPosition;
+				var startTime = Time.time;
+				
+				
+				Vector3 outsideBodyPosition = startPosition;
+				
+				endPosition.x += dashXDist;
+
+				
+				var cast = Physics2D.Linecast( (Vector2)this.transform.position + new Vector2(2,0),endPosition);
+				if(cast.collider != null && cast.collider.gameObject.name != null){
+					if( LayerMask.LayerToName(cast.collider.gameObject.layer).Contains("Player")){
+						// colliding with a player
+						getTopParent(cast.collider.gameObject).GetComponentInChildren<PlayerBehavior>().KnockBack(transform.position);
+					} else if(cast.collider.gameObject.name.Contains("Rock")){
+						getTopParent(cast.collider.gameObject).GetComponentInChildren<ThrowableObject>().KnockBack(transform.position);
+					} else {
+						endPosition = cast.point - new Vector2(2,0);
+					}
+				}
+
+				dashMovement  = new Movement(this.gameObject);
+				dashMovement.AddLine(startPosition,endPosition,dashDuration);
+				dashMovement.Start();
+
 				healthBar.Dash -= 0.5f;
+
 			}
 			
 			// If the player is changing direction (h has a different sign to velocity.x) or hasn't reached maxSpeed yet...
@@ -204,6 +284,7 @@ public class PlayerControl : MonoBehaviour
 		rightDash = false;
 		jump = false;
 	}
+
 
 	public void Jump(){
 		var j = (Physics2D.gravity.y > 0)? -jumpForce : jumpForce;

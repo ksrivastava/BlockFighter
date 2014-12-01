@@ -149,11 +149,11 @@ public class PlayerBehavior : MonoBehaviour {
 
 
 
-	void MakePlayerInactive(){
+	public void MakePlayerInactive(){
 		PlayerActiveSetter (false);
 	}
 
-	void MakePlayerActive(){
+	public void MakePlayerActive(){
 		PlayerActiveSetter (true);
 	}
 
@@ -161,7 +161,7 @@ public class PlayerBehavior : MonoBehaviour {
 		ColliderSetter (false);
 	}
 
-	void TurnCollidersOn(){
+	public void TurnCollidersOn(){
 		ColliderSetter (true);
 	}
 
