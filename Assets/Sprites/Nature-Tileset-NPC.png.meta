@@ -1,0 +1,575 @@
+fileFormatVersion: 2
+guid: c77e22eb6ba5d4946b937d81d087f670
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Green Man 1
+    21300002: Green Man 2
+    21300004: Green Man 3
+    21300006: Green Man 4
+    21300008: Green Man 5
+    21300010: Green Man 6
+    21300012: Green Man 7
+    21300014: Green Man 8
+    21300016: Green Man 9
+    21300018: Green Man 10
+    21300020: Green Man 11
+    21300022: Green Man 12
+    21300024: Green Man 13
+    21300026: Green Man 14
+    21300028: Green Man 15
+    21300030: Green Man 16
+    21300032: Blue Man 3
+    21300034: Blue Man 4
+    21300036: Blue Man 5
+    21300038: Blue Man 6
+    21300040: Blue Man 7
+    21300042: Blue Man 8
+    21300044: Blue Man 9
+    21300046: Blue Man 10
+    21300048: Blue Man 11
+    21300050: Blue Man 12
+    21300052: Blue Man 13
+    21300054: Blue Man 14
+    21300056: Blue Man 15
+    21300058: Blue Man 16
+    21300060: Pink Man 1
+    21300062: Pink Man 2
+    21300064: Pink Man 3
+    21300066: Pink Man 4
+    21300068: Pink Man 5
+    21300070: Pink Man 6
+    21300072: Pink Man 7
+    21300074: Pink Man 8
+    21300076: Pink Man 9
+    21300078: Pink Man 10
+    21300080: Pink Man 11
+    21300082: Pink Man 12
+    21300084: Pink Man 13
+    21300086: Pink Man 14
+    21300088: Pink Man 15
+    21300090: Pink Man 16
+    21300092: Blue Man 2
+    21300094: Blue Man 1
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 93
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Green Man 1
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 770
+        width: 67
+        height: 93
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Green Man 2
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 771
+        width: 66
+        height: 93
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Green Man 3
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 772
+        width: 71
+        height: 92
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Green Man 4
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 767
+        width: 70
+        height: 93
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Green Man 5
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 767
+        width: 66
+        height: 92
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Green Man 6
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 767
+        width: 67
+        height: 93
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Green Man 7
+      rect:
+        serializedVersion: 2
+        x: 438
+        y: 772
+        width: 69
+        height: 92
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Green Man 8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 673
+        width: 72
+        height: 92
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Green Man 9
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 671
+        width: 71
+        height: 93
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Green Man 10
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 670
+        width: 70
+        height: 92
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Green Man 11
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 669
+        width: 66
+        height: 92
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Green Man 12
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 671
+        width: 66
+        height: 92
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Green Man 13
+      rect:
+        serializedVersion: 2
+        x: 365
+        y: 695
+        width: 69
+        height: 71
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Green Man 14
+      rect:
+        serializedVersion: 2
+        x: 438
+        y: 677
+        width: 67
+        height: 94
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Green Man 15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 576
+        width: 66
+        height: 92
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Green Man 16
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 576
+        width: 74
+        height: 92
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Blue Man 3
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 486
+        width: 66
+        height: 90
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Blue Man 4
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 483
+        width: 68
+        height: 92
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Blue Man 5
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 482
+        width: 68
+        height: 92
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Blue Man 6
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 482
+        width: 67
+        height: 92
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Blue Man 7
+      rect:
+        serializedVersion: 2
+        x: 426
+        y: 484
+        width: 67
+        height: 92
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Blue Man 8
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 392
+        width: 69
+        height: 89
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Blue Man 9
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 391
+        width: 70
+        height: 90
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Blue Man 10
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 390
+        width: 69
+        height: 90
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Blue Man 11
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 387
+        width: 67
+        height: 92
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Blue Man 12
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 387
+        width: 66
+        height: 92
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Blue Man 13
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 409
+        width: 67
+        height: 72
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Blue Man 14
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 387
+        width: 66
+        height: 94
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Blue Man 15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 294
+        width: 66
+        height: 92
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Blue Man 16
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 294
+        width: 66
+        height: 92
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Pink Man 1
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 199
+        width: 66
+        height: 92
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Pink Man 2
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 200
+        width: 66
+        height: 92
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Pink Man 3
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 200
+        width: 72
+        height: 92
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Pink Man 4
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 196
+        width: 70
+        height: 92
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Pink Man 5
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 195
+        width: 67
+        height: 93
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Pink Man 6
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 196
+        width: 66
+        height: 92
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Pink Man 7
+      rect:
+        serializedVersion: 2
+        x: 438
+        y: 200
+        width: 69
+        height: 92
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Pink Man 8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 102
+        width: 71
+        height: 92
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Pink Man 9
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 100
+        width: 71
+        height: 92
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Pink Man 10
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 99
+        width: 70
+        height: 92
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Pink Man 11
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 97
+        width: 67
+        height: 93
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Pink Man 12
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 99
+        width: 67
+        height: 93
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Pink Man 13
+      rect:
+        serializedVersion: 2
+        x: 365
+        y: 123
+        width: 69
+        height: 71
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Pink Man 14
+      rect:
+        serializedVersion: 2
+        x: 438
+        y: 105
+        width: 67
+        height: 94
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Pink Man 15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4
+        width: 66
+        height: 92
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Pink Man 16
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 4
+        width: 66
+        height: 92
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Blue Man 2
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 485
+        width: 66
+        height: 90
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Blue Man 1
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 483
+        width: 66
+        height: 91
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
