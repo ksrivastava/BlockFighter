@@ -7,7 +7,9 @@ public class PlayerBehavior : MonoBehaviour {
 	PlayerControl controller = null;
 	public HealthBar healthBar;
 	private int playerNum;
-	
+
+	int hitDamage = 30;
+
 	public bool active = true;
 
 	// Use this for initialization
@@ -80,7 +82,7 @@ public class PlayerBehavior : MonoBehaviour {
 
 					// do no damage
 				} else {
-						ReduceHealth(10);
+						ReduceHealth(hitDamage);
 				}
 			}
 		}
@@ -117,6 +119,7 @@ public class PlayerBehavior : MonoBehaviour {
 	}
 
 	void Die(){
+		MakePlayerInactive ();
 		// detach all bombs and leeches
 		foreach (var bomb in GetComponentsInChildren<BombRock>()) {
 			Destroy(bomb.gameObject);
@@ -138,7 +141,7 @@ public class PlayerBehavior : MonoBehaviour {
 			weapon = GameObject.Find (transform.parent.name+"/Hammer");
 		}
 
-		MakePlayerInactive ();
+
 		Invoke ("MakePlayerActive", 1.0f);
 	}
 
