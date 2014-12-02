@@ -6,6 +6,7 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
 	public static GameMode mode;
+	public static List<GameObject> players = new List<GameObject>();
 
 	private GameObject controller;
 	private bool started = false;

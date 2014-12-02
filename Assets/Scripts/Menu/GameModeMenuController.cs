@@ -16,7 +16,6 @@ public class GameModeMenuController : MonoBehaviour {
 
 	void Update () {
 
-
 		var downPressed = false;
 		var upPressed = false;
 		var actionPressed = false;
@@ -47,7 +46,7 @@ public class GameModeMenuController : MonoBehaviour {
 			}
 			selectedOption = (ModeOption) opt;
 		} else if (Input.GetKeyDown(KeyCode.Return) || (actionPressed ) ) {
-			MenuController.menu = MenuController.Menu.MapSelection;
+			MenuController.menu = MenuController.Menu.CharacterSelection;
 			switch (selectedOption) {
 				case ModeOption.TimeLimit:
 					GameController.mode = new TimeLimitMode(120000);
