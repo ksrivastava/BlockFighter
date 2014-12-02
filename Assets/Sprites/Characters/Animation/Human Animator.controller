@@ -5,7 +5,7 @@ AnimatorController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Body 5
+  m_Name: Human Animator
   serializedVersion: 2
   m_AnimatorParameters:
   - m_Name: isMoving
@@ -33,7 +33,7 @@ Transition:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: 
-  m_SrcState: {fileID: 110283821}
+  m_SrcState: {fileID: 110211124}
   m_DstState: {fileID: 110200000}
   m_TransitionDuration: .100000001
   m_TransitionOffset: 0
@@ -46,7 +46,7 @@ Transition:
   m_Solo: 0
   m_Mute: 0
   m_CanTransitionToSelf: 0
---- !u!1101 &110172078
+--- !u!1101 &110146816
 Transition:
   serializedVersion: 2
   m_ObjectHideFlags: 3
@@ -54,7 +54,7 @@ Transition:
   m_PrefabInternal: {fileID: 0}
   m_Name: 
   m_SrcState: {fileID: 110200000}
-  m_DstState: {fileID: 110283821}
+  m_DstState: {fileID: 110211124}
   m_TransitionDuration: 0
   m_TransitionOffset: 0
   m_Conditions:
@@ -71,17 +71,17 @@ State:
   m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Orc Walking
+  m_Name: Human Walking
   m_Speed: 1
   m_CycleOffset: 0
   m_Motions:
-  - {fileID: 7400000, guid: 7d475cad0e312904eb6bc04f7ca3a552, type: 2}
+  - {fileID: 7400000, guid: 34db4fef954796e4ebeb6f220ab15f00, type: 2}
   m_ParentStateMachine: {fileID: 110700000}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
---- !u!1102 &110283821
+--- !u!1102 &110211124
 State:
   m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
@@ -92,7 +92,7 @@ State:
   m_Motions:
   - {fileID: 0}
   m_ParentStateMachine: {fileID: 110700000}
-  m_Position: {x: 36, y: -36, z: 0}
+  m_Position: {x: 48, y: -48, z: 0}
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
@@ -103,21 +103,21 @@ StateMachine:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Base Layer
-  m_DefaultState: {fileID: 110200000}
+  m_DefaultState: {fileID: 110211124}
   m_States:
   - {fileID: 110200000}
-  - {fileID: 110283821}
+  - {fileID: 110211124}
   m_ChildStateMachine: []
   m_ChildStateMachinePosition: []
   m_OrderedTransitions:
     data:
-      first: {fileID: 110283821}
+      first: {fileID: 110211124}
       second:
       - {fileID: 110100000}
     data:
       first: {fileID: 110200000}
       second:
-      - {fileID: 110172078}
+      - {fileID: 110146816}
   m_MotionSetCount: 1
-  m_AnyStatePosition: {x: 12, y: -108, z: 0}
+  m_AnyStatePosition: {x: 48, y: -120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
