@@ -480,6 +480,33 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_Size: {x: 1.66627169, y: 1}
   m_Center: {x: .333130836, y: 0}
+--- !u!1 &121513258
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 121513259}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: PointLightSpawnPoint
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &121513259
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 121513258}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8.3166914, y: 1.72182083, z: .0490722656}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 24
 --- !u!1 &137447809
 GameObject:
   m_ObjectHideFlags: 0
@@ -1228,6 +1255,7 @@ MonoBehaviour:
   fullHealth: {fileID: 2800000, guid: 08b8c9a54033843b5a74cfa77b8bf80e, type: 3}
   halfHealth: {fileID: 2800000, guid: 885935c2b569e4a8485d3997a8cf5c63, type: 3}
   lowHealth: {fileID: 2800000, guid: 1d051c70905cd4cc3b5135f828d7ae29, type: 3}
+  showBars: 1
   showDashbar: 1
   dashBarTexture: {fileID: 2800000, guid: 84eaca8679d4d4a7eacf101cc3289851, type: 3}
   dashBarStyle:
@@ -1403,6 +1431,33 @@ Animator:
   m_ApplyRootMotion: 0
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!1 &244096450
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 244096451}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: PointLightSpawnPoint
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &244096451
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 244096450}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 18.267643, y: 8.65686893, z: .0490722656}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 22
 --- !u!1 &257219480
 GameObject:
   m_ObjectHideFlags: 0
@@ -3247,6 +3302,7 @@ MonoBehaviour:
   fullHealth: {fileID: 2800000, guid: 08b8c9a54033843b5a74cfa77b8bf80e, type: 3}
   halfHealth: {fileID: 2800000, guid: 885935c2b569e4a8485d3997a8cf5c63, type: 3}
   lowHealth: {fileID: 2800000, guid: 1d051c70905cd4cc3b5135f828d7ae29, type: 3}
+  showBars: 1
   showDashbar: 1
   dashBarTexture: {fileID: 2800000, guid: 84eaca8679d4d4a7eacf101cc3289851, type: 3}
   dashBarStyle:
@@ -3580,6 +3636,7 @@ MonoBehaviour:
   fullHealth: {fileID: 2800000, guid: 08b8c9a54033843b5a74cfa77b8bf80e, type: 3}
   halfHealth: {fileID: 2800000, guid: 885935c2b569e4a8485d3997a8cf5c63, type: 3}
   lowHealth: {fileID: 2800000, guid: 1d051c70905cd4cc3b5135f828d7ae29, type: 3}
+  showBars: 1
   showDashbar: 1
   dashBarTexture: {fileID: 2800000, guid: 84eaca8679d4d4a7eacf101cc3289851, type: 3}
   dashBarStyle:
@@ -3939,6 +3996,7 @@ MonoBehaviour:
   fullHealth: {fileID: 2800000, guid: 08b8c9a54033843b5a74cfa77b8bf80e, type: 3}
   halfHealth: {fileID: 2800000, guid: 885935c2b569e4a8485d3997a8cf5c63, type: 3}
   lowHealth: {fileID: 2800000, guid: 1d051c70905cd4cc3b5135f828d7ae29, type: 3}
+  showBars: 1
   showDashbar: 1
   dashBarTexture: {fileID: 2800000, guid: 84eaca8679d4d4a7eacf101cc3289851, type: 3}
   dashBarStyle:
@@ -4256,6 +4314,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
+--- !u!1 &753802360
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 753802361}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: PointLightSpawnPoint
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &753802361
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 753802360}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.77557278, y: 14.6287107, z: .0490722656}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 23
 --- !u!1 &786797835
 GameObject:
   m_ObjectHideFlags: 0
@@ -7610,6 +7695,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 506835701}
   m_RootOrder: 29
+--- !u!1 &1550422544
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1550422545}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: PointLightSpawnPoint
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1550422545
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1550422544}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 24.2394905, y: -9.83658409, z: .0490722656}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 21
 --- !u!1 &1552719913
 GameObject:
   m_ObjectHideFlags: 0
@@ -7683,6 +7795,33 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
+--- !u!1 &1552799780
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1552799781}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: PointLightSpawnPoint
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1552799781
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1552799780}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.13131618, y: 15.0139914, z: .0490722656}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
 --- !u!1 &1559086958
 GameObject:
   m_ObjectHideFlags: 0
@@ -8436,6 +8575,33 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
+--- !u!1 &1677119499
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1677119500}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: PointLightSpawnPoint
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1677119500
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1677119499}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.23624706, y: -10.2946863, z: .0490722656}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 18
 --- !u!1 &1679696691
 GameObject:
   m_ObjectHideFlags: 0
@@ -8709,6 +8875,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 506835701}
   m_RootOrder: 87
+--- !u!1 &1742530771
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1742530772}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: PointLightSpawnPoint
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1742530772
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1742530771}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -18.1413383, y: .565981865, z: .0490722656}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 20
 --- !u!1 &1752935514
 GameObject:
   m_ObjectHideFlags: 0
@@ -9633,6 +9826,33 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
+--- !u!1 &1962248588
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1962248589}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: PointLightSpawnPoint
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1962248589
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1962248588}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -30.277668, y: -9.64394474, z: .0490722656}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 19
 --- !u!1 &1978182289
 GameObject:
   m_ObjectHideFlags: 0
