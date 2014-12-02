@@ -118,7 +118,7 @@ public class PlayerBehavior : MonoBehaviour {
 		this.gameObject.GetComponent<PlayerControl> ().enabled = true;
 	}
 
-	public void Die(){
+	public void Die(bool record = true){
 		MakePlayerInactive ();
 		// detach all bombs and leeches
 		foreach (var bomb in GetComponentsInChildren<BombRock>()) {
@@ -130,7 +130,10 @@ public class PlayerBehavior : MonoBehaviour {
 		}	
 
 
-		StartCoroutine (RecordDeathDelayed());
+		if(record){
+			StartCoroutine (RecordDeathDelayed());
+		}
+
 		var respawnPoint = GameObject.Find ("RespawnPoint"+this.playerNum);
 		transform.position = respawnPoint.transform.position;
 		//PlayerEvents.RemovePlayerFromTeam (this.transform.parent.name);

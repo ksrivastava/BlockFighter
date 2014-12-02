@@ -12,7 +12,7 @@ public class PlayerOutsideCameraRespawn : MonoBehaviour {
 	void Update () {
 		foreach (var player in PlayerEvents.GetAllPlayers()) {
 			if(!player.GetComponentInChildren<PlayerBehavior>().gameObject.renderer.isVisible){
-				player.GetComponentInChildren<PlayerBehavior>().Die();
+				player.GetComponentInChildren<PlayerBehavior>().Die(false);
 			}
 		}
 	}
