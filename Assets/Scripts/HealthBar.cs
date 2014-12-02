@@ -7,8 +7,8 @@ public class HealthBar : MonoBehaviour {
 	public GUIStyle health_full;
 	public GUIStyle none_style;
 
-	public float MaxHealth = 100;
-	private float health = 100;
+	public float MaxHealth = 90;
+	private float health = 90;
 
 	public Texture2D fullHealth;
 	public Texture2D halfHealth;

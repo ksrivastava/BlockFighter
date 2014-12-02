@@ -38,7 +38,7 @@ public class PlayerControl : MonoBehaviour
 
 
 	// DASHING
-	Movement dashMovement = null;
+	public Movement dashMovement = null;
 	float dashDuration = 0.05f;
 	float dashXDist = 10f;
 	int dashDamage = 10;

@@ -47,25 +47,52 @@ public class ThrowableObject : MonoBehaviour {
 				pos.x = (controller.facingRight) ? pos.x + displacement.x : pos.x - displacement.x;
 				this.transform.position = pos;
 			this.canDamageSelf = false;
+			this.collider2D.enabled = false;
 		} 
+	}
+
+	GameObject getTopParent(GameObject input){
+		Transform t = input.transform;
+		Transform p = input.transform.parent;
+		
+		while (p != null) {
+			t = p;
+			p = p.transform.parent;
+		}
+		
+		return t.gameObject;
 	}
 
 	void OnTriggerEnter2D(Collider2D col) {
 
-
 		if (col.gameObject.tag == "Player" || col.gameObject.tag == "Enemy" || LayerMask.LayerToName(col.gameObject.layer).Contains("Player")) {
 
-			if (this.state == State.idle && this.canPickUp && col.gameObject.tag == "Player" ) {
+			if (this.state == State.idle && this.canPickUp && (col.gameObject.tag == "Player" || LayerMask.LayerToName(col.gameObject.layer).Contains("Player") )) {
 
-				hammer = GameObject.Find (col.transform.parent.name + "/Hammer/Body");
 
-				controller = GameObject.Find (col.transform.parent.name + "/Body").GetComponent<PlayerControl> ();
-				behaviour = GameObject.Find (col.transform.parent.name + "/Body").GetComponent<PlayerBehavior> ();
-				if(controller != null && controller.pickedUpObject){
+				var playerObject = getTopParent(col.gameObject);
+				hammer = playerObject.GetComponentInChildren<HammerControl>().gameObject.transform.GetChild(0).gameObject;
+				controller = playerObject.GetComponentInChildren<PlayerControl>();
+				behaviour = playerObject.GetComponentInChildren<PlayerBehavior>();
+
+				if(controller == null || hammer == null || behaviour == null){
+					hammer = null;
+					controller = null;
+					behaviour = null;
 					return;
 				}
 
+				if(controller != null && controller.pickedUpObject){
+					hammer = null;
+					controller = null;
+					behaviour = null;
+					return;
+				} 
+
 				this.state = State.pickedUp;
+
+				// if the player is dashing when hit stop the dash
+				controller.dashMovement = null;
 
 				this.canDamageSelf = false;
 				behaviour.weapon = this.gameObject;
@@ -126,10 +153,14 @@ public class ThrowableObject : MonoBehaviour {
 
 		controller.pickedUpObject = false;
 		this.state = State.thrown;
-		this.collider2D.enabled = true;
+		Invoke ("EnableCollider", 0.05f);
 		this.rigidbody2D.velocity = Vector2.zero;
 		//this.rigidbody2D.isKinematic = false;
 		this.groundCollisions = 0;
+	}
+
+	public void EnableCollider(){
+		this.collider2D.enabled = true;
 	}
 
 	public void Drop() {

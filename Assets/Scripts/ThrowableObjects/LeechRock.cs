@@ -3,6 +3,8 @@ using System.Collections;
 
 public class LeechRock : BombRock {
 
+	int leechValue = 15;
+
 	void Awake(){
 		this.countDown = 10;
 
@@ -51,13 +53,13 @@ public class LeechRock : BombRock {
 			//PointsBar.DisplayNumber(this.gameObject, countDownTimer, DisplayType.Bomb);
 
 			if(stickPlayerBehaviour.healthBar.Health <= 5 ){
-				PlayerEvents.RecordAttack(stickPlayerBehaviour.transform.parent.gameObject,thrower,5);
-				stickPlayerBehaviour.ReduceHealth(5);
+				PlayerEvents.RecordAttack(stickPlayerBehaviour.transform.parent.gameObject,thrower,leechValue);
+				stickPlayerBehaviour.ReduceHealth(leechValue);
 				Detach();
 				return;
 			}
 
-			stickPlayerBehaviour.ReduceHealth(5);
+			stickPlayerBehaviour.ReduceHealth(leechValue);
 
 
 			countDownTimer--;
