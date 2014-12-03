@@ -50,13 +50,13 @@ public class PlayerBehavior : MonoBehaviour {
 		}
 	}
 
-	public void ReduceHealth(int n, bool inWater = false) {
+	public void ReduceHealth(int n) {
 	//	print (playerNum + " got hit");
 
 		PointsBar.DisplayNumber(this.gameObject, -n, DisplayType.Health);
 		healthBar.Health -= n;
 		if (healthBar.Health <= 0) {
-			this.Die(inWater);
+			this.Die();
 		}
 	}
 
@@ -117,8 +117,8 @@ public class PlayerBehavior : MonoBehaviour {
 	void EnablePlayerControl(){
 		this.gameObject.GetComponent<PlayerControl> ().enabled = true;
 	}
-
-	void Die(bool inWater = false){
+	
+	public void Die(bool record = true){
 		MakePlayerInactive ();
 		// detach all bombs and leeches
 		foreach (var bomb in GetComponentsInChildren<BombRock>()) {
@@ -129,13 +129,18 @@ public class PlayerBehavior : MonoBehaviour {
 			Destroy(leech.gameObject);
 		}	
 
-		var starSpawnPoint = transform.position;
-		PointsBar.RemoveStars (this.transform.parent.gameObject, starSpawnPoint);
+		if(record){
 
-		StartCoroutine (RecordDeathDelayed());
-		var respawnPoint = GameObject.Find ("RespawnPoint");
+			var starSpawnPoint = transform.position;
+			PointsBar.RemoveStars (this.transform.parent.gameObject, starSpawnPoint);
+
+			StartCoroutine (RecordDeathDelayed());
+		}
+
+		var respawnPoint = GameObject.Find ("RespawnPoint" + this.playerNum);
 		transform.position = respawnPoint.transform.position;
-		PlayerEvents.RemovePlayerFromTeam (this.transform.parent.name);
+
+		//PlayerEvents.RemovePlayerFromTeam (this.transform.parent.name);
 		healthBar.Health = healthBar.MaxHealth;
 
 		if (this.controller.pickedUpObject) {

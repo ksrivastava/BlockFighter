@@ -31,7 +31,10 @@ public class EventController : MonoBehaviour {
 			InvokeRepeating("CheckEnoughHealthPacks",5,3);
 			InvokeRepeating("CheckEnoughLeeches",5,3);
 
-			InvokeRepeating("QueuePointLights",60,180);
+
+
+		} else if(Application.loadedLevelName == "_Map_4"){
+			Invoke("QueuePointLights",5);
 		}
 
 

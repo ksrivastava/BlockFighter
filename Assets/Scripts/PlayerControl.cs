@@ -38,7 +38,7 @@ public class PlayerControl : MonoBehaviour
 
 
 	// DASHING
-	Movement dashMovement = null;
+	public Movement dashMovement = null;
 	float dashDuration = 0.05f;
 	float dashXDist = 10f;
 	int dashDamage = 10;
@@ -199,9 +199,6 @@ public class PlayerControl : MonoBehaviour
 				var endPosition = startPosition;
 				var startTime = Time.time;
 
-				
-				Vector3 outsideBodyPosition = startPosition;
-
 				endPosition.x -= dashXDist;
 
 				
@@ -212,12 +209,14 @@ public class PlayerControl : MonoBehaviour
 					} else if(LayerMask.LayerToName(cast.collider.gameObject.layer).Contains("Player")){
 //						getTopParent(cast.collider.gameObject).GetComponentInChildren<PlayerBehavior>().ReduceHealth(dashDamage);
 //						PlayerEvents.RecordAttack(getTopParent(cast.collider.gameObject),getTopParent(this.gameObject),dashDamage);
-					} else if (!cast.collider.gameObject.name.Contains("Rock")) {
+					} else if (!cast.collider.gameObject.name.Contains("Rock") 
+					           && !cast.collider.gameObject.tag.Equals("PointLightSpawnPoint") 
+					           && !cast.collider.gameObject.name.Contains("PointLight")) {
 						endPosition = cast.point + new Vector2(2,0);
 					} else {
-						
 					}
 				}
+
 
 				dashMovement  = new Movement(this.gameObject);
 				dashMovement.AddLine(startPosition,endPosition,dashDuration);
@@ -232,9 +231,7 @@ public class PlayerControl : MonoBehaviour
 				var startPosition = transform.position;
 				var endPosition = startPosition;
 				var startTime = Time.time;
-				
-				
-				Vector3 outsideBodyPosition = startPosition;
+
 				
 				endPosition.x += dashXDist;
 
@@ -246,7 +243,9 @@ public class PlayerControl : MonoBehaviour
 					} else if(LayerMask.LayerToName(cast.collider.gameObject.layer).Contains("Player")){
 //						getTopParent(cast.collider.gameObject).GetComponentInChildren<PlayerBehavior>().ReduceHealth(dashDamage);
 //						PlayerEvents.RecordAttack(getTopParent(cast.collider.gameObject),getTopParent(this.gameObject),dashDamage);
-					} else if (!cast.collider.gameObject.name.Contains("Rock")) {
+					} else if (!cast.collider.gameObject.name.Contains("Rock") 
+					              && !cast.collider.gameObject.tag.Equals("PointLightSpawnPoint") 
+					              && !cast.collider.gameObject.name.Contains("PointLight")) {
 						endPosition = cast.point - new Vector2(2,0);
 					} else {
 
@@ -303,6 +302,7 @@ public class PlayerControl : MonoBehaviour
 		var light = GetComponentInChildren<Light> ();
 		light.enabled = !light.enabled;
 	}
+
 	
 	void Flip ()
 	{

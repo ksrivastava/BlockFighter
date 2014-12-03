@@ -20,18 +20,22 @@ public class PointLights : MonoBehaviour ,IEvent{
 		EventController.DisplayMessage("Get ready for the darkness!");
 		dirLight = GameObject.Find ("Directional light") as GameObject;
 		FadeOut ();
-		var players = GameObject.FindGameObjectsWithTag ("Player");
-		foreach (var player in players) {
+
+		foreach (var gameObj in GameObject.FindGameObjectsWithTag("PointLightSpawnPoint")) {
 			var pointLight = Instantiate (Resources.Load ("PointLight")) as GameObject;
-			pointLight.transform.parent = player.gameObject.transform;
 			pointLight.SetActive(true);
-			var pos = player.transform.position;
+			var pos = gameObj.transform.position;
 			pos.z = zDisplacement;
 			pointLight.transform.position = pos;
-			lights.Add(pointLight);
+
 		}
 
-		Invoke ("End", eventDuration);	
+		var players = GameObject.FindGameObjectsWithTag ("Player");
+		foreach (var player in players) {
+			player.GetComponent<HealthBar>().showBars = false;
+		}
+
+		//Invoke ("End", eventDuration);	
 	}
 	
 	public virtual void End(){

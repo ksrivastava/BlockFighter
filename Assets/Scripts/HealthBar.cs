@@ -7,12 +7,14 @@ public class HealthBar : MonoBehaviour {
 	public GUIStyle health_full;
 	public GUIStyle none_style;
 
-	public float MaxHealth = 100;
-	private float health = 100;
+	public float MaxHealth = 90;
+	private float health = 90;
 
 	public Texture2D fullHealth;
 	public Texture2D halfHealth;
 	public Texture2D lowHealth;
+
+	public bool showBars = true;
 
 	public float Health {
 		get {
@@ -77,16 +79,18 @@ public class HealthBar : MonoBehaviour {
 
 		//draw the background:
 
-		if (showDashbar) {
-			GUI.BeginGroup(new Rect(pos.x, Screen.height - pos.y, size.x, size.y * 2));
-			GUI.Box(new Rect(0,0, size.x * barDisplay, size.y), barText, health_full);
-			GUI.Box(new Rect(0, size.y + 1f, size.x * Dash, size.y), barText, dashBarStyle);
-			GUI.EndGroup();
-		}
-		else {
-			GUI.BeginGroup(new Rect(pos.x, Screen.height - pos.y, size.x, size.y));
-			GUI.Box(new Rect(0, 0, size.x * barDisplay, size.y), barText, health_full);
-			GUI.EndGroup();
+		if(showBars){
+			if (showDashbar) {
+				GUI.BeginGroup(new Rect(pos.x, Screen.height - pos.y, size.x, size.y * 2));
+				GUI.Box(new Rect(0,0, size.x * barDisplay, size.y), barText, health_full);
+				GUI.Box(new Rect(0, size.y + 1f, size.x * Dash, size.y), barText, dashBarStyle);
+				GUI.EndGroup();
+			}
+			else {
+				GUI.BeginGroup(new Rect(pos.x, Screen.height - pos.y, size.x, size.y));
+				GUI.Box(new Rect(0, 0, size.x * barDisplay, size.y), barText, health_full);
+				GUI.EndGroup();
+			}
 		}
 	}
 
