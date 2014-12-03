@@ -3,11 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using InControl;
 
+public enum Character {Elf, Human, Troll, Orc, Skeleton, Pig};
+
 public class CharacterSelectMenuController : MonoBehaviour {
 
 	private static int NUM_CHARACTERS = 6;
-	
-	public enum Character {Elf, Human, Troll, Orc, Skeleton, Pig};
+
 	public Dictionary<int, Character> characters;
 	public Dictionary<int, Character> selected;
 	public GameObject[] players;
@@ -36,34 +37,34 @@ public class CharacterSelectMenuController : MonoBehaviour {
 
 
 		// keyboard debug
-		deviceId = 0;
-		if (Input.GetKeyDown (KeyCode.LeftArrow) && !selected.ContainsKey(deviceId)) {
-			leftPressed = true;
-		} else if (Input.GetKeyDown (KeyCode.RightArrow) && !selected.ContainsKey(deviceId)) {
-			rightPressed = true;
-		} else if (Input.GetKeyDown (KeyCode.Return) && !selected.ContainsKey(deviceId)) {
-			actionPressed = true;
-		} else if (Input.GetKeyDown (KeyCode.Escape)) {
-			returnPressed = true;
-		}
-
-//		for (int i = 0; i < InputManager.Devices.Count; ++i) {
-//			var device = InputManager.Devices[i];
-//			deviceId = i;
-//			if (device.Direction.Left.WasPressed && !selected.ContainsKey(deviceId)) {
-//				leftPressed = true;
-//				break;
-//			} else if(device.Direction.Right.WasPressed && !selected.ContainsKey(deviceId)) {
-//				rightPressed = true;
-//				break;
-//			} else if (device.Action1.WasPressed && !selected.ContainsKey(deviceId)) {
-//				actionPressed = true;
-//				break;
-//			} else if (device.Action2.WasPressed) {
-//				returnPressed = true;
-//				break;
-//			}
+//		deviceId = 0;
+//		if (Input.GetKeyDown (KeyCode.LeftArrow) && !selected.ContainsKey(deviceId)) {
+//			leftPressed = true;
+//		} else if (Input.GetKeyDown (KeyCode.RightArrow) && !selected.ContainsKey(deviceId)) {
+//			rightPressed = true;
+//		} else if (Input.GetKeyDown (KeyCode.Return) && !selected.ContainsKey(deviceId)) {
+//			actionPressed = true;
+//		} else if (Input.GetKeyDown (KeyCode.Escape)) {
+//			returnPressed = true;
 //		}
+
+		for (int i = 0; i < InputManager.Devices.Count; ++i) {
+			var device = InputManager.Devices[i];
+			deviceId = i;
+			if (device.Direction.Left.WasPressed && !selected.ContainsKey(deviceId)) {
+				leftPressed = true;
+				break;
+			} else if(device.Direction.Right.WasPressed && !selected.ContainsKey(deviceId)) {
+				rightPressed = true;
+				break;
+			} else if (device.Action1.WasPressed && !selected.ContainsKey(deviceId)) {
+				actionPressed = true;
+				break;
+			} else if (device.Action2.WasPressed) {
+				returnPressed = true;
+				break;
+			}
+		}
 
 		if (deviceId != -1) {
 			if (rightPressed) {
@@ -76,6 +77,7 @@ public class CharacterSelectMenuController : MonoBehaviour {
 				characters[deviceId] = (Character) opt;
 			} else if (actionPressed) {
 				if (!selected.ContainsValue (characters[deviceId])) {
+					//Debug.Log (deviceId);
 					markers[deviceId].SetActive(true);
 					selected.Add (deviceId, characters[deviceId]);
 				}
@@ -100,23 +102,11 @@ public class CharacterSelectMenuController : MonoBehaviour {
 			}
 		}
 
+		markers[3].SetActive(true);
+		selected[3] = Character.Orc;
+
 		if (selected.Keys.Count == numPlayers) {
-			for (int i = 0; i < numPlayers; ++i) {
-				switch (selected[i]) {
-					case Character.Elf:
-						break;
-					case Character.Human:
-						break;
-					case Character.Troll:
-						break;
-					case Character.Orc:
-						break;
-					case Character.Skeleton:
-						break;
-					case Character.Pig:
-						break;
-				}
-			}
+			GameController.chars = selected;
 			MenuController.menu = MenuController.Menu.MapSelection;
 			Application.LoadLevel (0);
 		}
