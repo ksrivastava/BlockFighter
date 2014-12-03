@@ -4,7 +4,7 @@ using InControl;
 
 public class GameModeMenuController : MonoBehaviour {
 
-	public enum ModeOption {TimeLimit, Points, Lives};
+	public enum ModeOption {TimeLimit, Points, Stars, Lives};
 	public GameObject[] modeOptions;
 	public GameObject marker;
 
@@ -15,8 +15,6 @@ public class GameModeMenuController : MonoBehaviour {
 	}
 
 	void Update () {
-
-
 		var downPressed = false;
 		var upPressed = false;
 		var actionPressed = false;
@@ -55,6 +53,10 @@ public class GameModeMenuController : MonoBehaviour {
 					break;
 				case ModeOption.Points:
 					GameController.mode = new PointsMode(1000);
+					Application.LoadLevel (0);
+					break;
+				case ModeOption.Stars:
+					GameController.mode = new StarsMode(4);
 					Application.LoadLevel (0);
 					break;
 				case ModeOption.Lives:

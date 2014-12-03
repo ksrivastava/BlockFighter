@@ -10,12 +10,12 @@ GameObject:
   - 4: {fileID: 400000}
   - 61: {fileID: 6100002}
   - 50: {fileID: 5000000}
-  - 114: {fileID: 11400000}
   - 61: {fileID: 6100000}
   - 108: {fileID: 10800000}
   - 212: {fileID: 21200000}
+  - 114: {fileID: 11400000}
   m_Layer: 0
-  m_Name: HealthPowerUp
+  m_Name: StarPowerUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -113,7 +113,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cec6b6cb0c0ce459193c8a9cfaea60a0, type: 3}
+  m_Script: {fileID: 11500000, guid: 3415f51bf92294bb3908029e0169be6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &21200000
@@ -136,7 +136,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300004, guid: dd5cf3dd4867a3e448ad5415dfb5b69a, type: 3}
+  m_Sprite: {fileID: 21300008, guid: dd5cf3dd4867a3e448ad5415dfb5b69a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:

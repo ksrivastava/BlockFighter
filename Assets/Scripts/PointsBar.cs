@@ -24,7 +24,15 @@ public class PointsBar : MonoBehaviour {
 	private static float[] points;
 	private static float total = 16.0f;
 
+	public static bool isStarsMode = false;
+
 	void Start() {
+
+		float initPoints = 0f;
+		if (isStarsMode) {
+			initPoints = 1f;
+		}
+
 		styles = new GUIStyle[5];
 		points = new float[4];
 		names = new string[4];
@@ -32,7 +40,7 @@ public class PointsBar : MonoBehaviour {
 		GameObject[] pl = GameObject.FindGameObjectsWithTag("Player");
 
 		for (int i = 0; i < 4; ++i) {
-			points[i] = 0;
+			points[i] = initPoints;
 			styles[i] = new GUIStyle();
 			styles[i].alignment = TextAnchor.MiddleCenter;
 			styles[i].font = myFont;
@@ -62,17 +70,46 @@ public class PointsBar : MonoBehaviour {
 		styles [4].fontSize = (int)scoreFontSize;
 		for (int i = 0; i < 4; ++i) {
 			styles[i].fontSize = (int)playerFontSize;
-			GUI.Box (new Rect((i + 0.5f) * Screen.width / 4.5f, yScore, length, scoreFontSize), points[i].ToString(), styles[4]);
-			GUI.Box (new Rect((i + 0.5f) * Screen.width / 4.5f + length / 27f, yPlayer, length, playerFontSize), names[i], styles[i]);
+			//			if (GameController.mode.modeToString != "StarsMode") {
+				GUI.Box (new Rect((i + 0.5f) * Screen.width / 4.5f, yScore, length, scoreFontSize), points[i].ToString(), styles[4]);
+				GUI.Box (new Rect((i + 0.5f) * Screen.width / 4.5f + length / 27f, yPlayer, length, playerFontSize), names[i], styles[i]);
+//			}
 		}
 	}
 
 	public static void AddPoints(GameObject obj, float p) {
+		if (!isStarsMode) {
+			PlayerControl c;
+			if (c = obj.GetComponentInChildren<PlayerControl>()) {
+				points[c.GetPlayerNum() - 1] += p;
+				total += p;
+				DisplayNumber(obj.transform.GetChild(0).gameObject, p, DisplayType.Point);
+			}
+		}
+	}
+	
+	public static void AddStars(GameObject obj) {
 		PlayerControl c;
 		if (c = obj.GetComponentInChildren<PlayerControl>()) {
-			points[c.GetPlayerNum() - 1] += p;
-			total += p;
-			DisplayNumber(obj.transform.GetChild(0).gameObject, p, DisplayType.Point);
+			points[c.GetPlayerNum() - 1] += 1;
+		}
+	}
+	
+	public static void RemoveStars(GameObject obj, Vector3 starSpawnPosition) {
+		if (isStarsMode) {
+			PlayerControl c;
+			if (c = obj.GetComponentInChildren<PlayerControl>()) {
+				if (points[c.GetPlayerNum() - 1] > 0) {
+					points[c.GetPlayerNum() - 1] -= 1;
+
+					var star = Object.Instantiate (Resources.Load ("PowerUp/StarPowerUp")) as GameObject;
+					star.transform.position = starSpawnPosition;
+				}
+				else {
+					print ("Points less than zero");
+				}
+			}
+			else print (obj.name + " not found");
 		}
 	}
 
@@ -103,8 +140,6 @@ public class PointsBar : MonoBehaviour {
 	}
 	
 	public static void DisplayNumber(GameObject g, float p, DisplayType type) {
-
-
 		GameObject points = Instantiate(Resources.Load("Points")) as GameObject;
 
 		points.transform.position = g.transform.position;
