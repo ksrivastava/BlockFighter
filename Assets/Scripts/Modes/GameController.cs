@@ -6,6 +6,8 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
 	public static GameMode mode;
+	public static Dictionary<int, Character> chars =
+		new Dictionary<int, Character>();
 
 	private GameObject controller;
 	private bool started = false;
@@ -17,6 +19,46 @@ public class GameController : MonoBehaviour
 	{
 		controller = GameObject.Find ("GameController");
 		StartGameMode ();
+		foreach (int p in chars.Keys) {
+			GameObject obj = null;
+			switch (chars[p]) {
+				case Character.Elf:
+				obj = Instantiate(Resources.Load ("Elf")) as GameObject;
+					break;
+				case Character.Human:
+				obj = Instantiate(Resources.Load ("Human")) as GameObject;
+					break;
+				case Character.Troll:
+				obj = Instantiate(Resources.Load ("Troll")) as GameObject;
+					break;
+				case Character.Orc:
+				obj = Instantiate(Resources.Load ("Orc")) as GameObject;
+					break;
+				case Character.Skeleton:
+				obj = Instantiate(Resources.Load ("Skeleton")) as GameObject;
+					break;
+				case Character.Pig:
+					obj = Instantiate(Resources.Load ("Pig")) as GameObject;
+					break;
+			}
+			obj.GetComponentInChildren<PlayerControl>().playerNum = p + 1;
+			if (p == 0) {
+				obj.name = "PlayerOne";
+				obj.layer = 9;
+			} else if (p == 1) {
+				obj.name = "PlayerTwo";
+				obj.layer = 10;
+			}  else if (p == 2) {
+				obj.name = "PlayerThree";
+				obj.layer = 14;
+			}  else if (p == 3) {
+				obj.name = "PlayerFour";
+				obj.layer = 15;
+			}
+		}
+		Instantiate(Resources.Load ("PointsBar"));
+		GameObject eventRunner = Instantiate(Resources.Load ("EventRunner")) as GameObject;
+		eventRunner.name = "EventRunner";
 	}
 
 	void FixedUpdate()
