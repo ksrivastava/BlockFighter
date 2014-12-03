@@ -82,7 +82,7 @@ GameObject:
   - 4: {fileID: 400008}
   m_Layer: 9
   m_Name: Elf
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -408,6 +408,7 @@ MonoBehaviour:
   fullHealth: {fileID: 2800000, guid: 08b8c9a54033843b5a74cfa77b8bf80e, type: 3}
   halfHealth: {fileID: 2800000, guid: 885935c2b569e4a8485d3997a8cf5c63, type: 3}
   lowHealth: {fileID: 2800000, guid: 1d051c70905cd4cc3b5135f828d7ae29, type: 3}
+  showBars: 1
   showDashbar: 1
   dashBarTexture: {fileID: 2800000, guid: 84eaca8679d4d4a7eacf101cc3289851, type: 3}
   dashBarStyle:

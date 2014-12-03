@@ -18,7 +18,7 @@ public class GameController : MonoBehaviour
 	void Start()
 	{
 		controller = GameObject.Find ("GameController");
-		StartGameMode ();
+
 		foreach (int p in chars.Keys) {
 			GameObject obj = null;
 			switch (chars[p]) {
@@ -59,6 +59,8 @@ public class GameController : MonoBehaviour
 		Instantiate(Resources.Load ("PointsBar"));
 		GameObject eventRunner = Instantiate(Resources.Load ("EventRunner")) as GameObject;
 		eventRunner.name = "EventRunner";
+
+		StartGameMode ();
 	}
 
 	void FixedUpdate()

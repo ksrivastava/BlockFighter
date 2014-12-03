@@ -27,7 +27,7 @@ public class StarsMode : GameMode {
 	{
 		float[] points = PointsBar.GetAllPoints ();
 		bool gameOver = false;
-		for (int i = 0; i < points.Length; ++i)
+		for (int i = 0; points != null && i < points.Length; ++i)
 		{
 			if (points[i] >= starLimit)
 			{
