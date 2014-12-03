@@ -38,7 +38,6 @@ public class PlayerControl : MonoBehaviour
 
 
 	// DASHING
-	public Movement dashMovement = null;
 	float dashDuration = 0.05f;
 	float dashXDist = 10f;
 	int dashDamage = 10;
@@ -69,9 +68,6 @@ public class PlayerControl : MonoBehaviour
 	
 	void Update()
 	{
-		if (dashMovement != null) {
-			dashMovement.Update();
-		}
 
 
 		// The player is grounded if a linecast to the groundcheck position hits anything on the ground layer.
@@ -100,17 +96,6 @@ public class PlayerControl : MonoBehaviour
 		}
 		grounded = onGroundLeft || onGroundRight || onPlayer;
 
-//		// XBOX
-//		if(Input.GetKeyDown (jumpButton) && grounded)
-//			jump = true;
-//			
-//		if (Input.GetKeyDown(leftDashButton) && (healthBar.Dash >= 0.5f)) {
-//			leftDash = true;
-//		}
-//		else if (Input.GetKeyDown(rightDashButton) && (healthBar.Dash >= 0.5f)) {
-//			rightDash = true;
-//		}
-//
 
 		// KEYBOARD
 
@@ -192,72 +177,15 @@ public class PlayerControl : MonoBehaviour
 		
 			
 			if (leftDash) {
-
-				this.rigidbody2D.velocity = Vector2.zero;
-				this.rigidbody2D.angularVelocity = 0;
-				var startPosition = transform.position;
-				var endPosition = startPosition;
-				var startTime = Time.time;
-
-				endPosition.x -= dashXDist;
-
-				
-				var cast = Physics2D.Linecast( (Vector2)this.transform.position - new Vector2(2,0),endPosition);
-				if(cast.collider != null && cast.collider.gameObject.name != null){
-					if(cast.collider.gameObject.name.Equals("BouncyWall")){
-						endPosition.x = cast.collider.bounds.max.x + 2;
-					} else if(LayerMask.LayerToName(cast.collider.gameObject.layer).Contains("Player")){
-//						getTopParent(cast.collider.gameObject).GetComponentInChildren<PlayerBehavior>().ReduceHealth(dashDamage);
-//						PlayerEvents.RecordAttack(getTopParent(cast.collider.gameObject),getTopParent(this.gameObject),dashDamage);
-					} else if (!cast.collider.gameObject.name.Contains("Rock") 
-					           && !cast.collider.gameObject.tag.Equals("PointLightSpawnPoint") 
-					           && !cast.collider.gameObject.name.Contains("PointLight")) {
-						endPosition = cast.point + new Vector2(2,0);
-					} else {
-					}
-				}
-
-
-				dashMovement  = new Movement(this.gameObject);
-				dashMovement.AddLine(startPosition,endPosition,dashDuration);
-				dashMovement.Start();
-				
+				//if (facingRight) Flip ();
+				rigidbody2D.AddForce(Vector2.right * -1 * moveForce * dashMultiplier);
 				healthBar.Dash -= 0.5f;
-
 			}
 			
 			else if (rightDash) {
-
-				var startPosition = transform.position;
-				var endPosition = startPosition;
-				var startTime = Time.time;
-
-				
-				endPosition.x += dashXDist;
-
-				
-				var cast = Physics2D.Linecast( (Vector2)this.transform.position + new Vector2(2,0),endPosition);
-				if(cast.collider != null && cast.collider.gameObject.name != null){
-					if(cast.collider.gameObject.name.Equals("BouncyWall")){
-						endPosition.x = cast.collider.bounds.min.x - 2;
-					} else if(LayerMask.LayerToName(cast.collider.gameObject.layer).Contains("Player")){
-//						getTopParent(cast.collider.gameObject).GetComponentInChildren<PlayerBehavior>().ReduceHealth(dashDamage);
-//						PlayerEvents.RecordAttack(getTopParent(cast.collider.gameObject),getTopParent(this.gameObject),dashDamage);
-					} else if (!cast.collider.gameObject.name.Contains("Rock") 
-					              && !cast.collider.gameObject.tag.Equals("PointLightSpawnPoint") 
-					              && !cast.collider.gameObject.name.Contains("PointLight")) {
-						endPosition = cast.point - new Vector2(2,0);
-					} else {
-
-					}
-				}
-
-				dashMovement  = new Movement(this.gameObject);
-				dashMovement.AddLine(startPosition,endPosition,dashDuration);
-				dashMovement.Start();
-
+				//if (!facingRight) Flip ();
+				rigidbody2D.AddForce(Vector2.right * moveForce * dashMultiplier);
 				healthBar.Dash -= 0.5f;
-
 			}
 			
 			// If the player is changing direction (h has a different sign to velocity.x) or hasn't reached maxSpeed yet...
