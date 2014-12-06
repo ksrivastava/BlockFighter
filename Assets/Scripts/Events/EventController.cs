@@ -84,7 +84,8 @@ public class EventController : MonoBehaviour {
 		}
 		else if (Input.GetKeyDown(KeyCode.Alpha6)) {
 			eventLock = false;
-			QueueEvent (RunnableEventType.MapSpin);
+			//QueueEvent (RunnableEventType.MapSpin);
+			QueueEvent (RunnableEventType.BigHammerPowerUpEvent);
 		}
 		else if (Input.GetKeyDown(KeyCode.Alpha7)) {
 			eventLock = false;

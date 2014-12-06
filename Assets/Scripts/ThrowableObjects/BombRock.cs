@@ -55,7 +55,9 @@ public class BombRock : StraightRock {
 		}
 
 		if (stick) {
-
+			foreach(var col in GetComponents<BoxCollider2D>()){
+				col.enabled = false;
+			}
 			if(stickPlayerControl.facingRight){
 				transform.position = stickObject.transform.position + new Vector3(-1,0,0);
 			} else {
