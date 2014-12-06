@@ -184,6 +184,10 @@ public class HammerControl : MonoBehaviour {
 		isBigHammer = true;
 		GameObject body = GameObject.Find (transform.parent.name + "/Hammer/Body");
 		body.GetComponent<SpriteRenderer> ().sprite = bigHammerBody;
+		Vector3 scale = body.transform.localScale;
+		scale.x = 10.0f;
+		scale.y = 10.0f;
+		body.transform.localScale = scale;
 		StartCoroutine (StopPowerUpAfterTime (time));
 	}
 
@@ -191,6 +195,7 @@ public class HammerControl : MonoBehaviour {
 		yield return new WaitForSeconds (time);
 		GameObject body = GameObject.Find (transform.parent.name + "/Hammer/Body");
 		body.GetComponent<SpriteRenderer> ().sprite = hammerBody;
+		body.transform.localScale = origScale;
 		isBigHammer = false;
 	}
 }
