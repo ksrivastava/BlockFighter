@@ -102,17 +102,17 @@ public class CharacterSelectMenuController : MonoBehaviour {
 			}
 		}
 
-		markers[0].SetActive(true);
-		selected[0] = Character.Human;
-		
-		markers[1].SetActive(true);
-		selected[1] = Character.Troll;
-		
-		markers[2].SetActive(true);
-		selected[2] = Character.Orc;
-		
-		markers[3].SetActive(true);
-		selected[3] = Character.Elf;
+//		markers[0].SetActive(true);
+//		selected[0] = Character.Human;
+//		
+//		markers[1].SetActive(true);
+//		selected[1] = Character.Troll;
+//		
+//		markers[2].SetActive(true);
+//		selected[2] = Character.Orc;
+//		
+//		markers[3].SetActive(true);
+//		selected[3] = Character.Elf;
 
 		if (selected.Keys.Count == numPlayers) {
 			GameController.chars = selected;

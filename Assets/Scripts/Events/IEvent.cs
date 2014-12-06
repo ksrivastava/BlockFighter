@@ -14,6 +14,7 @@ public enum RunnableEventType{
 	HealthPowerUpEvent,
 	BombPowerUpEvent,
 	LeechPowerUpEvent,
+	BigHammerPowerUpEvent,
 	Idle,
 	NUM_TYPES
 };

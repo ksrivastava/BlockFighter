@@ -6,6 +6,9 @@ public class HammerControl : MonoBehaviour {
 
 	public bool isBigHammer;
 
+	public Sprite hammerBody;
+	public Sprite bigHammerBody;
+
 	private float aoeXRange = 7f;
 	private float aoeYRange = 1f;
 	private float aoeForce = 500f;
@@ -56,8 +59,8 @@ public class HammerControl : MonoBehaviour {
 		GameObject body = GameObject.Find (transform.parent.name + "/Hammer/Body");
 		if (isBigHammer) {
 			Vector3 scale = body.transform.localScale;
-			scale.x = 1.5f;
-			scale.y = 1.0f;
+			scale.x = 10.0f;
+			scale.y = 10.0f;
 			body.transform.localScale = scale;
 		} else {
 			body.transform.localScale = origScale;
@@ -171,7 +174,7 @@ public class HammerControl : MonoBehaviour {
 			if (pC != controller && Mathf.Abs(hammerX - pX) < aoeXRange && Mathf.Abs(pY - player.position.y) < aoeYRange) {
 				if (pC.IsGrounded()) {
 					pC.rigidbody2D.AddForce (new Vector2(0f, aoeForce));
-					pl[i].GetComponent<PlayerBehavior>().ReduceHealth(10);
+					pl[i].GetComponent<PlayerBehavior>().ReduceHealth(20);
 				}
 			}
 		}
@@ -179,11 +182,15 @@ public class HammerControl : MonoBehaviour {
 
 	public void UpgradeHammerTime(float time) {
 		isBigHammer = true;
+		GameObject body = GameObject.Find (transform.parent.name + "/Hammer/Body");
+		body.GetComponent<SpriteRenderer> ().sprite = bigHammerBody;
 		StartCoroutine (StopPowerUpAfterTime (time));
 	}
 
 	private IEnumerator StopPowerUpAfterTime(float time) {
 		yield return new WaitForSeconds (time);
+		GameObject body = GameObject.Find (transform.parent.name + "/Hammer/Body");
+		body.GetComponent<SpriteRenderer> ().sprite = hammerBody;
 		isBigHammer = false;
 	}
 }
