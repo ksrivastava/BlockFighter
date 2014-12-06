@@ -162,6 +162,21 @@ public class PlayerControl : MonoBehaviour
 		return t.gameObject;
 	}
 
+	IEnumerator Trail(float startTime, float endTime) {
+		while (startTime < endTime) {
+			GameObject f = new GameObject();
+			f.transform.position = new Vector3 (transform.position.x, transform.position.y, transform.position.z + 1);
+			f.transform.localScale = transform.localScale;
+			f.AddComponent<SpriteRenderer> ();
+			SpriteRenderer faderSprite = f.GetComponent<SpriteRenderer>();
+			faderSprite.sprite = GetComponent<SpriteRenderer>().sprite;
+			f.AddComponent<SelfDestruct> ();
+			startTime += Time.deltaTime;
+			yield return null;
+		}
+	}
+
+
 	void FixedUpdate ()
 	{
 		if (allowMovement) {
@@ -184,81 +199,99 @@ public class PlayerControl : MonoBehaviour
 			} else if (anim != null) {
 				anim.SetBool ("isMoving", false);
 			}
-			
+
 			// If the player's horizontal velocity is greater than the maxSpeed...
 			if(Mathf.Abs(rigidbody2D.velocity.x) > maxSpeed)
 				// ... set the player's velocity to the maxSpeed in the x axis.
 				rigidbody2D.velocity = new Vector2(Mathf.Sign(rigidbody2D.velocity.x) * maxSpeed, rigidbody2D.velocity.y);
 		
-			
+
 			if (leftDash) {
-
-				this.rigidbody2D.velocity = Vector2.zero;
-				this.rigidbody2D.angularVelocity = 0;
-				var startPosition = transform.position;
-				var endPosition = startPosition;
-				var startTime = Time.time;
-
-				endPosition.x -= dashXDist;
-
-				
-				var cast = Physics2D.Linecast( (Vector2)this.transform.position - new Vector2(2,0),endPosition);
-				if(cast.collider != null && cast.collider.gameObject.name != null){
-					if(cast.collider.gameObject.name.Equals("BouncyWall")){
-						endPosition.x = cast.collider.bounds.max.x + 2;
-					} else if(LayerMask.LayerToName(cast.collider.gameObject.layer).Contains("Player")){
-//						getTopParent(cast.collider.gameObject).GetComponentInChildren<PlayerBehavior>().ReduceHealth(dashDamage);
-//						PlayerEvents.RecordAttack(getTopParent(cast.collider.gameObject),getTopParent(this.gameObject),dashDamage);
-					} else if (!cast.collider.gameObject.name.Contains("Rock") 
-					           && !cast.collider.gameObject.tag.Equals("PointLightSpawnPoint") 
-					           && !cast.collider.gameObject.name.Contains("PointLight")) {
-						endPosition = cast.point + new Vector2(2,0);
-					} else {
-					}
-				}
-
-
-				dashMovement  = new Movement(this.gameObject);
-				dashMovement.AddLine(startPosition,endPosition,dashDuration);
-				dashMovement.Start();
-				
+				//				if (facingRight) Flip ();
+				rigidbody2D.AddForce(Vector2.right * -1 * moveForce * dashMultiplier);
 				healthBar.Dash -= 0.5f;
-
+				StartCoroutine(Trail(Time.time, Time.time + dashDuration));
 			}
 			
 			else if (rightDash) {
-
-				var startPosition = transform.position;
-				var endPosition = startPosition;
-				var startTime = Time.time;
-
-				
-				endPosition.x += dashXDist;
-
-				
-				var cast = Physics2D.Linecast( (Vector2)this.transform.position + new Vector2(2,0),endPosition);
-				if(cast.collider != null && cast.collider.gameObject.name != null){
-					if(cast.collider.gameObject.name.Equals("BouncyWall")){
-						endPosition.x = cast.collider.bounds.min.x - 2;
-					} else if(LayerMask.LayerToName(cast.collider.gameObject.layer).Contains("Player")){
-//						getTopParent(cast.collider.gameObject).GetComponentInChildren<PlayerBehavior>().ReduceHealth(dashDamage);
-//						PlayerEvents.RecordAttack(getTopParent(cast.collider.gameObject),getTopParent(this.gameObject),dashDamage);
-					} else if (!cast.collider.gameObject.name.Contains("Rock") 
-					              && !cast.collider.gameObject.tag.Equals("PointLightSpawnPoint") 
-					              && !cast.collider.gameObject.name.Contains("PointLight")) {
-						endPosition = cast.point - new Vector2(2,0);
-					} else {
-
-					}
-				}
-
-				dashMovement  = new Movement(this.gameObject);
-				dashMovement.AddLine(startPosition,endPosition,dashDuration);
-				dashMovement.Start();
-
+				//				if (!facingRight) Flip ();
+				rigidbody2D.AddForce(Vector2.right * moveForce * dashMultiplier);
 				healthBar.Dash -= 0.5f;
-
+				StartCoroutine(Trail(Time.time, Time.time + dashDuration));
 			}
+		
+
+			
+//			if (leftDash) {
+//
+//				this.rigidbody2D.velocity = Vector2.zero;
+//				this.rigidbody2D.angularVelocity = 0;
+//				var startPosition = transform.position;
+//				var endPosition = startPosition;
+//				var startTime = Time.time;
+//
+//				endPosition.x -= dashXDist;
+//
+//				
+//				var cast = Physics2D.Linecast( (Vector2)this.transform.position - new Vector2(2,0),endPosition);
+//				if(cast.collider != null && cast.collider.gameObject.name != null){
+//					if(cast.collider.gameObject.name.Equals("BouncyWall")){
+//						endPosition.x = cast.collider.bounds.max.x + 2;
+//					} else if(LayerMask.LayerToName(cast.collider.gameObject.layer).Contains("Player")){
+////						getTopParent(cast.collider.gameObject).GetComponentInChildren<PlayerBehavior>().ReduceHealth(dashDamage);
+////						PlayerEvents.RecordAttack(getTopParent(cast.collider.gameObject),getTopParent(this.gameObject),dashDamage);
+//					} else if (!cast.collider.gameObject.name.Contains("Rock") 
+//					           && !cast.collider.gameObject.tag.Equals("PointLightSpawnPoint") 
+//					           && !cast.collider.gameObject.name.Contains("PointLight")) {
+//						endPosition = cast.point + new Vector2(2,0);
+//					} else {
+//					}
+//				}
+//
+//
+//				dashMovement  = new Movement(this.gameObject);
+//				dashMovement.AddLine(startPosition,endPosition,dashDuration);
+//				dashMovement.Start();
+//				StartCoroutine(Trail(Time.time, Time.time + dashDuration));
+//
+//				healthBar.Dash -= 0.5f;
+//
+//			}
+//			
+//			else if (rightDash) {
+//
+//				var startPosition = transform.position;
+//				var endPosition = startPosition;
+//				var startTime = Time.time;
+//
+//				
+//				endPosition.x += dashXDist;
+//
+//				
+//				var cast = Physics2D.Linecast( (Vector2)this.transform.position + new Vector2(2,0),endPosition);
+//				if(cast.collider != null && cast.collider.gameObject.name != null){
+//					if(cast.collider.gameObject.name.Equals("BouncyWall")){
+//						endPosition.x = cast.collider.bounds.min.x - 2;
+//					} else if(LayerMask.LayerToName(cast.collider.gameObject.layer).Contains("Player")){
+////						getTopParent(cast.collider.gameObject).GetComponentInChildren<PlayerBehavior>().ReduceHealth(dashDamage);
+////						PlayerEvents.RecordAttack(getTopParent(cast.collider.gameObject),getTopParent(this.gameObject),dashDamage);
+//					} else if (!cast.collider.gameObject.name.Contains("Rock") 
+//					              && !cast.collider.gameObject.tag.Equals("PointLightSpawnPoint") 
+//					              && !cast.collider.gameObject.name.Contains("PointLight")) {
+//						endPosition = cast.point - new Vector2(2,0);
+//					} else {
+//
+//					}
+//				}
+//
+//				dashMovement  = new Movement(this.gameObject);
+//				dashMovement.AddLine(startPosition,endPosition, dashDuration);
+//				dashMovement.Start();
+//				StartCoroutine(Trail(Time.time, Time.time + dashDuration));
+//
+//				healthBar.Dash -= 0.5f;
+
+//			}
 			
 			// If the player is changing direction (h has a different sign to velocity.x) or hasn't reached maxSpeed yet...
 			if(h * rigidbody2D.velocity.x < maxSpeed)

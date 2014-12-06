@@ -6,7 +6,7 @@ public class ThrowableObject : MonoBehaviour {
 	public enum State {idle, pickedUp, thrown};
 
 
-	protected State state;
+	public State state;
 
 	public GameObject hammer = null;
 	protected PlayerControl controller;
