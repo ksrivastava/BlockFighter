@@ -9,7 +9,8 @@ public enum DisplayType {
 }
 
 public class PointsBar : MonoBehaviour {
-	
+
+	const int MAX_PLAYERS = 4;
 	public GUIStyle[] styles;
 	public Font myFont;
 	public int myFontSize = 10;
@@ -70,10 +71,9 @@ public class PointsBar : MonoBehaviour {
 		styles [numPlayers].fontSize = (int)scoreFontSize;
 		for (int i = 0; i < numPlayers; ++i) {
 			styles[i].fontSize = (int)playerFontSize;
-			//			if (GameController.mode.modeToString != "StarsMode") {
-			GUI.Box (new Rect((i + 0.5f) * Screen.width / 4.5f, yScore, length, scoreFontSize), points[i].ToString(), styles[numPlayers]);
-			GUI.Box (new Rect((i + 0.5f) * Screen.width / 4.5f + length / 27f, yPlayer, length, playerFontSize), names[i], styles[i]);
-			//			}
+			var tempX = ((i + 0.5f) + (MAX_PLAYERS - numPlayers) * 0.5f ) * Screen.width / 4.5f;
+			GUI.Box (new Rect(tempX, yScore, length, scoreFontSize), points[i].ToString(), styles[numPlayers]);
+			GUI.Box (new Rect(tempX + length / 27f, yPlayer, length, playerFontSize), names[i], styles[i]);
 		}
 	}
 

@@ -61,6 +61,7 @@ public class GameController : MonoBehaviour
 			}
 		}
 		Instantiate(Resources.Load ("PointsBar"));
+		PointsBar.numPlayers = chars.Keys.Count;
 		GameObject eventRunner = Instantiate(Resources.Load ("EventRunner")) as GameObject;
 		eventRunner.name = "EventRunner";
 
