@@ -96,19 +96,29 @@ public class GameController : MonoBehaviour
 
 	public void Pause()
 	{
+		int num = PointsBar.numPlayers;
 		foreach (string p in PlayerEvents.playerNames) {
 			var playerController = GameObject.Find (p).GetComponentInChildren<PlayerControl>();
 			playerController.allowMovement = false;
 			playerController.allowHitting = false;
+			num--;
+			if (num == 0) {
+				break;
+			}
 		}
 	}
 
 	public void Unpause()
 	{
+		int num = PointsBar.numPlayers;
 		foreach (string p in PlayerEvents.playerNames) {
 			var playerController = GameObject.Find (p).GetComponentInChildren<PlayerControl>();
 			playerController.allowMovement = true;
 			playerController.allowHitting = true;
+			num--;
+			if (num == 0) {
+				break;
+			}
 		}
 	}
 
