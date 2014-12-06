@@ -22,9 +22,10 @@ public class PointsBar : MonoBehaviour {
 	private string[] names;
 	
 	private static float[] points;
-	private static float total = 16.0f;
 	
 	public static bool isStarsMode = false;
+
+	public static int numPlayers = 2;
 	
 	void Start() {
 		float initPoints = 0f;
@@ -32,13 +33,13 @@ public class PointsBar : MonoBehaviour {
 			initPoints = 1f;
 		}
 		
-		styles = new GUIStyle[5];
-		points = new float[4];
-		names = new string[4];
+		styles = new GUIStyle[numPlayers + 1];
+		points = new float[numPlayers];
+		names = new string[numPlayers];
 		
 		GameObject[] pl = GameObject.FindGameObjectsWithTag("Player");
 		
-		for (int i = 0; i < 4; ++i) {
+		for (int i = 0; i < numPlayers; ++i) {
 			points[i] = initPoints;
 			styles[i] = new GUIStyle();
 			styles[i].alignment = TextAnchor.MiddleCenter;
@@ -46,17 +47,17 @@ public class PointsBar : MonoBehaviour {
 			styles[i].fontSize = myFontSize;
 		}
 		
-		for (int i = 0; i < 4; ++i) {
+		for (int i = 0; i < numPlayers; ++i) {
 			PlayerControl c = pl[i].GetComponent<PlayerControl>();
 			styles[c.GetPlayerNum() - 1].normal.textColor = pl[i].GetComponent<ColorSetter>().color;
 			names[c.GetPlayerNum() - 1] = c.GetName();
 		}
 		
-		styles[4] = new GUIStyle ();
-		styles[4].alignment = TextAnchor.MiddleCenter;
-		styles[4].font = myFont;
-		styles[4].fontSize = 30;
-		styles[4].normal.textColor = Color.white;
+		styles[numPlayers] = new GUIStyle ();
+		styles[numPlayers].alignment = TextAnchor.MiddleCenter;
+		styles[numPlayers].font = myFont;
+		styles[numPlayers].fontSize = 30;
+		styles[numPlayers].normal.textColor = Color.white;
 	}
 	
 	void OnGUI() {
@@ -66,11 +67,11 @@ public class PointsBar : MonoBehaviour {
 		yScore = Screen.height - height;
 		yPlayer = Screen.height - 1.333f * playerFontSize;
 		
-		styles [4].fontSize = (int)scoreFontSize;
-		for (int i = 0; i < 4; ++i) {
+		styles [numPlayers].fontSize = (int)scoreFontSize;
+		for (int i = 0; i < numPlayers; ++i) {
 			styles[i].fontSize = (int)playerFontSize;
 			//			if (GameController.mode.modeToString != "StarsMode") {
-			GUI.Box (new Rect((i + 0.5f) * Screen.width / 4.5f, yScore, length, scoreFontSize), points[i].ToString(), styles[4]);
+			GUI.Box (new Rect((i + 0.5f) * Screen.width / 4.5f, yScore, length, scoreFontSize), points[i].ToString(), styles[numPlayers]);
 			GUI.Box (new Rect((i + 0.5f) * Screen.width / 4.5f + length / 27f, yPlayer, length, playerFontSize), names[i], styles[i]);
 			//			}
 		}
@@ -81,7 +82,6 @@ public class PointsBar : MonoBehaviour {
 			PlayerControl c;
 			if (c = obj.GetComponentInChildren<PlayerControl>()) {
 				points[c.GetPlayerNum() - 1] += p;
-				total += p;
 				DisplayNumber(obj.transform.GetChild(0).gameObject, p, DisplayType.Point);
 			}
 		}
@@ -125,19 +125,6 @@ public class PointsBar : MonoBehaviour {
 		return points;
 	}
 	
-	private Texture2D MakeTexture(int width, int height, Color col) {
-		col.a = 1;
-		Color[] pix = new Color[width * height];
-		for( int i = 0; i < pix.Length; ++i )
-		{
-			pix[i] = col;
-		}
-		Texture2D result = new Texture2D( width, height );
-		result.SetPixels( pix );
-		result.Apply();
-		return result;
-	}
-	
 	public static void DisplayNumber(GameObject g, float p, DisplayType type) {
 		GameObject points = Instantiate(Resources.Load("Points")) as GameObject;
 		
@@ -171,6 +158,6 @@ public class PointsBar : MonoBehaviour {
 
 	public static void Clear() {
 		isStarsMode = false;
-		points = new float[4];
+		points = new float[numPlayers];
 	}
 }

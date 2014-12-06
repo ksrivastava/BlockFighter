@@ -45,19 +45,19 @@ public class GameController : MonoBehaviour
 			if (p == 0) {
 				obj.name = "PlayerOne";
 				SetChildrenLayer(obj, 9);
-//				obj.layer = 9;
+
 			} else if (p == 1) {
 				obj.name = "PlayerTwo";
 				SetChildrenLayer(obj, 10);
-//				obj.layer = 10;
+
 			}  else if (p == 2) {
 				obj.name = "PlayerThree";
 				SetChildrenLayer(obj, 14);
-//				obj.layer = 14;
+
 			}  else if (p == 3) {
 				obj.name = "PlayerFour";
 				SetChildrenLayer(obj, 15);
-//				obj.layer = 15;
+
 			}
 		}
 		Instantiate(Resources.Load ("PointsBar"));

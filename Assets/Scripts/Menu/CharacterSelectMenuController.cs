@@ -19,7 +19,7 @@ public class CharacterSelectMenuController : MonoBehaviour {
 	void Start () {
 		characters = new Dictionary<int, Character>();
 		selected = new Dictionary<int, Character>();
-		numPlayers = 4;
+		numPlayers = 4; // TEMP CHANGE
 		for (int i = 0; i < numPlayers; ++i) {
 			characters.Add(i, (Character) i);
 			markers[i].SetActive(false);
@@ -89,7 +89,7 @@ public class CharacterSelectMenuController : MonoBehaviour {
 			}
 		}
 
-		for (int i = 0; i < players.Length; ++i) {
+		for (int i = 0; i < numPlayers; ++i) {
 			players[i].GetComponent<SpriteRenderer>().sprite = sprites[(int) characters[i]];
 			if (selected.ContainsValue (characters[i]) && !selected.ContainsKey (i)) {
 				Color c = players[i].GetComponent<SpriteRenderer>().color;
