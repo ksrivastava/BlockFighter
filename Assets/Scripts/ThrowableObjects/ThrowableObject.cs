@@ -27,8 +27,9 @@ public class ThrowableObject : MonoBehaviour {
 	// this is what you override to implement damage and things.
 	public virtual void Damage(Collider2D col){}
 
+
 	// Use this for initialization
-	protected void Start () {
+	protected virtual void Start () {
 		this.state = State.idle;
 		this.collider2D.enabled = true;
 	}
