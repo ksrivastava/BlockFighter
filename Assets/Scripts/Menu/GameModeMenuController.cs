@@ -57,7 +57,7 @@ public class GameModeMenuController : MonoBehaviour {
 					Application.LoadLevel (0);
 					break;
 				case ModeOption.Stars:
-					GameController.mode = new StarsMode(4);
+					GameController.mode = new StarsMode();
 					Application.LoadLevel (0);
 					break;
 				case ModeOption.Lives:

@@ -5,9 +5,9 @@ public class StarsMode : GameMode {
 	
 	private int starLimit;
 
-	public StarsMode (int starLimit = 4)
+	public StarsMode ()
 	{
-		this.starLimit = starLimit;
+		this.starLimit = PointsBar.numPlayers;
 		PointsBar.isStarsMode = true;
 	}
 	
