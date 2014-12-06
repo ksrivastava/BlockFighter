@@ -28,6 +28,13 @@ public class BombRock : StraightRock {
 	void Awake() {
 		anim = this.GetComponent<Animator> ();
 		anim.SetBool ("isExploding", false);
+		KillTimer ();
+	}
+
+	protected void KillTimer(){
+		idleSinceBirth = true;
+		Invoke ("CheckAndKill", killTime);
+		Invoke ("Kill", totalLifetime);
 	}
 
 	void CheckAndKill(){
@@ -40,13 +47,7 @@ public class BombRock : StraightRock {
 		if(this.state == State.idle)
 		Destroy (this.gameObject);
 	}
-
-	protected override void Start(){
-		base.Start ();
-		idleSinceBirth = true;
-		Invoke ("CheckAndKill", killTime);
-		Invoke ("Kill", totalLifetime);
-	}
+	
 
 	public override void Update(){
 
