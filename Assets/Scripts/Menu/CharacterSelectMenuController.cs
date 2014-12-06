@@ -13,14 +13,13 @@ public class CharacterSelectMenuController : MonoBehaviour {
 	public Dictionary<int, Character> selected;
 	public GameObject[] players;
 	public GameObject[] markers;
+	public GameObject[] labels;
 	public Sprite[] sprites;
-	public int numPlayers;
 	
 	void Start () {
 		characters = new Dictionary<int, Character>();
 		selected = new Dictionary<int, Character>();
-		numPlayers = 4; // TEMP CHANGE
-		for (int i = 0; i < numPlayers; ++i) {
+		for (int i = 0; i < InputManager.Devices.Count; ++i) {
 			characters.Add(i, (Character) i);
 			markers[i].SetActive(false);
 		}
@@ -63,6 +62,13 @@ public class CharacterSelectMenuController : MonoBehaviour {
 			} else if (device.Action2.WasPressed) {
 				returnPressed = true;
 				break;
+			} else if (device.MenuWasPressed) {
+				if (selected.Keys.Count == InputManager.Devices.Count) {
+					GameController.chars = selected;
+					MenuController.menu = MenuController.Menu.MapSelection;
+					Application.LoadLevel (0);
+				}
+				break;
 			}
 		}
 
@@ -89,16 +95,36 @@ public class CharacterSelectMenuController : MonoBehaviour {
 			}
 		}
 
-		for (int i = 0; i < numPlayers; ++i) {
-			players[i].GetComponent<SpriteRenderer>().sprite = sprites[(int) characters[i]];
-			if (selected.ContainsValue (characters[i]) && !selected.ContainsKey (i)) {
-				Color c = players[i].GetComponent<SpriteRenderer>().color;
-				c.a = 0.2f;
-				players[i].GetComponent<SpriteRenderer>().color = c;
+		for (int i = 0; i < players.Length; ++i) {
+			if (i < InputManager.Devices.Count) {
+				if (!characters.ContainsKey(i)) {
+					characters.Add (i, (Character) i);
+				}
+				players[i].GetComponent<SpriteRenderer>().sprite = sprites[(int) characters[i]];
+				if (selected.ContainsValue (characters[i]) && !selected.ContainsKey (i)) {
+					Color c = players[i].GetComponent<SpriteRenderer>().color;
+					c.a = 0.2f;
+					players[i].GetComponent<SpriteRenderer>().color = c;
+				} else {
+					Color c = players[i].GetComponent<SpriteRenderer>().color;
+					c.a = 1.0f;
+					players[i].GetComponent<SpriteRenderer>().color = c;
+				}
+				Color labelC = labels[i].GetComponent<TextMesh>().color;
+				labelC.a = 1.0f;
+				labels[i].GetComponent<TextMesh>().color = labelC;
 			} else {
-				Color c = players[i].GetComponent<SpriteRenderer>().color;
-				c.a = 1.0f;
-				players[i].GetComponent<SpriteRenderer>().color = c;
+				// player not connected
+				// dim sprite
+				Color playerC = players[i].GetComponent<SpriteRenderer>().color;
+				playerC.a = 0.2f;
+				players[i].GetComponent<SpriteRenderer>().color = playerC;
+
+				// dim label
+				Color labelC = labels[i].GetComponent<TextMesh>().color;
+				labelC.a = 0.2f;
+				labels[i].GetComponent<TextMesh>().color = labelC;
+				markers[i].SetActive(false);
 			}
 		}
 
@@ -114,11 +140,11 @@ public class CharacterSelectMenuController : MonoBehaviour {
 //		markers[3].SetActive(true);
 //		selected[3] = Character.Elf;
 
-		if (selected.Keys.Count == numPlayers) {
-			GameController.chars = selected;
-			MenuController.menu = MenuController.Menu.MapSelection;
-			Application.LoadLevel (0);
-		}
+//		if (selected.Keys.Count == InputManager.Devices.Count) {
+//			GameController.chars = selected;
+//			MenuController.menu = MenuController.Menu.MapSelection;
+//			Application.LoadLevel (0);
+//		}
 
 	}
 }
