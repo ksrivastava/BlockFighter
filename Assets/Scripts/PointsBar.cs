@@ -27,7 +27,6 @@ public class PointsBar : MonoBehaviour {
 	public static bool isStarsMode = false;
 	
 	void Start() {
-		
 		float initPoints = 0f;
 		if (isStarsMode) {
 			initPoints = 1f;
@@ -76,7 +75,7 @@ public class PointsBar : MonoBehaviour {
 			//			}
 		}
 	}
-	
+
 	public static void AddPoints(GameObject obj, float p) {
 		if (!isStarsMode) {
 			PlayerControl c;
@@ -168,5 +167,10 @@ public class PointsBar : MonoBehaviour {
 		}
 		
 		points.GetComponent<PointsAnimation> ().SetGameObject(g);
+	}
+
+	public static void Clear() {
+		isStarsMode = false;
+		points = new float[4];
 	}
 }

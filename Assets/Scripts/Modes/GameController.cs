@@ -44,16 +44,20 @@ public class GameController : MonoBehaviour
 			obj.GetComponentInChildren<PlayerControl>().playerNum = p + 1;
 			if (p == 0) {
 				obj.name = "PlayerOne";
-				obj.layer = 9;
+				SetChildrenLayer(obj, 9);
+//				obj.layer = 9;
 			} else if (p == 1) {
 				obj.name = "PlayerTwo";
-				obj.layer = 10;
+				SetChildrenLayer(obj, 10);
+//				obj.layer = 10;
 			}  else if (p == 2) {
 				obj.name = "PlayerThree";
-				obj.layer = 14;
+				SetChildrenLayer(obj, 14);
+//				obj.layer = 14;
 			}  else if (p == 3) {
 				obj.name = "PlayerFour";
-				obj.layer = 15;
+				SetChildrenLayer(obj, 15);
+//				obj.layer = 15;
 			}
 		}
 		Instantiate(Resources.Load ("PointsBar"));
@@ -61,6 +65,13 @@ public class GameController : MonoBehaviour
 		eventRunner.name = "EventRunner";
 
 		StartGameMode ();
+	}
+
+	void SetChildrenLayer(GameObject obj, int layerNum) {
+		Transform[] ts = obj.GetComponentsInChildren<Transform>();
+		foreach (Transform child in ts) {
+			child.gameObject.layer = layerNum;
+		}
 	}
 
 	void FixedUpdate()

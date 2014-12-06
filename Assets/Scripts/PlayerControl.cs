@@ -147,6 +147,21 @@ public class PlayerControl : MonoBehaviour
 		return t.gameObject;
 	}
 
+	IEnumerator Trail(float startTime, float endTime) {
+		while (startTime < endTime) {
+			GameObject f = new GameObject();
+			f.transform.position = new Vector3 (transform.position.x, transform.position.y, transform.position.z + 1);
+			f.transform.localScale = transform.localScale;
+			f.AddComponent<SpriteRenderer> ();
+			SpriteRenderer faderSprite = f.GetComponent<SpriteRenderer>();
+			faderSprite.sprite = GetComponent<SpriteRenderer>().sprite;
+			f.AddComponent<SelfDestruct> ();
+			startTime += Time.deltaTime;
+			yield return null;
+		}
+	}
+
+
 	void FixedUpdate ()
 	{
 		if (allowMovement) {
@@ -169,23 +184,25 @@ public class PlayerControl : MonoBehaviour
 			} else if (anim != null) {
 				anim.SetBool ("isMoving", false);
 			}
-			
+
 			// If the player's horizontal velocity is greater than the maxSpeed...
 			if(Mathf.Abs(rigidbody2D.velocity.x) > maxSpeed)
 				// ... set the player's velocity to the maxSpeed in the x axis.
 				rigidbody2D.velocity = new Vector2(Mathf.Sign(rigidbody2D.velocity.x) * maxSpeed, rigidbody2D.velocity.y);
 		
-			
+
 			if (leftDash) {
-				//if (facingRight) Flip ();
+				//				if (facingRight) Flip ();
 				rigidbody2D.AddForce(Vector2.right * -1 * moveForce * dashMultiplier);
 				healthBar.Dash -= 0.5f;
+				StartCoroutine(Trail(Time.time, Time.time + dashDuration));
 			}
 			
 			else if (rightDash) {
-				//if (!facingRight) Flip ();
+				//				if (!facingRight) Flip ();
 				rigidbody2D.AddForce(Vector2.right * moveForce * dashMultiplier);
 				healthBar.Dash -= 0.5f;
+				StartCoroutine(Trail(Time.time, Time.time + dashDuration));
 			}
 			
 			// If the player is changing direction (h has a different sign to velocity.x) or hasn't reached maxSpeed yet...
