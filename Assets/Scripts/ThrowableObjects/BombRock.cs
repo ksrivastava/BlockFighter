@@ -20,12 +20,40 @@ public class BombRock : StraightRock {
 	protected float secondTimer = 0f;
 	private Animator anim;
 
+
+	protected bool idleSinceBirth;
+	protected float killTime = 10;
+	protected float totalLifetime = 40;
+
 	void Awake() {
 		anim = this.GetComponent<Animator> ();
 		anim.SetBool ("isExploding", false);
 	}
 
+	void CheckAndKill(){
+		if (idleSinceBirth) {
+			Destroy(this.gameObject);
+		}
+	}
+
+	void Kill(){
+		if(this.state == State.idle)
+		Destroy (this.gameObject);
+	}
+
+	protected override void Start(){
+		base.Start ();
+		idleSinceBirth = true;
+		Invoke ("CheckAndKill", killTime);
+		Invoke ("Kill", totalLifetime);
+	}
+
 	public override void Update(){
+
+		if (this.state != State.idle) {
+			idleSinceBirth = false;			
+		}
+
 		if (stick) {
 			foreach(var col in GetComponents<BoxCollider2D>()){
 				col.enabled = false;

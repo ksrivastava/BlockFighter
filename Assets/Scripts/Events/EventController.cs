@@ -9,29 +9,23 @@ public class EventController : MonoBehaviour {
 	private static float bombTimer=10;
 	private static float leechTimer=10;
 	private static float healthTimer=10;
+	private static float straightRockSpawnTimer = 10;
 
-	private static float chance = 0.05f;
+	private static float chance = 0.25f;
 
 	// Use this for initialization
 	void Start () {
 
-		//QueueEvent (EventType.StraightRockShower);
-		//StartCoroutine(NextEvent());
+
 		eventRunner = GameObject.Find ("EventRunner");
 
-		//TODO: DELETE THIS LINE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-		InvokeRepeating ("TestFormTeam",0, 31);
 
 		if (Application.loadedLevelName == "_Map_2" || Application.loadedLevelName == "_Map_3") {	
 
-
-			Invoke ("QueueStraightRockShower",10);
-
+			InvokeRepeating("CheckStraightRocks",5,3);
 			InvokeRepeating("CheckEnoughBombs",5,3);
 			InvokeRepeating("CheckEnoughHealthPacks",5,3);
 			InvokeRepeating("CheckEnoughLeeches",5,3);
-
-
 
 		} else if(Application.loadedLevelName == "_Map_4"){
 			Invoke("QueuePointLights",5);
@@ -39,6 +33,19 @@ public class EventController : MonoBehaviour {
 
 
 
+	}
+
+	void CheckStraightRocks(){
+		int numStraightRocks = 0;
+		foreach (var throwable in GameObject.FindGameObjectsWithTag ("ThrowableObject")) {
+			if(throwable.layer == LayerMask.NameToLayer("StraightRock")){
+				numStraightRocks++;
+			}
+		}
+
+		if (numStraightRocks == 0) {
+			QueueStraightRockShower ();
+		}
 	}
 
 	void QueuePointLights(){
@@ -50,22 +57,6 @@ public class EventController : MonoBehaviour {
 		eventLock = false;
 		QueueEvent(RunnableEventType.StraightRockShower);
 	}
-
-	//TODO: DELETE THIS Function
-	void TestFormTeam(){
-		
-//		List<string> zz = new List<string> ();
-//		zz.Add ("PlayerOne");
-//		zz.Add ("PlayerThree");
-//		zz.Add ("PlayerFour");
-//		PlayerEvents.TeamUpPlayers (zz);
-	}
-
-	void FixedUpdate(){
-		
-
-	}
-	
 
 	// Update is called once per frame
 	void Update () {
