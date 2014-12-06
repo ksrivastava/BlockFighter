@@ -48,7 +48,12 @@ public class ThrowableObject : MonoBehaviour {
 				this.transform.position = pos;
 			this.canDamageSelf = false;
 			this.collider2D.enabled = false;
-		} 
+		}
+
+	
+		if (this.rigidbody2D.velocity.magnitude >= 50) {
+			this.rigidbody2D.velocity = Vector2.zero;
+		}
 	}
 
 	GameObject getTopParent(GameObject input){
@@ -91,8 +96,6 @@ public class ThrowableObject : MonoBehaviour {
 
 				this.state = State.pickedUp;
 
-				// if the player is dashing when hit stop the dash
-				controller.dashMovement = null;
 
 				this.canDamageSelf = false;
 				behaviour.weapon = this.gameObject;

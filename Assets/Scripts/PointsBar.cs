@@ -9,7 +9,7 @@ public enum DisplayType {
 }
 
 public class PointsBar : MonoBehaviour {
-
+	
 	public GUIStyle[] styles;
 	public Font myFont;
 	public int myFontSize = 10;
@@ -18,27 +18,27 @@ public class PointsBar : MonoBehaviour {
 	private float playerFontSize = Screen.height / 65;
 	private float yScore, yPlayer, xPlayer;
 	private float length, height;
-
+	
 	private string[] names;
-
+	
 	private static float[] points;
 	private static float total = 16.0f;
-
+	
 	public static bool isStarsMode = false;
-
+	
 	void Start() {
-
+		
 		float initPoints = 0f;
 		if (isStarsMode) {
 			initPoints = 1f;
 		}
-
+		
 		styles = new GUIStyle[5];
 		points = new float[4];
 		names = new string[4];
-
+		
 		GameObject[] pl = GameObject.FindGameObjectsWithTag("Player");
-
+		
 		for (int i = 0; i < 4; ++i) {
 			points[i] = initPoints;
 			styles[i] = new GUIStyle();
@@ -46,37 +46,37 @@ public class PointsBar : MonoBehaviour {
 			styles[i].font = myFont;
 			styles[i].fontSize = myFontSize;
 		}
-
+		
 		for (int i = 0; i < 4; ++i) {
 			PlayerControl c = pl[i].GetComponent<PlayerControl>();
 			styles[c.GetPlayerNum() - 1].normal.textColor = pl[i].GetComponent<ColorSetter>().color;
 			names[c.GetPlayerNum() - 1] = c.GetName();
 		}
-
+		
 		styles[4] = new GUIStyle ();
 		styles[4].alignment = TextAnchor.MiddleCenter;
 		styles[4].font = myFont;
 		styles[4].fontSize = 30;
 		styles[4].normal.textColor = Color.white;
 	}
-
+	
 	void OnGUI() {
 		length = Screen.width / 12f;
 		height = scoreFontSize + 1.8f * playerFontSize;
-
+		
 		yScore = Screen.height - height;
 		yPlayer = Screen.height - 1.333f * playerFontSize;
-
+		
 		styles [4].fontSize = (int)scoreFontSize;
 		for (int i = 0; i < 4; ++i) {
 			styles[i].fontSize = (int)playerFontSize;
 			//			if (GameController.mode.modeToString != "StarsMode") {
-				GUI.Box (new Rect((i + 0.5f) * Screen.width / 4.5f, yScore, length, scoreFontSize), points[i].ToString(), styles[4]);
-				GUI.Box (new Rect((i + 0.5f) * Screen.width / 4.5f + length / 27f, yPlayer, length, playerFontSize), names[i], styles[i]);
-//			}
+			GUI.Box (new Rect((i + 0.5f) * Screen.width / 4.5f, yScore, length, scoreFontSize), points[i].ToString(), styles[4]);
+			GUI.Box (new Rect((i + 0.5f) * Screen.width / 4.5f + length / 27f, yPlayer, length, playerFontSize), names[i], styles[i]);
+			//			}
 		}
 	}
-
+	
 	public static void AddPoints(GameObject obj, float p) {
 		if (!isStarsMode) {
 			PlayerControl c;
@@ -101,7 +101,7 @@ public class PointsBar : MonoBehaviour {
 			if (c = obj.GetComponentInChildren<PlayerControl>()) {
 				if (points[c.GetPlayerNum() - 1] > 0) {
 					points[c.GetPlayerNum() - 1] -= 1;
-
+					
 					var star = Object.Instantiate (Resources.Load ("PowerUp/StarPowerUp")) as GameObject;
 					star.transform.position = starSpawnPosition;
 				}
@@ -112,20 +112,20 @@ public class PointsBar : MonoBehaviour {
 			else print (obj.name + " not found");
 		}
 	}
-
+	
 	public static float GetPoints(GameObject obj){
 		PlayerControl c;
 		if (c = obj.GetComponentInChildren<PlayerControl>()) {
 			return points[c.GetPlayerNum() - 1];
 		}
-
+		
 		return -1;
 	}
-
+	
 	public static float[] GetAllPoints() {
 		return points;
 	}
-
+	
 	private Texture2D MakeTexture(int width, int height, Color col) {
 		col.a = 1;
 		Color[] pix = new Color[width * height];
@@ -141,7 +141,7 @@ public class PointsBar : MonoBehaviour {
 	
 	public static void DisplayNumber(GameObject g, float p, DisplayType type) {
 		GameObject points = Instantiate(Resources.Load("Points")) as GameObject;
-
+		
 		points.transform.position = g.transform.position;
 		if (type == DisplayType.Health) {
 			if(p > 0) {
@@ -161,12 +161,12 @@ public class PointsBar : MonoBehaviour {
 				points.GetComponent<PointsAnimation> ().SetColor (Color.magenta);
 			}
 		} else if (type == DisplayType.Bomb) {
-				points.guiText.text = p.ToString ();
-				points.GetComponent<PointsAnimation> ().SetColor (Color.red);
-				points.GetComponent<PointsAnimation> ().SetAnimationTime(.25f);
-				points.GetComponent<PointsAnimation> ().SetScale(0.3f);
+			points.guiText.text = p.ToString ();
+			points.GetComponent<PointsAnimation> ().SetColor (Color.red);
+			points.GetComponent<PointsAnimation> ().SetAnimationTime(.25f);
+			points.GetComponent<PointsAnimation> ().SetScale(0.3f);
 		}
-
+		
 		points.GetComponent<PointsAnimation> ().SetGameObject(g);
 	}
 }
