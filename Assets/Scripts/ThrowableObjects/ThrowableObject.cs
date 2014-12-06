@@ -29,6 +29,7 @@ public class ThrowableObject : MonoBehaviour {
 
 	// Use this for initialization
 	protected void Start () {
+
 		this.state = State.idle;
 		this.collider2D.enabled = true;
 	}
@@ -36,10 +37,10 @@ public class ThrowableObject : MonoBehaviour {
 	// Update is called once per frame
 	public virtual void Update () {
 //		print (this.state);
-		if (hammer == null || controller == null) {
+		/*if (hammer == null || controller == null) {
 			this.state = State.idle;
 			this.canDamageSelf = false;
-		}
+		}*/
 
 		if (this.state == State.pickedUp) {
 				this.rigidbody2D.velocity = Vector2.zero;
@@ -69,6 +70,7 @@ public class ThrowableObject : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D col) {
+
 
 		if (col.gameObject.tag == "Player" || col.gameObject.tag == "Enemy" || LayerMask.LayerToName(col.gameObject.layer).Contains("Player")) {
 
@@ -121,6 +123,7 @@ public class ThrowableObject : MonoBehaviour {
 					Damage(playerTransform.GetComponentInChildren<PlayerBehavior>().gameObject.collider2D);
 				}
 				this.rigidbody2D.velocity = Vector2.zero;
+
 				this.state = State.idle;
 				this.canDamageSelf = false;
 				
@@ -139,6 +142,7 @@ public class ThrowableObject : MonoBehaviour {
 		if (coll.gameObject.layer == LayerMask.NameToLayer ("Ground") 
 		    || this.rigidbody2D.velocity.magnitude <= velocityBeforeIdle.magnitude) {
 			if(this.groundCollisions == this.groundCollisionsBeforeIdle){
+
 				this.state = State.idle;
 				this.canDamageSelf = false;
 			}
@@ -167,6 +171,7 @@ public class ThrowableObject : MonoBehaviour {
 	}
 
 	public void Drop() {
+
 		this.state = State.idle;
 		this.canDamageSelf = false;
 		this.collider2D.enabled = true;

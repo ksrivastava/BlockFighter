@@ -69,6 +69,7 @@ public class EndGameMenuController : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.Return) || (menuPressed)) {
 			MenuController.menu = MenuController.Menu.GameModeSelection;
 			Application.LoadLevel (0);
+			PointsBar.Clear ();
 		}
 	}
 }
