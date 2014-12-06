@@ -56,7 +56,7 @@ public class MapSelectMenuController : MonoBehaviour {
 				break;
 			}
 		} else if (Input.GetKeyDown (KeyCode.Escape) || (returnPressed)) {
-			MenuController.menu = MenuController.Menu.GameModeSelection;
+			MenuController.menu = MenuController.Menu.CharacterSelection;
 			Application.LoadLevel (0);
 		}
 

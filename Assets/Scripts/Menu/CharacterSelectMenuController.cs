@@ -14,6 +14,7 @@ public class CharacterSelectMenuController : MonoBehaviour {
 	public GameObject[] players;
 	public GameObject[] markers;
 	public GameObject[] labels;
+	public GameObject[] text;
 	public Sprite[] sprites;
 	
 	void Start () {
@@ -140,11 +141,16 @@ public class CharacterSelectMenuController : MonoBehaviour {
 //		markers[3].SetActive(true);
 //		selected[3] = Character.Elf;
 
-//		if (selected.Keys.Count == InputManager.Devices.Count) {
-//			GameController.chars = selected;
-//			MenuController.menu = MenuController.Menu.MapSelection;
-//			Application.LoadLevel (0);
-//		}
+		if (InputManager.Devices.Count < 2) {
+			text[0].GetComponent<TextMesh>().text = "Minimum 2 players";
+			text[1].GetComponent<TextMesh>().text = "";
+		} else if (selected.Keys.Count == InputManager.Devices.Count) {
+			text[0].GetComponent<TextMesh>().text = "Press Start To Continue";
+			text[1].GetComponent<TextMesh>().text = "";
+		} else {
+			text[0].GetComponent<TextMesh>().text = "Left/Right to choose";
+			text[1].GetComponent<TextMesh>().text = "A/B to select and deselect";
+		}
 
 	}
 }
