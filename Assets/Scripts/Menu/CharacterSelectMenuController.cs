@@ -63,7 +63,7 @@ public class CharacterSelectMenuController : MonoBehaviour {
 				returnPressed = true;
 				break;
 			} else if (device.MenuWasPressed) {
-				if (selected.Keys.Count == InputManager.Devices.Count) {
+				if (selected.Keys.Count == InputManager.Devices.Count && selected.Keys.Count > 1) {
 					GameController.chars = selected;
 					MenuController.menu = MenuController.Menu.MapSelection;
 					Application.LoadLevel (0);
