@@ -15,7 +15,7 @@ GameObject:
   - 108: {fileID: 10800000}
   - 212: {fileID: 21200000}
   m_Layer: 0
-  m_Name: HealthPowerUp 1
+  m_Name: HealthPowerUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -300,6 +300,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isBigHammer: 0
+  hammerBody: {fileID: 21300000, guid: 9587d319b76612a4f99afde09b65ab73, type: 3}
+  bigHammerBody: {fileID: 21300000, guid: 4f6b1f35e25e7e845b934112a68d53f6, type: 3}
   isHitting: 0
   attackComplete: 0
 --- !u!114 &11400002
