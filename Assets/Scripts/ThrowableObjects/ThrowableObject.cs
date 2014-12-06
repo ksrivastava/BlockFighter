@@ -29,18 +29,13 @@ public class ThrowableObject : MonoBehaviour {
 
 
 	// Use this for initialization
-	protected virtual void Start () {
+	void Start () {
 		this.state = State.idle;
 		this.collider2D.enabled = true;
 	}
 	
 	// Update is called once per frame
 	public virtual void Update () {
-//		print (this.state);
-		/*if (hammer == null || controller == null) {
-			this.state = State.idle;
-			this.canDamageSelf = false;
-		}*/
 
 		if (this.state == State.pickedUp) {
 				this.rigidbody2D.velocity = Vector2.zero;
@@ -153,14 +148,14 @@ public class ThrowableObject : MonoBehaviour {
 	public virtual void Throw(){
 		this.transform.parent = null;
 		Vector2 rightOrLeft = (controller.facingRight) ? Vector2.right*xMult : Vector2.right*-1*xMult;
-
+		
 		var t = (Physics2D.gravity.y > 0)? -throwForce : throwForce;
-
 		this.rigidbody2D.AddForce(Vector2.up * t + rightOrLeft);
-
+		
 		controller.pickedUpObject = false;
 		this.state = State.thrown;
 		Invoke ("EnableCollider", 0.05f);
+
 		this.rigidbody2D.velocity = Vector2.zero;
 		//this.rigidbody2D.isKinematic = false;
 		this.groundCollisions = 0;

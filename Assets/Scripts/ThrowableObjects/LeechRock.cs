@@ -7,7 +7,7 @@ public class LeechRock : BombRock {
 
 	void Awake(){
 		this.countDown = 10;
-
+		KillTimer ();
 	}
 
 	public override void Damage (Collider2D col){
