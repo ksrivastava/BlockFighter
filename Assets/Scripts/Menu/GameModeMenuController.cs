@@ -50,6 +50,7 @@ public class GameModeMenuController : MonoBehaviour {
 			switch (selectedOption) {
 				case ModeOption.TimeLimit:
 					GameController.mode = new TimeLimitMode(120000);
+					//GameController.mode = new TimeLimitMode(5000);
 					Application.LoadLevel (0);
 					break;
 				case ModeOption.Points:

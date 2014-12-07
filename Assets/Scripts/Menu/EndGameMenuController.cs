@@ -1,8 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using InControl;
 
 public class EndGameMenuController : MonoBehaviour {
+
+	public GameObject[] spritesObj;
+	public Sprite elf, human, troll, orc, skeleton, pig;
 
 	private string[] players = {"PlayerOne", "PlayerTwo", "PlayerThree", "PlayerFour"};
 	private Color32[] colors = {new Color32(129,22,159,255), new Color32(255,255,0,255),
@@ -11,20 +15,43 @@ public class EndGameMenuController : MonoBehaviour {
 	void Start () {
 		float[] points = PointsBar.GetAllPoints ();
 
+		foreach (int p in GameController.chars.Keys) {
+			switch (GameController.chars[p]) {
+			case Character.Elf:
+				spritesObj[p].GetComponent<SpriteRenderer>().sprite = elf;
+				break;
+			case Character.Human:
+				spritesObj[p].GetComponent<SpriteRenderer>().sprite = human;
+				break;
+			case Character.Troll:
+				spritesObj[p].GetComponent<SpriteRenderer>().sprite = troll;
+				break;
+			case Character.Orc:
+				spritesObj[p].GetComponent<SpriteRenderer>().sprite = orc;
+				break;
+			case Character.Skeleton:
+				spritesObj[p].GetComponent<SpriteRenderer>().sprite = skeleton;
+				break;
+			case Character.Pig:
+				spritesObj[p].GetComponent<SpriteRenderer>().sprite = pig;
+				break;
+			}
+		}
+
 		Transform pointsTransform = GameObject.Find ("Points").transform;
-		for (int i = 0; i < players.Length; ++i) {
+		for (int i = 0; i < PointsBar.numPlayers; ++i) {
 			pointsTransform.GetChild (i).gameObject.GetComponent<TextMesh>().text = points[i].ToString ();
 		}
 		
 		Transform killsTransform = GameObject.Find ("Kills").transform;
-		for (int i = 0; i < players.Length; ++i) {
+		for (int i = 0; i < PointsBar.numPlayers; ++i) {
 			int numKills = PlayerEvents.GetPlayerStats(players[i]).kills;
 			killsTransform.GetChild (i).gameObject.GetComponent<TextMesh>().text = numKills.ToString();
 		}
 		
 		
 		Transform deathsTransform = GameObject.Find ("Deaths").transform;
-		for (int i = 0; i < players.Length; ++i) {
+		for (int i = 0; i < PointsBar.numPlayers; ++i) {
 			int numDeaths = PlayerEvents.GetPlayerStats(players[i]).deaths;
 			deathsTransform.GetChild (i).gameObject.GetComponent<TextMesh>().text = numDeaths.ToString ();
 		}
