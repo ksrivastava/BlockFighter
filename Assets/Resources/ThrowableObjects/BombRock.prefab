@@ -14,7 +14,7 @@ GameObject:
   - 114: {fileID: 11400000}
   - 212: {fileID: 21200000}
   - 95: {fileID: 9500000}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: BombRock
   m_TagString: ThrowableObject
   m_Icon: {fileID: 0}
@@ -96,6 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 069f87634567147679b6fb574ed6c417, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state: 0
   hammer: {fileID: 0}
   canPickUp: 1
   startingState: 0

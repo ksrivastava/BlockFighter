@@ -7,4 +7,8 @@ public class StarPowerUp : PowerUp {
 		PointsBar.AddStars (player);
 		Destroy(this.gameObject);
 	}
+
+	protected override void Awake(){
+
+	}
 }

@@ -22,10 +22,10 @@ public class EventController : MonoBehaviour {
 		
 		if (Application.loadedLevelName == "_Map_2" || Application.loadedLevelName == "_Map_3") {	
 			
-			InvokeRepeating("CheckStraightRocks",5,3);
-			InvokeRepeating("CheckEnoughBombs",5,3);
-			InvokeRepeating("CheckEnoughHealthPacks",5,3);
-			InvokeRepeating("CheckEnoughLeeches",5,3);
+			InvokeRepeating("CheckStraightRocks",5,5);
+			InvokeRepeating("CheckEnoughBombs",5,5);
+			InvokeRepeating("CheckEnoughHealthPacks",5,5);
+			InvokeRepeating("CheckEnoughLeeches",5,5);
 			
 		} else if(Application.loadedLevelName == "_Map_4"){
 			Invoke("QueuePointLights",5);
@@ -109,26 +109,46 @@ public class EventController : MonoBehaviour {
 	}
 	
 	public void CheckEnoughBombs(){
-		
-		if (Random.Range(0.0f,1.0f) < chance) {
-			eventLock = false;
+
+		int numBombs = 0;
+		foreach (var throwable in GameObject.FindGameObjectsWithTag ("ThrowableObject")) {
+			if(throwable.layer == LayerMask.NameToLayer("BombRock")){
+				numBombs++;
+			}
+		}
+
+
+		if (numBombs == 0) {
 			QueueEvent(RunnableEventType.BombPowerUpEvent,0);
+			QueueEvent(RunnableEventType.BombPowerUpEvent,1);
+			QueueEvent(RunnableEventType.BombPowerUpEvent,2);
 		}
 	}
 	
 	public void CheckEnoughHealthPacks(){
-		
-		if (Random.Range(0.0f,1.0f) < chance/2) {
-			eventLock = false;
+		if (GameObject.FindGameObjectsWithTag ("HealthPack").Length == 0) {
 			QueueEvent(RunnableEventType.HealthPowerUpEvent,0);
+			QueueEvent(RunnableEventType.HealthPowerUpEvent,1);
+			QueueEvent(RunnableEventType.HealthPowerUpEvent,2);
 		}
 	}
 	
 	public void CheckEnoughLeeches(){
 		
-		if (Random.Range(0.0f,1.0f) < chance) {
+		int numLeechRocks = 0;
+		foreach (var throwable in GameObject.FindGameObjectsWithTag ("ThrowableObject")) {
+			if(throwable.layer == LayerMask.NameToLayer("LeechRock")){
+				numLeechRocks++;
+			}
+		}
+		
+		if (numLeechRocks == 0) {
 			eventLock = false;
 			QueueEvent(RunnableEventType.LeechPowerUpEvent,0);
+			eventLock = false;
+			QueueEvent(RunnableEventType.LeechPowerUpEvent,1);
+			eventLock = false;
+			QueueEvent(RunnableEventType.LeechPowerUpEvent,2);
 		}
 	}
 	
@@ -165,6 +185,8 @@ public class EventController : MonoBehaviour {
 			GameObject obj = Object.Instantiate (Resources.Load ("Events/" + next.type.ToString ())) as GameObject;
 			IEvent evt = (IEvent) obj.GetComponent(typeof(IEvent));
 			evt.Begin();
+		} else if(next.type == RunnableEventType.Idle){
+			eventLock = false;
 		}
 		
 		yield return null;

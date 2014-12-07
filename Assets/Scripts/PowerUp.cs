@@ -3,6 +3,15 @@ using System.Collections;
 
 public class PowerUp : MonoBehaviour {
 
+
+	protected bool idleSinceBirth;
+	protected float killTime = 10;
+	protected float totalLifetime = 40;
+	
+	protected virtual void Awake(){
+		KillTimer ();
+	}
+
 	// Use this for initialization
 	void Start () {
 	
@@ -10,7 +19,9 @@ public class PowerUp : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		if (this.rigidbody2D.velocity.magnitude >= 50) {
+			this.rigidbody2D.velocity = Vector2.zero;
+		}
 	}
 
 	void OnTriggerEnter2D (Collider2D col) {
@@ -18,6 +29,7 @@ public class PowerUp : MonoBehaviour {
 			OnCollisionWithPlayerBody(col.gameObject);
 		}
 	}
+	
 
 	protected virtual void OnCollisionWithPlayerBody(GameObject player) {}
 
@@ -38,4 +50,40 @@ public class PowerUp : MonoBehaviour {
 			rigidbody2D.AddForce(new Vector2(knockForce,upForce));
 		}
 	}
+
+	
+	protected void KillTimer(){
+		idleSinceBirth = true;
+		
+		Invoke ("BlinkForTwoSeconds", killTime - 2);
+		Invoke ("CheckAndKill", killTime);
+		Invoke ("BlinkForTwoSeconds", totalLifetime - 2);
+		Invoke ("Kill", totalLifetime);
+	}
+	
+	void CheckAndKill(){
+		if (idleSinceBirth) {
+			Destroy(this.gameObject);
+		}
+	}
+	
+	void BlinkForTwoSeconds(){
+		StartCoroutine(Blink(2));
+	}
+	
+	void Kill(){
+		Destroy (this.gameObject);
+	}
+	
+	
+	public IEnumerator Blink(float blinkTime) {
+		var endTime = Time.time + blinkTime;
+		while(Time.time < endTime){
+			renderer.enabled = false;
+			yield return new WaitForSeconds(0.2f);
+			renderer.enabled = true;
+			yield return new WaitForSeconds(0.2f);
+		}
+	}
+
 }

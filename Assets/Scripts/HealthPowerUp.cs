@@ -5,6 +5,12 @@ public class HealthPowerUp : PowerUp {
 
 	float addedhealth = 50f;
 
+
+
+	void Start(){
+
+	}
+
 	protected override void OnCollisionWithPlayerBody(GameObject player) {
 		HealthBar healthBar = player.GetComponent<HealthBar>();
 
@@ -21,4 +27,5 @@ public class HealthPowerUp : PowerUp {
 		}
 		Destroy(this.gameObject);
 	}
+
 }

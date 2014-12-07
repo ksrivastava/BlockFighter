@@ -51,7 +51,7 @@ public class ThrowableObject : MonoBehaviour {
 			this.rigidbody2D.velocity = Vector2.zero;
 		}
 	}
-
+	
 	GameObject getTopParent(GameObject input){
 		Transform t = input.transform;
 		Transform p = input.transform.parent;

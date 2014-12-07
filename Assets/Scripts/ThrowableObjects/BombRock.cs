@@ -33,7 +33,10 @@ public class BombRock : StraightRock {
 
 	protected void KillTimer(){
 		idleSinceBirth = true;
+
+		Invoke ("BlinkForTwoSeconds", killTime - 2);
 		Invoke ("CheckAndKill", killTime);
+		Invoke ("BlinkForTwoSeconds", totalLifetime - 2);
 		Invoke ("Kill", totalLifetime);
 	}
 
@@ -43,11 +46,15 @@ public class BombRock : StraightRock {
 		}
 	}
 
-	void Kill(){
-		if(this.state == State.idle)
-		Destroy (this.gameObject);
+	void BlinkForTwoSeconds(){
+		StartCoroutine(Blink(2));
 	}
-	
+
+	void Kill(){
+		if (this.state == State.idle) {
+			Destroy (this.gameObject);
+		}
+	}
 
 	public override void Update(){
 
@@ -175,4 +182,15 @@ public class BombRock : StraightRock {
 			secondTimer = 1;
 		}
 	}
+
+	public IEnumerator Blink(float blinkTime) {
+		var endTime = Time.time + blinkTime;
+		while(Time.time < endTime && this.state == State.idle){
+			renderer.enabled = false;
+			yield return new WaitForSeconds(0.2f);
+			renderer.enabled = true;
+			yield return new WaitForSeconds(0.2f);
+		}
+	}
+
 }
