@@ -11,7 +11,7 @@ public class GameModeMenuController : MonoBehaviour {
 	private ModeOption selectedOption;
 
 	void Start () {
-		selectedOption = ModeOption.TimeLimit;
+		selectedOption = ModeOption.Stars;
 	}
 
 	void Update () {
