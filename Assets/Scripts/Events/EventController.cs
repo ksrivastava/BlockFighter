@@ -22,10 +22,10 @@ public class EventController : MonoBehaviour {
 		
 		if (Application.loadedLevelName == "_Map_2" || Application.loadedLevelName == "_Map_3") {	
 			
-			InvokeRepeating("CheckStraightRocks",5,5);
-			InvokeRepeating("CheckEnoughBombs",5,5);
-			InvokeRepeating("CheckEnoughHealthPacks",5,5);
-			InvokeRepeating("CheckEnoughLeeches",5,5);
+			InvokeRepeating("CheckStraightRocks",2,5);
+			InvokeRepeating("CheckEnoughBombs",8,5);
+			InvokeRepeating("CheckEnoughHealthPacks",16,15);
+			InvokeRepeating("CheckEnoughLeeches",12,5);
 			
 		} else if(Application.loadedLevelName == "_Map_4"){
 			Invoke("QueuePointLights",5);
@@ -120,7 +120,6 @@ public class EventController : MonoBehaviour {
 
 		if (numBombs == 0) {
 			QueueEvent(RunnableEventType.BombPowerUpEvent,0);
-			QueueEvent(RunnableEventType.BombPowerUpEvent,1);
 			QueueEvent(RunnableEventType.BombPowerUpEvent,2);
 		}
 	}
@@ -128,8 +127,6 @@ public class EventController : MonoBehaviour {
 	public void CheckEnoughHealthPacks(){
 		if (GameObject.FindGameObjectsWithTag ("HealthPack").Length == 0) {
 			QueueEvent(RunnableEventType.HealthPowerUpEvent,0);
-			QueueEvent(RunnableEventType.HealthPowerUpEvent,1);
-			QueueEvent(RunnableEventType.HealthPowerUpEvent,2);
 		}
 	}
 	
@@ -145,8 +142,8 @@ public class EventController : MonoBehaviour {
 		if (numLeechRocks == 0) {
 			eventLock = false;
 			QueueEvent(RunnableEventType.LeechPowerUpEvent,0);
-			eventLock = false;
-			QueueEvent(RunnableEventType.LeechPowerUpEvent,1);
+//			eventLock = false;
+//			QueueEvent(RunnableEventType.LeechPowerUpEvent,1);
 			eventLock = false;
 			QueueEvent(RunnableEventType.LeechPowerUpEvent,2);
 		}

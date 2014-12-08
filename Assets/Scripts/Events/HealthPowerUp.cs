@@ -4,9 +4,7 @@ using System.Collections;
 public class HealthPowerUp : PowerUp {
 
 	float addedhealth = 50f;
-
-
-
+	
 	void Start(){
 
 	}
@@ -24,8 +22,8 @@ public class HealthPowerUp : PowerUp {
 		if(healedHeath > 0) {
 			PointsBar.DisplayNumber(player, healedHeath, DisplayType.Health);
 			healthBar.AddHealth(healedHeath);
+			Destroy(this.gameObject);
 		}
-		Destroy(this.gameObject);
 	}
 
 }
