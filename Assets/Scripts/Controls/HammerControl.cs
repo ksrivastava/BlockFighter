@@ -9,8 +9,8 @@ public class HammerControl : MonoBehaviour {
 	public Sprite hammerBody;
 	public Sprite bigHammerBody;
 
-	private float aoeXRange = 7f;
-	private float aoeYRange = 1f;
+	private float aoeXRange = 8f;
+	private float aoeYRange = 4f;
 	private float aoeForce = 500f;
 
 	private Vector3 origScale;
@@ -57,14 +57,14 @@ public class HammerControl : MonoBehaviour {
 		transform.position = pos;
 
 		GameObject body = GameObject.Find (transform.parent.name + "/Hammer/Body");
-		if (isBigHammer) {
-			Vector3 scale = body.transform.localScale;
-			scale.x = 10.0f;
-			scale.y = 10.0f;
-			body.transform.localScale = scale;
-		} else {
-			body.transform.localScale = origScale;
-		}
+//		if (isBigHammer) {
+//			Vector3 scale = body.transform.localScale;
+//			scale.x = 10.0f;
+//			scale.y = 10.0f;
+//			body.transform.localScale = scale;
+//		} else {
+//			body.transform.localScale = origScale;
+//		}
 
 		if (isHitting) {
 			if (attackComplete) {
@@ -185,8 +185,8 @@ public class HammerControl : MonoBehaviour {
 		GameObject body = GameObject.Find (transform.parent.name + "/Hammer/Body");
 		body.GetComponent<SpriteRenderer> ().sprite = bigHammerBody;
 		Vector3 scale = body.transform.localScale;
-		scale.x = 10.0f;
-		scale.y = 10.0f;
+		scale.x = 6.0f;
+		scale.y = 6.0f;
 		body.transform.localScale = scale;
 		StartCoroutine (StopPowerUpAfterTime (time));
 	}
