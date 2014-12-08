@@ -139,6 +139,9 @@ public class BombRock : StraightRock {
 	}
 
 	public override void Throw(){
+		if (controller == null) {
+			Destroy(this.gameObject);
+		}
 		thrower = controller.transform.parent.gameObject;
 		base.Throw ();
 	}

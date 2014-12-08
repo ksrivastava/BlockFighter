@@ -170,7 +170,8 @@ public class ThrowableObject : MonoBehaviour {
 		this.state = State.idle;
 		this.canDamageSelf = false;
 		this.collider2D.enabled = true;
-		controller.pickedUpObject = false;
+		if(controller!=null)
+			controller.pickedUpObject = false;
 	}
 
 	public void KnockBack(Vector3 hitterPosition){
