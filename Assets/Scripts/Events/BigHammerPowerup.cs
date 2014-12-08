@@ -7,9 +7,9 @@ public class BigHammerPowerup : PowerUp {
 
 	protected override void OnCollisionWithPlayerBody(GameObject player) {
 		hc = GameObject.Find (player.transform.parent.name + "/Hammer").GetComponent<HammerControl> ();
-		if (!hc.isBigHammer) {
-			hc.UpgradeHammerTime(15.0f);
-			Destroy (this.gameObject);
-		}
+		//if (!hc.isBigHammer) {
+		hc.UpgradeHammerTime(15.0f);
+		Destroy (this.gameObject);
+		//}
 	}
 }

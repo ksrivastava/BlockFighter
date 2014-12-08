@@ -156,6 +156,5 @@ public class CharacterSelectMenuController : MonoBehaviour {
 			text[0].GetComponent<TextMesh>().text = "Left/Right to choose";
 			text[1].GetComponent<TextMesh>().text = "A/B to select and deselect";
 		}
-
 	}
 }
