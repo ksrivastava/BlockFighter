@@ -130,21 +130,21 @@ public class CharacterSelectMenuController : MonoBehaviour {
 		}
 
 		// Debug
-//		markers[0].SetActive(true);
-//		selected[0] = Character.Troll;
-//		
-//		markers[1].SetActive(true);
-//		selected[1] = Character.Elf;
-//		
-//		markers[2].SetActive(true);
-//		selected[2] = Character.Human;
-//		
-//		markers[3].SetActive(true);
-//		selected[3] = Character.Pig;
-//
-//		GameController.chars = selected;
-//		MenuController.menu = MenuController.Menu.MapSelection;
-//		Application.LoadLevel (0);
+		markers[0].SetActive(true);
+		selected[0] = Character.Troll;
+		
+		markers[1].SetActive(true);
+		selected[1] = Character.Elf;
+		
+		markers[2].SetActive(true);
+		selected[2] = Character.Human;
+		
+		markers[3].SetActive(true);
+		selected[3] = Character.Pig;
+
+		GameController.chars = selected;
+		MenuController.menu = MenuController.Menu.MapSelection;
+		Application.LoadLevel (0);
 
 		if (InputManager.Devices.Count < 2) {
 			text[0].GetComponent<TextMesh>().text = "Minimum 2 players";
@@ -156,5 +156,6 @@ public class CharacterSelectMenuController : MonoBehaviour {
 			text[0].GetComponent<TextMesh>().text = "Left/Right to choose";
 			text[1].GetComponent<TextMesh>().text = "A/B to select and deselect";
 		}
+
 	}
 }

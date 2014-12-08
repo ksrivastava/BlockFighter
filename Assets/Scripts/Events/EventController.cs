@@ -26,6 +26,7 @@ public class EventController : MonoBehaviour {
 			InvokeRepeating("CheckEnoughBombs",8,5);
 			InvokeRepeating("CheckEnoughHealthPacks",16,15);
 			InvokeRepeating("CheckEnoughLeeches",12,5);
+			InvokeRepeating("CheckBigHammer",15,20);
 			
 		} else if(Application.loadedLevelName == "_Map_4"){
 			Invoke("QueuePointLights",5);
@@ -129,7 +130,13 @@ public class EventController : MonoBehaviour {
 			QueueEvent(RunnableEventType.HealthPowerUpEvent,0);
 		}
 	}
-	
+
+	public void CheckBigHammer(){
+		if (GameObject.FindGameObjectsWithTag ("BigHammer").Length == 0) {
+			QueueEvent(RunnableEventType.BigHammerPowerUpEvent,0);
+		}
+	}
+
 	public void CheckEnoughLeeches(){
 		
 		int numLeechRocks = 0;
