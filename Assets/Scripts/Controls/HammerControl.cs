@@ -83,7 +83,7 @@ public class HammerControl : MonoBehaviour {
 					deltaTime += Time.deltaTime;
 				}
 				if (doAoe) {
-					AOEDamage ();
+					//AOEDamage ();
 					doAoe = false;
 				}
 			}

@@ -9,6 +9,7 @@ public class PlayerBehavior : MonoBehaviour {
 	private int playerNum;
 
 	int hitDamage = 30;
+	int bigHitDamage = 100;
 
 	public bool active = true;
 
@@ -84,7 +85,11 @@ public class PlayerBehavior : MonoBehaviour {
 
 					// do no damage
 				} else {
+					if (hammerController.isBigHammer) {
+						ReduceHealth(bigHitDamage);
+					} else {
 						ReduceHealth(hitDamage);
+					}
 				}
 			}
 		}

@@ -26,7 +26,7 @@ public class EventController : MonoBehaviour {
 			InvokeRepeating("CheckEnoughBombs",8,5);
 			InvokeRepeating("CheckEnoughHealthPacks",16,15);
 			InvokeRepeating("CheckEnoughLeeches",12,5);
-			InvokeRepeating("CheckBigHammer",15,20);
+			InvokeRepeating("CheckBigHammer",15,30);
 			
 		} else if(Application.loadedLevelName == "_Map_4"){
 			Invoke("QueuePointLights",5);
