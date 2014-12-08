@@ -83,7 +83,7 @@ public class HammerControl : MonoBehaviour {
 					deltaTime += Time.deltaTime;
 				}
 				if (doAoe) {
-					//AOEDamage ();
+					AOEDamage ();
 					doAoe = false;
 				}
 			}
@@ -174,7 +174,7 @@ public class HammerControl : MonoBehaviour {
 			if (pC != controller && Mathf.Abs(hammerX - pX) < aoeXRange && Mathf.Abs(pY - player.position.y) < aoeYRange) {
 				if (pC.IsGrounded()) {
 					pC.rigidbody2D.AddForce (new Vector2(0f, aoeForce));
-					pl[i].GetComponent<PlayerBehavior>().ReduceHealth(20);
+//					pl[i].GetComponent<PlayerBehavior>().ReduceHealth(20);
 				}
 			}
 		}
