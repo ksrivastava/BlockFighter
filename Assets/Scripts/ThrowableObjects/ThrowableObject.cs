@@ -47,7 +47,7 @@ public class ThrowableObject : MonoBehaviour {
 		}
 
 	
-		if (this.rigidbody2D.velocity.magnitude >= 50) {
+		if (this.rigidbody2D.velocity.magnitude >= 60) {
 			this.rigidbody2D.velocity = Vector2.zero;
 		}
 	}
