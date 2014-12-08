@@ -30,8 +30,15 @@ public class PointsBar : MonoBehaviour {
 	
 	void Start() {
 		float initPoints = 0f;
+		GameController.mode.numPlayers = numPlayers;
+
 		if (isStarsMode) {
-			initPoints = 1f;
+			if (numPlayers == 2) {
+				initPoints = 2f;
+			}
+			else {
+				initPoints = 1f;
+			}
 		}
 		
 		styles = new GUIStyle[numPlayers + 1];

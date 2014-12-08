@@ -3,16 +3,20 @@ using System.Collections;
 
 public class StarsMode : GameMode {
 	
-	private int starLimit;
+	public int starLimit;
 
 	public StarsMode ()
 	{
-		this.starLimit = PointsBar.numPlayers;
 		PointsBar.isStarsMode = true;
 	}
 	
 	public override bool Start()
 	{
+		this.starLimit = PointsBar.numPlayers;
+		if (starLimit == 2) {
+			starLimit = 4;
+		}
+
 		DisplayMessage("Get " + starLimit + " stars to win!", Color.red);
 		return true;
 	}
