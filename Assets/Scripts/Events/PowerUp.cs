@@ -27,11 +27,15 @@ public class PowerUp : MonoBehaviour {
 	void OnTriggerEnter2D (Collider2D col) {
 		if (col.tag == "Player") {
 			OnCollisionWithPlayerBody(col.gameObject);
+		} else if( LayerMask.LayerToName(col.gameObject.layer).Contains("Player")){
+			var playerBody = getTopParent(col.gameObject).transform.GetChild(0).gameObject;
+			OnCollisionWithPlayerBody(playerBody);
 		}
 	}
 	
 
 	protected virtual void OnCollisionWithPlayerBody(GameObject player) {}
+
 
 	public void KnockBack(Vector3 hitterPosition){
 		
@@ -84,6 +88,19 @@ public class PowerUp : MonoBehaviour {
 			renderer.enabled = true;
 			yield return new WaitForSeconds(0.2f);
 		}
+	}
+
+	
+	GameObject getTopParent(GameObject input){
+		Transform t = input.transform;
+		Transform p = input.transform.parent;
+		
+		while (p != null) {
+			t = p;
+			p = p.transform.parent;
+		}
+		
+		return t.gameObject;
 	}
 
 }
