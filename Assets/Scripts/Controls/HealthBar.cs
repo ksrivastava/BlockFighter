@@ -100,7 +100,7 @@ public class HealthBar : MonoBehaviour {
 	void Update() {
 		if (deltaTime >= duration) {
 			Dash = Mathf.Min (MaxDash, Dash + 0.02f);
-			Health = Mathf.Min (MaxHealth, Health + 0.05f);
+			Health = Mathf.Min (MaxHealth, Health + 0.1f);
 			deltaTime = 0f;
 		}
 		else {

@@ -26,6 +26,8 @@ public class PointsAnimation : MonoBehaviour {
 		if (animationTime > 0) {
 			animationTime -= Time.deltaTime;
 
+			if(g == null) return;
+
 			Vector2 pos = g.transform.position;
 			pos.y += y;
 			y += speed * Time.deltaTime;

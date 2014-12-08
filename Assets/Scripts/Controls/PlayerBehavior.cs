@@ -25,6 +25,12 @@ public class PlayerBehavior : MonoBehaviour {
 	bool isPressedDown = false;
 	// Update is called once per frame
 	void Update () {
+
+		if (this.rigidbody2D.velocity.magnitude >= 260) {
+			print ("playerVelocity is "+this.rigidbody2D.velocity.magnitude);
+			this.rigidbody2D.velocity = Vector2.zero;
+		}
+
 		var inputDevice = (InputManager.Devices.Count > playerNum-1) ? InputManager.Devices[playerNum-1] : null;
 
 
@@ -151,7 +157,9 @@ public class PlayerBehavior : MonoBehaviour {
 		healthBar.Health = healthBar.MaxHealth;
 
 		if (this.controller.pickedUpObject) {
-			weapon.GetComponent<ThrowableObject>().Drop ();
+			if(weapon != null){
+				weapon.GetComponent<ThrowableObject>().Drop ();
+			}
 			weapon = GameObject.Find (transform.parent.name+"/Hammer");
 		}
 

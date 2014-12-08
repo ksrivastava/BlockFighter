@@ -24,6 +24,7 @@ public class ThrowableObject : MonoBehaviour {
 	private Vector2 displacement = new Vector2(1.1f,0);
 	private bool canDamageSelf = false;
 
+	float bigHammerDelta = 1f;
 	// this is what you override to implement damage and things.
 	public virtual void Damage(Collider2D col){}
 
@@ -40,8 +41,13 @@ public class ThrowableObject : MonoBehaviour {
 		if (this.state == State.pickedUp) {
 				this.rigidbody2D.velocity = Vector2.zero;
 				var pos = new Vector3 (hammer.transform.position.x, hammer.transform.position.y, 0);
+				
+			if(!getTopParent(hammer).GetComponentInChildren<HammerControl>().isBigHammer){
 				pos.x = (controller.facingRight) ? pos.x + displacement.x : pos.x - displacement.x;
-				this.transform.position = pos;
+			} else{
+				pos.x = (controller.facingRight) ? pos.x + displacement.x + bigHammerDelta : pos.x - displacement.x - bigHammerDelta;
+			}
+			this.transform.position = pos;
 			this.canDamageSelf = false;
 			this.collider2D.enabled = false;
 		}
