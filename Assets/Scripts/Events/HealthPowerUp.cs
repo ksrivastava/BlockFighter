@@ -23,8 +23,6 @@ public class HealthPowerUp : PowerUp {
 			PointsBar.DisplayNumber(player, Mathf.Floor(healedHeath), DisplayType.Health);
 			healthBar.AddHealth(healedHeath);
 			Destroy(this.gameObject);
-		} else if(healedHeath == 0){
-			Destroy(this.gameObject);
 		}
 	}
 }

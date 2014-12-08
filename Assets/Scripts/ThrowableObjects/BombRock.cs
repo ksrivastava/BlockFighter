@@ -12,7 +12,7 @@ public class BombRock : StraightRock {
 	protected GameObject thrower;
 
 	int damage = 80;
-	int AOEDamage = 10;
+	int AOEDamage = 30;
 	protected float countDown = 4;
 	float blastRadius = 20;
 
