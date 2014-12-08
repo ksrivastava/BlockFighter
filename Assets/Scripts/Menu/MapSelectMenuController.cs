@@ -49,10 +49,10 @@ public class MapSelectMenuController : MonoBehaviour {
 		} else if (Input.GetKeyDown(KeyCode.Return) || (actionPressed ) ){
 			switch (selectedOption) {
 			case GameMap.Map1:
-				Application.LoadLevel (1);
+				Application.LoadLevel (2);
 				break;
 			case GameMap.Map2:
-				Application.LoadLevel (2);
+				Application.LoadLevel (1);
 				break;
 			}
 		} else if (Input.GetKeyDown (KeyCode.Escape) || (returnPressed)) {
