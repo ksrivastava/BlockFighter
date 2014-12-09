@@ -214,8 +214,6 @@ public class PlayerEvents : MonoBehaviour {
 		if (lastHit != null && lastHit.attacker != dead.name) {
 			PointsBar.AddPoints (GameObject.Find (lastHit.attacker), 100);
 			GetPlayerStats (lastHit.attacker).RecordKill();
-		} else {
-			Debug.Log("no last hit!");
 		}
 
 

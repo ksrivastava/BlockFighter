@@ -47,7 +47,7 @@ public class PointsBar : MonoBehaviour {
 		
 		for (int i = 0; i < numPlayers; ++i) {
 			points[i] = initPoints;
-			pl[i].transform.parent.gameObject.GetComponentInChildren<StarBar>().setNumStars((int)initPoints);
+			players[i].transform.parent.gameObject.GetComponentInChildren<StarBar>().setNumStars((int)initPoints);
 			styles[i] = new GUIStyle();
 			styles[i].alignment = TextAnchor.MiddleCenter;
 			styles[i].font = myFont;
@@ -92,8 +92,8 @@ public class PointsBar : MonoBehaviour {
 			var tempX = ((i + 0.5f) + (MAX_PLAYERS - numPlayers) * 0.5f ) * Screen.width / 4.5f;
 			GUI.Box (new Rect(tempX, yScore, length, scoreFontSize), points[i].ToString(), styles[numPlayers]);
 			GUI.Box (new Rect(tempX + length / 27f, yPlayer, length, playerFontSize), names[i], styles[i]);
-			GameObject sprite = getSprite(i);
-			Vector3 pos = new Vector3(tempX, yPlayer); 
+			//GameObject sprite = getSprite(i);
+			//Vector3 pos = new Vector3(tempX, yPlayer); 
 //			sprite.transform.position = camera.ScreenToWorldPoint(pos);
 		}
 	}

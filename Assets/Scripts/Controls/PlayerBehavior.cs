@@ -8,6 +8,7 @@ public class PlayerBehavior : MonoBehaviour {
 	public HealthBar healthBar;
 	private int playerNum;
 
+	GameObject stars = null;
 	int hitDamage = 30;
 	int bigHitDamage = 100;
 
@@ -19,6 +20,13 @@ public class PlayerBehavior : MonoBehaviour {
 		healthBar = GetComponent<HealthBar> ();
 		playerNum = controller.GetPlayerNum ();
 		weapon = GameObject.Find (transform.parent.name + "/Hammer");
+//		stars = GameObject.Find (transform.parent.name + "/Hammer");
+
+		if (PointsBar.isStarsMode) {
+			stars = GameObject.Find (transform.parent.name + "/Stars Bar");
+		}
+
+
 		controller.pickedUpObject = false;
 	}
 
@@ -208,7 +216,9 @@ public class PlayerBehavior : MonoBehaviour {
 		this.renderer.enabled = value;
 		this.transform.parent.GetComponentInChildren<HammerControl> ().transform.GetChild (0).renderer.enabled = value;
 		this.transform.parent.GetComponentInChildren<HammerControl> ().transform.GetChild (1).renderer.enabled = value;
-		
+		if (stars != null) {
+			stars.renderer.enabled = value;		
+		}
 		// physics. If it is kinematic then unity physics don't apply, else they do. THATS WHY IT IS SET TO !VALUE. DON'T CHANGE
 		this.gameObject.rigidbody2D.isKinematic = !value;
 	}
