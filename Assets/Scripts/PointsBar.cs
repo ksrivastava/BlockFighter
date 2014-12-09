@@ -21,7 +21,7 @@ public class PointsBar : MonoBehaviour {
 	private float length, height;
 	
 	private string[] names;
-	
+	private GameObject[] players;
 	private static float[] points;
 	
 	public static bool isStarsMode = false;
@@ -45,7 +45,7 @@ public class PointsBar : MonoBehaviour {
 		points = new float[numPlayers];
 		names = new string[numPlayers];
 		
-		GameObject[] pl = GameObject.FindGameObjectsWithTag("Player");
+		players = GameObject.FindGameObjectsWithTag("Player");
 		
 		for (int i = 0; i < numPlayers; ++i) {
 			points[i] = initPoints;
@@ -56,8 +56,9 @@ public class PointsBar : MonoBehaviour {
 		}
 		
 		for (int i = 0; i < numPlayers; ++i) {
-			PlayerControl c = pl[i].GetComponent<PlayerControl>();
-			styles[c.GetPlayerNum() - 1].normal.textColor = pl[i].GetComponent<ColorSetter>().color;
+			PlayerControl c = players[i].GetComponent<PlayerControl>();
+			SpriteRenderer s = players[i].GetComponent<SpriteRenderer>();
+			styles[c.GetPlayerNum() - 1].normal.textColor = players[i].GetComponent<ColorSetter>().color;
 			names[c.GetPlayerNum() - 1] = c.GetName();
 		}
 		
@@ -67,7 +68,18 @@ public class PointsBar : MonoBehaviour {
 		styles[numPlayers].fontSize = 30;
 		styles[numPlayers].normal.textColor = Color.white;
 	}
-	
+
+	GameObject getSprite(int playerNum) {
+		GameObject pl = players [playerNum];
+		GameObject f = new GameObject();
+		f.transform.localScale = pl.transform.localScale;
+		f.AddComponent<SpriteRenderer> ();
+		SpriteRenderer faderSprite = f.GetComponent<SpriteRenderer>();
+		faderSprite.sprite = pl.GetComponent<SpriteRenderer>().sprite;
+		return f;
+	}
+
+
 	void OnGUI() {
 		length = Screen.width / 12f;
 		height = scoreFontSize + 1.8f * playerFontSize;
@@ -81,6 +93,9 @@ public class PointsBar : MonoBehaviour {
 			var tempX = ((i + 0.5f) + (MAX_PLAYERS - numPlayers) * 0.5f ) * Screen.width / 4.5f;
 			GUI.Box (new Rect(tempX, yScore, length, scoreFontSize), points[i].ToString(), styles[numPlayers]);
 			GUI.Box (new Rect(tempX + length / 27f, yPlayer, length, playerFontSize), names[i], styles[i]);
+			GameObject sprite = getSprite(i);
+			Vector3 pos = new Vector3(tempX, yPlayer); 
+//			sprite.transform.position = camera.ScreenToWorldPoint(pos);
 		}
 	}
 
