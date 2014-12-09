@@ -36,7 +36,6 @@ public class PlayerControl : MonoBehaviour
 	[HideInInspector]
 	public bool allowHitting = true;
 
-
 	// DASHING
 	float dashDuration = 0.05f;
 	float dashXDist = 10f;
@@ -68,8 +67,6 @@ public class PlayerControl : MonoBehaviour
 	
 	void Update()
 	{
-
-
 		// The player is grounded if a linecast to the groundcheck position hits anything on the ground layer.
 		Vector3 groundPos = groundCheck.position;
 		groundPos.x = groundCheck.collider2D.bounds.min.x;
@@ -96,9 +93,7 @@ public class PlayerControl : MonoBehaviour
 		}
 		grounded = onGroundLeft || onGroundRight || onPlayer;
 
-
 		// KEYBOARD
-
 		if(Input.GetButtonDown("Jump" + playerNum) && grounded) {
 			jump = true;
 		}
@@ -109,25 +104,20 @@ public class PlayerControl : MonoBehaviour
 			rightDash = true;
 		}
 
-
 		// turn on collisions between ground and self if velocity is ever < zero.
 		if (rigidbody2D.velocity.y < 0) {
 			Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer("Ground"),this.gameObject.layer, false);
 		}
 
-		
-		
 		var inputDevice = (InputManager.Devices.Count > playerNum-1) ? InputManager.Devices[playerNum-1] : null;
 		if (inputDevice == null)
 			return;
 		if (inputDevice.LeftBumper.WasPressed && (healthBar.Dash >= 0.5f)) {
 			leftDash = true;
 		}
-		
 		if (inputDevice.RightBumper.WasPressed && (healthBar.Dash >= 0.5f)) {
 			rightDash = true;
 		}
-		
 		if (inputDevice.Action1.WasPressed && grounded) {
 			jump = true;
 		}
@@ -161,11 +151,9 @@ public class PlayerControl : MonoBehaviour
 		}
 	}
 
-
 	void FixedUpdate ()
 	{
 		if (allowMovement) {
-
 			// Cache the horizontal input.
 			float h = Input.GetAxis ("Horizontal" + playerNum);
 
@@ -190,7 +178,6 @@ public class PlayerControl : MonoBehaviour
 				// ... set the player's velocity to the maxSpeed in the x axis.
 				rigidbody2D.velocity = new Vector2(Mathf.Sign(rigidbody2D.velocity.x) * maxSpeed, rigidbody2D.velocity.y);
 		
-
 			if (leftDash) {
 				//				if (facingRight) Flip ();
 				rigidbody2D.AddForce(Vector2.right * -1 * moveForce * dashMultiplier);
@@ -247,7 +234,6 @@ public class PlayerControl : MonoBehaviour
 		var light = GetComponentInChildren<Light> ();
 		light.enabled = !light.enabled;
 	}
-
 	
 	void Flip ()
 	{

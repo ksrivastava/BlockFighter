@@ -23,9 +23,7 @@ public class PointsBar : MonoBehaviour {
 	private string[] names;
 	
 	private static float[] points;
-	
 	public static bool isStarsMode = false;
-
 	public static int numPlayers = 2;
 	
 	void Start() {
@@ -40,7 +38,7 @@ public class PointsBar : MonoBehaviour {
 				initPoints = 1f;
 			}
 		}
-		
+
 		styles = new GUIStyle[numPlayers + 1];
 		points = new float[numPlayers];
 		names = new string[numPlayers];
@@ -49,6 +47,7 @@ public class PointsBar : MonoBehaviour {
 		
 		for (int i = 0; i < numPlayers; ++i) {
 			points[i] = initPoints;
+			pl[i].transform.parent.gameObject.GetComponentInChildren<StarBar>().setNumStars((int)initPoints);
 			styles[i] = new GUIStyle();
 			styles[i].alignment = TextAnchor.MiddleCenter;
 			styles[i].font = myFont;
@@ -98,6 +97,7 @@ public class PointsBar : MonoBehaviour {
 		PlayerControl c;
 		if (c = obj.GetComponentInChildren<PlayerControl>()) {
 			points[c.GetPlayerNum() - 1] += 1;
+			obj.transform.parent.gameObject.GetComponentInChildren<StarBar>().setNumStars((int)points[c.GetPlayerNum() - 1]);
 		}
 	}
 	
@@ -107,6 +107,7 @@ public class PointsBar : MonoBehaviour {
 			if (c = obj.GetComponentInChildren<PlayerControl>()) {
 				if (points[c.GetPlayerNum() - 1] > 0) {
 					points[c.GetPlayerNum() - 1] -= 1;
+					obj.GetComponentInChildren<StarBar>().setNumStars((int)points[c.GetPlayerNum() - 1]);
 					
 					var star = Object.Instantiate (Resources.Load ("PowerUp/StarPowerUp")) as GameObject;
 					star.transform.position = starSpawnPosition;
