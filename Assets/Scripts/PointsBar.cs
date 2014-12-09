@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
+using System.Linq;
 
 public enum DisplayType {
 	Point,
@@ -68,16 +70,36 @@ public class PointsBar : MonoBehaviour {
 		styles[numPlayers].normal.textColor = Color.white;
 	}
 
-	GameObject getSprite(int playerNum) {
-		GameObject pl = players [playerNum];
-		GameObject f = new GameObject();
-		f.transform.localScale = pl.transform.localScale;
-		f.AddComponent<SpriteRenderer> ();
-		SpriteRenderer faderSprite = f.GetComponent<SpriteRenderer>();
-		faderSprite.sprite = pl.GetComponent<SpriteRenderer>().sprite;
-		return f;
-	}
+	public static Texture2D textureFromSprite(Sprite sprite)
+	{
+		/* By user: trothmaster 
+		 * Found at: http://answers.unity3d.com/questions/651984/convert-sprite-image-to-texture.html
+		 */
 
+		if(sprite.rect.width != sprite.texture.width){
+			Texture2D newText = new Texture2D((int)sprite.rect.width,(int)sprite.rect.height);
+			Color[] newColors = sprite.texture.GetPixels((int)sprite.textureRect.x, 
+			                                             (int)sprite.textureRect.y, 
+			                                             (int)sprite.textureRect.width, 
+			                                             (int)sprite.textureRect.height );
+			newText.SetPixels(newColors);
+			newText.Apply();
+			return newText;
+		} else
+			return sprite.texture;
+	}
+	
+	Texture2D getSprite(int playerNum) {
+		Sprite sprite = players [playerNum].GetComponent<SpriteRenderer>().sprite;
+		string spriteSheet = AssetDatabase.GetAssetPath( sprite.texture );
+		Sprite[] sprites = AssetDatabase.LoadAllAssetsAtPath( spriteSheet ).OfType<Sprite>().ToArray();
+		var spriteIndex = 3;
+		if (sprite.name.Contains("Pig")) {
+			spriteIndex = 1;
+		}
+		Texture2D image = textureFromSprite (sprites [spriteIndex]);
+		return image;
+	}
 
 	void OnGUI() {
 		length = Screen.width / 12f;
@@ -92,9 +114,10 @@ public class PointsBar : MonoBehaviour {
 			var tempX = ((i + 0.5f) + (MAX_PLAYERS - numPlayers) * 0.5f ) * Screen.width / 4.5f;
 			GUI.Box (new Rect(tempX, yScore, length, scoreFontSize), points[i].ToString(), styles[numPlayers]);
 			GUI.Box (new Rect(tempX + length / 27f, yPlayer, length, playerFontSize), names[i], styles[i]);
-			//GameObject sprite = getSprite(i);
-			//Vector3 pos = new Vector3(tempX, yPlayer); 
-//			sprite.transform.position = camera.ScreenToWorldPoint(pos);
+			Texture2D image = getSprite(i);
+			int scaleMult = 3;
+			TextureScale.Point (image, image.width * scaleMult, image.height * scaleMult);
+			GUI.Box (new Rect(tempX - 35f, yScore, image.width, image.height), image, styles[numPlayers]);
 		}
 	}
 
