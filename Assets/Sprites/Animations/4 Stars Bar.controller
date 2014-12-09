@@ -5,7 +5,7 @@ AnimatorController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Stars Bar
+  m_Name: 4 Stars Bar
   serializedVersion: 2
   m_AnimatorParameters:
   - m_Name: numStars
@@ -519,27 +519,6 @@ StateMachine:
   m_ChildStateMachinePosition: []
   m_OrderedTransitions:
     data:
-      first: {fileID: 110299745}
-      second:
-      - {fileID: 110154785}
-      - {fileID: 110107973}
-      - {fileID: 110131587}
-      - {fileID: 110169767}
-    data:
-      first: {fileID: 110222637}
-      second:
-      - {fileID: 110166850}
-      - {fileID: 110124208}
-      - {fileID: 110160498}
-      - {fileID: 110129380}
-    data:
-      first: {fileID: 110250459}
-      second:
-      - {fileID: 110141436}
-      - {fileID: 110112840}
-      - {fileID: 110193802}
-      - {fileID: 110189240}
-    data:
       first: {fileID: 110232637}
       second:
       - {fileID: 110159906}
@@ -553,6 +532,27 @@ StateMachine:
       - {fileID: 110175755}
       - {fileID: 110152670}
       - {fileID: 110185008}
+    data:
+      first: {fileID: 110250459}
+      second:
+      - {fileID: 110141436}
+      - {fileID: 110112840}
+      - {fileID: 110193802}
+      - {fileID: 110189240}
+    data:
+      first: {fileID: 110222637}
+      second:
+      - {fileID: 110166850}
+      - {fileID: 110124208}
+      - {fileID: 110160498}
+      - {fileID: 110129380}
+    data:
+      first: {fileID: 110299745}
+      second:
+      - {fileID: 110154785}
+      - {fileID: 110107973}
+      - {fileID: 110131587}
+      - {fileID: 110169767}
   m_MotionSetCount: 1
   m_AnyStatePosition: {x: -252, y: 0, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}

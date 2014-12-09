@@ -14,19 +14,20 @@ public class PlayerBehavior : MonoBehaviour {
 
 	public bool active = true;
 
-	// Use this for initialization
 	void Start () {
 		controller = GetComponent<PlayerControl> ();
 		healthBar = GetComponent<HealthBar> ();
 		playerNum = controller.GetPlayerNum ();
 		weapon = GameObject.Find (transform.parent.name + "/Hammer");
-//		stars = GameObject.Find (transform.parent.name + "/Hammer");
 
-		if (PointsBar.isStarsMode) {
-			stars = GameObject.Find (transform.parent.name + "/Stars Bar");
+		if(PointsBar.isStarsMode) {
+			if (PointsBar.numPlayers == 3) {
+				stars = Instantiate(Resources.Load("3 Stars Bar")) as GameObject;
+			} else {
+				stars = Instantiate(Resources.Load("4 Stars Bar")) as GameObject;
+			}
+			stars.transform.parent = this.transform.parent;
 		}
-
-
 		controller.pickedUpObject = false;
 	}
 

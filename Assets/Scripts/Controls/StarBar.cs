@@ -4,10 +4,7 @@ using System.Collections;
 public class StarBar : MonoBehaviour {
 	private Animator anim;
 	
-	void Start () {
-		if (!PointsBar.isStarsMode) {
-			Destroy(this.gameObject);
-		}
+	void Awake () {
 		anim = this.GetComponent<Animator> ();
 	}
 
