@@ -23,7 +23,7 @@ public class EventController : MonoBehaviour {
 		if (Application.loadedLevelName == "_Map_2" || Application.loadedLevelName == "_Map_3") {	
 			
 			InvokeRepeating("CheckStraightRocks",2,5);
-			InvokeRepeating("CheckEnoughBombs",8,5);
+			InvokeRepeating("CheckEnoughBombs",8,13);
 			InvokeRepeating("CheckEnoughHealthPacks",16,15);
 			InvokeRepeating("CheckEnoughLeeches",12,5);
 			InvokeRepeating("CheckBigHammer",15,30);

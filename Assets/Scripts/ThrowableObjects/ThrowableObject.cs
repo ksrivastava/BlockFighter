@@ -107,7 +107,7 @@ public class ThrowableObject : MonoBehaviour {
 			
 			} else if (this.state == State.thrown) {
 
-				
+				if (audio != null) audio.Play();
 				//find highest parent
 				
 				Transform playerTransform = null;

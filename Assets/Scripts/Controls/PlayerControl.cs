@@ -179,17 +179,18 @@ public class PlayerControl : MonoBehaviour
 				rigidbody2D.velocity = new Vector2(Mathf.Sign(rigidbody2D.velocity.x) * maxSpeed, rigidbody2D.velocity.y);
 		
 			if (leftDash) {
-				//				if (facingRight) Flip ();
 				rigidbody2D.AddForce(Vector2.right * -1 * moveForce * dashMultiplier);
-				healthBar.Dash -= 0.5f;
-				StartCoroutine(Trail(Time.time, Time.time + dashDuration));
 			}
 			
 			else if (rightDash) {
-				//				if (!facingRight) Flip ();
 				rigidbody2D.AddForce(Vector2.right * moveForce * dashMultiplier);
+
+			}
+
+			if (leftDash || rightDash) {
 				healthBar.Dash -= 0.5f;
 				StartCoroutine(Trail(Time.time, Time.time + dashDuration));
+				audio.Play();
 			}
 			
 			// If the player is changing direction (h has a different sign to velocity.x) or hasn't reached maxSpeed yet...

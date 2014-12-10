@@ -3,10 +3,10 @@ using System.Collections;
 
 public class LeechRock : BombRock {
 
-	int leechValue = 15;
+	int leechValue = 10;
 
 	void Awake(){
-		this.countDown = 10;
+		this.countDown = 6;
 		KillTimer ();
 	}
 
@@ -29,7 +29,7 @@ public class LeechRock : BombRock {
 			foreach (var collider in GetComponents<Collider2D>()){
 				collider.enabled = false;
 			}
-			Invoke ("Detach",countDown*2);
+			Invoke ("Detach",countDown * 2);
 			
 		} catch(UnityException ex){
 			print ("Player doesn't exist");

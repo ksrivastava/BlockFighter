@@ -139,9 +139,9 @@ public class CharacterSelectMenuController : MonoBehaviour {
 			markers[1].SetActive(true);
 			selected[1] = Character.Elf;
 			
-			markers[2].SetActive(true);
-			selected[2] = Character.Human;
-			
+//			markers[2].SetActive(true);
+//			selected[2] = Character.Human;
+//			
 //			markers[3].SetActive(true);
 //			selected[3] = Character.Pig;
 

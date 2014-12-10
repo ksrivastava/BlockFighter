@@ -3,8 +3,8 @@ using System.Collections;
 
 public class SelfDestruct : MonoBehaviour {
 
-	float duration = 0.2f;
-	float deltaTime = 0f;
+	public float duration = 0.2f;
+	public float deltaTime = 0f;
 
 	// Use this for initialization
 	void Start () {
