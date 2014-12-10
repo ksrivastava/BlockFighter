@@ -11,11 +11,13 @@ public class CharacterSelectMenuController : MonoBehaviour {
 
 	public Dictionary<int, Character> characters;
 	public Dictionary<int, Character> selected;
+	public GameObject[] names;
 	public GameObject[] players;
 	public GameObject[] markers;
 	public GameObject[] labels;
 	public GameObject[] text;
 	public Sprite[] sprites;
+
 
 	bool isDebugMode = true;
 
@@ -103,6 +105,7 @@ public class CharacterSelectMenuController : MonoBehaviour {
 				if (!characters.ContainsKey(i)) {
 					characters.Add (i, (Character) i);
 				}
+				names[i].GetComponent<TextMesh>().text = characters[i].ToString();
 				players[i].GetComponent<SpriteRenderer>().sprite = sprites[(int) characters[i]];
 				if (selected.ContainsValue (characters[i]) && !selected.ContainsKey (i)) {
 					Color c = players[i].GetComponent<SpriteRenderer>().color;
@@ -116,6 +119,7 @@ public class CharacterSelectMenuController : MonoBehaviour {
 				Color labelC = labels[i].GetComponent<TextMesh>().color;
 				labelC.a = 1.0f;
 				labels[i].GetComponent<TextMesh>().color = labelC;
+				names[i].GetComponent<TextMesh>().color = labelC;
 			} else {
 				// player not connected
 				// dim sprite
@@ -127,6 +131,7 @@ public class CharacterSelectMenuController : MonoBehaviour {
 				Color labelC = labels[i].GetComponent<TextMesh>().color;
 				labelC.a = 0.2f;
 				labels[i].GetComponent<TextMesh>().color = labelC;
+				names[i].GetComponent<TextMesh>().color = labelC;
 				markers[i].SetActive(false);
 			}
 		}
