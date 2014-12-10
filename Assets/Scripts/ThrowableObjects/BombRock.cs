@@ -105,19 +105,9 @@ public class BombRock : StraightRock {
 		}
 	}
 
-	void PlaySound(AudioClip clip) {
-		var explosionObject = new GameObject ();
-		explosionObject.AddComponent<SelfDestruct> ();
-		explosionObject.GetComponent<SelfDestruct> ().duration = 6f;
-		explosionObject.AddComponent<AudioSource> ();
-		explosionObject.audio.playOnAwake = false;
-		explosionObject.audio.clip = clip;
-		explosionObject.audio.Play ();
-	}
-
 	void Explode(){
 		anim.SetBool ("isExploding", true);
-		PlaySound (explosionClip);
+		MusicPlayer.PlaySound (explosionClip, 2f, 0.3f);
 
 		float xForce = 2000;
 		float upForce = 2000;

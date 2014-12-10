@@ -6,6 +6,7 @@ public class Water : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D col) {
 		if (col.tag == "Player") {
 			col.gameObject.GetComponent<PlayerBehavior> ().ReduceHealth (500);
+			audio.Play();
 		} else if(col.gameObject.name.Contains("Rock")) {
 			Destroy(col.gameObject);
 		}

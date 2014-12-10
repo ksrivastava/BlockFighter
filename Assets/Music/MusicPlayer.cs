@@ -40,4 +40,16 @@ public class MusicPlayer : MonoBehaviour {
 			curAudio++;
 		}
 	}
+
+	public static void PlaySound(AudioClip clip, float duration, float volume = 1f) {
+		var soundObject = new GameObject ();
+		soundObject.AddComponent<SelfDestruct> ();
+		soundObject.GetComponent<SelfDestruct> ().duration = duration;
+		soundObject.AddComponent<AudioSource> ();
+		soundObject.audio.playOnAwake = false;
+		soundObject.audio.panLevel = 0f;
+		soundObject.audio.volume = volume;
+		soundObject.audio.clip = clip;
+		soundObject.audio.Play ();
+	}
 }

@@ -180,6 +180,14 @@ public class HammerControl : MonoBehaviour {
 		}
 	}
 
+	public AudioClip[] hammerHits;
+
+	public void PlaySound() {
+		int idx = isBigHammer ? 1 : 0;
+		audio.clip = hammerHits [idx];
+		audio.Play ();
+	}
+
 	public void UpgradeHammerTime(float time) {
 		isBigHammer = true;
 		GameObject body = GameObject.Find (transform.parent.name + "/Hammer/Body");

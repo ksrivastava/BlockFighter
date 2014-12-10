@@ -100,8 +100,7 @@ public class PlayerBehavior : MonoBehaviour {
 
 					// do no damage
 				} else {
-					var hammerAudio = col.gameObject.transform.parent.GetComponent<AudioSource>();
-					hammerAudio.Play();
+					hammerController.PlaySound();
 					if (hammerController.isBigHammer) {
 						ReduceHealth(bigHitDamage);
 					} else {
