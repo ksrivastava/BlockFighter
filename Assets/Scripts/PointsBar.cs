@@ -98,7 +98,6 @@ public class PointsBar : MonoBehaviour {
 		string name = players [playerNum - 1].GetComponent<SpriteRenderer>().sprite.name;
 		string charName = name.Substring (0, name.Length - 2);
 		foreach (var sprite in sprites) {
-//			print ("Sprite name: " + sprite.name);
 			if (sprite.name.Contains(charName)) {
 				return textureFromSprite (sprite);
 			}
@@ -120,10 +119,10 @@ public class PointsBar : MonoBehaviour {
 			var tempX = ((i + 0.5f) + (MAX_PLAYERS - numPlayers) * 0.5f ) * Screen.width / 4.5f;
 			GUI.Box (new Rect(tempX, yScore, length, scoreFontSize), points[i].ToString(), styles[numPlayers]);
 			GUI.Box (new Rect(tempX + length / 27f, yPlayer, length, playerFontSize), names[i], styles[i]);
-//			Texture2D image = getSprite(i);
-//			int scaleMult = 3;
-//			TextureScale.Point (image, image.width * scaleMult, image.height * scaleMult);
-//			GUI.Box (new Rect(tempX - 35f, yScore, image.width, image.height), image, styles[numPlayers]);
+			Texture2D image = getSprite(i);
+			int scaleMult = 3;
+			TextureScale.Point (image, image.width * scaleMult, image.height * scaleMult);
+			GUI.Box (new Rect(tempX - 35f, yScore, image.width, image.height), image, styles[numPlayers]);
 		}
 	}
 
