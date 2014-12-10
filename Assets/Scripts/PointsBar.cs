@@ -149,18 +149,11 @@ public class PointsBar : MonoBehaviour {
 			if (c = obj.GetComponentInChildren<PlayerControl>()) {
 				if (points[c.GetPlayerNum() - 1] > 0) {
 					points[c.GetPlayerNum() - 1] -= 1;
-					if(isStarsMode) {
-						obj.GetComponentInChildren<StarBar>().setNumStars((int)points[c.GetPlayerNum() - 1]);
-					}
-					
+					obj.GetComponentInChildren<StarBar>().setNumStars((int)points[c.GetPlayerNum() - 1]);
 					var star = Object.Instantiate (Resources.Load ("PowerUp/StarPowerUp")) as GameObject;
 					star.transform.position = starSpawnPosition;
 				}
-				else {
-					print ("Points less than zero");
-				}
 			}
-			else print (obj.name + " not found");
 		}
 	}
 	
