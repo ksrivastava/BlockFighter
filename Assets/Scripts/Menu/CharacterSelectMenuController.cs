@@ -137,23 +137,23 @@ public class CharacterSelectMenuController : MonoBehaviour {
 		}
 
 ////		// Debug
-//		if (isDebugMode) {
-//			markers[0].SetActive(true);
-//			selected[0] = Character.Troll;
-//			
-//			markers[1].SetActive(true);
-//			selected[1] = Character.Elf;
-//			
-//			markers[2].SetActive(true);
-//			selected[2] = Character.Human;
-////			
-////			markers[3].SetActive(true);
-////			selected[3] = Character.Pig;
-//
-//			GameController.chars = selected;
-//			MenuController.menu = MenuController.Menu.MapSelection;
-//			Application.LoadLevel (0);
-//		}
+		if (isDebugMode) {
+			markers[0].SetActive(true);
+			selected[0] = Character.Pig;
+			
+			markers[1].SetActive(true);
+			selected[1] = Character.Human;
+			
+			markers[2].SetActive(true);
+			selected[2] = Character.Troll;
+			
+			markers[3].SetActive(true);
+			selected[3] = Character.Skeleton;
+
+			GameController.chars = selected;
+			MenuController.menu = MenuController.Menu.MapSelection;
+			Application.LoadLevel (0);
+		}
 
 		if (InputManager.Devices.Count < 2) {
 			text[0].GetComponent<TextMesh>().text = "Minimum 2 players";

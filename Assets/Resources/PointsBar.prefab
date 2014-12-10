@@ -42,7 +42,13 @@ MonoBehaviour:
   styles: []
   myFont: {fileID: 12800000, guid: 9562b9bd9dc6f4619881c5867ba41b1d, type: 3}
   myFontSize: 10
-  test: {fileID: 2800000, guid: 19f305f781449dc4a8f6407e23b16203, type: 3}
+  sprites:
+  - {fileID: 21300006, guid: b3474e841c3be2943bdce08f4d327066, type: 3}
+  - {fileID: 21300006, guid: 21c99fd5a8204fe4098f442e8eee4681, type: 3}
+  - {fileID: 21300006, guid: 446b0476948c8534aa9d2a9d351a8f52, type: 3}
+  - {fileID: 21300002, guid: 2ed6e110e1d71c44e88260a77836810a, type: 3}
+  - {fileID: 21300006, guid: dcac88ad6d5aaf34e866adf490b80f36, type: 3}
+  - {fileID: 21300006, guid: 6c562953a11468247840ac26c34be41d, type: 3}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

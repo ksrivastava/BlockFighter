@@ -152,16 +152,19 @@ public class PlayerBehavior : MonoBehaviour {
 			Destroy(leech.gameObject);
 		}	
 
-		if(record){
-
-			var starSpawnPoint = transform.position;
-			PointsBar.RemoveStars (this.transform.parent.gameObject, starSpawnPoint);
-
-			StartCoroutine (RecordDeathDelayed());
-		}
+		var starSpawnPoint = transform.position;
 
 		var respawnPoint = GameObject.Find ("RespawnPoint" + this.playerNum);
 		transform.position = respawnPoint.transform.position;
+
+		// ORDER IS IMPORTANT
+
+		if(record){
+			
+			PointsBar.RemoveStars (this.transform.parent.gameObject, starSpawnPoint);
+			
+			StartCoroutine (RecordDeathDelayed());
+		}
 
 		//PlayerEvents.RemovePlayerFromTeam (this.transform.parent.name);
 		healthBar.Health = healthBar.MaxHealth;

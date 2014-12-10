@@ -90,17 +90,21 @@ public class PointsBar : MonoBehaviour {
 		} else
 			return sprite.texture;
 	}
-	
-	Texture2D getSprite(int playerNum) {
-		Sprite sprite = players [playerNum].GetComponent<SpriteRenderer>().sprite;
-		string spriteSheet = AssetDatabase.GetAssetPath( sprite.texture );
-		Sprite[] sprites = AssetDatabase.LoadAllAssetsAtPath( spriteSheet ).OfType<Sprite>().ToArray();
-		var spriteIndex = 3;
-		if (sprite.name.Contains("Pig")) {
-			spriteIndex = 1;
+
+	public Sprite[] sprites;
+
+	Texture2D getSprite(int playerIdx) {
+		var playerNum = players [playerIdx].GetComponent<PlayerControl> ().GetPlayerNum ();
+		string name = players [playerNum - 1].GetComponent<SpriteRenderer>().sprite.name;
+		string charName = name.Substring (0, name.Length - 2);
+		foreach (var sprite in sprites) {
+//			print ("Sprite name: " + sprite.name);
+			if (sprite.name.Contains(charName)) {
+				return textureFromSprite (sprite);
+			}
 		}
-		Texture2D image = textureFromSprite (sprites [spriteIndex]);
-		return image;
+		print ("Sprite name: " + charName);
+		return null;
 	}
 
 	void OnGUI() {
