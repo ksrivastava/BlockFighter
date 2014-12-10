@@ -35,10 +35,6 @@ public class PlayerBehavior : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (this.rigidbody2D.velocity.magnitude >= 260) {
-			print ("playerVelocity is "+this.rigidbody2D.velocity.magnitude);
-			this.rigidbody2D.velocity = Vector2.zero;
-		}
 
 		var inputDevice = (InputManager.Devices.Count > playerNum-1) ? InputManager.Devices[playerNum-1] : null;
 
@@ -65,6 +61,12 @@ public class PlayerBehavior : MonoBehaviour {
 
 		else if (Input.GetAxis("Fire" + playerNum) < 0.2f) {
 			isPressedDown = false;
+		}
+	}
+
+	void FixedUpdate(){
+		if (this.rigidbody2D.velocity.magnitude >= 260) {
+			this.rigidbody2D.velocity = Vector2.zero;
 		}
 	}
 
