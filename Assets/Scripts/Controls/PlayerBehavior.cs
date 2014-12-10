@@ -168,7 +168,10 @@ public class PlayerBehavior : MonoBehaviour {
 
 		if (this.controller.pickedUpObject) {
 			if(weapon != null){
-				weapon.GetComponent<ThrowableObject>().Drop ();
+				var comp = weapon.GetComponent<ThrowableObject>();
+				if (comp != null) {
+					comp.Drop();
+				}
 			}
 			weapon = GameObject.Find (transform.parent.name+"/Hammer");
 		}
