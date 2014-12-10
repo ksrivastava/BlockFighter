@@ -3,7 +3,7 @@ using System.Collections;
 
 public class MenuController : MonoBehaviour {
 
-	public enum Menu {Title, Help, GameModeSelection, CharacterSelection, MapSelection, GameOver};
+	public enum Menu {Title, Help, GameModeSelection, CharacterSelection, MapSelection, GameOver, Credits};
 
 	public static Menu menu = Menu.Title;
 
@@ -28,6 +28,9 @@ public class MenuController : MonoBehaviour {
 			case Menu.GameOver:
 				camera = GameObject.Find ("EndGameCamera");
 				break;
+			case Menu.Credits:
+				camera = GameObject.Find ("CreditsCamera");
+				break;
 		}
 		DisableAllCameras ();
 		camera.SetActive (true);
@@ -40,5 +43,6 @@ public class MenuController : MonoBehaviour {
 		GameObject.Find ("CharacterSelectCamera").SetActive(false);
 		GameObject.Find ("MapSelectCamera").SetActive(false);
 		GameObject.Find ("EndGameCamera").SetActive(false);
+		GameObject.Find ("CreditsCamera").SetActive (false);
 	}
 }

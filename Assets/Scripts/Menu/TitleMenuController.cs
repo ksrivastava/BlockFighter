@@ -4,7 +4,7 @@ using InControl;
 
 public class TitleMenuController : MonoBehaviour {
 
-	public enum TitleOption {Play, Help};
+	public enum TitleOption {Play, Help, Credits};
 	public GameObject[] titleOptions;
 	public GameObject marker;
 	
@@ -52,6 +52,10 @@ public class TitleMenuController : MonoBehaviour {
 					MenuController.menu = MenuController.Menu.Help;
 					Application.LoadLevel (0);
 					break;
+			case TitleOption.Credits:
+				MenuController.menu = MenuController.Menu.Credits;
+				Application.LoadLevel (0);
+				break;
 			}
 		}
 
