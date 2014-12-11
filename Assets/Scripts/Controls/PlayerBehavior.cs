@@ -4,6 +4,9 @@ using InControl;
 
 public class PlayerBehavior : MonoBehaviour {
 	public GameObject weapon = null;
+
+	HammerControl hammerControl;
+
 	PlayerControl controller = null;
 	public HealthBar healthBar;
 	private int playerNum;
@@ -19,6 +22,7 @@ public class PlayerBehavior : MonoBehaviour {
 		healthBar = GetComponent<HealthBar> ();
 		playerNum = controller.GetPlayerNum ();
 		weapon = GameObject.Find (transform.parent.name + "/Hammer");
+		hammerControl = weapon.GetComponent<HammerControl> ();
 
 		if(PointsBar.isStarsMode) {
 			if (PointsBar.numPlayers == 3) {
@@ -158,6 +162,10 @@ public class PlayerBehavior : MonoBehaviour {
 				}
 			}
 			weapon = GameObject.Find (transform.parent.name+"/Hammer");
+		}
+
+		if (hammerControl.isBigHammer) {
+			hammerControl.ResetHammer();
 		}
 
 		MakePlayerInactive ();

@@ -23,13 +23,13 @@ public class HammerControl : MonoBehaviour {
 
 	PlayerControl controller;
 	Transform player;
-	Collider2D collider;
+	Collider2D hammerCollider;
 
 	// Use this for initialization
 	void Start () {
 		controller = GameObject.Find (transform.parent.name + "/Body").GetComponent<PlayerControl> ();
 		player = GameObject.Find (transform.parent.name + "/Body").transform;
-		collider = GameObject.Find (transform.parent.name + "/Hammer/Body").collider2D;
+		hammerCollider = GameObject.Find (transform.parent.name + "/Hammer/Body").collider2D;
 		origScale = GameObject.Find (transform.parent.name + "/Hammer/Body").transform.localScale;
 	}
 
@@ -74,7 +74,7 @@ public class HammerControl : MonoBehaviour {
 						isHitting = false;
 						isJabbing = false;
 						attackComplete = false;
-						collider.enabled = true;
+						hammerCollider.enabled = true;
 						controller.allowMovement = true;
 						deltaTime = 0f;
 					}
@@ -188,22 +188,22 @@ public class HammerControl : MonoBehaviour {
 		audio.Play ();
 	}
 
-	public void UpgradeHammerTime(float time) {
+	public void SetBigHammer(float time = 8.0f) {
 		isBigHammer = true;
-		GameObject body = GameObject.Find (transform.parent.name + "/Hammer/Body");
+		GameObject body = hammerCollider.gameObject;
 		body.GetComponent<SpriteRenderer> ().sprite = bigHammerBody;
 		Vector3 scale = body.transform.localScale;
 		scale.x = 6.0f;
 		scale.y = 6.0f;
 		body.transform.localScale = scale;
-		StartCoroutine (StopPowerUpAfterTime (time));
+		Invoke ("ResetHammer", time);
 	}
 
-	private IEnumerator StopPowerUpAfterTime(float time) {
-		yield return new WaitForSeconds (time);
-		GameObject body = GameObject.Find (transform.parent.name + "/Hammer/Body");
+	public void ResetHammer() {
+		GameObject body = hammerCollider.gameObject;
 		body.GetComponent<SpriteRenderer> ().sprite = hammerBody;
 		body.transform.localScale = origScale;
 		isBigHammer = false;
 	}
+
 }
