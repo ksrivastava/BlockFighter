@@ -68,7 +68,7 @@ public class PointsBar : MonoBehaviour {
 
 			int scaleMult = 3;
 			TextureScale.Point (image, image.width * scaleMult, image.height * scaleMult);
-			pointsBarSprites[c.GetPlayerNum() - 1] = image;
+			pointsBarSprites[i] = image;
 
 		}
 		
