@@ -19,7 +19,7 @@ public class CharacterSelectMenuController : MonoBehaviour {
 	public Sprite[] sprites;
 
 
-	bool isDebugMode = true;
+	bool isDebugMode = false;
 
 	void Start () {
 		characters = new Dictionary<int, Character>();
