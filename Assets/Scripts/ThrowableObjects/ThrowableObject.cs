@@ -24,9 +24,13 @@ public class ThrowableObject : MonoBehaviour {
 	private Vector2 displacement = new Vector2(1.1f,0);
 	private bool canDamageSelf = false;
 
+	private Vector2 bottomLeftOfCamera;
+	private Vector2 topRightOfCamera;
+
 	float bigHammerDelta = 1f;
 	// this is what you override to implement damage and things.
 	public virtual void Damage(Collider2D col){}
+
 
 
 	// Use this for initialization
@@ -52,6 +56,10 @@ public class ThrowableObject : MonoBehaviour {
 			this.collider2D.enabled = false;
 		}
 
+	
+		if (this.transform.position.y < -50 && this.state != State.pickedUp) {
+			Destroy(this.gameObject);
+		}
 	
 		if (this.rigidbody2D.velocity.magnitude >= 60) {
 			this.rigidbody2D.velocity = Vector2.zero;
@@ -90,7 +98,7 @@ public class ThrowableObject : MonoBehaviour {
 					return;
 				}
 
-				if(controller != null && controller.pickedUpObject){
+				if(controller != null && controller.PickedUpObject){
 					hammer = null;
 					controller = null;
 					behaviour = null;
@@ -99,10 +107,9 @@ public class ThrowableObject : MonoBehaviour {
 
 				this.state = State.pickedUp;
 
-
+				controller.PickedUpObject = true;
 				this.canDamageSelf = false;
 				behaviour.weapon = this.gameObject;
-				controller.pickedUpObject = true;
 				this.collider2D.enabled = false;
 			
 			} else if (this.state == State.thrown) {
@@ -152,13 +159,16 @@ public class ThrowableObject : MonoBehaviour {
 	}
 
 	public virtual void Throw(){
+
+		if (controller == null) {
+			Destroy(this.gameObject);
+		}
 		this.transform.parent = null;
 		Vector2 rightOrLeft = (controller.facingRight) ? Vector2.right*xMult : Vector2.right*-1*xMult;
 		
 		var t = (Physics2D.gravity.y > 0)? -throwForce : throwForce;
 		this.rigidbody2D.AddForce(Vector2.up * t + rightOrLeft);
-		
-		controller.pickedUpObject = false;
+
 		this.state = State.thrown;
 		Invoke ("EnableCollider", 0.05f);
 
@@ -172,12 +182,9 @@ public class ThrowableObject : MonoBehaviour {
 	}
 
 	public void Drop() {
-
 		this.state = State.idle;
 		this.canDamageSelf = false;
 		this.collider2D.enabled = true;
-		if(controller!=null)
-			controller.pickedUpObject = false;
 	}
 
 	public void KnockBack(Vector3 hitterPosition){

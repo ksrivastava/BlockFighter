@@ -29,7 +29,7 @@ public class EventController : MonoBehaviour {
 			InvokeRepeating("CheckBigHammer",15,30);
 			
 		} else if(Application.loadedLevelName == "_Map_4"){
-			Invoke("QueuePointLights",5);
+			//Invoke("QueuePointLights",5);
 		}
 		
 		
