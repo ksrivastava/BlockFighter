@@ -32,7 +32,6 @@ public class PlayerBehavior : MonoBehaviour {
 			}
 			stars.transform.parent = this.transform.parent;
 		}
-		controller.pickedUpObject = false;
 	}
 
 	bool isPressedDown = false;
@@ -51,17 +50,11 @@ public class PlayerBehavior : MonoBehaviour {
 			}
 
 			if(weapon == null){
-
+				weapon = GameObject.Find (transform.parent.name+"/Hammer");
+				controller.DropPickedUpObject();
 			}
 
-			if(controller.pickedUpObject){
-				ThrowableObject t = weapon.GetComponent<ThrowableObject>();
-			
-				if(t != null){
-					t.Throw();
-				}
-				weapon = GameObject.Find (transform.parent.name+"/Hammer");
-			} 
+			controller.ThrowPickedUpObject(); 
 				
 			transform.parent.GetComponentInChildren<HammerControl>().Hit();
 
@@ -154,15 +147,7 @@ public class PlayerBehavior : MonoBehaviour {
 	
 	public void Die(bool record = true){
 
-		if (this.controller.pickedUpObject) {
-			if(weapon != null){
-				var comp = weapon.GetComponent<ThrowableObject>();
-				if (comp != null) {
-					comp.Drop();
-				}
-			}
-			weapon = GameObject.Find (transform.parent.name+"/Hammer");
-		}
+		controller.DropPickedUpObject (); 
 
 		if (hammerControl.isBigHammer) {
 			hammerControl.ResetHammer();

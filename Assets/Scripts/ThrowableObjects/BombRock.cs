@@ -192,7 +192,7 @@ public class BombRock : StraightRock {
 
 	public IEnumerator Blink(float blinkTime) {
 		var endTime = Time.time + blinkTime;
-		while(Time.time < endTime && this.state == State.idle){
+		while(Time.time < endTime && this.state == State.idle && controller == null){
 			renderer.enabled = false;
 			yield return new WaitForSeconds(0.2f);
 			renderer.enabled = true;

@@ -14,8 +14,13 @@ public class PlayerControl : MonoBehaviour
 
 	public int playerNum;
 	public string playerName;
-	public bool pickedUpObject = false;
-	
+
+	private bool pickedUpObject = false;
+	public bool PickedUpObject {
+		get { return pickedUpObject;}
+		set { pickedUpObject = value;}
+	}
+
 	private float moveForce = 400f;			// Amount of force added to move the player left and right.
 	private float maxSpeed = 6f;				// The fastest the player can travel in the x axis.
 	private float jumpForce = 1000f;			// Amount of force added when the player jumps.
@@ -50,11 +55,41 @@ public class PlayerControl : MonoBehaviour
 		jumpButton = "joystick " + playerNum + " button 16";
 		leftDashButton = "joystick " + playerNum + " button 13";
 		rightDashButton = "joystick " + playerNum + " button 14";
+
 	}
 
 	void Start() 
 	{
 		anim = this.GetComponent<Animator> ();
+		this.pickedUpObject = false;
+	}
+
+	public void ThrowPickedUpObject(){
+		if(pickedUpObject){
+			ThrowableObject t = behavior.weapon.GetComponent<ThrowableObject>();
+			
+			if(t != null){
+				t.Throw();
+			}
+			pickedUpObject = false;
+			behavior.weapon = GameObject.Find (transform.parent.name+"/Hammer");
+		}
+	}
+
+	public void DropPickedUpObject(){
+		if(pickedUpObject){
+			if(behavior != null){
+				if(behavior.weapon != null){
+					ThrowableObject t = behavior.weapon.GetComponent<ThrowableObject>();
+					
+					if(t != null){
+						t.Drop();
+					}
+				}
+				pickedUpObject = false;
+				behavior.weapon = GameObject.Find (transform.parent.name+"/Hammer");
+			}
+		}
 	}
 
 	public void SetInfinityMaxSpeed(){
