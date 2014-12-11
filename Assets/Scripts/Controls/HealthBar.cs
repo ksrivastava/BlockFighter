@@ -42,7 +42,7 @@ public class HealthBar : MonoBehaviour {
 	public bool showDashbar = true;
 	public Texture2D dashBarTexture;
 	private float dash;
-	private float MaxDash = 1;
+	public float MaxDash = 1;
 	public GUIStyle dashBarStyle;
 
 	public float Dash {

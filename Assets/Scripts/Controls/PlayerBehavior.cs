@@ -182,7 +182,7 @@ public class PlayerBehavior : MonoBehaviour {
 
 		//PlayerEvents.RemovePlayerFromTeam (this.transform.parent.name);
 		healthBar.Health = healthBar.MaxHealth;
-
+		healthBar.Dash = healthBar.MaxDash;
 
 
 

@@ -3,7 +3,7 @@ using System.Collections;
 
 public class LeechRock : BombRock {
 
-	int leechValue = 10;
+	int leechValue = 15;
 
 	void Awake(){
 		this.countDown = 6;
@@ -41,6 +41,11 @@ public class LeechRock : BombRock {
 	}
 
 	public override void Countdown() {
+
+		if (particleSystem.isPlaying == false) {
+			particleSystem.Play();
+		}
+
 		if (secondTimer > 0) {
 			secondTimer -= Time.deltaTime;
 		}

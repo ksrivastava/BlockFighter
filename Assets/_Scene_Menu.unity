@@ -3887,7 +3887,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clips:
-  - {fileID: 8300000, guid: a05ad144dde5347e2bacabcf46291a00, type: 3}
+  - {fileID: 8300000, guid: 8bb6600ad0c664541855ccd4fba22047, type: 3}
   - {fileID: 8300000, guid: bf6f1308543874eecb7aab746bc45f9c, type: 3}
 --- !u!1 &893801798
 GameObject:
@@ -4138,7 +4138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clips:
-  - {fileID: 8300000, guid: a05ad144dde5347e2bacabcf46291a00, type: 3}
+  - {fileID: 0}
   - {fileID: 8300000, guid: bf6f1308543874eecb7aab746bc45f9c, type: 3}
 --- !u!1 &916345852
 GameObject:
