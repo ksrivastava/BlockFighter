@@ -46,8 +46,13 @@ public class PlayerBehavior : MonoBehaviour {
 				inputDevice.Vibrate(500);
 			}
 
+			if(weapon == null){
+
+			}
+
 			if(controller.pickedUpObject){
 				ThrowableObject t = weapon.GetComponent<ThrowableObject>();
+			
 				if(t != null){
 					t.Throw();
 				}
@@ -144,7 +149,21 @@ public class PlayerBehavior : MonoBehaviour {
 	}
 	
 	public void Die(bool record = true){
+
+		if (this.controller.pickedUpObject) {
+			if(weapon != null){
+				var comp = weapon.GetComponent<ThrowableObject>();
+				if (comp != null) {
+					comp.Drop();
+				}
+			}
+			weapon = GameObject.Find (transform.parent.name+"/Hammer");
+		}
+
 		MakePlayerInactive ();
+
+
+
 		// detach all bombs and leeches
 		foreach (var bomb in GetComponentsInChildren<BombRock>()) {
 			Destroy(bomb.gameObject);
@@ -171,15 +190,7 @@ public class PlayerBehavior : MonoBehaviour {
 		//PlayerEvents.RemovePlayerFromTeam (this.transform.parent.name);
 		healthBar.Health = healthBar.MaxHealth;
 
-		if (this.controller.pickedUpObject) {
-			if(weapon != null){
-				var comp = weapon.GetComponent<ThrowableObject>();
-				if (comp != null) {
-					comp.Drop();
-				}
-			}
-			weapon = GameObject.Find (transform.parent.name+"/Hammer");
-		}
+
 
 
 		Invoke ("MakePlayerActive", 1.0f);
@@ -228,7 +239,7 @@ public class PlayerBehavior : MonoBehaviour {
 		this.transform.parent.GetComponentInChildren<HammerControl> ().transform.GetChild (1).renderer.enabled = value;
 		if (stars != null) {
 			stars.renderer.enabled = value;		
-		}
+		} 
 		// physics. If it is kinematic then unity physics don't apply, else they do. THATS WHY IT IS SET TO !VALUE. DON'T CHANGE
 		this.gameObject.rigidbody2D.isKinematic = !value;
 	}
