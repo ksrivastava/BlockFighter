@@ -43,6 +43,7 @@ public class PointsBar : MonoBehaviour {
 		styles = new GUIStyle[numPlayers + 1];
 		points = new float[numPlayers];
 		names = new string[numPlayers];
+		pointsBarSprites = new Texture2D[numPlayers];
 		
 		players = GameObject.FindGameObjectsWithTag("Player");
 		
@@ -62,6 +63,13 @@ public class PointsBar : MonoBehaviour {
 			SpriteRenderer s = players[i].GetComponent<SpriteRenderer>();
 			styles[c.GetPlayerNum() - 1].normal.textColor = players[i].GetComponent<ColorSetter>().color;
 			names[c.GetPlayerNum() - 1] = c.GetName();
+
+			Texture2D image = getSprite(i);
+
+			int scaleMult = 3;
+			TextureScale.Point (image, image.width * scaleMult, image.height * scaleMult);
+			pointsBarSprites[c.GetPlayerNum() - 1] = image;
+
 		}
 		
 		styles[numPlayers] = new GUIStyle ();
@@ -90,6 +98,7 @@ public class PointsBar : MonoBehaviour {
 			return sprite.texture;
 	}
 
+	public Texture2D[] pointsBarSprites;
 	public Sprite[] sprites;
 
 	Texture2D getSprite(int playerIdx) {
@@ -118,10 +127,7 @@ public class PointsBar : MonoBehaviour {
 			var tempX = ((i + 0.5f) + (MAX_PLAYERS - numPlayers) * 0.5f ) * Screen.width / 4.5f;
 			GUI.Box (new Rect(tempX, yScore, length, scoreFontSize), points[i].ToString(), styles[numPlayers]);
 			GUI.Box (new Rect(tempX + length / 27f, yPlayer, length, playerFontSize), names[i], styles[i]);
-			Texture2D image = getSprite(i);
-			int scaleMult = 3;
-			TextureScale.Point (image, image.width * scaleMult, image.height * scaleMult);
-			GUI.Box (new Rect(tempX - 35f, yScore, image.width, image.height), image, styles[numPlayers]);
+			GUI.Box (new Rect(tempX - 35f, yScore, pointsBarSprites[i].width, pointsBarSprites[i].height), pointsBarSprites[i], styles[numPlayers]);
 		}
 	}
 
