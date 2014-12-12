@@ -3889,7 +3889,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clips:
   - {fileID: 8300000, guid: 8bb6600ad0c664541855ccd4fba22047, type: 3}
-  - {fileID: 8300000, guid: bf6f1308543874eecb7aab746bc45f9c, type: 3}
+  - {fileID: 8300000, guid: 417001e67b2d14e4c802b298494e4480, type: 3}
 --- !u!1 &893801798
 GameObject:
   m_ObjectHideFlags: 0
@@ -4140,7 +4140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clips:
   - {fileID: 0}
-  - {fileID: 8300000, guid: bf6f1308543874eecb7aab746bc45f9c, type: 3}
+  - {fileID: 0}
 --- !u!1 &916345852
 GameObject:
   m_ObjectHideFlags: 0
