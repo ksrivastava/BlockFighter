@@ -68,7 +68,7 @@ public class PointsBar : MonoBehaviour {
 
 			int scaleMult = 3;
 			TextureScale.Point (image, image.width * scaleMult, image.height * scaleMult);
-			pointsBarSprites[i] = image;
+			pointsBarSprites[c.GetPlayerNum() - 1] = image;
 
 		}
 		
@@ -102,8 +102,8 @@ public class PointsBar : MonoBehaviour {
 	public Sprite[] sprites;
 
 	Texture2D getSprite(int playerIdx) {
-		var playerNum = players [playerIdx].GetComponent<PlayerControl> ().GetPlayerNum ();
-		string name = players [playerNum - 1].GetComponent<SpriteRenderer>().sprite.name;
+//		var playerNum = players [playerIdx].GetComponent<PlayerControl> ().GetPlayerNum ();
+		string name = players [playerIdx].GetComponent<SpriteRenderer>().sprite.name;
 		string charName = name.Substring (0, name.Length - 2);
 		foreach (var sprite in sprites) {
 			if (sprite.name.Contains(charName)) {

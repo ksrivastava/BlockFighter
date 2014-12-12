@@ -139,16 +139,16 @@ public class CharacterSelectMenuController : MonoBehaviour {
 ////		// Debug
 		if (isDebugMode) {
 			markers[0].SetActive(true);
-			selected[0] = Character.Elf;
+			selected[0] = Character.Human;
 			
 			markers[1].SetActive(true);
-			selected[1] = Character.Human;
+			selected[1] = Character.Troll;
 			
 			markers[2].SetActive(true);
-			selected[2] = Character.Troll;
+			selected[2] = Character.Orc;
 			
 			markers[3].SetActive(true);
-			selected[3] = Character.Orc;
+			selected[3] = Character.Pig;
 
 			GameController.chars = selected;
 			MenuController.menu = MenuController.Menu.MapSelection;
