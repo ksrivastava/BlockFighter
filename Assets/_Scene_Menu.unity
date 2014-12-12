@@ -1736,7 +1736,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 359163034}
-  m_Text: Skeleton
+  m_Text: Troll
   m_OffsetZ: 0
   m_CharacterSize: 2
   m_LineSpacing: 1
@@ -1806,7 +1806,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 377053559}
-  m_Text: Skeleton
+  m_Text: Human
   m_OffsetZ: 0
   m_CharacterSize: 2
   m_LineSpacing: 1
@@ -2767,7 +2767,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 493406562}
-  m_Text: Skeleton
+  m_Text: Orc
   m_OffsetZ: 0
   m_CharacterSize: 2
   m_LineSpacing: 1
@@ -5932,7 +5932,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1212667452}
-  m_Text: Skeleton
+  m_Text: Elf
   m_OffsetZ: 0
   m_CharacterSize: 2
   m_LineSpacing: 1
